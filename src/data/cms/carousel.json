@@ -1,0 +1,35 @@
+[
+    {
+        "id": "slide-1",
+        "title": "Pure Joy",
+        "subtitle": "Gentle Care",
+        "description": "Gentle, safe care to keep your baby's skin soft and happy.",
+        "buttonText": "Shop Now",
+        "buttonLink": "/category/baby",
+        "imageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582613/enjoyfull/carousel/carousel_slide_1.jpg",
+        "order": 0,
+        "isActive": true
+    },
+    {
+        "id": "slide-2",
+        "title": "Wake Up Fresh",
+        "subtitle": "Morning Boost",
+        "description": "Coffee-powered freshness for smooth, energized skin.",
+        "buttonText": "Discover More",
+        "buttonLink": "/category/glow",
+        "imageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582617/enjoyfull/carousel/carousel_slide_2.jpg",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": "slide-3",
+        "title": "Glow Collection",
+        "subtitle": "Radiant Skin",
+        "description": "Premium skincare essentials for a radiant, healthy glow.",
+        "buttonText": "Shop Glow",
+        "buttonLink": "/category/glow",
+        "imageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582620/enjoyfull/carousel/carousel_slide_3.png",
+        "order": 2,
+        "isActive": true
+    }
+]

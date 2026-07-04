@@ -1,0 +1,181 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+
+interface Slide {
+    id: string;
+    title: string;
+    subtitle?: string;
+    description?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    desktopImageUrl: string;
+    mobileImageUrl: string;
+}
+
+const FALLBACK_SLIDES: Slide[] = [];
+
+function normalize(s: Record<string, unknown>): Slide {
+    return {
+        id: String(s.$id ?? s._id ?? s.id ?? ""),
+        title: String(s.title ?? ""),
+        subtitle: s.subtitle as string | undefined,
+        description: s.description as string | undefined,
+        buttonText: (s.buttonText as string) || "Shop Now",
+        buttonLink: (s.buttonLink as string) || "/category/all",
+        desktopImageUrl: (s.desktopImageUrl as string) || (s.imageUrl as string) || "",
+        mobileImageUrl: (s.mobileImageUrl as string) || (s.desktopImageUrl as string) || (s.imageUrl as string) || "",
+    };
+}
+
+export function HeroSection() {
+    const [slides, setSlides] = useState<Slide[]>([]);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("/api/carousel")
+            .then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`))
+            .then((data: Record<string, unknown>[] | null) => {
+                if (!data || !Array.isArray(data) || data.length === 0) {
+                    return;
+                }
+                const active = data
+                    .filter(s => s.isActive !== false)
+                    .filter(s => s.desktopImageUrl || s.imageUrl || s.mobileImageUrl)
+                    .map(normalize)
+                    .filter(s => s.desktopImageUrl || s.mobileImageUrl);
+                if (active.length) setSlides(active);
+            })
+            .catch((err) => console.error("[HeroSection] carousel fetch failed:", err))
+            .finally(() => setLoading(false));
+    }, []);
+
+    useEffect(() => {
+        if (slides.length < 2) return;
+        const timer = setInterval(() => {
+            setCurrentSlide(prev => (prev + 1) % slides.length);
+        }, 6000);
+        return () => clearInterval(timer);
+    }, [slides.length]);
+
+    if (loading) {
+        return (
+            <section className="relative w-full h-[100svh] bg-[var(--color-brand-onyx)] animate-pulse" />
+        );
+    }
+
+    if (slides.length === 0) {
+        return null;
+    }
+
+    const safe = currentSlide >= slides.length ? 0 : currentSlide;
+    const slide = slides[safe];
+
+    return (
+        <section className="relative w-full h-[100svh] overflow-hidden bg-[var(--color-brand-onyx)]">
+            <AnimatePresence>
+                <motion.div
+                    key={slide.id}
+                    initial={{ x: "100%" }}
+                    animate={{ x: "0%" }}
+                    exit={{ x: "-100%" }}
+                    transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
+                    className="absolute inset-0 z-0"
+                >
+                    <div className="hidden md:block relative w-full h-full">
+                        <Image
+                            src={slide.desktopImageUrl}
+                            alt={slide.title}
+                            fill
+                            priority
+                            quality={90}
+                            unoptimized={slide.desktopImageUrl.startsWith("http")}
+                            className="object-cover object-center"
+                            sizes="100vw"
+                        />
+                    </div>
+                    <div className="md:hidden relative w-full h-full">
+                        <Image
+                            src={slide.mobileImageUrl || slide.desktopImageUrl}
+                            alt={slide.title}
+                            fill
+                            priority
+                            quality={90}
+                            unoptimized={(slide.mobileImageUrl || slide.desktopImageUrl).startsWith("http")}
+                            className="object-cover object-center"
+                            sizes="100vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                    </div>
+                </motion.div>
+            </AnimatePresence>
+
+            {/* Text overlay — positioned absolutely over the image */}
+            <div className="absolute inset-0 z-10 flex items-end md:items-center pb-20 md:pb-0 pt-20">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
+                    <div className="max-w-2xl relative flex flex-col justify-center">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={safe}
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 30 }}
+                                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                                className="space-y-6 text-left"
+                            >
+                                {slide.subtitle && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6, delay: 0.4 }}
+                                        className="inline-block px-5 py-2 rounded-full backdrop-blur-md bg-white/10 text-white font-sans text-xs md:text-sm tracking-[0.2em] uppercase font-bold border border-white/20"
+                                    >
+                                        {slide.subtitle}
+                                    </motion.div>
+                                )}
+
+                                <motion.h1
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.5 }}
+                                    className="font-heading font-extrabold text-[40px] md:text-6xl lg:text-[84px] text-white leading-[0.95] tracking-tighter drop-shadow-xl whitespace-pre-line"
+                                >
+                                    {slide.title}
+                                </motion.h1>
+
+                                {slide.description && (
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6, delay: 0.6 }}
+                                        className="font-sans font-normal text-sm md:text-base text-white/90 leading-relaxed max-w-md drop-shadow-md"
+                                    >
+                                        {slide.description}
+                                    </motion.p>
+                                )}
+
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.7 }}
+                                    className="pt-4"
+                                >
+                                    <Link
+                                        href={slide.buttonLink || "/category/all"}
+                                        className="inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black font-sans font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-black hover:text-white border border-transparent hover:border-white"
+                                    >
+                                        {slide.buttonText}
+                                    </Link>
+                                </motion.div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}

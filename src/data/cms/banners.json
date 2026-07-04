@@ -1,0 +1,26 @@
+[
+  {
+    "id": "banner-glow",
+    "category": "Glow",
+    "desktopImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582624/enjoyfull/banners/banner_glow_desktop.jpg",
+    "mobileImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774617852/enjoyfull/banners/xtiitdz1fyreuucpmujf.webp"
+  },
+  {
+    "id": "banner-baby",
+    "category": "Baby",
+    "desktopImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582626/enjoyfull/banners/banner_baby_desktop.png",
+    "mobileImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582632/enjoyfull/banners/banner_baby_mobile.png"
+  },
+  {
+    "id": "banner-daily",
+    "category": "Daily",
+    "desktopImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582627/enjoyfull/banners/banner_daily_desktop.jpg",
+    "mobileImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582633/enjoyfull/banners/banner_daily_mobile.png"
+  },
+  {
+    "id": "banner-home",
+    "category": "Home",
+    "desktopImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582628/enjoyfull/banners/banner_home_desktop.jpg",
+    "mobileImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582635/enjoyfull/banners/banner_home_mobile.jpg"
+  }
+]

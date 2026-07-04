@@ -1,0 +1,193 @@
+[
+  {
+    "id": "hidden-15",
+    "localId": "15",
+    "hidden": true
+  },
+  {
+    "id": "hidden-14",
+    "localId": "14",
+    "hidden": true
+  },
+  {
+    "id": "prod-baby-powder",
+    "name": "Enjoyful Baby Powder",
+    "slug": "baby-powder",
+    "category": "Baby",
+    "subcategory": "Baby Care",
+    "price": 18,
+    "originalPrice": 25,
+    "discountPct": 28,
+    "description": "Soft, gentle baby powder that keeps your baby dry, fresh, and comfortable all day long.",
+    "howToUse": "After bathing and drying your baby, gently dust a small amount of powder onto the skin, especially in skin folds, underarms, and diaper area. Keep away from baby's face.",
+    "productType": "Baby Powder",
+    "tagline": "Soft & Gentle Protection",
+    "brand": "Enjoyfullife",
+    "rating": 4.8,
+    "reviews": 312,
+    "image": "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/baby-powder/img-1",
+    "hoverImage": "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/baby-powder/img-2",
+    "images": [
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/baby-powder/img-1",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/baby-powder/img-2",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/baby-powder/img-3"
+    ],
+    "benefits": [
+      "Absorbs excess moisture to prevent irritation",
+      "Keeps delicate skin silky smooth and rash-free",
+      "Dermatologically tested and pediatrician approved",
+      "Mild and pleasant fragrance safe for babies"
+    ],
+    "ingredients": [
+      "Talc",
+      "Zinc Oxide",
+      "Magnesium Carbonate",
+      "Fragrance (Parfum)",
+      "Allantoin",
+      "Aloe Barbadensis Leaf Extract",
+      "Calendula Officinalis Flower Extract"
+    ],
+    "suitableFor": [
+      "Babies",
+      "Kids"
+    ],
+    "sizes": [
+      {
+        "size": "100g",
+        "price": 18,
+        "originalPrice": 25,
+        "discountPct": 28
+      },
+      {
+        "size": "300g",
+        "price": 45,
+        "originalPrice": 62,
+        "discountPct": 27
+      }
+    ],
+    "createdAt": "2026-04-05T07:24:00.000Z"
+  },
+  {
+    "id": "prod-gentle-baby-wash",
+    "name": "Gentle Baby Wash",
+    "slug": "gentel_baby_wash",
+    "category": "Baby",
+    "subcategory": "Baby Care",
+    "price": 22,
+    "originalPrice": 30,
+    "discountPct": 27,
+    "description": "A tear-free, ultra-mild baby wash that gently cleanses and nourishes your baby's soft skin.",
+    "howToUse": "Wet your baby's skin. Apply a small amount of wash and gently lather with your hands. Rinse thoroughly with warm water. For hair, massage gently into the scalp and rinse well.",
+    "productType": "Baby Wash",
+    "tagline": "Tear-Free Gentle Cleansing",
+    "brand": "Enjoyfullife",
+    "rating": 4.9,
+    "reviews": 528,
+    "image": "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel_baby_wash/img-1",
+    "hoverImage": "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel_baby_wash/img-2",
+    "images": [
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel_baby_wash/img-1",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel_baby_wash/img-2",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel_baby_wash/img-3",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel_baby_wash/img-4"
+    ],
+    "benefits": [
+      "Tear-free formula safe for eyes and face",
+      "Enriched with chamomile to calm and soothe",
+      "Preserves natural skin moisture barrier",
+      "Hypoallergenic — free from harsh chemicals and sulfates"
+    ],
+    "ingredients": [
+      "Aqua",
+      "Cocamidopropyl Betaine",
+      "Sodium Lauroamphoacetate",
+      "Glycerin",
+      "Chamomilla Recutita (Chamomile) Flower Extract",
+      "Panthenol (Vitamin B5)",
+      "Allantoin",
+      "Sodium Benzoate",
+      "Citric Acid"
+    ],
+    "suitableFor": [
+      "Babies",
+      "Newborns",
+      "Kids"
+    ],
+    "sizes": [
+      {
+        "size": "200ml",
+        "price": 22,
+        "originalPrice": 30,
+        "discountPct": 27
+      },
+      {
+        "size": "400ml",
+        "price": 40,
+        "originalPrice": 55,
+        "discountPct": 27
+      }
+    ],
+    "createdAt": "2026-04-05T07:24:00.000Z"
+  },
+  {
+    "id": "prod-gentle-baby-rash-cream",
+    "name": "Gentle Baby Rash Cream",
+    "slug": "gentel-baby-rash-cream",
+    "category": "Baby",
+    "subcategory": "Baby Care",
+    "price": 20,
+    "originalPrice": 28,
+    "discountPct": 29,
+    "description": "Fast-acting diaper rash cream that soothes, heals, and protects your baby's sensitive skin.",
+    "howToUse": "Clean the diaper area thoroughly and pat dry. Apply a generous layer of cream at each diaper change or as needed. For best results, apply before bedtime for overnight protection.",
+    "productType": "Rash Cream",
+    "tagline": "Soothe, Heal & Protect",
+    "brand": "Enjoyfullife",
+    "rating": 4.8,
+    "reviews": 397,
+    "image": "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel-baby-rash-cream/img-1",
+    "hoverImage": "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel-baby-rash-cream/img-2",
+    "images": [
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel-baby-rash-cream/img-1",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel-baby-rash-cream/img-2",
+      "https://res.cloudinary.com/djejbpz0j/image/upload/f_auto,q_auto/enjoyfull/product-images/gentel-baby-rash-cream/img-3"
+    ],
+    "benefits": [
+      "Provides instant relief from redness and irritation",
+      "Zinc oxide creates a protective barrier against moisture",
+      "Calendula and chamomile promote skin healing",
+      "Safe for daily use even on newborns"
+    ],
+    "ingredients": [
+      "Aqua",
+      "Zinc Oxide (15%)",
+      "Petrolatum",
+      "Dimethicone",
+      "Calendula Officinalis Flower Extract",
+      "Chamomilla Recutita (Chamomile) Flower Extract",
+      "Butyrospermum Parkii (Shea Butter)",
+      "Glycerin",
+      "Allantoin"
+    ],
+    "suitableFor": [
+      "Babies",
+      "Newborns",
+      "Kids"
+    ],
+    "sizes": [
+      {
+        "size": "50g",
+        "price": 20,
+        "originalPrice": 28,
+        "discountPct": 29
+      },
+      {
+        "size": "100g",
+        "price": 35,
+        "originalPrice": 50,
+        "discountPct": 30
+      }
+    ],
+    "createdAt": "2026-04-05T07:24:00.000Z"
+  }
+]

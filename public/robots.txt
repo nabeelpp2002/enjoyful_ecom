@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cart
+Disallow: /wishlist
+
+Sitemap: https://enjoyfullife.com/sitemap.xml
