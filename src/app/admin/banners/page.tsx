@@ -9,8 +9,10 @@ import { ImageEditor } from "@/components/admin/ImageEditor";
 
 const CATEGORIES = ["Glow", "Baby", "Daily", "Fragrances", "Home Care"];
 type BannerField = "desktopImageUrl" | "mobileImageUrl";
+// Must match the actual banner container aspect ratios on the storefront
+// category page: aspect-[3/0.9] (desktop) and aspect-[4/3] (mobile).
 const FIELD_ASPECT: Record<BannerField, number> = {
-    desktopImageUrl: 16 / 9,
+    desktopImageUrl: 3 / 0.9,
     mobileImageUrl: 4 / 3,
 };
 
@@ -29,6 +31,7 @@ export default function AdminBannersPage() {
     const [editing, setEditing] = useState<{ file: File; cat: string; field: BannerField } | null>(null);
     // Which category is currently being edited (null = all in read-only "view" mode)
     const [editCat, setEditCat] = useState<string | null>(null);
+    const [saveError, setSaveError] = useState<string | null>(null);
 
     const load = useCallback(async () => {
         setLoading(true);
@@ -67,13 +70,25 @@ export default function AdminBannersPage() {
 
     const saveBanner = async (cat: string) => {
         setSaving(cat);
-        await fetch("/api/admin/banners", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ category: cat, ...drafts[cat] }),
-        });
-        setSaving(null);
-        setEditCat(null); // back to view mode after saving
+        setSaveError(null);
+        try {
+            const res = await fetch("/api/admin/banners", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ category: cat, ...drafts[cat] }),
+            });
+            const body = await res.json().catch(() => null);
+            if (!res.ok || body?.success === false) {
+                setSaveError(body?.error?.message || "Failed to save banner. Please try again.");
+                return; // stay in edit mode so the user can retry
+            }
+            await load(); // re-sync with the server so the preview reflects what's actually saved
+            setEditCat(null); // back to view mode after a confirmed save
+        } catch {
+            setSaveError("Failed to save banner. Please check your connection and try again.");
+        } finally {
+            setSaving(null);
+        }
     };
 
     // Read-only preview of the saved banner (shown when not editing)
@@ -175,7 +190,7 @@ export default function AdminBannersPage() {
                                 {editCat === cat ? (
                                     <div className="flex items-center gap-2">
                                         <button
-                                            onClick={() => { setEditCat(null); load(); }}
+                                            onClick={() => { setEditCat(null); setSaveError(null); load(); }}
                                             disabled={saving === cat}
                                             className="px-3.5 py-2 rounded-xl bg-white border border-black/10 text-[#1A1A1B]/60 text-xs font-semibold hover:border-black/25 transition-all disabled:opacity-50"
                                         >
@@ -201,6 +216,9 @@ export default function AdminBannersPage() {
                                     </button>
                                 )}
                             </div>
+                            {editCat === cat && saveError && (
+                                <p className="mb-4 -mt-2 text-xs font-medium text-red-600">{saveError}</p>
+                            )}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {editCat === cat ? (
                                     <>
