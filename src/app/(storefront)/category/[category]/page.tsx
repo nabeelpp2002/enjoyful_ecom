@@ -304,12 +304,14 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                     src={banner?.mobileImageUrl || banner?.desktopImageUrl || (category === "Glow" ? "/assets/perfume-for-mobile.png" : category === "Baby" ? "/assets/baby-banner.png" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
                     alt={`${category} banner`}
                     fill
+                    priority
                     className="object-cover md:hidden"
                 />
                 <Image
                     src={banner?.desktopImageUrl || (category === "Glow" ? "/assets/glow-banner.jpeg" : category === "Baby" ? "/assets/baby-banner.png" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
                     alt={`${category} banner`}
                     fill
+                    priority
                     className="object-cover hidden md:block"
                 />
             </motion.div>

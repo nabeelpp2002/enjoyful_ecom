@@ -52,6 +52,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         alt="enJoyful"
                         width={110}
                         height={32}
+                        priority
+                        style={{ width: 110, height: "auto" }}
                         className="object-contain"
                         onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
                     />

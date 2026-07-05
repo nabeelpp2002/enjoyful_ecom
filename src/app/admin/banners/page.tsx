@@ -32,25 +32,31 @@ export default function AdminBannersPage() {
     // Which category is currently being edited (null = all in read-only "view" mode)
     const [editCat, setEditCat] = useState<string | null>(null);
     const [saveError, setSaveError] = useState<string | null>(null);
+    const [loadError, setLoadError] = useState<string | null>(null);
 
     const load = useCallback(async () => {
         setLoading(true);
+        setLoadError(null);
         try {
             const res = await fetch("/api/admin/banners");
-            if (res.ok) {
-                const data: Banner[] = await res.json();
-                const d: typeof drafts = {};
-                data.forEach(b => {
-                    d[b.category] = {
-                        desktopImageUrl: b.desktopImageUrl || "",
-                        mobileImageUrl: b.mobileImageUrl || "",
-                    };
-                });
-                CATEGORIES.forEach(cat => {
-                    if (!d[cat]) d[cat] = { desktopImageUrl: "", mobileImageUrl: "" };
-                });
-                setDrafts(d);
+            if (!res.ok) {
+                setLoadError("Couldn't load saved banners from the server. The banners shown below may be out of date — check your connection and retry.");
+                return;
             }
+            const data: Banner[] = await res.json();
+            const d: typeof drafts = {};
+            data.forEach(b => {
+                d[b.category] = {
+                    desktopImageUrl: b.desktopImageUrl || "",
+                    mobileImageUrl: b.mobileImageUrl || "",
+                };
+            });
+            CATEGORIES.forEach(cat => {
+                if (!d[cat]) d[cat] = { desktopImageUrl: "", mobileImageUrl: "" };
+            });
+            setDrafts(d);
+        } catch {
+            setLoadError("Couldn't reach the server to load banners. Check your connection and retry.");
         } finally {
             setLoading(false);
         }
@@ -168,6 +174,18 @@ export default function AdminBannersPage() {
                 <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Category Banners</h1>
                 <p className="text-[#1A1A1B]/40 text-xs mt-0.5">Desktop and mobile banners per category</p>
             </div>
+
+            {loadError && (
+                <div className="mb-5 flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                    <span>{loadError}</span>
+                    <button
+                        onClick={load}
+                        className="flex-shrink-0 px-3 py-1.5 rounded-lg bg-white border border-red-200 text-xs font-semibold hover:bg-red-100 transition-colors"
+                    >
+                        Retry
+                    </button>
+                </div>
+            )}
 
             {loading ? (
                 <div className="space-y-5">
