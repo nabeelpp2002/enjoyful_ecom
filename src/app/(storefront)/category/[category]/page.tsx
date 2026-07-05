@@ -301,13 +301,13 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                 className="mb-8 md:mb-12 mt-16 md:mt-18 overflow-hidden shadow-sm border border-black/5 aspect-[4/3] md:aspect-[3/0.9] relative"
             >
                 <Image
-                    src={banner?.mobileImageUrl || banner?.desktopImageUrl || (category === "Glow" ? "/assets/perfume-for-mobile.png" : category === "Baby" ? "/assets/baby-banner.png" : "/assets/categoryAd.jpeg")}
+                    src={banner?.mobileImageUrl || banner?.desktopImageUrl || (category === "Glow" ? "/assets/perfume-for-mobile.png" : category === "Baby" ? "/assets/baby-banner.png" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
                     alt={`${category} banner`}
                     fill
                     className="object-cover md:hidden"
                 />
                 <Image
-                    src={banner?.desktopImageUrl || (category === "Glow" ? "/assets/glow-banner.jpeg" : "/assets/categoryAd.jpeg")}
+                    src={banner?.desktopImageUrl || (category === "Glow" ? "/assets/glow-banner.jpeg" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
                     alt={`${category} banner`}
                     fill
                     className="object-cover hidden md:block"

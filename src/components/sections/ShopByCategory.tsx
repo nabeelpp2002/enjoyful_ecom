@@ -29,7 +29,7 @@ const categories = [
     {
         name: "Daily Rituals",
         description: "Everyday self-care essentials",
-        image: "/assets/category/Daily-Delight-Moisturing-cream2.avif",
+        image: "/assets/category/Enjoyfullife-Mix-Fruit-Body-Lotion.jpg",
         link: "/category/daily",
         bgColor: "bg-[#FBEBE5]", // Light soft orange
     },
