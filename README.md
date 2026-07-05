@@ -1,4 +1,4 @@
-# enJoyful Life — E-Commerce
+# enJoyful Life — E-Commerc
 
 
 A premium skincare & lifestyle e-commerce platform with a Next.js storefront, an admin panel, and a NestJS + MongoDB backend in a single repo
