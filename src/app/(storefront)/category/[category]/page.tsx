@@ -102,7 +102,9 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     const resolvedParams = use(params);
     // Decode and reconstruct capitalized category from URL path
     const urlCategoryRaw = decodeURIComponent(resolvedParams.category);
-    let category = urlCategoryRaw.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    // URL slugs use hyphens (e.g. "home-care"); normalize to spaces before capitalizing
+    // each word so this matches the "Home Care" keys used in categoryInfo/banners/etc.
+    let category = urlCategoryRaw.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
     // Normalize "Shop All", "All", "shop-all" into just "All" for easier logic
     if (urlCategoryRaw.toLowerCase().includes("all")) {
