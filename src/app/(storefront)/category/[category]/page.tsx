@@ -307,7 +307,7 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                     className="object-cover md:hidden"
                 />
                 <Image
-                    src={banner?.desktopImageUrl || (category === "Glow" ? "/assets/glow-banner.jpeg" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
+                    src={banner?.desktopImageUrl || (category === "Glow" ? "/assets/glow-banner.jpeg" : category === "Baby" ? "/assets/baby-banner.png" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
                     alt={`${category} banner`}
                     fill
                     className="object-cover hidden md:block"
