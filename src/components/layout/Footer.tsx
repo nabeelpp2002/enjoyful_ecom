@@ -7,9 +7,9 @@ export function Footer() {
             <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 md:gap-8">
 
                 {/* Brand Info */}
-                <div className="col-span-2 md:col-span-1 flex flex-col items-start text-left gap-4 md:gap-6">
-                    <img src="/assets/Enjoyful_logo_transparent.png" alt="enJoyful Life Logo" className="h-[7rem] md:h-[6.5rem] w-auto opacity-90 -ml-2" />
-                    <p className="font-sans text-sm text-[var(--color-brand-onyx)]/70 leading-relaxed max-w-sm">
+                <div className="col-span-2 md:col-span-1 flex flex-row md:flex-col items-start md:items-start text-left gap-3 md:gap-6">
+                    <img src="/assets/Enjoyful_logo_transparent.png" alt="enJoyful Life Logo" className="h-[5rem] md:h-[6.5rem] w-auto opacity-90 -ml-2 flex-shrink-0" />
+                    <p className="font-sans text-sm text-[var(--color-brand-onyx)]/70 leading-relaxed max-w-sm md:max-w-sm self-center md:self-start">
                         Premium natural skincare and daily essentials crafted to protect and nourish your skin every single day.
                     </p>
                 </div>
