@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram, Facebook, Youtube } from "lucide-react";
 
 export function Footer() {
     return (
@@ -7,7 +8,7 @@ export function Footer() {
 
                 {/* Brand Info */}
                 <div className="col-span-2 md:col-span-1 flex flex-col items-start text-left gap-4 md:gap-6">
-                    <img src="/assets/Enjoyful_logo_transparent.png" alt="enJoyful Life Logo" className="h-[5rem] md:h-[4.5rem] w-auto opacity-90 -ml-2" />
+                    <img src="/assets/Enjoyful_logo_transparent.png" alt="enJoyful Life Logo" className="h-[7rem] md:h-[6.5rem] w-auto opacity-90 -ml-2" />
                     <p className="font-sans text-sm text-[var(--color-brand-onyx)]/70 leading-relaxed max-w-sm">
                         Premium natural skincare and daily essentials crafted to protect and nourish your skin every single day.
                     </p>
@@ -59,10 +60,15 @@ export function Footer() {
                     © {new Date().getFullYear()} enJoyful Life. All rights reserved. Dubai, UAE &nbsp;|&nbsp; GST (UTC+4) &nbsp;|&nbsp; +971 XX XXX XXXX (UAE)
                 </p>
                 <div className="flex gap-4">
-                    {/* Social Icons Placeholder */}
-                    <div className="w-6 h-6 md:w-5 md:h-5 bg-[var(--color-brand-onyx)]/20 rounded-full hover:bg-[var(--color-brand-purple)] transition-colors cursor-pointer"></div>
-                    <div className="w-6 h-6 md:w-5 md:h-5 bg-[var(--color-brand-onyx)]/20 rounded-full hover:bg-[var(--color-brand-purple)] transition-colors cursor-pointer"></div>
-                    <div className="w-6 h-6 md:w-5 md:h-5 bg-[var(--color-brand-onyx)]/20 rounded-full hover:bg-[var(--color-brand-purple)] transition-colors cursor-pointer"></div>
+                    <a href="https://instagram.com/enjoyfullife" target="_blank" rel="noopener noreferrer" className="text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-purple)] transition-colors" aria-label="Instagram">
+                        <Instagram className="w-5 h-5" />
+                    </a>
+                    <a href="https://facebook.com/enjoyfullife" target="_blank" rel="noopener noreferrer" className="text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-purple)] transition-colors" aria-label="Facebook">
+                        <Facebook className="w-5 h-5" />
+                    </a>
+                    <a href="https://youtube.com/enjoyfullife" target="_blank" rel="noopener noreferrer" className="text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-purple)] transition-colors" aria-label="YouTube">
+                        <Youtube className="w-5 h-5" />
+                    </a>
                 </div>
             </div>
         </footer>
