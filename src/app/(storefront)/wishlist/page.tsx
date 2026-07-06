@@ -6,9 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useData } from "@/context/DataContext";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { Price } from "@/components/ui/Price";
 
 export default function Wishlist() {
-    const { wishlist, removeFromWishlist } = useData();
+    const { wishlist, removeFromWishlist, showProductPrices } = useData();
 
     return (
         <div className="bg-[var(--color-brand-sand)] min-h-screen">
@@ -159,9 +160,16 @@ export default function Wishlist() {
                                                 {product.name}
                                             </h3>
                                         </Link>
-                                        <p className="mt-auto font-heading font-medium text-xs sm:text-base text-[var(--color-brand-onyx)]">
-                                            {product.price} AED
-                                        </p>
+                                        {showProductPrices && (
+                                            <Price
+                                                amount={product.price}
+                                                originalAmount={product.originalPrice}
+                                                className="mt-auto justify-center"
+                                                amountClassName="font-heading font-medium text-xs sm:text-base text-[var(--color-brand-onyx)]"
+                                                currencyClassName="font-heading font-medium text-xs sm:text-base text-[var(--color-brand-onyx)]"
+                                                originalClassName="font-heading font-medium text-[10px] sm:text-sm text-[var(--color-brand-onyx)]/30"
+                                            />
+                                        )}
                                     </div>
                                 </motion.div>
                             </motion.div>

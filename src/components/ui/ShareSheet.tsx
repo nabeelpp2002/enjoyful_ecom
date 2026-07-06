@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Copy, Facebook, Twitter, MessageCircle, Share2 } from "lucide-react";
 import Image from "next/image";
+import { useData } from "@/context/DataContext";
+import { Price } from "@/components/ui/Price";
 
 interface ShareSheetProps {
     isOpen: boolean;
@@ -16,6 +18,7 @@ interface ShareSheetProps {
 }
 
 export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
+    const { showProductPrices } = useData();
     const handleCopyLink = async () => {
         try {
             await navigator.clipboard.writeText(window.location.href);
@@ -66,7 +69,15 @@ export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
                 </div>
                 <div className="flex-1 min-w-0">
                     <h3 className="font-heading font-semibold text-[var(--color-brand-onyx)] line-clamp-1 text-sm">{product.name}</h3>
-                    <p className="font-sans text-xs text-[var(--color-brand-purple)] font-medium mt-1">{product.price} AED</p>
+                    {showProductPrices && (
+                        <Price
+                            amount={product.price}
+                            reserveSpace={false}
+                            className="mt-1"
+                            amountClassName="font-sans text-xs text-[var(--color-brand-purple)] font-medium"
+                            currencyClassName="font-sans text-xs text-[var(--color-brand-purple)] font-medium"
+                        />
+                    )}
                 </div>
             </div>
 

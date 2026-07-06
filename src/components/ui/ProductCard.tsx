@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Heart, X } from "lucide-react";
 import { useData } from "@/context/DataContext";
 import { AddToCartButton } from "@/components/ui/AddToCartButton";
+import { Price } from "@/components/ui/Price";
 import { track } from "@/lib/analytics";
 import type { Product } from "@/data/products";
 
@@ -203,21 +204,14 @@ export const ProductCard = memo(function ProductCard({
                         <span className="font-sans text-[11px] sm:text-xs text-[var(--color-brand-onyx)]/40 mb-0.5">{product.size}</span>
                     )}
                     {showProductPrices && (
-                        <div className="flex items-baseline gap-2 justify-center pt-1">
-                            <div className="flex items-baseline gap-1">
-                                <span className="font-heading font-extrabold text-[20px] sm:text-[24px] text-[var(--color-brand-onyx)] tracking-tight leading-none">
-                                    {product.price}
-                                </span>
-                                <span className="font-sans font-semibold text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/70 uppercase leading-none">
-                                    AED
-                                </span>
-                            </div>
-                            {product.originalPrice && product.originalPrice > product.price && (
-                                <span className="font-sans font-medium text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/30 line-through leading-none">
-                                    {product.originalPrice} AED
-                                </span>
-                            )}
-                        </div>
+                        <Price
+                            amount={product.price}
+                            originalAmount={product.originalPrice}
+                            className="justify-center pt-1"
+                            amountClassName="font-heading font-extrabold text-[20px] sm:text-[24px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
+                            currencyClassName="font-sans font-semibold text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
+                            originalClassName="font-sans font-medium text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/30 leading-none"
+                        />
                     )}
                 </div>
             </motion.div>

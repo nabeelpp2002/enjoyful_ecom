@@ -15,6 +15,7 @@ import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
 import type { Product } from "@/data/products";
 import { displayName, pickProductImages } from "@/lib/utils";
+import { Price } from "@/components/ui/Price";
 
 interface ApiProduct extends Record<string, unknown> {
     _id: string;
@@ -118,7 +119,7 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     const subcategoryParam = searchParams.get("subcategory") || "";
     const subcategoryOptions = SUBCATEGORIES_BY_CATEGORY[category] ?? [];
 
-    const { addToCart, addToWishlist, removeFromWishlist, isInWishlist } = useData();
+    const { addToCart, addToWishlist, removeFromWishlist, isInWishlist, showProductPrices } = useData();
     const [sortBy, setSortBy] = useState("featured");
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
     const [selectedSkinTypes, setSelectedSkinTypes] = useState<string[]>([]);
@@ -746,19 +747,16 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                                             {product.name}
                                         </h3>
                                     </Link>
-                                    <div className="flex items-baseline gap-1 md:gap-1.5 justify-center">
-                                        <span className="font-heading font-extrabold text-[18px] md:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none">
-                                            {product.price}
-                                        </span>
-                                        <span className="font-sans font-semibold text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/70 uppercase leading-none">
-                                            AED
-                                        </span>
-                                        {product.originalPrice && product.originalPrice > product.price && (
-                                            <span className="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/30 line-through leading-none ml-1">
-                                                {product.originalPrice} AED
-                                            </span>
-                                        )}
-                                    </div>
+                                    {showProductPrices && (
+                                        <Price
+                                            amount={product.price}
+                                            originalAmount={product.originalPrice}
+                                            className="justify-center gap-1 md:gap-1.5"
+                                            amountClassName="font-heading font-extrabold text-[18px] md:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
+                                            currencyClassName="font-sans font-semibold text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
+                                            originalClassName="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/30 leading-none ml-1"
+                                        />
+                                    )}
                                     {product.size && (
                                         <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/50 mt-1 md:mt-1.5">{product.size}</span>
                                     )}

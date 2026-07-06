@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Package, Loader2, ShoppingBag } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { useData } from "@/context/DataContext";
+import { formatPrice } from "@/lib/price";
 
 interface OrderItem {
     name: string;
@@ -104,7 +105,7 @@ export default function OrdersPage() {
                                         <span className={`px-3 py-1 rounded-full text-[11px] font-semibold border capitalize ${STATUS_STYLE[order.status] ?? "bg-gray-50 text-gray-500 border-gray-100"}`}>
                                             {order.status}
                                         </span>
-                                        <span className="font-heading font-bold text-sm text-[var(--color-brand-onyx)]">{order.total} AED</span>
+                                        <span className="font-heading font-bold text-sm text-[var(--color-brand-onyx)]">{formatPrice(order.total) ?? order.total} AED</span>
                                     </div>
                                 </div>
                                 {/* Items */}
@@ -124,7 +125,7 @@ export default function OrdersPage() {
                                                     {item.size ? `${item.size} · ` : ""}Qty {item.quantity}
                                                 </p>
                                             </div>
-                                            <span className="font-sans text-sm font-semibold text-[var(--color-brand-onyx)]/80">{(item.subtotal ?? item.price * item.quantity)} AED</span>
+                                            <span className="font-sans text-sm font-semibold text-[var(--color-brand-onyx)]/80">{(() => { const t = item.subtotal ?? item.price * item.quantity; return formatPrice(t) ?? t; })()} AED</span>
                                         </div>
                                     ))}
                                 </div>

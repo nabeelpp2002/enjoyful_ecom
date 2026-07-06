@@ -14,6 +14,8 @@ import { ProductCard } from "@/components/ui/ProductCard";
 import { ProductReviews } from "@/components/product/ProductReviews";
 import { track } from "@/lib/analytics";
 import { displayName } from "@/lib/utils";
+import { Price } from "@/components/ui/Price";
+import { hasValidPrice, formatPrice } from "@/lib/price";
 
 interface SizeVariant {
     _id: string;
@@ -364,9 +366,9 @@ export default function ProductDetail({ params }: { params: Promise<{ id: string
                                                 }`}
                                             >
                                                 <span>{v.size || displayName(v.name)}</span>
-                                                {showProductPrices && v.price > 0 && (
+                                                {showProductPrices && hasValidPrice(v.price) && (
                                                     <span className={`text-[11px] font-medium ${isSelected ? 'text-white/70' : 'text-[var(--color-brand-onyx)]/45'}`}>
-                                                        {v.price} {v.currency || 'AED'}
+                                                        {formatPrice(v.price)} {v.currency || 'AED'}
                                                     </span>
                                                 )}
                                             </button>
@@ -390,12 +392,16 @@ export default function ProductDetail({ params }: { params: Promise<{ id: string
 
                         {showProductPrices && (
                             <div className="mb-4 flex items-center gap-3 flex-wrap">
-                                <span className="font-heading text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold">{displayPrice} AED</span>
+                                <Price
+                                    amount={displayPrice}
+                                    originalAmount={displayOriginal}
+                                    reserveSpace={false}
+                                    amountClassName="font-heading text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold"
+                                    currencyClassName="font-heading text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold"
+                                    originalClassName="font-sans text-base text-gray-400"
+                                />
                                 {selectedVariantSize && sizeVariants.length === 0 && (
                                     <span className="font-sans text-sm text-[var(--color-brand-onyx)]/50">/ {selectedVariantSize}</span>
-                                )}
-                                {displayOriginal && displayOriginal > displayPrice && (
-                                    <span className="font-sans text-base text-gray-400 line-through">{displayOriginal} AED</span>
                                 )}
                                 {displayDiscount && displayDiscount > 0 ? (
                                     <span className="font-sans font-bold text-xs bg-red-100 text-red-600 px-2.5 py-0.5 rounded-full">{displayDiscount}% OFF</span>
@@ -447,7 +453,9 @@ export default function ProductDetail({ params }: { params: Promise<{ id: string
                                         className="w-full py-3.5 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] font-heading font-bold text-sm shadow-[0_8px_20px_rgba(244,180,73,0.2)] flex items-center justify-center gap-3"
                                     >
                                         <span>Add to Cart</span>
-                                        <span className="bg-[var(--color-brand-onyx)]/10 rounded-full px-3 py-0.5 text-xs font-bold">{displayPrice * quantity} AED</span>
+                                        {hasValidPrice(displayPrice) && (
+                                            <span className="bg-[var(--color-brand-onyx)]/10 rounded-full px-3 py-0.5 text-xs font-bold">{formatPrice(displayPrice * quantity)} AED</span>
+                                        )}
                                     </motion.button>
                                     {(() => {
                                         const PROVIDERS: Array<{ key: "amazon" | "talabat" | "carrefour"; name: string; favicon: string }> = [
@@ -645,10 +653,12 @@ export default function ProductDetail({ params }: { params: Promise<{ id: string
                 {showProductPrices && (
                     <div className="md:hidden fixed bottom-[calc(4rem+env(safe-area-inset-bottom))] left-0 w-full p-4 bg-white/95 backdrop-blur-md border-t border-gray-100 z-40">
                         <div className="flex flex-row items-center gap-4 max-w-7xl mx-auto">
-                            <div className="flex flex-col flex-shrink-0 min-w-[30%]">
-                                <span className="text-[10px] text-[var(--color-brand-onyx)]/60 font-sans uppercase tracking-widest font-semibold mb-0.5">Total</span>
-                                <span className="font-heading font-bold text-lg text-[var(--color-brand-onyx)] leading-none">{displayPrice * quantity} AED</span>
-                            </div>
+                            {hasValidPrice(displayPrice) && (
+                                <div className="flex flex-col flex-shrink-0 min-w-[30%]">
+                                    <span className="text-[10px] text-[var(--color-brand-onyx)]/60 font-sans uppercase tracking-widest font-semibold mb-0.5">Total</span>
+                                    <span className="font-heading font-bold text-lg text-[var(--color-brand-onyx)] leading-none">{formatPrice(displayPrice * quantity)} AED</span>
+                                </div>
+                            )}
                             <motion.button
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => addToCart(cartProduct, quantity)}

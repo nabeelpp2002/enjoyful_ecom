@@ -9,6 +9,8 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { CheckoutModal, type DeliveryDetails } from "@/components/ui/CheckoutModal";
 import { useData } from "@/context/DataContext";
 import { track } from "@/lib/analytics";
+import { Price } from "@/components/ui/Price";
+import { formatPrice } from "@/lib/price";
 
 const FREE_SHIPPING_THRESHOLD = 150;
 
@@ -140,7 +142,13 @@ export default function CartPage() {
                                                 </p>
                                             </div>
                                             {showProductPrices && (
-                                                <p className="font-heading font-bold text-base sm:text-xl text-[var(--color-brand-onyx)] mt-1 sm:mt-0">{item.product.price} AED</p>
+                                                <Price
+                                                    amount={item.product.price}
+                                                    reserveSpace={false}
+                                                    className="mt-1 sm:mt-0"
+                                                    amountClassName="font-heading font-bold text-base sm:text-xl text-[var(--color-brand-onyx)]"
+                                                    currencyClassName="font-heading font-bold text-base sm:text-xl text-[var(--color-brand-onyx)]"
+                                                />
                                             )}
                                         </div>
                                         <div className="flex justify-between items-end mt-4">
@@ -182,7 +190,7 @@ export default function CartPage() {
                                         <div className="space-y-4 mb-8">
                                             <div className="flex justify-between text-[var(--color-brand-onyx)]/80">
                                                 <span>Subtotal</span>
-                                                <span className="font-medium">{cartSubtotal} AED</span>
+                                                <span className="font-medium">{formatPrice(cartSubtotal) ?? cartSubtotal} AED</span>
                                             </div>
                                             <div className="flex justify-between text-[var(--color-brand-onyx)]/80">
                                                 <span>Shipping</span>
@@ -191,7 +199,7 @@ export default function CartPage() {
                                             <div className="h-px bg-[var(--color-brand-onyx)]/10 my-4" />
                                             <div className="flex justify-between text-xl font-heading font-bold text-[var(--color-brand-onyx)]">
                                                 <span>Total</span>
-                                                <span>{cartSubtotal} AED</span>
+                                                <span>{formatPrice(cartSubtotal) ?? cartSubtotal} AED</span>
                                             </div>
                                         </div>
                                         <motion.button
