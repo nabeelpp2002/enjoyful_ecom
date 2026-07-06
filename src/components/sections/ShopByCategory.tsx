@@ -7,36 +7,31 @@ import { ArrowRight } from "lucide-react";
 
 const categories = [
     {
-        name: "Glow Collection",
-        description: "Radiance from within",
+        name: "Glow",
         image: "/assets/category/Charcoal-Face-Wash1.avif",
         link: "/category/glow",
         bgColor: "#EFEBE7", // Soft beige
     },
     {
-        name: "Daily Rituals",
-        description: "Everyday self-care essentials",
+        name: "Daily",
         image: "/assets/category/Mix-Fruit-Moisturising-Cream-100ml21.avif",
         link: "/category/daily",
         bgColor: "#FCE8E0", // Soft peach
     },
     {
         name: "Baby Care",
-        description: "Gentle for little ones.",
         image: "/assets/category/Enjoyful-baby-talc_21.avif",
         link: "/category/baby",
         bgColor: "#E8F4F8", // Soft cyan
     },
     {
         name: "Fragrances",
-        description: "Signature scents & body mists",
         image: "/assets/category/Enjoyfullife_bodymist_Amberglow21.avif",
         link: "/category/fragrances",
         bgColor: "#F5E8F0", // Soft rose
     },
     {
         name: "Home Care",
-        description: "Curated home fragrance & care",
         image: "/assets/category/Lavender_11June2.avif",
         link: "/category/home-care",
         bgColor: "#E8F3EC", // Soft sage
@@ -96,12 +91,9 @@ export function ShopByCategory() {
                                     className="flex flex-col flex-grow justify-center px-5 md:px-6 py-6 md:py-7"
                                     style={{ backgroundColor: category.bgColor }}
                                 >
-                                    <h3 className="font-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] mb-2 line-clamp-2 leading-tight">
+                                    <h3 className="font-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] truncate leading-tight text-center">
                                         {category.name}
                                     </h3>
-                                    <p className="font-sans text-xs md:text-sm text-[var(--color-brand-onyx)]/70 line-clamp-2 leading-relaxed">
-                                        {category.description}
-                                    </p>
                                 </div>
                             </Link>
                         </motion.div>
