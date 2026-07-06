@@ -19,7 +19,7 @@ const organizationJsonLd = {
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
-    "areaServed": ["AE", "GB"],
+    "areaServed": ["AE"],
     "availableLanguage": ["English", "Arabic"]
   }
 };

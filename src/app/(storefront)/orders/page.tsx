@@ -39,7 +39,7 @@ function formatDate(iso?: string): string {
     if (!iso) return "";
     const d = new Date(iso);
     if (isNaN(d.getTime())) return "";
-    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    return d.toLocaleDateString("en-AE", { day: "numeric", month: "short", year: "numeric" });
 }
 
 export default function OrdersPage() {

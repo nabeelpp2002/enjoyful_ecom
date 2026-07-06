@@ -21,11 +21,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://enjoyfullife.com"),
   title: {
-    default: "Enjoyful Life — Premium Natural Skincare UAE & UK | Free UAE Delivery",
+    default: "Enjoyful Life — Premium Natural Skincare UAE | Free UAE Delivery",
     template: "%s | Enjoyful Life",
   },
   description:
-    "Shop premium natural skincare in UAE and UK. Cruelty-free, dermatologist-tested face serums, body care, baby skincare, home fragrances and more. Free delivery across UAE.",
+    "Shop premium natural skincare across the UAE. Cruelty-free, dermatologist-tested face serums, body care, baby skincare, home fragrances and more. Free delivery across UAE.",
   keywords: [
     "natural skincare UAE",
     "premium skincare Dubai",
@@ -34,7 +34,6 @@ export const metadata: Metadata = {
     "baby skincare UAE",
     "skincare online UAE",
     "skincare delivery Dubai",
-    "buy skincare UK",
     "Enjoyful Life",
   ],
   authors: [{ name: "Enjoyful Life" }],
@@ -57,12 +56,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_AE",
-    alternateLocale: ["en_GB", "ar_AE"],
+    alternateLocale: ["ar_AE"],
     url: "https://enjoyfullife.com",
     siteName: "Enjoyful Life",
-    title: "Enjoyful Life — Premium Natural Skincare UAE & UK",
+    title: "Enjoyful Life — Premium Natural Skincare UAE",
     description:
-      "Discover premium natural skincare crafted for UAE and UK customers. Free UAE delivery. Cruelty-free. Dermatologist-tested.",
+      "Discover premium natural skincare crafted for UAE customers. Free UAE delivery. Cruelty-free. Dermatologist-tested.",
     images: [
       {
         url: "/og/homepage.jpg",
@@ -76,9 +75,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@enjoyfullife",
     creator: "@enjoyfullife",
-    title: "Enjoyful Life — Premium Natural Skincare UAE & UK",
+    title: "Enjoyful Life — Premium Natural Skincare UAE",
     description:
-      "Discover premium natural skincare crafted for UAE and UK customers. Free UAE delivery. Cruelty-free.",
+      "Discover premium natural skincare crafted for UAE customers. Free UAE delivery. Cruelty-free.",
     images: ["/og/homepage.jpg"],
   },
 };

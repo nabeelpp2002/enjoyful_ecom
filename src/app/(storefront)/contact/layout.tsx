@@ -4,11 +4,11 @@ import type { ReactNode } from 'react';
 export const metadata: Metadata = {
   title: 'Contact Us | Enjoyful Life Skincare UAE',
   description:
-    'Get in touch with Enjoyful Life. Order support, product enquiries, and returns. WhatsApp available 9am–6pm GST (UTC+4). UAE and UK customers welcome.',
+    'Get in touch with Enjoyful Life. Order support, product enquiries, and returns. WhatsApp available 9am–6pm GST (UTC+4). UAE customers welcome.',
   openGraph: {
-    title: 'Contact Enjoyful Life | Skincare Support UAE & UK',
+    title: 'Contact Enjoyful Life | Skincare Support UAE',
     description:
-      'Reach our team via WhatsApp, email, or our contact form. Order support available 9am–6pm GST for UAE customers.',
+      'Reach our team via WhatsApp, email, or our contact form. Order support available 9am–6pm GST.',
     url: 'https://enjoyfullife.com/contact',
   },
   alternates: { canonical: 'https://enjoyfullife.com/contact' },
@@ -29,7 +29,7 @@ const localBusinessJsonLd = {
     '@type': 'ContactPoint',
     contactType: 'customer service',
     availableLanguage: ['English', 'Arabic'],
-    areaServed: ['AE', 'GB'],
+    areaServed: ['AE'],
   },
   openingHoursSpecification: [
     {
@@ -75,14 +75,6 @@ const faqJsonLd = {
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Each product page includes detailed information about skin types and concerns. You can also reach out to our skincare specialists for personalised recommendations.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you ship to the UK?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, we ship to the UK. Delivery typically takes 5–10 business days.',
       },
     },
     {

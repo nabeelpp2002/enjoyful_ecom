@@ -84,7 +84,7 @@ export default function AdminOrdersPage() {
   };
 
   const formatDate = (iso: string) =>
-    new Date(iso).toLocaleDateString('en-GB', {
+    new Date(iso).toLocaleDateString('en-AE', {
       day: '2-digit',
       month: 'short',
       year: 'numeric',

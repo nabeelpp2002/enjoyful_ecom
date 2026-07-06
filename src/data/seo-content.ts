@@ -28,13 +28,13 @@ const SHARED_LINKS: SeoLink[] = [
 export const SEO_CONTENT: Record<string, SeoBlock> = {
     // ─── HOMEPAGE ────────────────────────────────────────────────────────────
     homepage: {
-        heading: "Premium Natural Skincare, Made for Life in the UAE and GCC",
+        heading: "Premium Natural Skincare, Made for Life in the UAE",
         paragraphs: [
-            "Enjoyful Life is a premium personal-care brand built around a simple belief: effective skincare should feel as good as it works. Every formula is crafted with carefully chosen, naturally derived ingredients and finished to a standard that holds its own beside the world's leading beauty houses — yet remains genuinely accessible to families across Dubai, Abu Dhabi, and throughout the UAE and GCC.",
+            "Enjoyful Life is a premium personal-care brand built around a simple belief: effective skincare should feel as good as it works. Every formula is crafted with carefully chosen, naturally derived ingredients and finished to a standard that holds its own beside the world's leading beauty houses — yet remains genuinely accessible to families across Dubai, Abu Dhabi, and throughout the UAE.",
             "Our collections are designed for real routines and real climates. The Gulf's heat and humidity, air-conditioned interiors and hard water ask a lot of your skin and hair; our lightweight, fast-absorbing textures are formulated with that daily reality in mind. From brightening facial care to nourishing body and hair essentials, gentle baby products and beautifully composed home fragrances, each range works together as a considered ritual rather than a collection of one-off purchases.",
             "We hold ourselves to high standards across the board. Our products are cruelty-free and dermatologically considered, made without unnecessary harsh additives, and presented with clear ingredient transparency so you always know what you are putting on your skin. Thoughtful formulation, honest labelling and premium presentation are not extras for us — they are the baseline.",
             "Shopping with Enjoyful Life is designed to be effortless. Browse by concern or category, explore detailed product pages with full ingredient information, and check out in moments. We offer fast, reliable delivery across the UAE — with complimentary shipping on qualifying orders — and a responsive team ready to help you build the right routine for your skin, your family and your home.",
-            "Whether you are starting your first proper skincare regimen, refining an established one, or searching for a refined gift, Enjoyful Life brings together quality, care and a sense of everyday luxury. Explore the collections below and discover why customers across the UAE and GCC are making us part of their daily ritual.",
+            "Whether you are starting your first proper skincare regimen, refining an established one, or searching for a refined gift, Enjoyful Life brings together quality, care and a sense of everyday luxury. Explore the collections below and discover why customers across the UAE are making us part of their daily ritual.",
         ],
         links: [
             ...SHARED_LINKS,
@@ -42,7 +42,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { label: "Skincare Journal", href: "/blog" },
         ],
         faqs: [
-            { q: "Where does Enjoyful Life deliver?", a: "We deliver across the United Arab Emirates — including Dubai, Abu Dhabi, Sharjah and the Northern Emirates — and throughout the GCC region. Delivery times and any free-shipping thresholds are shown at checkout." },
+            { q: "Where does Enjoyful Life deliver?", a: "We deliver across the UAE — including Dubai, Abu Dhabi, Sharjah and the Northern Emirates. Delivery times and any free-shipping thresholds are shown at checkout." },
             { q: "Are Enjoyful Life products cruelty-free?", a: "Yes. All of our products are cruelty-free. We do not test on animals at any stage, and we work only with suppliers who share that commitment." },
             { q: "Are your formulas suitable for sensitive skin?", a: "Many of our formulas are created with sensitive and reactive skin in mind, using gentle, naturally derived ingredients. We recommend reading each product's ingredient list and patch-testing a small area first if you have known sensitivities." },
             { q: "Do your products suit the UAE climate?", a: "They are designed for it. Our textures are lightweight, fast-absorbing and non-greasy so they perform well in heat, humidity and air-conditioned environments common across the Gulf." },
@@ -59,7 +59,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
     glow: {
         heading: "The Glow Collection — Radiant, Healthy-Looking Skin",
         paragraphs: [
-            "Our Glow Collection is dedicated to facial care that brightens, balances and refines. From gentle cleansers and exfoliating scrubs to hydrating masks, toners and protective sunscreen, each formula is built to support a clear, luminous complexion in the demanding climate of the UAE and GCC region.",
+            "Our Glow Collection is dedicated to facial care that brightens, balances and refines. From gentle cleansers and exfoliating scrubs to hydrating masks, toners and protective sunscreen, each formula is built to support a clear, luminous complexion in the demanding climate of the UAE.",
             "Glow products are formulated with naturally derived, skin-loving ingredients and lightweight textures that absorb quickly without heaviness — ideal for Dubai and Abu Dhabi routines where heat, humidity and air conditioning can leave skin dull or dehydrated. Whether your goal is brightness, even tone, smoother texture or simple daily protection, there is a step here to anchor your regimen.",
             "For best results, layer thoughtfully: cleanse, treat with a serum or scrub suited to your concern, hydrate, and finish with sunscreen during the day. Consistency matters more than complexity, and our detailed product pages make it easy to choose formulas that work together rather than against each other.",
             "Cruelty-free, transparently labelled and crafted to a premium standard, the Glow Collection brings considered facial care to everyday life — with fast UAE delivery and a team ready to help you find your perfect routine.",
@@ -88,7 +88,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
         heading: "Daily Essentials — Body and Hair Care for Every Day",
         paragraphs: [
             "Daily Essentials brings together the body and hair products that anchor your routine: nourishing body lotions and creams, refreshing shower gels, gentle shampoos and conditioners, replenishing hair oils and serums, and more. Each is made to leave skin and hair soft, balanced and cared for from morning to night.",
-            "Life in Dubai, Abu Dhabi and across the UAE — sun, heat, frequent washing and hard water — can leave skin tight and hair dry. Our formulas are designed to restore comfort and shine without heaviness, using naturally derived ingredients and lightweight textures that suit the Gulf and GCC climates.",
+            "Life in Dubai, Abu Dhabi and across the UAE — sun, heat, frequent washing and hard water — can leave skin tight and hair dry. Our formulas are designed to restore comfort and shine without heaviness, using naturally derived ingredients and lightweight textures that suit the Gulf climate.",
             "Building a dependable daily ritual is simple: cleanse with a gel suited to your skin, lock in moisture with a body lotion or cream while skin is still damp, and treat hair with the right shampoo, conditioner and oil for your type. Small, consistent steps make a visible difference over time.",
             "Cruelty-free, transparently formulated and premium in feel, Daily Essentials makes everyday care something to look forward to — delivered quickly across the UAE with support whenever you need it.",
         ],
@@ -106,7 +106,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { q: "Are these products gentle enough for daily use?", a: "Yes — they are designed for everyday use, using gentle, naturally derived ingredients suitable for regular cleansing and moisturising." },
             { q: "Do you offer products for the whole family?", a: "Many Daily Essentials are suitable for all adults, and we also offer a dedicated Baby Care range for little ones with extra-gentle formulas." },
             { q: "Are the products sulphate-free?", a: "Several of our cleansers are formulated to be gentle on skin and hair. Check the ingredient list on each product page for specific details." },
-            { q: "How quickly will my order arrive?", a: "We deliver across the UAE and GCC region with fast, reliable shipping. Estimated timing and any free-shipping threshold appear at checkout." },
+            { q: "How quickly will my order arrive?", a: "We deliver across the UAE with fast, reliable shipping. Estimated timing and any free-shipping threshold appear at checkout." },
             { q: "Are Daily Essentials cruelty-free?", a: "Yes. Every product in the range is cruelty-free, with naturally derived ingredients and full transparency on labelling." },
         ],
     },
@@ -134,7 +134,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { q: "How do I soothe nappy rash?", a: "Keep the area clean and dry, change nappies frequently, and apply a protective rash cream at each change. If irritation persists, consult your paediatrician." },
             { q: "Can these products be used daily?", a: "Yes, they are designed for gentle daily use as part of a regular bath and care routine." },
             { q: "Are baby products suitable for sensitive skin?", a: "They are formulated with sensitive skin in mind. As with any baby product, patch-test first and discontinue use if you notice any reaction." },
-            { q: "Do you deliver baby care across the UAE?", a: "Yes — we deliver throughout the UAE, including Dubai and Abu Dhabi, and ship to the UK. Details appear at checkout." },
+            { q: "Do you deliver baby care across the UAE?", a: "Yes — we deliver throughout the UAE, including Dubai and Abu Dhabi. Details appear at checkout." },
             { q: "Are baby products cruelty-free?", a: "Yes. Like all Enjoyful Life products, our baby range is cruelty-free." },
         ],
     },
@@ -143,7 +143,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
     fragrances: {
         heading: "Fragrances — Signature Scents and Body Mists",
         paragraphs: [
-            "Our Fragrance Collection is composed for those who appreciate scent as a form of self-expression. From eau de parfums to refreshing body mists, roll-ons and deodorising sticks, each fragrance is crafted to feel refined, lasting and beautifully balanced — at home in Dubai, Abu Dhabi and throughout the GCC.",
+            "Our Fragrance Collection is composed for those who appreciate scent as a form of self-expression. From eau de parfums to refreshing body mists, roll-ons and deodorising sticks, each fragrance is crafted to feel refined, lasting and beautifully balanced — at home in Dubai, Abu Dhabi and across the UAE.",
             "Fragrance behaves differently in warm climates, so our scents are designed to hold their character through heat and humidity while remaining wearable for day and evening. Whether you prefer fresh and clean, warm and woody, or soft and floral, there is a signature here to suit your mood and the moment.",
             "For longer wear, apply to pulse points and lightly moisturised skin, and layer a matching mist for a soft trail throughout the day. Our fragrances also make elegant gifts, presented to a premium standard that reflects the care inside.",
             "Cruelty-free and thoughtfully made, the Fragrance Collection adds a finishing note to your routine — delivered quickly across the UAE with a team ready to help you find your signature scent.",
@@ -162,7 +162,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { q: "Are your fragrances suitable for sensitive skin?", a: "Roll-ons and mists are generally gentle, but if you have sensitive skin, apply to clothing or patch-test on a small area first." },
             { q: "Do fragrances make a good gift?", a: "Yes — our fragrances are presented to a premium standard and make refined gifts. Add a note at checkout for gift orders." },
             { q: "Are your fragrances long-lasting?", a: "Our eau de parfums are formulated for lasting wear, while mists offer a lighter, refreshable finish. Longevity varies with skin type and climate." },
-            { q: "Do you deliver fragrances across the UAE and GCC?", a: "Yes. We deliver throughout the UAE and GCC region, with details shown at checkout." },
+            { q: "Do you deliver fragrances across the UAE?", a: "Yes. We deliver throughout the UAE, with details shown at checkout." },
             { q: "Are your fragrances cruelty-free?", a: "Yes. All Enjoyful Life fragrances are cruelty-free." },
         ],
     },
@@ -171,7 +171,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
     home: {
         heading: "Home & Wellness — Natural Fragrance for Your Space",
         paragraphs: [
-            "Our Home & Wellness collection extends the Enjoyful Life ritual beyond personal care and into the spaces you live in. Thoughtfully composed candles, diffusers, room mists and home fragrances are designed to create calm, welcoming environments — whether in a Dubai apartment, an Abu Dhabi villa or homes throughout the UAE and GCC.",
+            "Our Home & Wellness collection extends the Enjoyful Life ritual beyond personal care and into the spaces you live in. Thoughtfully composed candles, diffusers, room mists and home fragrances are designed to create calm, welcoming environments — whether in a Dubai apartment, an Abu Dhabi villa or homes throughout the UAE.",
             "Scent shapes how a space feels. Our home fragrances are crafted with carefully balanced notes that fill a room without overwhelming it, helping you transition from a busy day to a restful evening. Lightweight, clean and premium in presentation, they complement modern interiors and everyday wellness routines alike.",
             "Use diffusers and candles to anchor a signature scent in your living areas, and refresh with a room mist whenever you want an instant lift. As with all our products, we hold home fragrance to a high standard of quality and finish.",
             "Cruelty-free and beautifully made, Home & Wellness brings a sense of considered calm to your space — with fast UAE delivery and a team happy to help you choose the right ambience for every room.",
@@ -190,7 +190,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { q: "Are your home fragrances overpowering?", a: "No — they are balanced to fill a room pleasantly without being overwhelming, suiting modern interiors and everyday use." },
             { q: "Can I use these products as a gift?", a: "Yes. Home fragrance makes a thoughtful, premium gift. Add a delivery note at checkout for gift orders." },
             { q: "Are home products safe to use daily?", a: "Yes, when used as directed. Always follow the safety guidance on candles and never leave a burning candle unattended." },
-            { q: "Do you deliver home fragrance across the UAE and GCC?", a: "Yes — we deliver throughout the UAE, including Dubai and Abu Dhabi, and throughout the GCC region." },
+            { q: "Do you deliver home fragrance across the UAE?", a: "Yes — we deliver throughout the UAE, including Dubai and Abu Dhabi." },
             { q: "Are home products cruelty-free?", a: "Yes. All Enjoyful Life products, including home fragrance, are cruelty-free." },
         ],
     },
@@ -199,11 +199,11 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
     about: {
         heading: "About Enjoyful Life — Considered Care, Crafted with Intent",
         paragraphs: [
-            "Enjoyful Life began with a clear purpose: to make premium, naturally derived personal care that genuinely belongs in everyday life. We saw a gap between mass-market products that compromise on quality and luxury lines that feel out of reach, and we set out to bridge it — bringing thoughtful formulation, honest labelling and beautiful presentation to families across the UAE and GCC.",
-            "Everything we make is shaped by the people and places we serve. Our home market — Dubai, Abu Dhabi and the wider Emirates — is hot, humid and fast-moving, so our textures are lightweight and fast-absorbing, our fragrances are built to last in the heat, and our routines are designed to be simple enough to keep. That same considered approach extends throughout the GCC, where customers value the same balance of efficacy and care.",
+            "Enjoyful Life began with a clear purpose: to make premium, naturally derived personal care that genuinely belongs in everyday life. We saw a gap between mass-market products that compromise on quality and luxury lines that feel out of reach, and we set out to bridge it — bringing thoughtful formulation, honest labelling and beautiful presentation to families across the UAE.",
+            "Everything we make is shaped by the people and places we serve. Our home market — Dubai, Abu Dhabi and the wider Emirates — is hot, humid and fast-moving, so our textures are lightweight and fast-absorbing, our fragrances are built to last in the heat, and our routines are designed to be simple enough to keep.",
             "Quality and integrity guide our choices. We formulate with carefully chosen, naturally derived ingredients, avoid unnecessary harsh additives, and publish full ingredient lists so nothing is hidden. All of our products are cruelty-free, and we are continually refining our packaging and sourcing to reduce our footprint without compromising the premium experience.",
             "Our collections — Glow facial care, Daily body and hair essentials, gentle Baby care, signature Fragrances and Home wellness — are designed to work together as a complete, considered ritual rather than a scattered set of products. The result is a brand you can build a routine around and trust over time.",
-            "Above all, Enjoyful Life is about how good, dependable care makes daily life feel a little more enjoyable. We are grateful to the customers across the UAE and GCC who have made us part of their routines, and we remain committed to earning that trust with every formula we create.",
+            "Above all, Enjoyful Life is about how good, dependable care makes daily life feel a little more enjoyable. We are grateful to the customers across the UAE who have made us part of their routines, and we remain committed to earning that trust with every formula we create.",
         ],
         links: [
             ...SHARED_LINKS,
@@ -211,11 +211,11 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { label: "Skincare Journal", href: "/blog" },
         ],
         faqs: [
-            { q: "What is Enjoyful Life?", a: "Enjoyful Life is a premium personal-care brand offering naturally derived skincare, body and hair care, baby care, fragrances and home wellness, serving customers across the UAE and GCC." },
+            { q: "What is Enjoyful Life?", a: "Enjoyful Life is a premium personal-care brand offering naturally derived skincare, body and hair care, baby care, fragrances and home wellness, serving customers across the UAE." },
             { q: "What makes Enjoyful Life different?", a: "We combine premium quality with everyday accessibility — thoughtful, naturally derived formulations, full ingredient transparency, cruelty-free standards and refined presentation, all designed for the Gulf climate and modern routines." },
             { q: "Are all your products cruelty-free?", a: "Yes. Every Enjoyful Life product is cruelty-free, and we work only with suppliers who share that commitment." },
             { q: "Are your products natural?", a: "We formulate with naturally derived ingredients and avoid unnecessary harsh additives, publishing full ingredient lists on every product page." },
-            { q: "Where are your products available?", a: "You can shop the full range on our website, with delivery and shipping across the UAE and GCC region." },
+            { q: "Where are your products available?", a: "You can shop the full range on our website, with delivery across the UAE." },
             { q: "Do you focus on sustainability?", a: "We are continually improving our packaging and sourcing to reduce our environmental impact while maintaining a premium experience." },
             { q: "How do I build a routine with your products?", a: "Shop by collection — Glow for facial care, Daily for body and hair, Baby for little ones, Fragrances for scent and Home for wellness — and follow the guidance on each product page to combine steps that work together." },
             { q: "How can I get in touch?", a: "Visit our Contact page to reach our team by WhatsApp, email or the enquiry form. We are happy to help with products, orders and routine advice." },
@@ -226,7 +226,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
     contact: {
         heading: "We're Here to Help",
         paragraphs: [
-            "Whether you have a question about a product, need help choosing the right routine for your skin, or want to check on an order, the Enjoyful Life team is here for you. We support customers across the UAE — including Dubai and Abu Dhabi — and throughout the GCC, and we aim to respond quickly and helpfully.",
+            "Whether you have a question about a product, need help choosing the right routine for your skin, or want to check on an order, the Enjoyful Life team is here for you. We support customers across the UAE — including Dubai and Abu Dhabi — and we aim to respond quickly and helpfully.",
             "The fastest way to reach us is by WhatsApp during business hours (GST, UTC+4), where our team can advise on products, confirm delivery details and answer any questions in real time. You can also email us or use the enquiry form, and we will get back to you as soon as possible.",
             "Looking for guidance before you buy? Explore our collections — Glow facial care, Daily body and hair essentials, gentle Baby care, signature Fragrances and Home wellness — or read more about our standards on the About page. We are always glad to help you find products that suit your skin, your family and your home.",
         ],

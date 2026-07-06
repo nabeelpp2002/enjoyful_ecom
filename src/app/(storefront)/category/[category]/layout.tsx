@@ -17,7 +17,7 @@ const CATEGORY_META: Record<CategorySlug, CategoryMeta> = {
   daily: {
     title: "Daily Essentials — Everyday Skincare Routine UAE | Enjoyful Life",
     description:
-      "Build your daily skincare routine with Enjoyful Life's essential moisturisers, cleansers and toners. Natural formulas for UAE & UK customers.",
+      "Build your daily skincare routine with Enjoyful Life's essential moisturisers, cleansers and toners. Natural formulas for UAE customers.",
   },
   baby: {
     title: "Baby Skincare — Gentle & Natural Baby Care UAE | Enjoyful Life",
@@ -39,7 +39,7 @@ const CATEGORY_META: Record<CategorySlug, CategoryMeta> = {
 const FALLBACK_META: CategoryMeta = {
   title: "Shop All — Premium Natural Skincare UAE | Enjoyful Life",
   description:
-    "Browse the full Enjoyful Life collection. Premium natural skincare for UAE and UK customers. Free delivery on orders over 50 AED.",
+    "Browse the full Enjoyful Life collection. Premium natural skincare for UAE customers. Free delivery on orders over 50 AED.",
 };
 
 export async function generateMetadata({

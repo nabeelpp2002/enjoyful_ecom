@@ -1,5 +1,5 @@
 ﻿# Enjoyful Life — World-Class CTO Audit Report
-*Platform: UAE/UK Premium Skincare eCommerce | Date: June 2026 | Status: Pre-Launch*
+*Platform: UAE Premium Skincare eCommerce | Date: June 2026 | Status: Pre-Launch*
 
 ---
 
@@ -44,7 +44,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 6 | CRITICAL | Security | `ThrottlerGuard` is imported and `@Throttle()` decorators exist on auth endpoints but the guard is never registered as `APP_GUARD` in `AppModule` | All rate limits are declarative dead code — brute force on passwords and OTP endpoints is completely unprotected | S: add `{ provide: APP_GUARD, useClass: ThrottlerGuard }` to `AppModule` providers |
 | 7 | CRITICAL | UX/CRO | WhatsApp checkout message omits delivery address and phone number — business cannot fulfil any order without a manual follow-up exchange | Every single order requires an extra WhatsApp message before dispatch, doubling operator workload and delaying fulfilment | M: add pre-checkout modal collecting name, address, phone before opening `wa.me` link |
 | 8 | CRITICAL | SEO | All 111 product pages are `use client` with zero metadata exports — no title, no description, no structured data visible to crawlers | 111 product URLs are invisible to Google; zero chance of Product rich results, star ratings, or any organic traffic | M: add `generateMetadata` server-side export to product page; split client/server shell |
-| 9 | CRITICAL | SEO | All category pages are `use client` with zero metadata exports — ~5 category URLs are effectively dark to search engines | Category pages are the primary SEO landing pages for head-term queries like "glow skincare UAE" | M: add `generateMetadata` to category page; ISR with `revalidate: 60` |
+| 9 | CRITICAL | SEO | All category pages are `use client` with zero metadata exports — ~5 category URLs are effectively dark to search engines | Category pages are the primary SEO landing pages for head-term queries like "skincare UAE" | M: add `generateMetadata` to category page; ISR with `revalidate: 60` |
 | 10 | CRITICAL | Architecture | Hardcoded Windows absolute path `d:/N3 Projects/enjoyful/enjoyful_ecom` in `next.config.ts` lines 7-9 | Every Linux, Mac, or CI/CD deployment will fail outright at build time | S: replace with `process.cwd()` — one line |
 | 11 | CRITICAL | Admin Panel | Orders is not in the admin sidebar `navItems` array — the `/admin/orders` route exists but is unreachable from the UI | Admins cannot navigate to orders without typing the URL directly; order management is functionally absent | S: add `{ href: '/admin/orders', label: 'Orders', icon: ShoppingCart }` to navItems |
 | 12 | CRITICAL | Architecture | No global `error.tsx` boundary anywhere in the app directory | Any unhandled promise rejection or render error shows a blank white screen in production | S: create `src/app/error.tsx` and `src/app/not-found.tsx` — two 10-line files |
@@ -63,7 +63,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 25 | HIGH | Business Logic | Cart accepts soft-deleted and inactive products — `addItem()` checks neither `deletedAt` nor `isActive` | Discontinued products enter cart and proceed to order creation; customer orders cannot be fulfilled | S: add `if (product.deletedAt || !product.isActive) throw BadRequestException` in `cart.service.ts` |
 | 26 | HIGH | SEO | Product URLs use MongoDB ObjectIDs (`/product/68a1b2c3...`) — opaque, non-descriptive, impossible to rank | Slug field already exists in schema and API; URLs like `/product/glow-vitamin-c-serum-30ml` rank significantly better | M: switch `Link` hrefs to slug; add redirect from old ObjectID URLs |
 | 27 | HIGH | UX/CRO | Contact form `handleSubmit` calls `alert()` instead of posting to any API — every customer inquiry is silently lost | Every inquiry from a potential customer disappears; zero CRM data captured pre-launch | S: wire to NestJS contact route or FormSpree fallback |
-| 28 | HIGH | UX/CRO | `TopOfferBar` is commented out in `layout.tsx` — highest-visibility promotional strip is dead on arrival | Free shipping threshold, launch offers, and UAE/UK delivery messaging silently removed | S: uncomment and configure with real offer copy |
+| 28 | HIGH | UX/CRO | `TopOfferBar` is commented out in `layout.tsx` — highest-visibility promotional strip is dead on arrival | Free shipping threshold, launch offers, and UAE delivery messaging silently removed | S: uncomment and configure with real offer copy |
 | 29 | HIGH | UX/CRO | Mobile bottom nav has `/search` and `/category` dead routes and no cart icon | Highest-value mobile destination (cart) absent; two dead routes cause 404s | S: replace dead hrefs with `/category/all` and `/cart`; swap Search icon for ShoppingCart |
 | 30 | HIGH | Performance | Three.js (~580KB min+gzip) installed as hard dependency for `LiquidEther.jsx` which has zero import references in any live page | Dead code potentially bundled into every route; 580KB unnecessary payload | S: move to `devDependencies`; wrap in `next/dynamic({ ssr: false })` or delete if unused |
 | 31 | HIGH | Business Logic | Cart quantity has no upper bound — looping `POST /cart/items` inflates quantity to any number (9999+) | Inflated order quantities flood WhatsApp; inventory phantom records; potential DoS | S: add `@Max(99)` to `AddCartItemDto`; cap in service |
@@ -79,7 +79,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 41 | HIGH | UX/CRO | All six footer navigation links use `href='#'` — non-functional on a live site | Immediate credibility damage; every footer click leads nowhere; fails basic pre-launch audit | S: replace all `#` with actual routes — 10-minute fix |
 | 42 | HIGH | Performance | `next.config.ts` has no image format, quality, deviceSizes, or cache TTL configuration | AVIF not served; images at default quality 75 without explicit format negotiation; no CDN cache TTL | S: add `images: { formats: ['image/avif','image/webp'], minimumCacheTTL: 86400 }` |
 | 43 | HIGH | Business Logic | Arabic product names produce empty base slugs falling back to empty string `''` — second Arabic-named product causes unique index collision | Arabic SKU names cannot have valid SEO slugs; slug-based routing breaks; `findBySlug('')` returns wrong products | S: add `if (!base) { base = 'product'; }` fallback; use `any-ascii` transliteration |
-| 44 | HIGH | SEO | `lang='en'` and `openGraph.locale = 'en_US'` in root `layout.tsx` — wrong locale for UAE/UK market | Google and Facebook/Instagram parse locale for geo-relevance; wrong locale reduces UAE organic ranking signal | S: change to `lang='en-AE'` and `locale: 'en_AE'` — 2-minute fix |
+| 44 | HIGH | SEO | `lang='en'` and `openGraph.locale = 'en_US'` in root `layout.tsx` — wrong locale for UAE market | Google and Facebook/Instagram parse locale for geo-relevance; wrong locale reduces UAE organic ranking signal | S: change to `lang='en-AE'` and `locale: 'en_AE'` — 2-minute fix |
 | 45 | HIGH | Business Logic | `generateOrderNumber` uses `countDocuments` for sequence — two simultaneous checkouts produce duplicate order numbers | Concurrent orders get same sequence; one fails with unhandled `MongoServerError`; user gets 500 | S: replace with atomic `findOneAndUpdate` on a counters collection |
 | 46 | HIGH | UX/CRO | `ShippingAddress` schema and DTO have no `phone` field — UAE delivery couriers require contact phone | Courier manifests rejected without phone; operator must manually request phone for every order | S: add `phone: string` to `ShippingAddressDto` and schema |
 | 47 | HIGH | Database | `CategoryBanner.category` is a hardcoded string enum not a FK to the `Category` collection | Renaming a category or adding a 6th requires manual update in two unlinked places; sync hazard | M: change to `Types.ObjectId` ref to `Category` |
@@ -105,7 +105,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 10 | Inventory | Stock decrement/reserve/restore pipeline with MongoDB transactions | Eliminates oversell; adds `reservedStock` and `lowStockThreshold`; enables low-stock alerts | M |
 | 11 | Admin | Revenue and finance dashboard (GMV, AOV, daily revenue chart) | Gives owner first financial visibility into business operations | M |
 | 12 | Admin | Image upload UI wired to existing `media` module in product form | Makes product image management operational without raw CDN URL pasting | M |
-| 13 | SEO | Add `sitemap.xml` via `src/app/sitemap.ts` fetching all product slugs and categories | Enables Google Search Console indexing submission for UAE and UK launch | S |
+| 13 | SEO | Add `sitemap.xml` via `src/app/sitemap.ts` fetching all product slugs and categories | Enables Google Search Console indexing submission for UAE  launch | S |
 | 14 | SEO | Add `robots.txt` blocking `/admin/*` and `/api/*` from indexing | Prevents crawl budget waste and admin route SERP exposure | S |
 | 15 | SEO | Inject `Organization`, `WebSite`, and `LocalBusiness` JSON-LD globally in storefront layout | Enables Google Knowledge Panel, sitelinks search box, and UAE local map pack inclusion | S |
 | 16 | SEO | Add `Product` + `AggregateRating` + `BreadcrumbList` JSON-LD to product pages | Star ratings in SERP — single highest CTR driver for eCommerce | M |
@@ -113,7 +113,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 18 | Order Lifecycle | Order status machine with transition guards and `statusHistory` log | Prevents illegal status transitions; creates audit trail for disputes and UAE consumer protection | M |
 | 19 | Order Lifecycle | Wire `BrevoService` into `OrdersModule` for transactional emails | Customer gets confirmation, dispatch, and cancellation emails without manual WhatsApp intervention | M |
 | 20 | UX/CRO | Mobile filter drawer for category page (bottom-sheet triggered by "All Filters" button) | Mobile shoppers currently get sort-only browsing; filter drawer unlocks refinement on mobile | M |
-| 21 | Database | Add `ShippingZone` collection for UAE/UK courier logic and flat-rate/free-shipping thresholds | `shippingCost` is hardcoded to 0 in `orders.service.ts`; without this, checkout cannot charge delivery | S |
+| 21 | Database | Add `ShippingZone` collection for UAE courier logic and flat-rate/free-shipping thresholds | `shippingCost` is hardcoded to 0 in `orders.service.ts`; without this, checkout cannot charge delivery | S |
 | 22 | UX/CRO | Social proof bar between hero and categories — aggregate review count, star rating, certifications, free UAE shipping | Single most common element missing vs. Sephora/Nykaa homepages; highest trust signal density per pixel | S |
 | 23 | Architecture | Fix hardcoded Windows path in `next.config.ts` lines 7-9 with `process.cwd()` | Blocks every Linux/Mac/CI deployment; one-line fix | S |
 | 24 | Performance | Remove `unoptimized` prop from `HeroSection.tsx` carousel images | Immediately enables AVIF/WebP for LCP images; single-line fix | S |
@@ -138,11 +138,11 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 43 | Security | Per-email account lockout after 10 failed attempts (15-minute lock) | Blocks distributed credential stuffing orthogonally to IP-based throttling | M |
 | 44 | UX/CRO | Quick-view modal on category grid — image gallery, benefits, size selector, ATC | Prevents scroll position loss when evaluating multiple products; standard on Nykaa and ASOS | L |
 | 45 | Business | WhatsApp payment reconciliation audit log — `PaymentConfirmation` sub-document per order | Creates audit trail between WhatsApp conversations and order records; replaces zero-evidence manual process | M |
-| 46 | Business | Verified purchase check for reviews — query orders collection before setting `isVerifiedPurchase` | Discourages fake reviews; critical trust signal for UAE/UK skincare market | M |
+| 46 | Business | Verified purchase check for reviews — query orders collection before setting `isVerifiedPurchase` | Discourages fake reviews; critical trust signal for UAE skincare market | M |
 | 47 | Database | `productCode` unique sparse index — currently no uniqueness constraint | Prevents duplicate SKU import from XLSX pipeline | S |
 | 48 | Performance | Add MongoDB connection pool configuration (`maxPoolSize: 20`) in Mongoose factory | Prevents connection queuing under concurrent product listing + admin + analytics traffic | S |
 | 49 | Architecture | Create `packages/shared-types` monorepo package for shared DTOs | Eliminates runtime type drift between API responses and frontend data shapes; catches breaking changes at compile time | M |
-| 50 | UX/CRO | Hero section persistent value proposition sub-line — "Premium natural skincare · Free UAE delivery · Cruelty-free" | First-time UAE/UK visitors cannot currently tell what differentiates the brand or whether it ships to them | S |
+| 50 | UX/CRO | Hero section persistent value proposition sub-line — "Premium natural skincare · Free UAE delivery · Cruelty-free" | First-time UAE visitors cannot currently tell what differentiates the brand or whether it ships to them | S |
 
 ---
 
@@ -223,7 +223,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 17 | Set `metadataBase` guarantee in layout | Relative OG URLs break social sharing when `NEXT_PUBLIC_APP_URL` not set at build time | Replace `||` with `??` for `metadataBase`; ensure `NEXT_PUBLIC_APP_URL=https://enjoyfullife.com` set in production build |
 | 18 | Add `X-Robots-Tag` headers for API routes in `next.config.ts` | API routes consume crawl budget and may expose internal response shapes | Add `headers()` export to `next.config.ts` with `X-Robots-Tag: noindex` for `/api/*` paths |
 | 19 | Add Arabic keyword targeting to product metadata | UAE market has significant Arabic-language search volume for skincare queries | Add Arabic transliterations in product descriptions and meta; use `hreflang` alternate for Arabic variant |
-| 20 | Submit sitemap to Google Search Console (UAE and UK properties) | Even a perfect sitemap does nothing until submitted; GSC also provides crawl error monitoring | Create GSC property for `enjoyfullife.com`; submit `/sitemap.xml`; monitor indexing coverage for product pages |
+| 20 | Submit sitemap to Google Search Console (UAE  properties) | Even a perfect sitemap does nothing until submitted; GSC also provides crawl error monitoring | Create GSC property for `enjoyfullife.com`; submit `/sitemap.xml`; monitor indexing coverage for product pages |
 
 ---
 
@@ -250,7 +250,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 17 | Remove committed Google OAuth client ID from `.env.local` | Even origin-restricted, rotating the client ID before launch is recommended practice | Rotate client ID; store as environment variable at deployment; verify `.gitignore` coverage |
 | 18 | Add `MaxLength(64)` to `RegisterDto` name fields | `firstName`, `lastName` have `@MinLength(1)` but no upper bound; oversized strings bypass validation | Add `@MaxLength(64)` to both `firstName` and `lastName` in `register.dto.ts` |
 | 19 | Add admin audit log for security-sensitive actions | Currently zero record of who changed product prices, order statuses, or user accounts | Create `AuditLog` collection: `{ action, actorId, targetModel, targetId, before, after, ip, createdAt }`; inject into product/order/user services |
-| 20 | Add GDPR compliance endpoints (data export, account deletion) | GDPR applies to UK customers (post-Brexit UK GDPR); no data export or deletion endpoints exist | Add `GET /users/me/data-export` returning full user record + orders; add `DELETE /users/me` implementing soft-then-hard delete pipeline |
+| 20 | Add Data export endpoints (data export, account deletion) | Users should be able to export their personal data and request account deletion; no data export or deletion endpoints exist | Add `GET /users/me/data-export` returning full user record + orders; add `DELETE /users/me` implementing soft-then-hard delete pipeline |
 
 ---
 
@@ -258,7 +258,7 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 
 | Rank | Improvement | Conversion Impact | Implementation |
 |---|---|---|---|
-| 1 | Pre-checkout address/phone capture modal | Critical — eliminates the operational blocker that prevents order fulfilment; every order currently requires a follow-up exchange | Add 3-field modal (name, UAE/UK address, phone) before `window.open(wa.me)` in `cart/page.tsx`; append fields to WhatsApp message |
+| 1 | Pre-checkout address/phone capture modal | Critical — eliminates the operational blocker that prevents order fulfilment; every order currently requires a follow-up exchange | Add 3-field modal (name, UAE address, phone) before `window.open(wa.me)` in `cart/page.tsx`; append fields to WhatsApp message |
 | 2 | Fix mobile bottom nav — cart icon + working routes | High — cart is the highest-value destination on mobile; two dead routes currently 404; mobile is 70%+ of UAE traffic | Replace `/search`→`/category/all`, `/category`→`/cart`; swap Search icon for `ShoppingCart` in `MobileBottomNav.tsx` |
 | 3 | Add star ratings to `ProductCard` | High — review count and star average are the most universally impactful browse-stage purchase signals; Sephora, Nykaa, ASOS all show them on listing cards | Insert `<StarRating rating={product.rating} count={product.reviews} />` between product name and price in `ProductCard.tsx`; data already on object |
 | 4 | Wire contact form to real submission endpoint | Critical — currently every customer inquiry is silently lost via `alert()`; zero CRM data captured | Replace `alert()` with `fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })`; add NestJS contact module |
@@ -266,13 +266,13 @@ The platform's strongest assets are its aesthetic quality and its data model. Th
 | 6 | Add "Add to Cart" to wishlist page | High — wishlist is a high-intent surface; current UX requires navigating to each PDP to convert; direct revenue path currently blocked | Add `addToCart` button as primary CTA alongside "View" in `wishlist/page.tsx`; use existing `CartContext.addToCart` |
 | 7 | Social proof bar between hero and ShopByCategory | High — first-time visitors have no trust anchors; aggregate review count, certifications, free UAE shipping messaging addresses all three in one strip | Create `<TrustStrip />` component; place in `homepage/page.tsx` between `HeroSection` and `ShopByCategory` |
 | 8 | Mobile filter drawer for category page | High — mobile shoppers currently get sort-only browsing; "All Filters" button has no `onClick` handler | Create `<FilterDrawer />` bottom-sheet component; wire to `onClick` at `category/[category]/page.tsx:477`; include subcategory, price, skin type |
-| 9 | Uncomment `TopOfferBar` and configure with real copy | High — highest-visibility promotional real estate is currently dead; free shipping messaging and UAE/UK delivery signal belong here | Uncomment `<TopOfferBar />` in `layout.tsx`; configure with "Free UAE delivery on orders over 150 AED · Cruelty-free · Natural ingredients" |
+| 9 | Uncomment `TopOfferBar` and configure with real copy | High — highest-visibility promotional real estate is currently dead; free shipping messaging and UAE delivery signal belong here | Uncomment `<TopOfferBar />` in `layout.tsx`; configure with "Free UAE delivery on orders over 150 AED · Cruelty-free · Natural ingredients" |
 | 10 | Cart upsell block ("You Might Also Need") | High — AOV lift of 15-30% typical on beauty retail; zero implementation today | Add `<CartUpsell />` component in cart order summary column; show 2-3 products from most expensive cart item's category using `DataContext` |
 | 11 | Free shipping progress bar in cart | Medium-High — "Add 40 AED for free delivery" drives order size above threshold; proven AOV mechanic | Add progress bar above order summary in `cart/page.tsx` showing distance to free shipping threshold |
 | 12 | Sticky PDP add-to-cart bar on scroll | Medium-High — users who scroll past ingredients/benefits sections lose the ATC button from view | Add scroll listener in `product/[id]/page.tsx`; show fixed header bar with product name, price, and ATC when main button scrolls out of viewport |
 | 13 | Urgency signals on PDP ("Only 3 left", "Ships in 24h") | Medium-High — standard beauty retail scarcity signals; directly increase purchase decision velocity | Show `product.stock < 5` count in PDP add-to-cart section; add "Ships within 24h · Free UAE delivery" below ATC button |
-| 14 | Hero section persistent value proposition sub-line | Medium — first-time UAE/UK visitors cannot tell brand differentiation, shipping region, or product positioning from current slide copy | Add fixed subtitle below slide title: "Premium natural skincare · Free UAE delivery · Cruelty-free" visible across all slides |
-| 15 | Fix contact page timezone (EST → GST/GMT) and phone placeholder | Medium — "Mon-Fri 9am-6pm EST" and "+1 (234) 567-890" on a UAE/UK eCommerce site destroy local credibility | Replace EST with "GST (UTC+4)" and "GMT" for UK; replace US phone placeholder with real UAE number |
+| 14 | Hero section persistent value proposition sub-line | Medium — first-time UAE visitors cannot tell brand differentiation, shipping region, or product positioning from current slide copy | Add fixed subtitle below slide title: "Premium natural skincare · Free UAE delivery · Cruelty-free" visible across all slides |
+| 15 | Fix contact page timezone (EST → GST/GMT) and phone placeholder | Medium — "Mon-Fri 9am-6pm EST" and "+1 (234) 567-890" on a UAE eCommerce site destroy local credibility | Replace EST with "GST (UTC+4)" and "GMT" for UK; replace US phone placeholder with real UAE number |
 | 16 | "Complete the Routine" cross-category upsell on PDP | Medium — cross-category pairing is Sephora's highest AOV driver (toner with face wash, body oil with scrub) | Add `<CompleteTheRoutine />` block below "You May Also Like" on PDP; use hardcoded category-pair rules for V1 |
 | 17 | Add WhatsApp contact deep-link to contact page | Medium — WhatsApp is the primary customer communication channel for UAE; it should be a prominent CTA | Add fourth card to contact methods grid with `wa.me/` deep link; add WhatsApp icon; zero backend work |
 | 18 | Quick-view modal on category grid | Medium — reduces friction for multi-product evaluation; prevents scroll position loss | Add `<QuickViewModal />` triggered by eye icon on `ProductCard`; show gallery, benefits, size selector, ATC |
@@ -297,7 +297,7 @@ export const metadata: Metadata = {
     template: '%s | Enjoyful Life',
   },
   description:
-    'Shop premium natural skincare in UAE and UK. Cruelty-free, dermatologist-tested face serums, body care, baby skincare, home fragrances and more. Free delivery across UAE.',
+    'Shop premium natural skincare in UAE . Cruelty-free, dermatologist-tested face serums, body care, baby skincare, home fragrances and more. Free delivery across UAE.',
   keywords: [
     'natural skincare UAE',
     'premium skincare Dubai',
@@ -326,7 +326,7 @@ export const metadata: Metadata = {
     siteName: 'Enjoyful Life',
     title: 'Enjoyful Life — Premium Natural Skincare UAE & UK',
     description:
-      'Discover premium natural skincare crafted for UAE and UK customers. Free UAE delivery. Cruelty-free. Dermatologist-tested.',
+      'Discover premium natural skincare crafted for UAE  customers. Free UAE delivery. Cruelty-free. Dermatologist-tested.',
     images: [
       {
         url: '/og/homepage.jpg',
@@ -342,7 +342,7 @@ export const metadata: Metadata = {
     creator: '@enjoyfullife',
     title: 'Enjoyful Life — Premium Natural Skincare UAE & UK',
     description:
-      'Discover premium natural skincare crafted for UAE and UK customers. Free UAE delivery. Cruelty-free.',
+      'Discover premium natural skincare crafted for UAE  customers. Free UAE delivery. Cruelty-free.',
     images: ['/og/homepage.jpg'],
   },
   alternates: {
@@ -363,11 +363,11 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Enjoyful Life — Premium Natural Skincare UAE & UK | Free UAE Delivery',
   description:
-    'Shop Enjoyful Life premium natural skincare in UAE and UK. Glow serums, daily essentials, baby care, fragrances, and home wellness. Free delivery across UAE on all orders.',
+    'Shop Enjoyful Life premium natural skincare in UAE . Glow serums, daily essentials, baby care, fragrances, and home wellness. Free delivery across UAE on all orders.',
   openGraph: {
     title: 'Enjoyful Life — Premium Natural Skincare UAE & UK',
     description:
-      'Discover premium natural skincare crafted for UAE and UK customers. Glow, Daily, Baby, Fragrances, Home. Free UAE delivery.',
+      'Discover premium natural skincare crafted for UAE  customers. Glow, Daily, Baby, Fragrances, Home. Free UAE delivery.',
     url: 'https://enjoyfullife.com',
     images: [
       {
@@ -390,7 +390,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Enjoyful Life — Our Story | Natural Skincare UAE',
   description:
-    'Learn about Enjoyful Life, a UAE-founded premium natural skincare brand. Our mission: cruelty-free, dermatologist-tested formulas crafted for the UAE and UK climate.',
+    'Learn about Enjoyful Life, a UAE-founded premium natural skincare brand. Our mission: cruelty-free, dermatologist-tested formulas crafted for the UAE  climate.',
   openGraph: {
     title: 'About Enjoyful Life — Our Story | Natural Skincare UAE',
     description:
@@ -417,7 +417,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact Us | Enjoyful Life Skincare UAE',
   description:
-    'Get in touch with Enjoyful Life. Order support, product enquiries, and returns. WhatsApp available 9am–6pm GST (UTC+4). UAE and UK customers welcome.',
+    'Get in touch with Enjoyful Life. Order support, product enquiries, and returns. WhatsApp available 9am–6pm GST (UTC+4). UAE  customers welcome.',
   robots: { index: true, follow: true },
   openGraph: {
     title: 'Contact Enjoyful Life | Skincare Support UAE & UK',
@@ -456,7 +456,7 @@ const CATEGORY_META: Record<
   daily: {
     title: 'Daily Skincare Essentials UAE — Cleansers, Moisturisers & More | Enjoyful Life',
     description:
-      'Build your daily skincare routine with Enjoyful Life. Gentle cleansers, lightweight moisturisers, and daily essentials for UAE and UK skin types.',
+      'Build your daily skincare routine with Enjoyful Life. Gentle cleansers, lightweight moisturisers, and daily essentials for UAE  skin types.',
     og: '/og/category-daily.jpg',
   },
   baby: {
@@ -819,7 +819,7 @@ These items block real-order operation. None of the following should be deferred
 - Install `@tanstack/react-query`; replace all `useEffect + fetch` patterns
 - Convert product and category pages to RSC with ISR; keep `use client` only on interactive sub-components
 - MongoDB connection pool configuration (`maxPoolSize: 20`, `minPoolSize: 2`)
-- Add `ShippingZone` collection with UAE/UK rate configuration; integrate in checkout
+- Add `ShippingZone` collection with UAE rate configuration; integrate in checkout
 
 **Database:**
 - Add `Coupon` schema (code, type, value, minOrderValue, usage limits, expiry)
@@ -837,7 +837,7 @@ These items block real-order operation. None of the following should be deferred
 - Category-specific OG images (1200x630) per category using `next/og`
 - Dynamic OG images for individual products using `ImageResponse`
 - Arabic keyword targeting and `hreflang` alternate for Arabic variant
-- Submit sitemap to Google Search Console for UAE and UK properties
+- Submit sitemap to Google Search Console for UAE  properties
 - Begin structured link-building from UAE beauty media and directories
 
 **Marketing Automation:**
@@ -939,4 +939,4 @@ These items block real-order operation. None of the following should be deferred
 
 Enjoyful Life arrives at pre-launch as a platform with genuine potential and real structural debt in equal measure. The visual design is credible for a premium UAE skincare brand, the NestJS module architecture is clean enough to build on, and the MongoDB data model — particularly the product family collapsing pattern — shows thoughtful product thinking for the catalog structure. But the platform cannot safely take real money from real customers today. The security gaps are not theoretical: the SanitizeMiddleware has never run, the ThrottlerGuard has never enforced a single rate limit, the admin JWT check is operating without cryptographic verification, and live database credentials are readable in the committed codebase. The inventory system has never decremented a unit of stock. The contact form silently discards every inquiry. The admin cannot navigate to orders without typing the URL. These are not polish items — they are operational and security pre-requisites that must close before any order is taken.
 
-The strategic prescription is a focused 2-week Phase 0 sprint delivering the 12-15 pre-launch blockers, followed by a disciplined Phase 1 foundation month that converts the architecture from its current all-client-rendered, no-cache, no-error-boundary state to one that can survive real traffic with acceptable Core Web Vitals and organic visibility. The SEO situation in particular requires urgency: a site launching with 111 product pages invisible to Google has burned its launch indexing window before the first customer arrives. The good news is that all of the SEO fixes are code changes, not content or domain authority problems — the slug field exists, the metadata infrastructure is there, the structured data just needs to be written. A world-class UAE/UK premium skincare competitor is achievable within 12 months from this codebase. The bones are there. What is needed now is operational maturity, security hardening, and the commercial conversion infrastructure — social proof, coupons, a functional checkout, and search visibility — that turns a beautiful storefront into a business.
+The strategic prescription is a focused 2-week Phase 0 sprint delivering the 12-15 pre-launch blockers, followed by a disciplined Phase 1 foundation month that converts the architecture from its current all-client-rendered, no-cache, no-error-boundary state to one that can survive real traffic with acceptable Core Web Vitals and organic visibility. The SEO situation in particular requires urgency: a site launching with 111 product pages invisible to Google has burned its launch indexing window before the first customer arrives. The good news is that all of the SEO fixes are code changes, not content or domain authority problems — the slug field exists, the metadata infrastructure is there, the structured data just needs to be written. A world-class UAE premium skincare competitor is achievable within 12 months from this codebase. The bones are there. What is needed now is operational maturity, security hardening, and the commercial conversion infrastructure — social proof, coupons, a functional checkout, and search visibility — that turns a beautiful storefront into a business.

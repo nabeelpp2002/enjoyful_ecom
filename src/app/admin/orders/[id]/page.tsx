@@ -94,7 +94,7 @@ export default function OrderDetailPage() {
   }
 
   const formatDate = (iso: string) =>
-    new Date(iso).toLocaleString('en-GB', {
+    new Date(iso).toLocaleString('en-AE', {
       day: '2-digit',
       month: 'short',
       year: 'numeric',

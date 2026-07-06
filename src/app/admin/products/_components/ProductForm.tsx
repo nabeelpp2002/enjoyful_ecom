@@ -13,7 +13,7 @@ const schema = z.object({
   productType: z.string().optional(),
   price: z.string().regex(/^\d*\.?\d*$/, 'Must be a number').min(1, 'Required'),
   compareAtPrice: z.string().regex(/^\d*\.?\d*$/, 'Must be a number').optional(),
-  currency: z.enum(['AED', 'GBP']),
+  currency: z.enum(['AED']),
   description: z.string().optional(),
   stock: z.string().regex(/^\d*$/, 'Must be a whole number'),
   isFeatured: z.boolean(),
@@ -61,7 +61,7 @@ export interface ProductFormDefaults {
   productType?: string;
   price?: string | number;
   compareAtPrice?: string | number;
-  currency?: 'AED' | 'GBP';
+  currency?: 'AED';
   description?: string;
   stock?: string | number;
   isFeatured?: boolean;
@@ -251,7 +251,6 @@ export function ProductForm({ defaultValues, productId, categories }: Props) {
             <label className="block text-sm font-medium text-gray-700 mb-1">Currency</label>
             <select {...register('currency')} className={inputClass}>
               <option value="AED">AED</option>
-              <option value="GBP">GBP</option>
             </select>
           </div>
 

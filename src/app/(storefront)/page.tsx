@@ -11,7 +11,7 @@ import { SEO_CONTENT } from "@/data/seo-content";
 export const metadata: Metadata = {
   title: "Enjoyful Life — Premium Natural Skincare UAE | Free UAE Delivery",
   description:
-    "Shop premium natural skincare in UAE and UK. Glow serums, daily essentials, baby care, fragrances and home wellness. Free delivery across UAE. Cruelty-free and dermatologist tested.",
+    "Shop premium natural skincare in the UAE. Glow serums, daily essentials, baby care, fragrances and home wellness. Free delivery across UAE. Cruelty-free and dermatologist tested.",
   alternates: { canonical: "https://enjoyfullife.com" },
 };
 

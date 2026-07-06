@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'About Enjoyful Life — Our Story | Natural Skincare UAE & UK',
+  title: 'About Enjoyful Life — Our Story | Natural Skincare UAE',
   description:
-    'Learn about Enjoyful Life, a UAE-founded premium natural skincare brand. Cruelty-free, dermatologist-tested formulas crafted for UAE and UK skin types.',
+    'Learn about Enjoyful Life, a UAE-founded premium natural skincare brand. Cruelty-free, dermatologist-tested formulas crafted for UAE skin types.',
   openGraph: {
-    title: 'About Enjoyful Life — Our Story | Natural Skincare UAE & UK',
+    title: 'About Enjoyful Life — Our Story | Natural Skincare UAE',
     description:
       'Enjoyful Life is a UAE-founded premium natural skincare brand dedicated to cruelty-free, effective formulas for every skin type.',
     url: 'https://enjoyfullife.com/about',

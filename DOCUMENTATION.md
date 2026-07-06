@@ -18,7 +18,7 @@
 
 ## 1. Project Summary
 
-**enJoyful Life** is a premium skincare and wellness e-commerce site targeting the UAE and UK markets. The product line covers four categories:
+**enJoyful Life** is a premium skincare and wellness e-commerce site targeting the UAE market. The product line covers five categories:
 
 | Category | Products |
 |---|---|

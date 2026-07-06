@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 export const metadata: Metadata = {
     title: "Skincare Journal | Enjoyful Life UAE",
     description:
-        "The Enjoyful Life Skincare Journal — expert guides on natural skincare, body and hair care, baby care and fragrance for the UAE and UK. Coming soon.",
+        "The Enjoyful Life Skincare Journal — expert guides on natural skincare, body and hair care, baby care and fragrance for the UAE. Coming soon.",
     alternates: { canonical: "https://enjoyfullife.com/blog" },
 };
 
@@ -24,7 +24,7 @@ export default function BlogPage() {
                     </h1>
                     <p className="font-sans text-base text-[var(--color-brand-onyx)]/70 leading-relaxed mb-8">
                         We&apos;re crafting a journal of practical skincare, body care, baby care and fragrance
-                        guides — written for life in the UAE and UK climate. In the meantime, explore our
+                        guides — written for life in the UAE. In the meantime, explore our
                         collections or reach out for personalised routine advice.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-3">
