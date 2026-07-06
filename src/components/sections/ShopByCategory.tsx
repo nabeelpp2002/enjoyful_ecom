@@ -10,61 +10,61 @@ const categories = [
         description: "Gentle for little ones.",
         image: "/assets/category/Baby-Lotion_small1.avif",
         link: "/category/baby",
-        bgColor: "bg-[#E6F0F9]", // Light soft blue
+        bgColor: "#E8F4F8", // Soft cyan
     },
     {
         name: "Fragrances",
         description: "Signature scents & body mists",
         image: "/assets/category/Enjoyfullife_bodymist_Amberglow21.avif",
         link: "/category/fragrances",
-        bgColor: "bg-[#F5EFF8]", // Light soft fragrance purple
+        bgColor: "#F5E8F0", // Soft rose
     },
     {
         name: "Glow Collection",
         description: "Radiance from within",
         image: "/assets/category/Charcoal-Face-Wash1.avif",
         link: "/category/glow",
-        bgColor: "bg-[#F0EDF6]", // Light soft purple
+        bgColor: "#EFEBE7", // Soft beige
     },
     {
         name: "Daily Rituals",
         description: "Everyday self-care essentials",
         image: "/assets/category/Enjoyfullife-Mix-Fruit-Body-Lotion.jpg",
         link: "/category/daily",
-        bgColor: "bg-[#FBEBE5]", // Light soft orange
+        bgColor: "#FCE8E0", // Soft peach
     },
     {
         name: "Home Care",
         description: "Curated home fragrance & care",
         image: "/assets/category/Lavender_11June2.avif",
         link: "/category/home-care",
-        bgColor: "bg-[#EAF3EB]", // Light soft green
+        bgColor: "#E8F3EC", // Soft sage
     },
 ];
 
 export function ShopByCategory() {
     return (
-        <section className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-8">
+        <section className="py-20 md:py-32 bg-white">
+            <div className="max-w-7xl mx-auto px-6 md:px-8">
                 {/* Section Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-16 md:mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <p className="mb-4 font-sans font-semibold text-sm text-[var(--color-brand-purple)] tracking-widest uppercase">
+                        <p className="mb-4 font-sans font-semibold text-xs md:text-sm text-[var(--color-brand-purple)] tracking-widest uppercase">
                             Shop by Category
                         </p>
-                        <h2 className="font-heading font-extrabold text-4xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
+                        <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-[var(--color-brand-onyx)] tracking-tight">
                             Shop Your Lifestyle
                         </h2>
                     </motion.div>
                 </div>
 
                 {/* Categories Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
                     {categories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -76,27 +76,30 @@ export function ShopByCategory() {
                         >
                             <Link
                                 href={category.link}
-                                className={`group block rounded-[2rem] overflow-hidden shadow-[0_4px_20px_rgba(26,26,27,0.04)] hover:-translate-y-2 transition-transform duration-300`}
+                                className="group flex flex-col h-full rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] cursor-pointer"
                             >
-                                {/* Category Image */}
-                                <div className="relative overflow-hidden aspect-square flex items-center justify-center">
-                                    <div className="relative w-full h-full rounded-t-[1.5rem] overflow-hidden">
-                                        <Image
-                                            src={category.image}
-                                            alt={category.name}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
-                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                    </div>
+                                {/* Image Container - Fixed Height */}
+                                <div
+                                    className="relative w-full h-52 md:h-64 overflow-hidden flex-shrink-0 bg-[#f5f5f5]"
+                                >
+                                    <Image
+                                        src={category.image}
+                                        alt={category.name}
+                                        fill
+                                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 20vw"
+                                        className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                                    />
                                 </div>
 
-                                {/* Category Info */}
-                                <div className={`px-2 sm:px-4 pb-6 sm:pb-8 pt-3 sm:pt-4 text-center ${category.bgColor} backdrop-blur-md border-t border-white/50`}>
-                                    <h3 className="mb-1 sm:mb-2 font-heading font-bold text-sm sm:text-xl text-[var(--color-brand-onyx)] truncate">
+                                {/* Content Container - Fixed Padding & Color */}
+                                <div
+                                    className="flex flex-col flex-grow justify-center px-5 md:px-6 py-6 md:py-7"
+                                    style={{ backgroundColor: category.bgColor }}
+                                >
+                                    <h3 className="font-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] mb-2 line-clamp-2 leading-tight">
                                         {category.name}
                                     </h3>
-                                    <p className="font-sans font-normal text-[10px] sm:text-sm text-[var(--color-brand-onyx)]/80 line-clamp-2 leading-snug">
+                                    <p className="font-sans text-xs md:text-sm text-[var(--color-brand-onyx)]/70 line-clamp-2 leading-relaxed">
                                         {category.description}
                                     </p>
                                 </div>
