@@ -6,20 +6,6 @@ import Link from "next/link";
 
 const categories = [
     {
-        name: "Baby Care",
-        description: "Gentle for little ones.",
-        image: "/assets/category/Baby-Lotion_small1.avif",
-        link: "/category/baby",
-        bgColor: "#E8F4F8", // Soft cyan
-    },
-    {
-        name: "Fragrances",
-        description: "Signature scents & body mists",
-        image: "/assets/category/Enjoyfullife_bodymist_Amberglow21.avif",
-        link: "/category/fragrances",
-        bgColor: "#F5E8F0", // Soft rose
-    },
-    {
         name: "Glow Collection",
         description: "Radiance from within",
         image: "/assets/category/Charcoal-Face-Wash1.avif",
@@ -29,9 +15,23 @@ const categories = [
     {
         name: "Daily Rituals",
         description: "Everyday self-care essentials",
-        image: "/assets/category/Enjoyfullife-Mix-Fruit-Body-Lotion.jpg",
+        image: "/assets/category/Mix-Fruit-Moisturising-Cream-100ml21.avif",
         link: "/category/daily",
         bgColor: "#FCE8E0", // Soft peach
+    },
+    {
+        name: "Baby Care",
+        description: "Gentle for little ones.",
+        image: "/assets/category/Enjoyful-baby-talc_21.avif",
+        link: "/category/baby",
+        bgColor: "#E8F4F8", // Soft cyan
+    },
+    {
+        name: "Fragrances",
+        description: "Signature scents & body mists",
+        image: "/assets/category/Enjoyfullife_bodymist_Amberglow21.avif",
+        link: "/category/fragrances",
+        bgColor: "#F5E8F0", // Soft rose
     },
     {
         name: "Home Care",

@@ -28,25 +28,25 @@ const menuCategories = [
     {
         name: "Daily",
         subcategories: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash"],
-        imageUrl: "/assets/baby-wipes.jpg",
+        imageUrl: "/assets/category/Mix-Fruit-Moisturising-Cream-100ml21.avif",
         themeColor: "bg-[#FBEBE5]",
     },
     {
         name: "Baby",
         subcategories: ["Baby Lotion", "Baby Wash", "Baby Talc", "Baby Rash Cream", "Baby Soap"],
-        imageUrl: "/assets/baby-diaper.jpg",
+        imageUrl: "/assets/category/Enjoyful-baby-talc_21.avif",
         themeColor: "bg-[#E6F0F9]",
     },
     {
         name: "Fragrances",
         subcategories: ["Perfume", "Body Mist", "Roll On", "Deo Stick"],
-        imageUrl: "/assets/placeholder.png",
+        imageUrl: "/assets/category/Enjoyfullife_bodymist_Amberglow21.avif",
         themeColor: "bg-[#F5EFF8]",
     },
     {
         name: "Home Care",
         subcategories: ["Kitchen Care", "Bathroom Care", "Floor & Surface Care", "Hand Care", "Laundry Care"],
-        imageUrl: "/assets/home-essentials.png",
+        imageUrl: "/assets/category/Lavender_11June2.avif",
         themeColor: "bg-[#EAF3EB]",
     },
 ];
