@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Heart, X } from "lucide-react";
+import { Search, Heart, X, ArrowLeft } from "lucide-react";
 import { MegaMenu } from "./MegaMenu";
 import { AuthModal } from "./AuthModal";
 import { AnimatePresence, motion } from "framer-motion";
@@ -64,6 +64,31 @@ export function StickyHeader() {
     const pathname = usePathname();
     const router = useRouter();
     const isHomePage = pathname === "/";
+    // Detail pages that get a mobile "back" button in the header (left of the logo).
+    const isProductPage = pathname?.startsWith("/product/") ?? false;
+
+    // Count in-app navigations since the last full page load. The header (in the
+    // persistent layout) stays mounted across client-side route changes, so this
+    // ref survives them and resets only on a real reload. We need it because
+    // `window.history.length` is unreliable — a freshly opened tab (e.g. a shared
+    // product link) starts at length 2 thanks to the initial about:blank entry,
+    // which would make router.back() navigate to a blank page. The App Router also
+    // doesn't expose a history index. Counting our own route changes is reliable.
+    const navCountRef = useRef(0);
+    const lastPathRef = useRef(pathname);
+    useEffect(() => {
+        if (lastPathRef.current !== pathname) {
+            navCountRef.current += 1;
+            lastPathRef.current = pathname;
+        }
+    }, [pathname]);
+
+    // Go back to the previous in-app page when there is one; otherwise (opened
+    // straight from a shared link with no prior history) fall back to the listing.
+    const handleBack = () => {
+        if (navCountRef.current > 0) router.back();
+        else router.push("/category/all");
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -119,17 +144,29 @@ export function StickyHeader() {
             <header className={`fixed z-40 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${headerBg} ${headerWrapperClasses}`}>
                 <div className={`px-4 md:px-4 flex items-center justify-between transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${!shouldFloat ? 'h-[70px] max-w-7xl mx-auto w-full' : 'h-[70px] lg:h-[80px]'}`}>
 
-                    {/* Left: Minimal Logo */}
-                    <Link href="/" className="flex-shrink-0 transition-opacity hover:opacity-80 flex items-center">
-                        <Image
-                            src={logoSrc}
-                            alt="enJoyful Life Logo"
-                            width={240}
-                            height={80}
-                            className={`h-16 lg:h-26 w-auto object-contain transition-all duration-300 ${isTransparent ? 'brightness-0 invert' : ''}`}
-                            priority
-                        />
-                    </Link>
+                    {/* Left: optional mobile back button + logo */}
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                        {isProductPage && (
+                            <button
+                                type="button"
+                                onClick={handleBack}
+                                aria-label="Go back"
+                                className={`md:hidden -ml-2 ${iconColor} transition-transform duration-200 active:scale-95 flex items-center justify-center p-2`}
+                            >
+                                <ArrowLeft size={24} strokeWidth={1.5} />
+                            </button>
+                        )}
+                        <Link href="/" className="flex-shrink-0 transition-opacity hover:opacity-80 flex items-center">
+                            <Image
+                                src={logoSrc}
+                                alt="enJoyful Life Logo"
+                                width={240}
+                                height={80}
+                                className={`h-16 lg:h-26 w-auto object-contain transition-all duration-300 ${isTransparent ? 'brightness-0 invert' : ''}`}
+                                priority
+                            />
+                        </Link>
+                    </div>
 
                     {/* Center: Desktop Navigation or Search */}
                     <div className="hidden md:flex flex-1 items-center justify-center relative h-full px-8">

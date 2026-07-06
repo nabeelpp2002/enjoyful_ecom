@@ -225,7 +225,9 @@ export default function ProductDetail({ params }: { params: Promise<{ id: string
 
     return (
         <div className="bg-[var(--color-brand-sand)] min-h-screen">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-40 md:pb-12">
+            {/* Top padding clears the fixed 70px header (StickyHeader is position:fixed,
+                out of flow) so the breadcrumb sits fully below it on every screen size. */}
+            <div className="max-w-7xl mx-auto px-4 md:px-8 pt-24 md:pt-28 pb-40 md:pb-12">
                 <Breadcrumb
                     items={[
                         { label: "Home", href: "/" },
