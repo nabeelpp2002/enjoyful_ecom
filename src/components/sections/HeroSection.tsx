@@ -126,7 +126,7 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
             </AnimatePresence>
 
             {/* Text overlay — positioned absolutely over the image */}
-            <div className="absolute inset-0 z-10 flex items-end md:items-center pb-20 md:pb-0 pt-20">
+            <div className="absolute inset-0 z-10 flex items-center md:items-center pb-0 md:pb-0 pt-0">
                 <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
                     <div className="max-w-2xl relative flex flex-col justify-center">
                         <AnimatePresence mode="wait">

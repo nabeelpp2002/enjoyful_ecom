@@ -742,14 +742,26 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                                 {/* Product Info Below Image */}
                                 <div className="pt-8 md:pt-10 pb-1 md:pb-2 px-1 text-center bg-white flex flex-col items-center flex-grow justify-start z-10 relative">
                                     <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="block group/link w-full">
-                                        <h3 className="font-heading font-bold text-xs md:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-tight mb-1 truncate px-1">
+                                        <h3 className="font-heading font-bold text-xs md:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-tight mb-2 md:mb-3 truncate px-1">
                                             {product.name}
                                         </h3>
                                     </Link>
-                                    <p className="font-sans font-normal text-[11px] md:text-[14px] text-gray-500 mt-0 md:mt-1">
-                                        {product.price} AED
-                                        {product.size && <span className="text-gray-400"> · {product.size}</span>}
-                                    </p>
+                                    <div className="flex items-baseline gap-1 md:gap-1.5 justify-center">
+                                        <span className="font-heading font-extrabold text-[18px] md:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none">
+                                            {product.price}
+                                        </span>
+                                        <span className="font-sans font-semibold text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/70 uppercase leading-none">
+                                            AED
+                                        </span>
+                                        {product.originalPrice && product.originalPrice > product.price && (
+                                            <span className="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/30 line-through leading-none ml-1">
+                                                {product.originalPrice} AED
+                                            </span>
+                                        )}
+                                    </div>
+                                    {product.size && (
+                                        <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/50 mt-1 md:mt-1.5">{product.size}</span>
+                                    )}
                                 </div>
                             </motion.div>
                         </motion.div>

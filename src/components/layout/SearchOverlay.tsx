@@ -174,10 +174,13 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                                                     </p>
                                                 </div>
                                                 {showProductPrices && (
-                                                    <div className="flex flex-col items-end flex-shrink-0">
-                                                        <span className="font-semibold text-[#1A1A1B]">{r.price} AED</span>
+                                                    <div className="flex flex-col items-end flex-shrink-0 gap-1">
+                                                        <div className="flex items-baseline gap-1">
+                                                            <span className="font-heading font-extrabold text-[#1A1A1B] text-sm">{r.price}</span>
+                                                            <span className="font-sans font-semibold text-xs text-[#1A1A1B]/70">AED</span>
+                                                        </div>
                                                         {r.originalPrice && r.originalPrice > r.price && (
-                                                            <span className="text-xs text-[#1A1A1B]/30 line-through mt-0.5">
+                                                            <span className="text-xs text-[#1A1A1B]/30 line-through">
                                                                 {r.originalPrice} AED
                                                             </span>
                                                         )}
