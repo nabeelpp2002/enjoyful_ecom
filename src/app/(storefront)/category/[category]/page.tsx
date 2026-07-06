@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useData } from "@/context/DataContext";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { Skeleton } from "@/components/ui/Skeleton";
 import { Suspense } from "react";
 import { CategoryPromo } from "@/components/sections/CategoryPromo";
 import { SeoContent } from "@/components/sections/SeoContent";
@@ -134,10 +135,12 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     const [totalCount, setTotalCount] = useState(0);
     const PAGE_SIZE = 12;
 
-    // Admin-managed category banner (falls back to static art if none is set)
+    // Admin-managed category banner (shows a skeleton while it loads)
     const [banner, setBanner] = useState<{ desktopImageUrl?: string; mobileImageUrl?: string } | null>(null);
+    const [bannerLoading, setBannerLoading] = useState(true);
     useEffect(() => {
-        if (category === "Shop All") { setBanner(null); return; }
+        if (category === "Shop All") { setBanner(null); setBannerLoading(false); return; }
+        setBannerLoading(true);
         fetch("/api/category-banners")
             .then((r) => (r.ok ? r.json() : null))
             .then((body) => {
@@ -147,7 +150,8 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                     : null;
                 setBanner(match ?? null);
             })
-            .catch(() => setBanner(null));
+            .catch(() => setBanner(null))
+            .finally(() => setBannerLoading(false));
     }, [category]);
 
     // Handle click outside to close dropdowns
@@ -302,20 +306,38 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="mb-8 md:mb-12 mt-16 md:mt-18 overflow-hidden shadow-sm border border-black/5 aspect-[4/3] md:aspect-[3/0.9] relative"
             >
-                <Image
-                    src={banner?.mobileImageUrl || banner?.desktopImageUrl || (category === "Glow" ? "/assets/perfume-for-mobile.png" : category === "Baby" ? "/assets/baby-banner.png" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
-                    alt={`${category} banner`}
-                    fill
-                    priority
-                    className="object-cover md:hidden"
-                />
-                <Image
-                    src={banner?.desktopImageUrl || (category === "Glow" ? "/assets/glow-banner.jpeg" : category === "Baby" ? "/assets/baby-banner.png" : category === "Daily" ? "/assets/daily-banner.png" : "/assets/categoryAd.jpeg")}
-                    alt={`${category} banner`}
-                    fill
-                    priority
-                    className="object-cover hidden md:block"
-                />
+                {bannerLoading ? (
+                    <Skeleton className="absolute inset-0 rounded-none" />
+                ) : (
+                    <>
+                        {(banner?.mobileImageUrl || banner?.desktopImageUrl) ? (
+                            <Image
+                                src={banner.mobileImageUrl || banner.desktopImageUrl!}
+                                alt={`${category} banner`}
+                                fill
+                                priority
+                                className="object-cover md:hidden"
+                            />
+                        ) : (
+                            <div className={`absolute inset-0 md:hidden flex items-center justify-center ${info.bgColor}`}>
+                                <span className="font-heading text-xl font-bold text-[var(--color-brand-onyx)]/70 px-6 text-center">{info.title}</span>
+                            </div>
+                        )}
+                        {banner?.desktopImageUrl ? (
+                            <Image
+                                src={banner.desktopImageUrl}
+                                alt={`${category} banner`}
+                                fill
+                                priority
+                                className="object-cover hidden md:block"
+                            />
+                        ) : (
+                            <div className={`absolute inset-0 hidden md:flex items-center justify-center ${info.bgColor}`}>
+                                <span className="font-heading text-3xl font-bold text-[var(--color-brand-onyx)]/70">{info.title}</span>
+                            </div>
+                        )}
+                    </>
+                )}
             </motion.div>
             <div className="max-w-7xl mx-auto px-4 md:px-8 pb-12">
                 {/* Category Ad Banner */}
