@@ -171,11 +171,6 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
         setPage(1);
     }, [urlCategoryRaw, sortBy, priceRange, selectedSkinTypes, selectedProductTypes, query, subcategoryParam]);
 
-    // Scroll back to the top when the page (pagination) changes so new items start in view.
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [page]);
-
     const fetchProducts = useCallback(async () => {
         setLoadingProducts(true);
         const params = new URLSearchParams({
