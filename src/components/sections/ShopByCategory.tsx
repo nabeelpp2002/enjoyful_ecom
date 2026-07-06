@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const categories = [
     {
@@ -68,7 +69,6 @@ export function ShopByCategory() {
                     {categories.map((category, index) => (
                         <motion.div
                             key={index}
-                            className={index === 4 ? "col-span-2 lg:col-span-1" : ""}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -106,6 +106,33 @@ export function ShopByCategory() {
                             </Link>
                         </motion.div>
                     ))}
+
+                    {/* View All CTA Card - Mobile Only */}
+                    <motion.div
+                        className="lg:hidden"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                        <Link
+                            href="/shop"
+                            className="group flex flex-col h-full items-center justify-center px-4 py-8 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] cursor-pointer border-2 border-[var(--color-brand-purple)]/20 hover:border-[var(--color-brand-purple)]/40 bg-white"
+                        >
+                            {/* Arrow Icon - Primary Focus */}
+                            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[var(--color-brand-purple)] group-hover:bg-[var(--color-brand-mustard)] transition-colors duration-300 mb-4">
+                                <ArrowRight className="w-8 h-8 text-white" strokeWidth={2.5} />
+                            </div>
+
+                            {/* CTA Text */}
+                            <h3 className="font-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] text-center mb-1">
+                                View All
+                            </h3>
+                            <p className="font-sans text-xs md:text-sm text-[var(--color-brand-onyx)]/60 text-center">
+                                Browse all products
+                            </p>
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
         </section>
