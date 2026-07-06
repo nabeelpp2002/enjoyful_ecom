@@ -127,13 +127,16 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     const [filtersOpen, setFiltersOpen] = useState(false);
     const SKIN_TYPES = ["Dry", "Oily", "Combination", "Normal", "Sensitive"];
 
-    // Server-side filtered/sorted/paginated results
+    // Server-side filtered/sorted results, streamed in via infinite scroll.
     const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
-    const [loadingProducts, setLoadingProducts] = useState(true);
+    const [loadingProducts, setLoadingProducts] = useState(true); // initial (page 1) load
+    const [loadingMore, setLoadingMore] = useState(false);        // appending further pages
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [totalCount, setTotalCount] = useState(0);
-    const PAGE_SIZE = 12;
+    const PAGE_SIZE = 16; // 4 × 4 grid on desktop
+    const hasMore = page < totalPages;
+    const sentinelRef = useRef<HTMLDivElement | null>(null);
 
     // Admin-managed category banner (shows a skeleton while it loads)
     const [banner, setBanner] = useState<{ desktopImageUrl?: string; mobileImageUrl?: string } | null>(null);
@@ -172,7 +175,9 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     }, [urlCategoryRaw, sortBy, priceRange, selectedSkinTypes, selectedProductTypes, query, subcategoryParam]);
 
     const fetchProducts = useCallback(async () => {
-        setLoadingProducts(true);
+        const append = page > 1;
+        if (append) setLoadingMore(true);
+        else setLoadingProducts(true);
         const params = new URLSearchParams({
             page: String(page),
             limit: String(PAGE_SIZE),
@@ -192,20 +197,44 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
         try {
             const res = await fetch(`/api/products?${params.toString()}`, { cache: 'no-store' });
             if (!res.ok) {
-                setCategoryProducts([]); setTotalPages(1); setTotalCount(0);
+                if (!append) { setCategoryProducts([]); setTotalPages(1); setTotalCount(0); }
                 return;
             }
             const body = await res.json();
             const raw: ApiProduct[] = Array.isArray(body?.data) ? body.data : [];
-            setCategoryProducts(raw.map(normalizeApi));
+            const mapped = raw.map(normalizeApi);
+            setCategoryProducts(prev => {
+                if (!append) return mapped;
+                // Append, de-duping by id in case a page boundary overlaps.
+                const seen = new Set(prev.map(p => p.id));
+                return [...prev, ...mapped.filter(p => !seen.has(p.id))];
+            });
             setTotalPages(body?.meta?.totalPages ?? 1);
             setTotalCount(body?.meta?.total ?? raw.length);
         } finally {
-            setLoadingProducts(false);
+            if (append) setLoadingMore(false);
+            else setLoadingProducts(false);
         }
     }, [page, sortBy, priceRange, selectedSkinTypes, selectedProductTypes, query, subcategoryParam, category, urlCategoryRaw]);
 
     useEffect(() => { fetchProducts(); }, [fetchProducts]);
+
+    // Infinite scroll: load the next page when the sentinel nears the viewport.
+    // rootMargin pre-loads ~a couple of rows before the user hits the bottom.
+    useEffect(() => {
+        const el = sentinelRef.current;
+        if (!el || !hasMore) return;
+        const io = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting && !loadingProducts && !loadingMore) {
+                    setPage(p => p + 1);
+                }
+            },
+            { rootMargin: "600px 0px" },
+        );
+        io.observe(el);
+        return () => io.disconnect();
+    }, [hasMore, loadingProducts, loadingMore]);
 
     const categoryInfo: Record<string, { title: string; description: string; bgColor?: string }> = {
         "Shop All": {
@@ -728,27 +757,29 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                 </div>
                 )}
 
-                {/* Pagination */}
-                {!loadingProducts && totalPages > 1 && (
-                    <div className="flex items-center justify-center gap-2 mt-12">
-                        <button
-                            onClick={() => setPage(p => Math.max(1, p - 1))}
-                            disabled={page <= 1}
-                            className="px-4 py-2 rounded-full text-sm font-medium bg-white border border-[var(--color-brand-onyx)]/15 text-[var(--color-brand-onyx)] hover:border-[var(--color-brand-onyx)]/40 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                        >
-                            Previous
-                        </button>
-                        <span className="px-4 py-2 text-sm font-semibold text-[var(--color-brand-onyx)] tabular-nums">
-                            Page {page} of {totalPages}
-                        </span>
-                        <button
-                            onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                            disabled={page >= totalPages}
-                            className="px-4 py-2 rounded-full text-sm font-medium bg-[var(--color-brand-onyx)] text-white hover:bg-black disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                        >
-                            Next
-                        </button>
+                {/* Infinite scroll: skeleton row shown while the next page loads */}
+                {loadingMore && (
+                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-8 sm:gap-y-12 mt-8 sm:mt-12">
+                        {Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className="bg-white rounded-[1.5rem] p-3 shadow-sm">
+                                <div className="aspect-[3/4] md:pt-[100%] md:aspect-auto rounded-[1.25rem] bg-gray-100 animate-pulse" />
+                                <div className="mt-4 h-4 bg-gray-100 rounded animate-pulse" />
+                                <div className="mt-2 h-3 w-1/2 mx-auto bg-gray-100 rounded animate-pulse" />
+                            </div>
+                        ))}
                     </div>
+                )}
+
+                {/* Sentinel — observed by IntersectionObserver to auto-load the next page */}
+                {!loadingProducts && hasMore && (
+                    <div ref={sentinelRef} aria-hidden className="h-px w-full" />
+                )}
+
+                {/* End-of-results marker once everything is loaded */}
+                {!loadingProducts && !loadingMore && !hasMore && categoryProducts.length > 0 && (
+                    <p className="text-center text-sm text-[var(--color-brand-onyx)]/40 mt-12">
+                        You&apos;ve reached the end — {totalCount} product{totalCount === 1 ? "" : "s"}.
+                    </p>
                 )}
 
                 {!loadingProducts && categoryProducts.length === 0 && (

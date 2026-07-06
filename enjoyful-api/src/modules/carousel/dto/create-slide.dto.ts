@@ -8,6 +8,9 @@ export class CreateSlideDto {
   @IsOptional() @IsString() buttonText?: string;
   @IsOptional() @IsString() buttonLink?: string;
 
+  @IsOptional() @IsString() textColor?: string;
+  @IsOptional() @IsString() buttonStyle?: string;
+
   @IsOptional() @IsString() desktopImageUrl?: string;
   @IsOptional() @IsString() mobileImageUrl?: string;
   @IsOptional() @IsString() imageUrl?: string;

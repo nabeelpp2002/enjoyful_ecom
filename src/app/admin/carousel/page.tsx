@@ -31,6 +31,8 @@ interface Slide {
     description?: string;
     buttonText?: string;
     buttonLink?: string;
+    textColor?: string;
+    buttonStyle?: string;
     desktopImageUrl?: string;
     mobileImageUrl?: string;
     imageUrl?: string;
@@ -44,6 +46,8 @@ type SlideForm = {
     description: string;
     buttonText: string;
     buttonLink: string;
+    textColor: string;
+    buttonStyle: string;
     desktopImageUrl: string;
     mobileImageUrl: string;
 };
@@ -51,6 +55,7 @@ type SlideForm = {
 const EMPTY_FORM: SlideForm = {
     title: "", subtitle: "", description: "",
     buttonText: "Shop Now", buttonLink: "/category/all",
+    textColor: "#FFFFFF", buttonStyle: "solid",
     desktopImageUrl: "", mobileImageUrl: "",
 };
 
@@ -264,6 +269,46 @@ function TextFields({ form, setForm }: { form: SlideForm; setForm: React.Dispatc
     );
 }
 
+const HEX_RE = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+
+function StyleFields({ form, setForm }: { form: SlideForm; setForm: React.Dispatch<React.SetStateAction<SlideForm>> }) {
+    const validColor = HEX_RE.test(form.textColor) ? form.textColor : "#FFFFFF";
+    return (
+        <div className="grid grid-cols-2 gap-3 mt-3">
+            <div>
+                <label className="block text-xs text-[#1A1A1B]/40 mb-1">Text Color</label>
+                <div className="flex items-center gap-2">
+                    <input
+                        type="color"
+                        value={validColor}
+                        onChange={e => setForm(p => ({ ...p, textColor: e.target.value.toUpperCase() }))}
+                        className="w-10 h-[42px] rounded-lg border border-black/8 cursor-pointer p-1 bg-[#F9F5F0]"
+                        aria-label="Text color"
+                    />
+                    <input
+                        value={form.textColor}
+                        onChange={e => setForm(p => ({ ...p, textColor: e.target.value }))}
+                        placeholder="#FFFFFF"
+                        className={inputCls}
+                    />
+                </div>
+                <p className="text-[10px] text-[#1A1A1B]/30 mt-1">Applies to title, subtitle &amp; description over the image.</p>
+            </div>
+            <div>
+                <label className="block text-xs text-[#1A1A1B]/40 mb-1">Button Style</label>
+                <select
+                    value={form.buttonStyle}
+                    onChange={e => setForm(p => ({ ...p, buttonStyle: e.target.value }))}
+                    className={inputCls}
+                >
+                    <option value="solid">Solid (white fill)</option>
+                    <option value="outline">Outline (uses text color)</option>
+                </select>
+            </div>
+        </div>
+    );
+}
+
 function SlideModal({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -322,6 +367,7 @@ function SlideFormModal({
                     setBgUploading={setBgUploading}
                 />
                 <TextFields form={form} setForm={setForm} />
+                <StyleFields form={form} setForm={setForm} />
                 {pendingUpload && (
                     <p className="text-xs text-amber-600 mt-3 flex items-center gap-1.5">
                         <Loader2 className="w-3 h-3 animate-spin" />
@@ -433,6 +479,8 @@ export default function AdminCarouselPage() {
                             description: editingSlide.description || "",
                             buttonText: editingSlide.buttonText || "Shop Now",
                             buttonLink: editingSlide.buttonLink || "/category/all",
+                            textColor: editingSlide.textColor || "#FFFFFF",
+                            buttonStyle: editingSlide.buttonStyle || "solid",
                             desktopImageUrl: editingSlide.desktopImageUrl || editingSlide.imageUrl || "",
                             mobileImageUrl: editingSlide.mobileImageUrl || "",
                         }}

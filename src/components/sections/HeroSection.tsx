@@ -5,20 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Slide {
+export interface Slide {
     id: string;
     title: string;
     subtitle?: string;
     description?: string;
     buttonText?: string;
     buttonLink?: string;
+    textColor?: string;
+    buttonStyle?: string;
     desktopImageUrl: string;
     mobileImageUrl: string;
 }
 
-const FALLBACK_SLIDES: Slide[] = [];
-
-function normalize(s: Record<string, unknown>): Slide {
+export function normalizeHeroSlide(s: Record<string, unknown>): Slide {
     return {
         id: String(s.$id ?? s._id ?? s.id ?? ""),
         title: String(s.title ?? ""),
@@ -26,17 +26,24 @@ function normalize(s: Record<string, unknown>): Slide {
         description: s.description as string | undefined,
         buttonText: (s.buttonText as string) || "Shop Now",
         buttonLink: (s.buttonLink as string) || "/category/all",
+        textColor: (s.textColor as string) || "#FFFFFF",
+        buttonStyle: (s.buttonStyle as string) || "solid",
         desktopImageUrl: (s.desktopImageUrl as string) || (s.imageUrl as string) || "",
         mobileImageUrl: (s.mobileImageUrl as string) || (s.desktopImageUrl as string) || (s.imageUrl as string) || "",
     };
 }
 
-export function HeroSection() {
-    const [slides, setSlides] = useState<Slide[]>([]);
+export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] }) {
+    const [slides, setSlides] = useState<Slide[]>(initialSlides);
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [loading, setLoading] = useState(true);
+    // When the server already provided slides, there's nothing to wait for — the
+    // first slide (LCP image) is in the initial HTML. Only show a skeleton when
+    // we have to fall back to a client-side fetch (e.g. API was down at SSR time).
+    const [loading, setLoading] = useState(initialSlides.length === 0);
 
     useEffect(() => {
+        // Slides already hydrated from the server render — skip the client fetch.
+        if (initialSlides.length > 0) return;
         fetch("/api/carousel")
             .then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`))
             .then((data: Record<string, unknown>[] | null) => {
@@ -46,13 +53,13 @@ export function HeroSection() {
                 const active = data
                     .filter(s => s.isActive !== false)
                     .filter(s => s.desktopImageUrl || s.imageUrl || s.mobileImageUrl)
-                    .map(normalize)
+                    .map(normalizeHeroSlide)
                     .filter(s => s.desktopImageUrl || s.mobileImageUrl);
                 if (active.length) setSlides(active);
             })
             .catch((err) => console.error("[HeroSection] carousel fetch failed:", err))
             .finally(() => setLoading(false));
-    }, []);
+    }, [initialSlides.length]);
 
     useEffect(() => {
         if (slides.length < 2) return;
@@ -74,6 +81,8 @@ export function HeroSection() {
 
     const safe = currentSlide >= slides.length ? 0 : currentSlide;
     const slide = slides[safe];
+    const textColor = slide.textColor || "#FFFFFF";
+    const isOutline = slide.buttonStyle === "outline";
 
     return (
         <section className="relative w-full h-[100svh] overflow-hidden bg-[var(--color-brand-onyx)]">
@@ -132,7 +141,8 @@ export function HeroSection() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: 0.4 }}
-                                        className="inline-block px-5 py-2 rounded-full backdrop-blur-md bg-white/10 text-white font-sans text-xs md:text-sm tracking-[0.2em] uppercase font-bold border border-white/20"
+                                        style={{ color: textColor }}
+                                        className="inline-block px-5 py-2 rounded-full backdrop-blur-md bg-white/10 font-sans text-xs md:text-sm tracking-[0.2em] uppercase font-bold border border-white/20"
                                     >
                                         {slide.subtitle}
                                     </motion.div>
@@ -142,7 +152,8 @@ export function HeroSection() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.5 }}
-                                    className="font-heading font-extrabold text-[40px] md:text-6xl lg:text-[84px] text-white leading-[0.95] tracking-tighter drop-shadow-xl whitespace-pre-line"
+                                    style={{ color: textColor }}
+                                    className="font-heading font-extrabold text-[40px] md:text-6xl lg:text-[84px] leading-[0.95] tracking-tighter drop-shadow-xl whitespace-pre-line"
                                 >
                                     {slide.title}
                                 </motion.h1>
@@ -152,7 +163,8 @@ export function HeroSection() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: 0.6 }}
-                                        className="font-sans font-normal text-sm md:text-base text-white/90 leading-relaxed max-w-md drop-shadow-md"
+                                        style={{ color: textColor }}
+                                        className="font-sans font-normal text-sm md:text-base leading-relaxed max-w-md drop-shadow-md opacity-90"
                                     >
                                         {slide.description}
                                     </motion.p>
@@ -166,7 +178,12 @@ export function HeroSection() {
                                 >
                                     <Link
                                         href={slide.buttonLink || "/category/all"}
-                                        className="inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black font-sans font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-black hover:text-white border border-transparent hover:border-white"
+                                        style={isOutline ? { color: textColor, borderColor: textColor } : undefined}
+                                        className={
+                                            isOutline
+                                                ? "inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-transparent font-sans font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 border-2 hover:bg-white hover:text-black hover:border-white"
+                                                : "inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black font-sans font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-black hover:text-white border border-transparent hover:border-white"
+                                        }
                                     >
                                         {slide.buttonText}
                                     </Link>

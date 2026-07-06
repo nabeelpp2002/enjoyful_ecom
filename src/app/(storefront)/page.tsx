@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { HeroSection } from "@/components/sections/HeroSection";
+import { Suspense } from "react";
+import { HeroSectionServer } from "@/components/sections/HeroSectionServer";
 import { ShopByCategory } from "@/components/sections/ShopByCategory";
 import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <Suspense fallback={<section className="relative w-full h-[100svh] bg-[var(--color-brand-onyx)] animate-pulse" />}>
+        <HeroSectionServer />
+      </Suspense>
       <ShopByCategory />
       <FeaturedProducts />
       <FeaturesSection />

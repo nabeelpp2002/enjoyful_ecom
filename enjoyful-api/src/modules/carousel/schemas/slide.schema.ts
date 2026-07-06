@@ -11,6 +11,10 @@ export class Slide {
   @Prop({ default: 'Shop Now' }) buttonText: string;
   @Prop({ default: '/category/all' }) buttonLink: string;
 
+  // Presentation controls (per-slide, configurable from admin)
+  @Prop({ default: '#FFFFFF' }) textColor: string;
+  @Prop({ default: 'solid' }) buttonStyle: string; // 'solid' | 'outline'
+
   // Separate desktop + mobile imagery — both stored as Cloudinary URLs
   @Prop({ default: '' }) desktopImageUrl: string;
   @Prop({ default: '' }) mobileImageUrl: string;

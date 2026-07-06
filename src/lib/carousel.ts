@@ -7,6 +7,8 @@ export interface CarouselSlide {
   description?: string;
   buttonText?: string;
   buttonLink?: string;
+  textColor?: string;
+  buttonStyle?: string;
   desktopImageUrl: string;
   mobileImageUrl: string;
   imageUrl?: string;
@@ -22,6 +24,8 @@ export function normalizeSlide(s: Record<string, unknown>): CarouselSlide {
     description: s.description as string | undefined,
     buttonText: s.buttonText as string | undefined,
     buttonLink: s.buttonLink as string | undefined,
+    textColor: s.textColor as string | undefined,
+    buttonStyle: s.buttonStyle as string | undefined,
     desktopImageUrl: String(s.desktopImageUrl ?? s.imageUrl ?? ''),
     mobileImageUrl: String(s.mobileImageUrl ?? ''),
     imageUrl: s.imageUrl as string | undefined,
