@@ -86,7 +86,9 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
 
     return (
         <section className="relative w-full h-[100svh] overflow-hidden bg-[var(--color-brand-onyx)]">
-            <AnimatePresence>
+            {/* initial={false} → the first slide renders statically (no slide-in) on
+                initial load; only subsequent slide changes animate. */}
+            <AnimatePresence initial={false}>
                 <motion.div
                     key={slide.id}
                     initial={{ x: "100%" }}

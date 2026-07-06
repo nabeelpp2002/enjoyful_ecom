@@ -35,10 +35,15 @@ export function normalizeSlide(s: Record<string, unknown>): CarouselSlide {
 }
 
 export async function fetchCarouselSlides(token?: string): Promise<CarouselSlide[]> {
-  const res = await fetch(`${API_BASE}/carousel`, {
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
-    cache: 'no-store',
-  });
+  // Admin requests (token present) must always see fresh data — never cache them.
+  // Public requests (homepage hero) are cached and revalidated periodically so that
+  // navigating back to the homepage serves the slides instantly from the Next.js
+  // data cache instead of re-hitting the API on every visit.
+  const cacheOptions: RequestInit & { next?: { revalidate: number; tags: string[] } } = token
+    ? { headers: { Authorization: `Bearer ${token}` }, cache: 'no-store' }
+    : { next: { revalidate: 300, tags: ['carousel'] } };
+
+  const res = await fetch(`${API_BASE}/carousel`, cacheOptions);
 
   if (!res.ok) {
     const err = await res.text().catch(() => '');

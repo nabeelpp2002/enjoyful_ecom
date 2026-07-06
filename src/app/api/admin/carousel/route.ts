@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { revalidateTag } from 'next/cache';
 import { fetchCarouselSlides } from '@/lib/carousel';
 
 const API_BASE = process.env.NEST_API_URL ?? 'http://localhost:4000/api/v1';
@@ -37,6 +38,8 @@ export async function POST(request: NextRequest) {
       body,
     });
     const data = await res.json().catch(() => ({}));
+    // Bust the public homepage hero cache so the new slide appears immediately.
+    if (res.ok) revalidateTag('carousel', 'max');
     return NextResponse.json(data, { status: res.status });
   } catch (err) {
     console.error('[api/admin/carousel] POST', err);
