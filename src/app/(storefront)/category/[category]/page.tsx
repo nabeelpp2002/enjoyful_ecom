@@ -143,7 +143,6 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     const [banner, setBanner] = useState<{ desktopImageUrl?: string; mobileImageUrl?: string } | null>(null);
     const [bannerLoading, setBannerLoading] = useState(true);
     useEffect(() => {
-        if (category === "Shop All") { setBanner(null); setBannerLoading(false); return; }
         setBannerLoading(true);
         fetch("/api/category-banners")
             .then((r) => (r.ok ? r.json() : null))

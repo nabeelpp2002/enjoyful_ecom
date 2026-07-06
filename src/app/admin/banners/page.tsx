@@ -7,7 +7,7 @@ import { AdminCardSkeleton } from "@/components/ui/AdminSkeleton";
 import Image from "next/image";
 import { ImageEditor } from "@/components/admin/ImageEditor";
 
-const CATEGORIES = ["Glow", "Baby", "Daily", "Fragrances", "Home Care"];
+const CATEGORIES = ["Shop All", "Glow", "Baby", "Daily", "Fragrances", "Home Care"];
 type BannerField = "desktopImageUrl" | "mobileImageUrl";
 // Must match the actual banner container aspect ratios on the storefront
 // category page: aspect-[3/0.9] (desktop) and aspect-[4/3] (mobile).
@@ -203,7 +203,7 @@ export default function AdminBannersPage() {
                             <div className="flex items-center justify-between mb-4">
                                 <h2 className="text-[#1A1A1B] font-semibold flex items-center gap-2 text-sm">
                                     <ImageIcon className="w-4 h-4 text-[#735697]" />
-                                    {cat} Category
+                                    {cat === "Shop All" ? "Shop All Page" : `${cat} Category`}
                                 </h2>
                                 {editCat === cat ? (
                                     <div className="flex items-center gap-2">
