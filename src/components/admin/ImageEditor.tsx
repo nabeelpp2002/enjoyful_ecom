@@ -130,14 +130,30 @@ export function ImageEditor({
 
     useEffect(() => {
         if (!file) { setSrc(null); return; }
-        readFileAsDataUrl(file).then(setSrc).catch(() => setError("Could not read file"));
         // reset transform state when a new file comes in
+        setSrc(null);
         setCrop({ x: 0, y: 0 });
         setZoom(1);
         setRotation(0);
         setFlipH(false);
         setFlipV(false);
         setError(null);
+        let cancelled = false;
+        // Read the file, THEN verify the browser can actually decode it before showing the
+        // cropper. Formats like HEIC (iPhone) read fine but can't be displayed, which would
+        // otherwise leave a blank editor with no indication the file was selected.
+        readFileAsDataUrl(file)
+            .then(dataUrl => new Promise<string>((resolve, reject) => {
+                const probe = new Image();
+                probe.onload = () => resolve(dataUrl);
+                probe.onerror = () => reject(new Error("decode-failed"));
+                probe.src = dataUrl;
+            }))
+            .then(dataUrl => { if (!cancelled) setSrc(dataUrl); })
+            .catch(() => {
+                if (!cancelled) setError(`Couldn't preview "${file.name}". It looks like an unsupported format (e.g. HEIC from an iPhone) — please convert it to JPG, PNG or WEBP and try again.`);
+            });
+        return () => { cancelled = true; };
     }, [file]);
 
     const onCropComplete = useCallback((_area: Area, areaPx: Area) => {
@@ -231,7 +247,7 @@ export function ImageEditor({
                                 {Math.round(croppedArea.width)} × {Math.round(croppedArea.height)} px
                             </div>
                         )}
-                        {src && (
+                        {src ? (
                             <Cropper
                                 image={src}
                                 crop={crop}
@@ -252,6 +268,12 @@ export function ImageEditor({
                                     },
                                 }}
                             />
+                        ) : (
+                            <div className="absolute inset-0 flex items-center justify-center px-8 text-center">
+                                <p className={`text-sm ${error ? "text-red-300" : "text-white/50"}`}>
+                                    {error ?? "Loading image…"}
+                                </p>
+                            </div>
                         )}
                         {safeAreaGuide && aspect && (
                             <HeroSafeAreaOverlay variant={safeAreaGuide} aspect={aspect} />

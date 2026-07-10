@@ -58,9 +58,9 @@ interface ProductFormProps {
 const CATEGORIES = ["Glow", "Baby", "Daily", "Fragrances", "Home Care"];
 
 const SUBCATEGORY_MAP: Record<string, string[]> = {
-    Glow: ["Face Wash", "Face Scrub", "Face Mask", "Sunscreen", "Aloe Vera Gel", "Toner", "Face Serum", "Moisturizer", "Eye Cream"],
-    Baby: ["Baby Lotion", "Baby Wash", "Baby Talc", "Baby Rash Cream", "Baby Soap", "Massage Oil"],
-    Daily: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash", "Conditioner", "Deodorant"],
+    Glow: ["Face Wash", "Face Scrub", "Face Mask", "Sunscreen", "Aloe Vera Gel", "Toner", "Body Scrub"],
+    Baby: ["Baby Lotion", "Baby Wash", "Baby Talc", "Baby Rash Cream", "Baby Soap"],
+    Daily: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash", "Hair Removal"],
     Fragrances: ["Perfume", "Body Mist", "Roll On", "Deo Stick"],
     "Home Care": ["Kitchen Care", "Bathroom Care", "Floor & Surface Care", "Hand Care", "Laundry Care"],
 };
@@ -370,8 +370,16 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                                 >
                                     <X className="w-3 h-3" />
                                 </button>
-                                {i === 0 && (
+                                {i === 0 ? (
                                     <span className="absolute bottom-1 left-1 text-xs bg-[#735697] text-white px-1.5 py-0.5 rounded-md">Main</span>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        onClick={() => setForm(prev => { const imgs = [...prev.images]; const [moved] = imgs.splice(i, 1); return { ...prev, images: [moved, ...imgs] }; })}
+                                        className="absolute bottom-1 left-1 text-[10px] font-semibold bg-white/90 text-[#735697] px-1.5 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                                    >
+                                        Set main
+                                    </button>
                                 )}
                             </div>
                         ))}

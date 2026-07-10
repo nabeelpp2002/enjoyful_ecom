@@ -37,6 +37,7 @@ export interface Product {
     isFeatured?: boolean;
     onSale?: boolean;
     bestDeal?: boolean;
+    isBestSeller?: boolean;
     externalBuyLinks?: ExternalBuyLinks;
     // Variant / family fields
     size?: string;

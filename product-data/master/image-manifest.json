@@ -1,0 +1,1454 @@
+[
+  {
+    "slug": "baby-lotion-200ml",
+    "family": "baby-lotion",
+    "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-200ml",
+    "folder": "baby/baby-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion_small1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion_small2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion2.png"
+    ]
+  },
+  {
+    "slug": "baby-lotion-500ml",
+    "family": "baby-lotion",
+    "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-500ml",
+    "folder": "baby/baby-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion_small1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion_small2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Lotion/Baby Lotion2.png"
+    ]
+  },
+  {
+    "slug": "baby-rash-cream-50ml",
+    "family": "baby-rash-cream",
+    "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml",
+    "folder": "baby/baby-rash-cream",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Rash Cream/Enjoyfullife_mockup21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Rash Cream/Enjoyfullife_mockup15.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Rash Cream/Enjoyfullife_mockup17.png"
+    ]
+  },
+  {
+    "slug": "baby-rash-cream-100ml",
+    "family": "baby-rash-cream",
+    "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml",
+    "folder": "baby/baby-rash-cream",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Rash Cream/Enjoyfullife_mockup21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Rash Cream/Enjoyfullife_mockup15.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Rash Cream/Enjoyfullife_mockup17.png"
+    ]
+  },
+  {
+    "slug": "baby-soap",
+    "family": "baby-soap",
+    "publicId": "enjoyful/products/baby/baby-soap/baby-soap",
+    "folder": "baby/baby-soap",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Soap/Baby Soap21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Soap/Baby Soap1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Soap/Baby Soap2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Soap/Baby Soap3.png"
+    ]
+  },
+  {
+    "slug": "baby-talc-200gm",
+    "family": "baby-talc",
+    "publicId": "enjoyful/products/baby/baby-talc/baby-talc-200gm",
+    "folder": "baby/baby-talc",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Powder/Enjoyful baby talc_21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Powder/Enjoyful baby talc.jpg"
+    ]
+  },
+  {
+    "slug": "baby-talc-400gm",
+    "family": "baby-talc",
+    "publicId": "enjoyful/products/baby/baby-talc/baby-talc-400gm",
+    "folder": "baby/baby-talc",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Powder/Enjoyful baby talc_21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Baby/Baby Powder/Enjoyful baby talc.jpg"
+    ]
+  },
+  {
+    "slug": "baby-wash-300ml",
+    "family": "baby-wash",
+    "publicId": "enjoyful/products/baby/baby-wash/baby-wash-300ml",
+    "folder": "baby/baby-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Cleaning Products/Baby Wash/Joyful Baby Wash21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Cleaning Products/Baby Wash/Joyful Baby Wash2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Cleaning Products/Baby Wash/Joyful Baby Wash3.png"
+    ]
+  },
+  {
+    "slug": "baby-wash-500ml",
+    "family": "baby-wash",
+    "publicId": "enjoyful/products/baby/baby-wash/baby-wash-500ml",
+    "folder": "baby/baby-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Cleaning Products/Baby Wash/Joyful Baby Wash21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Cleaning Products/Baby Wash/Joyful Baby Wash2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Cleaning Products/Baby Wash/Joyful Baby Wash3.png"
+    ]
+  },
+  {
+    "slug": "almond-body-lotion-100ml",
+    "family": "almond-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-100ml",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Lotion/Almond lotion 100ml21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Lotion/Almond lotion 100ml1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Lotion/Almond lotion 100ml2.png"
+    ]
+  },
+  {
+    "slug": "almond-body-lotion-350ml",
+    "family": "almond-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-350ml",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Lotion/Almond lotion 100ml21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Lotion/Almond lotion 100ml1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Lotion/Almond lotion 100ml2.png"
+    ]
+  },
+  {
+    "slug": "almond-moisturising-cream",
+    "family": "almond-moisturising-cream",
+    "publicId": "enjoyful/products/daily/body-cream/almond-moisturising-cream",
+    "folder": "daily/body-cream",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Moisturising Cream/Almond Moisturising Cream 100ml21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Moisturising Cream/Almond Moisturising Cream 100ml_Final_23_April_2025_1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Moisturising Cream/Almond Moisturising Cream.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Almond Moisturising Cream/Almond Moisturising Cream 100ml_Final_23_April_2025_3.jpg"
+    ]
+  },
+  {
+    "slug": "aloe-bliss-shower-gel",
+    "family": "aloe-bliss-shower-gel",
+    "publicId": "enjoyful/products/daily/shower-gel/aloe-bliss-shower-gel",
+    "folder": "daily/shower-gel",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "aloe-calm-shampoo-100ml",
+    "family": "aloe-calm-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm4.png"
+    ]
+  },
+  {
+    "slug": "aloe-calm-shampoo-400ml",
+    "family": "aloe-calm-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Aloe Calm/Aloe Calm4.png"
+    ]
+  },
+  {
+    "slug": "aloevera-body-lotion-100ml",
+    "family": "aloevera-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Lotion/Aloevera Lotion 350ml21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Lotion/Aloevera Lotion 350ml2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Lotion/Aloevera Lotion 350ml3.png"
+    ]
+  },
+  {
+    "slug": "aloevera-body-lotion-350ml",
+    "family": "aloevera-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Lotion/Aloevera Lotion 350ml21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Lotion/Aloevera Lotion 350ml2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Lotion/Aloevera Lotion 350ml3.png"
+    ]
+  },
+  {
+    "slug": "aloevera-hair-removal-cream-25gm",
+    "family": "aloevera-hair-removal-cream",
+    "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm",
+    "folder": "daily/hair-removal",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream4.png"
+    ]
+  },
+  {
+    "slug": "aloevera-hair-removal-cream-60gm",
+    "family": "aloevera-hair-removal-cream",
+    "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm",
+    "folder": "daily/hair-removal",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Removal Cream/Hair Removal Cream4.png"
+    ]
+  },
+  {
+    "slug": "bamboo-balance-shampoo-100ml",
+    "family": "bamboo-balance-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Bamboo Balance/Bamboo Balance21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Bamboo Balance/Bamboo Balance1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Bamboo Balance/Bamboo Balance3.png"
+    ]
+  },
+  {
+    "slug": "bamboo-balance-shampoo-400ml",
+    "family": "bamboo-balance-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Bamboo Balance/Bamboo Balance21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Bamboo Balance/Bamboo Balance1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Bamboo Balance/Bamboo Balance3.png"
+    ]
+  },
+  {
+    "slug": "botanical-deep-clean-shampoo-100ml",
+    "family": "botanical-deep-clean-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Botanical Shampoo/Botanical Shampoo21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Botanical Shampoo/Botanical Shampoo2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Botanical Shampoo/Botanical Shampoo3.png"
+    ]
+  },
+  {
+    "slug": "botanical-deep-clean-shampoo-400ml",
+    "family": "botanical-deep-clean-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Botanical Shampoo/Botanical Shampoo21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Botanical Shampoo/Botanical Shampoo2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Botanical Shampoo/Botanical Shampoo3.png"
+    ]
+  },
+  {
+    "slug": "c-glow-shower-gel",
+    "family": "c-glow-shower-gel",
+    "publicId": "enjoyful/products/daily/shower-gel/c-glow-shower-gel",
+    "folder": "daily/shower-gel",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shower Gel/Cglow/C Glow21.png",
+    "alternates": []
+  },
+  {
+    "slug": "daily-delight-moisturising-cream",
+    "family": "daily-delight-moisturising-cream",
+    "publicId": "enjoyful/products/daily/body-cream/daily-delight-moisturising-cream",
+    "folder": "daily/body-cream",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Daily Delight/Daily Delight Moisturing cream21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Daily Delight/Daily Delight Moisturing cream2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Daily Delight/Daily Delight Moisturing cream3.png"
+    ]
+  },
+  {
+    "slug": "ice-blast-shower-gel",
+    "family": "ice-blast-shower-gel",
+    "publicId": "enjoyful/products/daily/shower-gel/ice-blast-shower-gel",
+    "folder": "daily/shower-gel",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shower Gel/Ice Blast/Ice Blast21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shower Gel/Ice Blast/Ice Blast3.png"
+    ]
+  },
+  {
+    "slug": "intimate-wash",
+    "family": "intimate-wash",
+    "publicId": "enjoyful/products/daily/intimate-wash/intimate-wash",
+    "folder": "daily/intimate-wash",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "jasmin-oil-200ml",
+    "family": "jasmin-oil",
+    "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-200ml",
+    "folder": "daily/hair-oil",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Oil/Jamin Oil21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Oil/Jamin Oil1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Oil/Jamin Oil2.png"
+    ]
+  },
+  {
+    "slug": "jasmin-oil-500ml",
+    "family": "jasmin-oil",
+    "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-500ml",
+    "folder": "daily/hair-oil",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Oil/Jamin Oil21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Oil/Jamin Oil1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Hair Oil/Jamin Oil2.png"
+    ]
+  },
+  {
+    "slug": "mix-fruit-body-lotion-100ml",
+    "family": "mix-fruit-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Lotion/Mix Fruit Lotion_100ml21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Lotion/Mix Fruit Lotion_100ml1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Lotion/Mix Fruit Lotion_100ml2.png"
+    ]
+  },
+  {
+    "slug": "mix-fruit-body-lotion-350ml",
+    "family": "mix-fruit-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Lotion/Mix Fruit Lotion_100ml21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Lotion/Mix Fruit Lotion_100ml1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Lotion/Mix Fruit Lotion_100ml2.png"
+    ]
+  },
+  {
+    "slug": "mix-fruit-moisturising-cream",
+    "family": "mix-fruit-moisturising-cream",
+    "publicId": "enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream",
+    "folder": "daily/body-cream",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Moisturing Cream/Mix Fruit Moisturising Cream 100ml21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Moisturing Cream/Mix Fruit Moisturising Cream 100ml_Final_23_April_2025_1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Moisturing Cream/Mix Fruit Moisturising Cream 100ml_Final_23_April_2025_2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Mix Fruit Moisturing Cream/Mix Fruit Moisturising Cream 100ml_Final_23_April_2025_3.jpg.png"
+    ]
+  },
+  {
+    "slug": "moisture-balance-body-lotion",
+    "family": "moisture-balance-body-lotion",
+    "publicId": "enjoyful/products/daily/body-lotion/moisture-balance-body-lotion",
+    "folder": "daily/body-lotion",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Moisture Balance Lotion/Moisture Balance21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Moisture Balance Lotion/Moisture Balance2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Moisture Balance Lotion/Moisture Balance3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Moisture Balance Lotion/Moisture Balance4.png"
+    ]
+  },
+  {
+    "slug": "morning-buzz-shower-gel",
+    "family": "morning-buzz-shower-gel",
+    "publicId": "enjoyful/products/daily/shower-gel/morning-buzz-shower-gel",
+    "folder": "daily/shower-gel",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shower Gel/Morning Buzz/Morning Buzz21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shower Gel/Morning Buzz/Morning Buzz2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shower Gel/Morning Buzz/Morning Buzz3.png"
+    ]
+  },
+  {
+    "slug": "nourish-plus-body-cream",
+    "family": "nourish-plus-body-cream",
+    "publicId": "enjoyful/products/daily/body-cream/nourish-plus-body-cream",
+    "folder": "daily/body-cream",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "onion-shampoo-100ml",
+    "family": "onion-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-100ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Onion/Onion Restore21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Onion/Onion Restore1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Onion/Onion Restore3.png"
+    ]
+  },
+  {
+    "slug": "onion-shampoo-400ml",
+    "family": "onion-shampoo",
+    "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-400ml",
+    "folder": "daily/shampoo",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Onion/Onion Restore21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Onion/Onion Restore1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Shampoo/Onion/Onion Restore3.png"
+    ]
+  },
+  {
+    "slug": "repair-plus-body-cream",
+    "family": "repair-plus-body-cream",
+    "publicId": "enjoyful/products/daily/body-cream/repair-plus-body-cream",
+    "folder": "daily/body-cream",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "silky-touch-hair-serum",
+    "family": "silky-touch-hair-serum",
+    "publicId": "enjoyful/products/daily/hair-serum/silky-touch-hair-serum",
+    "folder": "daily/hair-serum",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "amber-glow-body-mist-70ml",
+    "family": "amber-glow-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/amber-glow-body-mist-70ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Amber Glow/Enjoyfullife_bodymist_Amberglow21.jpg",
+    "alternates": []
+  },
+  {
+    "slug": "amber-glow-body-mist-250ml",
+    "family": "amber-glow-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/amber-glow-body-mist-250ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Amber Glow/Enjoyfullife_bodymist_Amberglow21.jpg",
+    "alternates": []
+  },
+  {
+    "slug": "amber-imperial",
+    "family": "amber-imperial",
+    "publicId": "enjoyful/products/fragrances/perfume/amber-imperial",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/Amber Imperial/Amber Imperial21.png",
+    "alternates": []
+  },
+  {
+    "slug": "amber-nocturne",
+    "family": "amber-nocturne",
+    "publicId": "enjoyful/products/fragrances/perfume/amber-nocturne",
+    "folder": "fragrances/perfume",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "amber-ophir",
+    "family": "amber-ophir",
+    "publicId": "enjoyful/products/fragrances/perfume/amber-ophir",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/Amber Ophir/Amber Ophir_21.png",
+    "alternates": []
+  },
+  {
+    "slug": "apex-72h-roll-on",
+    "family": "apex-72h-roll-on",
+    "publicId": "enjoyful/products/fragrances/roll-on/apex-72h-roll-on",
+    "folder": "fragrances/roll-on",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Apex 72/Apex 72h21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Apex 72/Apex 72h1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Apex 72/Apex 72h2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Apex 72/Apex 72h3.png"
+    ]
+  },
+  {
+    "slug": "atlas-oud",
+    "family": "atlas-oud",
+    "publicId": "enjoyful/products/fragrances/perfume/atlas-oud",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/ATLAS OUD/ATLAS OUD21.png",
+    "alternates": []
+  },
+  {
+    "slug": "benz-lumiere",
+    "family": "benz-lumiere",
+    "publicId": "enjoyful/products/fragrances/perfume/benz-lumiere",
+    "folder": "fragrances/perfume",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "blossom-veil-body-mist-70ml",
+    "family": "blossom-veil-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom3.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom4.jpg"
+    ]
+  },
+  {
+    "slug": "blossom-veil-body-mist-250ml",
+    "family": "blossom-veil-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom3.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Blossom Veil/Enjoyfullife_bodymist_Blossom4.jpg"
+    ]
+  },
+  {
+    "slug": "coastal-pulse-body-mist-70ml",
+    "family": "coastal-pulse-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse3.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse4.jpg"
+    ]
+  },
+  {
+    "slug": "coastal-pulse-body-mist-250ml",
+    "family": "coastal-pulse-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse3.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Coastal Pulse/Enjoyfullife_bodymist_CostalPulse4.jpg"
+    ]
+  },
+  {
+    "slug": "cuir-imperial",
+    "family": "cuir-imperial",
+    "publicId": "enjoyful/products/fragrances/perfume/cuir-imperial",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/Cuir Imperial/Cuir Imperial21.png",
+    "alternates": []
+  },
+  {
+    "slug": "ebene-noir",
+    "family": "ebene-noir",
+    "publicId": "enjoyful/products/fragrances/perfume/ebene-noir",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/EBÈNE NOIR/EBÈNE NOIR21.png",
+    "alternates": []
+  },
+  {
+    "slug": "element-zero-roll-on",
+    "family": "element-zero-roll-on",
+    "publicId": "enjoyful/products/fragrances/roll-on/element-zero-roll-on",
+    "folder": "fragrances/roll-on",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Element Zero/Element Zero21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Element Zero/Element Zero1.png"
+    ]
+  },
+  {
+    "slug": "gold-victorie",
+    "family": "gold-victorie",
+    "publicId": "enjoyful/products/fragrances/perfume/gold-victorie",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/Gold Victorie/Gold Victorie21.png",
+    "alternates": []
+  },
+  {
+    "slug": "imperium-noir",
+    "family": "imperium-noir",
+    "publicId": "enjoyful/products/fragrances/perfume/imperium-noir",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/IMPERIUM NOIR/IMPERIUM NOIR21.png",
+    "alternates": []
+  },
+  {
+    "slug": "intense-aibek",
+    "family": "intense-aibek",
+    "publicId": "enjoyful/products/fragrances/perfume/intense-aibek",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/Intense Aibek/Intense Aibek21.png",
+    "alternates": []
+  },
+  {
+    "slug": "jasmine-nomade",
+    "family": "jasmine-nomade",
+    "publicId": "enjoyful/products/fragrances/perfume/jasmine-nomade",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/Jasmine Nomade/Jasmine Nomade21.png",
+    "alternates": []
+  },
+  {
+    "slug": "laichu-signature",
+    "family": "laichu-signature",
+    "publicId": "enjoyful/products/fragrances/perfume/laichu-signature",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/Laichu Signature/LAICHU SIGNATURE21.png",
+    "alternates": []
+  },
+  {
+    "slug": "lumi-glow-roll-on",
+    "family": "lumi-glow-roll-on",
+    "publicId": "enjoyful/products/fragrances/roll-on/lumi-glow-roll-on",
+    "folder": "fragrances/roll-on",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Lumi Glow/Lumi Glow_21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Lumi Glow/Lumi glow.jpg"
+    ]
+  },
+  {
+    "slug": "midnight-velvet-body-mist-70ml",
+    "family": "midnight-velvet-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet1@21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet2@2x.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet2@2x@2x.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet3.jpg"
+    ]
+  },
+  {
+    "slug": "midnight-velvet-body-mist-250ml",
+    "family": "midnight-velvet-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet1@21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet2@2x.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet2@2x@2x.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Midnight Velvet/Enjoyfullife_bodymist_Midnightvelvet3.jpg"
+    ]
+  },
+  {
+    "slug": "minuit-noir",
+    "family": "minuit-noir",
+    "publicId": "enjoyful/products/fragrances/perfume/minuit-noir",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/MINUIT NOIR/MINUIT NOIR21.png",
+    "alternates": []
+  },
+  {
+    "slug": "monarach-oud",
+    "family": "monarach-oud",
+    "publicId": "enjoyful/products/fragrances/perfume/monarach-oud",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/MONARACH OUD/MONARACH OUD21.png",
+    "alternates": []
+  },
+  {
+    "slug": "noir-element-body-mist-70ml",
+    "family": "noir-element-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/noir-element-body-mist-70ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Noir Element/Enjoyfullife_bodymist_Noir Element21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Noir Element/Enjoyfullife_bodymist_Noir Element4.jpg"
+    ]
+  },
+  {
+    "slug": "noir-element-body-mist-250ml",
+    "family": "noir-element-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/noir-element-body-mist-250ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Noir Element/Enjoyfullife_bodymist_Noir Element21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Noir Element/Enjoyfullife_bodymist_Noir Element4.jpg"
+    ]
+  },
+  {
+    "slug": "noir-lehan",
+    "family": "noir-lehan",
+    "publicId": "enjoyful/products/fragrances/perfume/noir-lehan",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/Noir Lehan/Noir Lehan21.png",
+    "alternates": []
+  },
+  {
+    "slug": "noir-oud-roll-on",
+    "family": "noir-oud-roll-on",
+    "publicId": "enjoyful/products/fragrances/roll-on/noir-oud-roll-on",
+    "folder": "fragrances/roll-on",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Noir Oud/Noir Oud_21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Noir Oud/Noir Oud_1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Noir Oud/Noir Oud_2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Noir Oud/Noir Oud_3.png"
+    ]
+  },
+  {
+    "slug": "noir-velours",
+    "family": "noir-velours",
+    "publicId": "enjoyful/products/fragrances/perfume/noir-velours",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/Noir Velours/Noir Velours21.png",
+    "alternates": []
+  },
+  {
+    "slug": "obsidien",
+    "family": "obsidien",
+    "publicId": "enjoyful/products/fragrances/perfume/obsidien",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/OBSIDIEN/OBSIDIEN21.png",
+    "alternates": []
+  },
+  {
+    "slug": "oud-prive",
+    "family": "oud-prive",
+    "publicId": "enjoyful/products/fragrances/perfume/oud-prive",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/OUD PRIVE/OUD PRIVE21.png",
+    "alternates": []
+  },
+  {
+    "slug": "petal-d-aamichu",
+    "family": "petal-d-aamichu",
+    "publicId": "enjoyful/products/fragrances/perfume/petal-d-aamichu",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/PETAL D’AMICHU/PETAL D’AMICHU21.png",
+    "alternates": []
+  },
+  {
+    "slug": "pure-fresh-deo-stick",
+    "family": "pure-fresh-deo-stick",
+    "publicId": "enjoyful/products/fragrances/deo-stick/pure-fresh-deo-stick",
+    "folder": "fragrances/deo-stick",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "pure-renewal-roll-on",
+    "family": "pure-renewal-roll-on",
+    "publicId": "enjoyful/products/fragrances/roll-on/pure-renewal-roll-on",
+    "folder": "fragrances/roll-on",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Pure Renewal/Pure Renewal_21.png",
+    "alternates": []
+  },
+  {
+    "slug": "reine-florale",
+    "family": "reine-florale",
+    "publicId": "enjoyful/products/fragrances/perfume/reine-florale",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/Reine Florale/Enjoyful Life Reine Florale21.jpg",
+    "alternates": []
+  },
+  {
+    "slug": "royal-eclat",
+    "family": "royal-eclat",
+    "publicId": "enjoyful/products/fragrances/perfume/royal-eclat",
+    "folder": "fragrances/perfume",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "royal-safran",
+    "family": "royal-safran",
+    "publicId": "enjoyful/products/fragrances/perfume/royal-safran",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/ROYAL SAFRAN/ROYAL SAFRAN21.png",
+    "alternates": []
+  },
+  {
+    "slug": "safran-intense",
+    "family": "safran-intense",
+    "publicId": "enjoyful/products/fragrances/perfume/safran-intense",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/50ml/Safran Intense/Safran Intense21.png",
+    "alternates": []
+  },
+  {
+    "slug": "silk-bloom-deo-stick",
+    "family": "silk-bloom-deo-stick",
+    "publicId": "enjoyful/products/fragrances/deo-stick/silk-bloom-deo-stick",
+    "folder": "fragrances/deo-stick",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "ultra-fresh-deo-stick",
+    "family": "ultra-fresh-deo-stick",
+    "publicId": "enjoyful/products/fragrances/deo-stick/ultra-fresh-deo-stick",
+    "folder": "fragrances/deo-stick",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "vanilla-aura-body-mist-70ml",
+    "family": "vanilla-aura-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura3.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura4.jpg"
+    ]
+  },
+  {
+    "slug": "vanilla-aura-body-mist-250ml",
+    "family": "vanilla-aura-body-mist",
+    "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml",
+    "folder": "fragrances/body-mist",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura3.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Body Mist/Vanilla Aura/Enjoyfullife_bodymist_VanilaAura4.jpg"
+    ]
+  },
+  {
+    "slug": "velvet-repair-roll-on",
+    "family": "velvet-repair-roll-on",
+    "publicId": "enjoyful/products/fragrances/roll-on/velvet-repair-roll-on",
+    "folder": "fragrances/roll-on",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Velvet Repair/Velvet Repair21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Roll On/Velvet Repair/Velvet Repair_1.png"
+    ]
+  },
+  {
+    "slug": "zoya-flora",
+    "family": "zoya-flora",
+    "publicId": "enjoyful/products/fragrances/perfume/zoya-flora",
+    "folder": "fragrances/perfume",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Perfume/100ml/Zoya Flora/Zoya Flora21.png",
+    "alternates": []
+  },
+  {
+    "slug": "aloevera-gel-60ml",
+    "family": "aloevera-gel",
+    "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml",
+    "folder": "glow/aloe-vera-gel",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Gel/Aloe Vera Gel21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Gel/Aloe Vera Gel2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Gel/Aloe Vera Gel3.png"
+    ]
+  },
+  {
+    "slug": "aloevera-gel-150ml",
+    "family": "aloevera-gel",
+    "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml",
+    "folder": "glow/aloe-vera-gel",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Gel/Aloe Vera Gel21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Gel/Aloe Vera Gel2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Aloe Vera Gel/Aloe Vera Gel3.png"
+    ]
+  },
+  {
+    "slug": "apricot-face-scrub-50ml",
+    "family": "apricot-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 50ML/Enjoyfullife_Apricot Face Scrub 50ML21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 50ML/Enjoyfullife_Apricot Face Scrub 50ML2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 50ML/Enjoyfullife_Apricot Face Scrub 50ML3.jpg"
+    ]
+  },
+  {
+    "slug": "apricot-face-scrub-150ml",
+    "family": "apricot-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 150ML/Enjoyful life_Apricot_150 Mockup21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 150ML/Enjoyful life_Apricot_150 Mockup1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 150ML/Enjoyful life_Apricot_150 Mockup2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Apricot/Enjoyfullife_Apricot Face Scrub 150ML/Website/Enjoyful life_Apricot_150ml_1000x1000.png"
+    ]
+  },
+  {
+    "slug": "charcoal-face-wash",
+    "family": "charcoal-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/charcoal-face-wash",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Charcoal Face Wash/Charcoal Face Wash21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Charcoal Face Wash/Charcoal Face Wash1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Charcoal Face Wash/Charcoal Face Wash2.png"
+    ]
+  },
+  {
+    "slug": "coffee-face-scrub-50ml",
+    "family": "coffee-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/50ml/Enjoyful life_Coffee Face Scrub_SF  copy.ai21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/50ml/Enjoyful life_Coffee Face Scrub_Print file-03.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/50ml/Enjoyful life_Coffee Face Scrub_Print file-04.png"
+    ]
+  },
+  {
+    "slug": "coffee-face-scrub-150ml",
+    "family": "coffee-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/150ml Mockup/Enjoyful life_Coffee Face Scrub_Print 150ml_21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/150ml Mockup/Enjoyful life_Coffee Face Scrub_Print 150ml.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/150ml Mockup/Enjoyful life_Coffee Face Scrub_Print file-05.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Coffee Scrub/150ml Mockup/Enjoyful life_Coffee Face Scrub1000px.png"
+    ]
+  },
+  {
+    "slug": "peel-off-mask-100ml",
+    "family": "peel-off-mask",
+    "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-100ml",
+    "folder": "glow/face-mask",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Peel Off Mask/Peel Off Mask21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Peel Off Mask/Peel Off Mask1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Peel Off Mask/Peel Off Mask2.png"
+    ]
+  },
+  {
+    "slug": "peel-off-mask-150ml",
+    "family": "peel-off-mask",
+    "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-150ml",
+    "folder": "glow/face-mask",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Peel Off Mask/Peel Off Mask21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Peel Off Mask/Peel Off Mask1.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Peel Off Mask/Peel Off Mask2.png"
+    ]
+  },
+  {
+    "slug": "rose-water-premium-100ml",
+    "family": "rose-water-premium",
+    "publicId": "enjoyful/products/glow/toner/rose-water-premium-100ml",
+    "folder": "glow/toner",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "rose-water-premium-240ml",
+    "family": "rose-water-premium",
+    "publicId": "enjoyful/products/glow/toner/rose-water-premium-240ml",
+    "folder": "glow/toner",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "roseradiance-body-scrub",
+    "family": "roseradiance-body-scrub",
+    "publicId": "enjoyful/products/glow/body-scrub/roseradiance-body-scrub",
+    "folder": "glow/body-scrub",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "sapphire-night-body-scrub",
+    "family": "sapphire-night-body-scrub",
+    "publicId": "enjoyful/products/glow/body-scrub/sapphire-night-body-scrub",
+    "folder": "glow/body-scrub",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "sunscreen-cream-50ml",
+    "family": "sunscreen-cream",
+    "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-50ml",
+    "folder": "glow/sunscreen",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/50ml/Sunscreen-21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/50ml/Sunscreen-02.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/50ml/Sunscreen-03.png"
+    ]
+  },
+  {
+    "slug": "sunscreen-cream-100ml",
+    "family": "sunscreen-cream",
+    "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-100ml",
+    "folder": "glow/sunscreen",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/150ml/Enjoyful life_Sunscreen21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/150ml/Enjoyful life_Sunscreen_2.png"
+    ]
+  },
+  {
+    "slug": "sunscreen-cream-150ml",
+    "family": "sunscreen-cream",
+    "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-150ml",
+    "folder": "glow/sunscreen",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/150ml/Enjoyful life_Sunscreen21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Sunscreen/Mockup/150ml/Enjoyful life_Sunscreen_2.png"
+    ]
+  },
+  {
+    "slug": "vit-c-foaming-face-wash",
+    "family": "vit-c-foaming-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-foaming-face-wash",
+    "folder": "glow/face-wash",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "vit-c-lemon-face-wash-60ml",
+    "family": "vit-c-lemon-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Lemon Face Wash/60ml/Lemon Facewash 60ml_21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Lemon Face Wash/60ml/Lemon Facewash 60ml_2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Lemon Face Wash/60ml/Lemon Facewash 60ml_3.jpg"
+    ]
+  },
+  {
+    "slug": "vit-c-lemon-face-wash-150ml",
+    "family": "vit-c-lemon-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Lemon Face Wash/150ml/Lemon_Facewash_150_21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Lemon Face Wash/150ml/Lemon_Facewash_150_2.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Lemon Face Wash/150ml/Lemon_Facewash_150_3.jpg"
+    ]
+  },
+  {
+    "slug": "vit-c-orange-face-wash-60ml",
+    "family": "vit-c-orange-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Orange/Orange Face Wash21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Orange/Orange Face Wash1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Orange/Orange Face Wash3.jpg"
+    ]
+  },
+  {
+    "slug": "vit-c-orange-face-wash-150ml",
+    "family": "vit-c-orange-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Orange/Orange Face Wash21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Orange/Orange Face Wash1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Orange/Orange Face Wash3.jpg"
+    ]
+  },
+  {
+    "slug": "vit-c-papaya-face-wash-60ml",
+    "family": "vit-c-papaya-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-60ml",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Papaya/Papaya Face Wash21.jpg",
+    "alternates": []
+  },
+  {
+    "slug": "vit-c-papaya-face-wash-150ml",
+    "family": "vit-c-papaya-face-wash",
+    "publicId": "enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-150ml",
+    "folder": "glow/face-wash",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Wash/Papaya/Papaya Face Wash21.jpg",
+    "alternates": []
+  },
+  {
+    "slug": "walnut-apricot-face-scrub-50ml",
+    "family": "walnut-apricot-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/50ml Mockup/Enjoyful life_walnut aprocot front 50ml21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/50ml Mockup/Enjoyful life_walnut aprocot front 50ml.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/50ml Mockup/Enjoyful life_walnut aprocot front 50ml_3.jpg"
+    ]
+  },
+  {
+    "slug": "walnut-apricot-face-scrub-150ml",
+    "family": "walnut-apricot-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/150ml/Enjoyful life_walnutApricot_150_1000x1000.jpg21.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/150ml/Enjoyful life_Apricot-06.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/150ml/Enjoyful life_walnutApricot_150.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Enjoyful_Walnut Apricot/150ml/Enjoyful life_walnutApricot_150_2.jpg"
+    ]
+  },
+  {
+    "slug": "walnut-face-scrub-50ml",
+    "family": "walnut-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Walnut/Mockup 50ml/Enjoyfullife_Walnut Face Scrub 50ML21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Walnut/Mockup 50ml/Enjoyfullife_Walnut Face Scrub 50ML1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Walnut/Mockup 50ml/Enjoyfullife_Walnut Face Scrub 50ML2.jpg"
+    ]
+  },
+  {
+    "slug": "walnut-face-scrub-150ml",
+    "family": "walnut-face-scrub",
+    "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml",
+    "folder": "glow/face-scrub",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Walnut/Mockup 50ml/Enjoyfullife_Walnut Face Scrub 50ML21.jpg",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Walnut/Mockup 50ml/Enjoyfullife_Walnut Face Scrub 50ML1.jpg",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/product-images/Face Scrub/Walnut/Mockup 50ml/Enjoyfullife_Walnut Face Scrub 50ML2.jpg"
+    ]
+  },
+  {
+    "slug": "3x-power-clean-citrus-burst",
+    "family": "3x-power-clean-citrus-burst",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-citrus-burst",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Citrust Blast 5l_ Floor Cleaner.png",
+    "alternates": []
+  },
+  {
+    "slug": "3x-power-clean-lavender-floor-disinfectant-cleaner",
+    "family": "3x-power-clean-lavender-floor-disinfectant-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Lavender Floor Cleaner 3l/Lavender_11June1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Lavender Floor Cleaner 3l/Lavender_11June2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Lavender Floor Cleaner 3l/Lavender_11June3.png"
+    ]
+  },
+  {
+    "slug": "3x-power-clean-pine-floor-disinfectant-cleaner",
+    "family": "3x-power-clean-pine-floor-disinfectant-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Pine Fragnance Floor Cleaner_3l/Pinefragnance_3l_june111.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Pine Fragnance Floor Cleaner_3l/Pinefragnance_3l_june112.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Floor Cleaner/Pine Fragnance Floor Cleaner_3l/Pinefragnance_3l_june113.png"
+    ]
+  },
+  {
+    "slug": "9x-power-clean-ultra-freshness-2l",
+    "family": "9x-power-clean-ultra-freshness",
+    "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l",
+    "folder": "home-care/laundry-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Liquid Detergent/ULtra Freshness 2l /Mockup/Liquid Detergent 2l Ultra Clean1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Liquid Detergent/ULtra Freshness 2l /Mockup/Liquid Detergent 2l Ultra Clean2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Liquid Detergent/ULtra Freshness 2l /Mockup/Liquid Detergent 2l Ultra Clean3.png"
+    ]
+  },
+  {
+    "slug": "9x-power-clean-ultra-freshness-3l",
+    "family": "9x-power-clean-ultra-freshness",
+    "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l",
+    "folder": "home-care/laundry-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Liquid Detergent/Uktra Freshness 3l/Enjoyful Life Ultra Clean 3l1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Liquid Detergent/Uktra Freshness 3l/Enjoyful Life Ultra Clean 3l2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Liquid Detergent/Uktra Freshness 3l/Enjoyful Life Ultra Clean 3l3.png"
+    ]
+  },
+  {
+    "slug": "abaya-wash-3l",
+    "family": "abaya-wash",
+    "publicId": "enjoyful/products/home-care/laundry-care/abaya-wash-3l",
+    "folder": "home-care/laundry-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Abaya Wash/Abaya Wash 3l/Abaya Wash 3l1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Abaya Wash/Abaya Wash 3l/Abaya Wash 3l2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Abaya Wash/Abaya Wash 3l/Abaya Wash 3l3.png"
+    ]
+  },
+  {
+    "slug": "abaya-wash-5l",
+    "family": "abaya-wash",
+    "publicId": "enjoyful/products/home-care/laundry-care/abaya-wash-5l",
+    "folder": "home-care/laundry-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Abaya Wash/Abaya Wash 5l.png",
+    "alternates": []
+  },
+  {
+    "slug": "all-purpose-baking-soda",
+    "family": "all-purpose-baking-soda",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Multi Purpose Cleaner/Multi Purpose Cleaner1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Multi Purpose Cleaner/Multi Purpose Cleaner2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Multi Purpose Cleaner/Multi Purpose Cleaner3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Multi Purpose Cleaner/Multi Purpose Cleaner4.png"
+    ]
+  },
+  {
+    "slug": "bleach-1l",
+    "family": "bleach",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/bleach-1l",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "bleach-3-78l",
+    "family": "bleach",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/bleach-3-78l",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "cherry-blossom-handwash-1l",
+    "family": "cherry-blossom-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Cherry Blossam/1l/Cherry Blossam1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Cherry Blossam/1l/Cherry Blossam2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Cherry Blossam/1l/Cherry Blossam3.png"
+    ]
+  },
+  {
+    "slug": "cherry-blossom-handwash-500ml",
+    "family": "cherry-blossom-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Cherry Blossam/500ml/Cherryblossam_500ml1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Cherry Blossam/500ml/Cherryblossam_500ml2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Cherry Blossam/500ml/Cherryblossam_500ml3.png"
+    ]
+  },
+  {
+    "slug": "citrus-burst-cleaning-gel",
+    "family": "citrus-burst-cleaning-gel",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/citrus-burst-cleaning-gel",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "dishwashing-liquid-aloe-and-mint-fresh",
+    "family": "dishwashing-liquid-aloe-and-mint-fresh",
+    "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-aloe-and-mint-fresh",
+    "folder": "home-care/kitchen-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Aloe Mint 5L dishwash.png",
+    "alternates": []
+  },
+  {
+    "slug": "dishwashing-liquid-apple-breeze",
+    "family": "dishwashing-liquid-apple-breeze",
+    "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-apple-breeze",
+    "folder": "home-care/kitchen-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Apple Breeze 5L dishwash.png",
+    "alternates": []
+  },
+  {
+    "slug": "dishwashing-liquid-lemon-fresh-1l",
+    "family": "dishwashing-liquid-lemon-fresh",
+    "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l",
+    "folder": "home-care/kitchen-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Dish Wash Liquid 1L/Liquid Detergent_1l2.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Dish Wash Liquid 1L/Liquid Detergent_1l3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Dish Wash Liquid 1L/Liquid Detergent_1l4.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Dish Wash Liquid 1L/Liquid Detergent_1l5.png"
+    ]
+  },
+  {
+    "slug": "dishwashing-liquid-lemon-fresh-5l",
+    "family": "dishwashing-liquid-lemon-fresh",
+    "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-5l",
+    "folder": "home-care/kitchen-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Dish Wash Liquid/Lemon Fresh 5L dishwash.png",
+    "alternates": []
+  },
+  {
+    "slug": "fabric-softener-relaxing-lavender",
+    "family": "fabric-softener-relaxing-lavender",
+    "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender",
+    "folder": "home-care/laundry-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Fabric Softner /Relaxing Lavender/Fabric Softner4.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Fabric Softner /Relaxing Lavender/Fabric Softner5.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Fabric Softner /Relaxing Lavender/Fabric Softner6.png"
+    ]
+  },
+  {
+    "slug": "fabric-softener-soft-floral-scents",
+    "family": "fabric-softener-soft-floral-scents",
+    "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents",
+    "folder": "home-care/laundry-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Fabric Softner /Soft Floral/Fabric Softner1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Fabric Softner /Soft Floral/Fabric Softner2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Fabric Softner /Soft Floral/Fabric Softner3.png"
+    ]
+  },
+  {
+    "slug": "glass-and-surface-cleaner",
+    "family": "glass-and-surface-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Glass Cleaner/Glass Cleaner1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Glass Cleaner/Glass Cleaner2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Glass Cleaner/Glass Cleaner3.png"
+    ]
+  },
+  {
+    "slug": "lavender-cleaning-gel",
+    "family": "lavender-cleaning-gel",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/lavender-cleaning-gel",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": null,
+    "alternates": []
+  },
+  {
+    "slug": "lavender-handwash",
+    "family": "lavender-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/lavender-handwash",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/5l/Lavender 5l Hand wash.png",
+    "alternates": []
+  },
+  {
+    "slug": "lemon-fresh-multi-purpose-cream-cleaner-1l",
+    "family": "lemon-fresh-multi-purpose-cream-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/Lemon Cream1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/Lemon Cream2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/Lemon Cream3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/WhatsApp Image 2026-06-13 at 22.16.26.jpeg"
+    ]
+  },
+  {
+    "slug": "lemon-fresh-multi-purpose-cream-cleaner-750ml",
+    "family": "lemon-fresh-multi-purpose-cream-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/Lemon Cream1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/Lemon Cream2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/Lemon Cream3.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Cream Cleaning Liquid/WhatsApp Image 2026-06-13 at 22.16.26.jpeg"
+    ]
+  },
+  {
+    "slug": "mint-handwash",
+    "family": "mint-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/mint-handwash",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/5l/Mind Fresh 5l Hand wash.png",
+    "alternates": []
+  },
+  {
+    "slug": "oud-handwash",
+    "family": "oud-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/oud-handwash",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/5l/Oud Royale 5l Hand wash.png",
+    "alternates": []
+  },
+  {
+    "slug": "papaya-handwash",
+    "family": "papaya-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/papaya-handwash",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/5l/papaya 5l Hand wash.png",
+    "alternates": []
+  },
+  {
+    "slug": "pure-shield-disinfectant-cleaner-5l",
+    "family": "pure-shield-disinfectant-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-5l",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Pure shield Antoseptic/Disenfectant Cleaner 5L.png",
+    "alternates": []
+  },
+  {
+    "slug": "pure-shield-disinfectant-cleaner-750ml",
+    "family": "pure-shield-disinfectant-cleaner",
+    "publicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml",
+    "folder": "home-care/floor-and-surface-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Pure shield Antoseptic/Antiseptic_cleaner_750ml_1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Pure shield Antoseptic/Antiseptic_cleaner_750ml_2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Pure shield Antoseptic/Antiseptic_cleaner_750ml_3.png"
+    ]
+  },
+  {
+    "slug": "rich-musk-handwash-1l",
+    "family": "rich-musk-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-1l",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Rich Musk/1l/Rich Musk Scented1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Rich Musk/1l/Rich Musk Scented2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Rich Musk/1l/Rich Musk Scented3.png"
+    ]
+  },
+  {
+    "slug": "rich-musk-handwash-500ml",
+    "family": "rich-musk-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Rich Musk/500ml/Richmusk_500ml1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Rich Musk/500ml/Richmusk_500ml2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Rich Musk/500ml/Richmusk_500ml3.png"
+    ]
+  },
+  {
+    "slug": "sweet-vanilla-handwash-1l",
+    "family": "sweet-vanilla-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Vanila Scent/1l/Vanila Scent1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Vanila Scent/1l/Vanila Scent2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Vanila Scent/1l/Vanila Scent3.png"
+    ]
+  },
+  {
+    "slug": "sweet-vanilla-handwash-500ml",
+    "family": "sweet-vanilla-handwash",
+    "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml",
+    "folder": "home-care/hand-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Vanila Scent/500ml/Sweet Vanila_500ml1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Vanila Scent/500ml/Sweet Vanila_500ml2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Handwash/Vanila Scent/500ml/Sweet Vanila_500ml3.png"
+    ]
+  },
+  {
+    "slug": "ultra-clean-toilet-cleaner-aqua",
+    "family": "ultra-clean-toilet-cleaner-aqua",
+    "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua",
+    "folder": "home-care/bathroom-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Toilet Cleaner/Aqua Fresh/Toilet cleaner_Aqua Fresh1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Toilet Cleaner/Aqua Fresh/Toilet cleaner_Aqua Fresh2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Toilet Cleaner/Aqua Fresh/Toilet cleaner_Aqua Fresh3.png"
+    ]
+  },
+  {
+    "slug": "ultra-clean-toilet-cleaner-pine",
+    "family": "ultra-clean-toilet-cleaner-pine",
+    "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine",
+    "folder": "home-care/bathroom-care",
+    "primary": "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Toilet Cleaner/Pine Scent/Toilet cleaner_Pine Scent1.png",
+    "alternates": [
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Toilet Cleaner/Pine Scent/Toilet cleaner_Pine Scent2.png",
+      "/home/nibras-s/Desktop/Projects/enjoyful_ecom/product-data/home-care/Mockup/Toilet Cleaner/Pine Scent/Toilet cleaner_Pine Scent3.png"
+    ]
+  }
+]

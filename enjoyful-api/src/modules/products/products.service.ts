@@ -30,8 +30,16 @@ export class ProductsService {
       // Unresolved slug → force an empty page rather than returning everything
       match.category = cat ? cat._id : new Types.ObjectId();
     }
-    // Exact (case-insensitive) subcategory match — value comes from the nav menu
-    if (subcategory) match.subcategory = new RegExp(`^${this.escapeRegex(subcategory.trim())}$`, 'i');
+    // Exact (case-insensitive) subcategory match. Accepts a single value OR a comma-
+    // separated list (multi-select filter) → matches ANY of them.
+    if (subcategory) {
+      const subs = subcategory.split(',').map(s => s.trim()).filter(Boolean);
+      if (subs.length === 1) {
+        match.subcategory = new RegExp(`^${this.escapeRegex(subs[0])}$`, 'i');
+      } else if (subs.length > 1) {
+        match.subcategory = { $in: subs.map(s => new RegExp(`^${this.escapeRegex(s)}$`, 'i')) };
+      }
+    }
     if (minPrice !== undefined) match.price = { ...(match.price as object), $gte: minPrice };
     if (maxPrice !== undefined) match.price = { ...(match.price as object), $lte: maxPrice };
     if (skinType) {
@@ -86,6 +94,7 @@ export class ProductsService {
           anyFeatured: { $max: { $cond: ['$isFeatured', 1, 0] } },
           anyOnSale: { $max: { $cond: ['$onSale', 1, 0] } },
           anyBestDeal: { $max: { $cond: ['$bestDeal', 1, 0] } },
+          anyBestSeller: { $max: { $cond: ['$isBestSeller', 1, 0] } },
           maxDiscount: { $max: { $ifNull: ['$discountPct', 0] } },
         },
       },
@@ -99,6 +108,7 @@ export class ProductsService {
                 isFeatured: { $gt: ['$anyFeatured', 0] },
                 onSale: { $gt: ['$anyOnSale', 0] },
                 bestDeal: { $gt: ['$anyBestDeal', 0] },
+                isBestSeller: { $gt: ['$anyBestSeller', 0] },
                 discountPct: '$maxDiscount',
               },
             ],
@@ -126,7 +136,7 @@ export class ProductsService {
                 image: 1, hoverImage: 1, images: 1,
                 subcategory: 1, productType: 1, rating: 1, reviews: 1,
                 skinType: 1, size: 1, productCode: 1, productFamily: 1, variantCount: 1,
-                currency: 1, isFeatured: 1, onSale: 1, bestDeal: 1, brand: 1, tagline: 1,
+                currency: 1, isFeatured: 1, onSale: 1, bestDeal: 1, isBestSeller: 1, brand: 1, tagline: 1,
                 externalBuyLinks: 1, description: 1, createdAt: 1,
                 category: {
                   $cond: [
@@ -183,7 +193,11 @@ export class ProductsService {
     const { images, ...rest } = dto;
     const productImages = this.normalizeImages(images);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return this.productModel.create({ ...rest, slug, category: categoryId, images: productImages } as any);
+    return this.productModel.create({
+      ...rest, slug, category: categoryId, images: productImages,
+      // Keep the flat image/hoverImage (what storefront cards + admin thumbs read) in sync.
+      ...(productImages.length ? { image: productImages[0].url, hoverImage: productImages[1]?.url ?? '' } : {}),
+    } as any);
   }
 
   async update(id: string, dto: Partial<CreateProductDto>) {
@@ -191,7 +205,14 @@ export class ProductsService {
     const update: Record<string, unknown> = { ...rest };
     if (dto.name) update.slug = await this.generateSlug(dto.name, id);
     if (dto.category) update.category = await this.resolveCategoryId(dto.category);
-    if (images !== undefined) update.images = this.normalizeImages(images);
+    if (images !== undefined) {
+      const productImages = this.normalizeImages(images);
+      update.images = productImages;
+      // Keep the flat image/hoverImage (used by storefront cards + admin thumbs) in sync
+      // with the gallery, so replacing the photo actually changes what's displayed.
+      update.image = productImages[0]?.url ?? '';
+      update.hoverImage = productImages[1]?.url ?? '';
+    }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const product = await this.productModel
       .findByIdAndUpdate(id, update as any, { new: true })
@@ -286,7 +307,10 @@ export class ProductsService {
         const { images: dtoImgs, ...dtoRest } = dto;
         const productImages = this.normalizeImages(dtoImgs);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await this.productModel.create({ ...dtoRest, slug, category: categoryId, images: productImages } as any);
+        await this.productModel.create({
+          ...dtoRest, slug, category: categoryId, images: productImages,
+          ...(productImages.length ? { image: productImages[0].url, hoverImage: productImages[1]?.url ?? '' } : {}),
+        } as any);
         results.created++;
       } catch (err) {
         results.failed++;

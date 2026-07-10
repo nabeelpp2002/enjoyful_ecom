@@ -89,6 +89,7 @@ export function normalizeApiProduct(p: Record<string, unknown>): Product {
         isFeatured: (p.isFeatured as boolean) ?? false,
         onSale: (p.onSale as boolean) ?? false,
         bestDeal: (p.bestDeal as boolean) ?? false,
+        isBestSeller: (p.isBestSeller as boolean) ?? false,
         externalBuyLinks: (p.externalBuyLinks as Product['externalBuyLinks']) ?? undefined,
         size: (p.size as string) ?? undefined,
         productCode: (p.productCode as string) ?? undefined,

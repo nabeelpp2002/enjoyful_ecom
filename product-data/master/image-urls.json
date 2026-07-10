@@ -1,0 +1,2237 @@
+{
+  "baby-lotion-200ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683951/enjoyful/products/baby/baby-lotion/baby-lotion-200ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683951/enjoyful/products/baby/baby-lotion/baby-lotion-200ml.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-200ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-200ml-2.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-200ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-200ml-3.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-200ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-200ml-4.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-200ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-lotion-500ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-500ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-500ml.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-500ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-500ml-2.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-500ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-500ml-3.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-500ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683953/enjoyful/products/baby/baby-lotion/baby-lotion-500ml-4.webp",
+        "publicId": "enjoyful/products/baby/baby-lotion/baby-lotion-500ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-rash-cream-50ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml.webp",
+        "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml-2.webp",
+        "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml-3.webp",
+        "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-50ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-rash-cream-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml.webp",
+        "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml-2.webp",
+        "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683954/enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml-3.webp",
+        "publicId": "enjoyful/products/baby/baby-rash-cream/baby-rash-cream-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-soap": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-soap/baby-soap.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-soap/baby-soap.webp",
+        "publicId": "enjoyful/products/baby/baby-soap/baby-soap",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-soap/baby-soap-2.webp",
+        "publicId": "enjoyful/products/baby/baby-soap/baby-soap-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-soap/baby-soap-3.webp",
+        "publicId": "enjoyful/products/baby/baby-soap/baby-soap-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-soap/baby-soap-4.webp",
+        "publicId": "enjoyful/products/baby/baby-soap/baby-soap-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-talc-200gm": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-talc/baby-talc-200gm.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-talc/baby-talc-200gm.webp",
+        "publicId": "enjoyful/products/baby/baby-talc/baby-talc-200gm",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-talc/baby-talc-200gm-2.webp",
+        "publicId": "enjoyful/products/baby/baby-talc/baby-talc-200gm-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-talc-400gm": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-talc/baby-talc-400gm.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683955/enjoyful/products/baby/baby-talc/baby-talc-400gm.webp",
+        "publicId": "enjoyful/products/baby/baby-talc/baby-talc-400gm",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-talc/baby-talc-400gm-2.webp",
+        "publicId": "enjoyful/products/baby/baby-talc/baby-talc-400gm-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-wash-300ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-300ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-300ml.webp",
+        "publicId": "enjoyful/products/baby/baby-wash/baby-wash-300ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-300ml-2.webp",
+        "publicId": "enjoyful/products/baby/baby-wash/baby-wash-300ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-300ml-3.webp",
+        "publicId": "enjoyful/products/baby/baby-wash/baby-wash-300ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "baby-wash-500ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-500ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-500ml.webp",
+        "publicId": "enjoyful/products/baby/baby-wash/baby-wash-500ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/baby/baby-wash/baby-wash-500ml-2.webp",
+        "publicId": "enjoyful/products/baby/baby-wash/baby-wash-500ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/baby/baby-wash/baby-wash-500ml-3.webp",
+        "publicId": "enjoyful/products/baby/baby-wash/baby-wash-500ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "almond-body-lotion-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/daily/body-lotion/almond-body-lotion-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683956/enjoyful/products/daily/body-lotion/almond-body-lotion-100ml.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-lotion/almond-body-lotion-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-lotion/almond-body-lotion-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "almond-body-lotion-350ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-lotion/almond-body-lotion-350ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-lotion/almond-body-lotion-350ml.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-350ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-lotion/almond-body-lotion-350ml-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-350ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-lotion/almond-body-lotion-350ml-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/almond-body-lotion-350ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "almond-moisturising-cream": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-cream/almond-moisturising-cream.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683957/enjoyful/products/daily/body-cream/almond-moisturising-cream.webp",
+        "publicId": "enjoyful/products/daily/body-cream/almond-moisturising-cream",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/body-cream/almond-moisturising-cream-2.webp",
+        "publicId": "enjoyful/products/daily/body-cream/almond-moisturising-cream-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/body-cream/almond-moisturising-cream-3.webp",
+        "publicId": "enjoyful/products/daily/body-cream/almond-moisturising-cream-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/body-cream/almond-moisturising-cream-4.webp",
+        "publicId": "enjoyful/products/daily/body-cream/almond-moisturising-cream-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloe-calm-shampoo-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683958/enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml-4.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-100ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloe-calm-shampoo-400ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml-4.webp",
+        "publicId": "enjoyful/products/daily/shampoo/aloe-calm-shampoo-400ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloevera-body-lotion-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloevera-body-lotion-350ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683959/enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/aloevera-body-lotion-350ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloevera-hair-removal-cream-25gm": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm-2.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm-3.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm-4.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-25gm-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloevera-hair-removal-cream-60gm": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683960/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm-2.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm-3.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm-4.webp",
+        "publicId": "enjoyful/products/daily/hair-removal/aloevera-hair-removal-cream-60gm-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "bamboo-balance-shampoo-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "bamboo-balance-shampoo-400ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683961/enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/bamboo-balance-shampoo-400ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "botanical-deep-clean-shampoo-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "botanical-deep-clean-shampoo-400ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/botanical-deep-clean-shampoo-400ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "c-glow-shower-gel": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shower-gel/c-glow-shower-gel.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683962/enjoyful/products/daily/shower-gel/c-glow-shower-gel.webp",
+        "publicId": "enjoyful/products/daily/shower-gel/c-glow-shower-gel",
+        "isPrimary": true
+      }
+    ]
+  },
+  "daily-delight-moisturising-cream": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/body-cream/daily-delight-moisturising-cream.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/body-cream/daily-delight-moisturising-cream.webp",
+        "publicId": "enjoyful/products/daily/body-cream/daily-delight-moisturising-cream",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/body-cream/daily-delight-moisturising-cream-2.webp",
+        "publicId": "enjoyful/products/daily/body-cream/daily-delight-moisturising-cream-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/body-cream/daily-delight-moisturising-cream-3.webp",
+        "publicId": "enjoyful/products/daily/body-cream/daily-delight-moisturising-cream-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "ice-blast-shower-gel": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/shower-gel/ice-blast-shower-gel.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/shower-gel/ice-blast-shower-gel.webp",
+        "publicId": "enjoyful/products/daily/shower-gel/ice-blast-shower-gel",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/shower-gel/ice-blast-shower-gel-2.webp",
+        "publicId": "enjoyful/products/daily/shower-gel/ice-blast-shower-gel-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "jasmin-oil-200ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/hair-oil/jasmin-oil-200ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/hair-oil/jasmin-oil-200ml.webp",
+        "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-200ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/hair-oil/jasmin-oil-200ml-2.webp",
+        "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-200ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683963/enjoyful/products/daily/hair-oil/jasmin-oil-200ml-3.webp",
+        "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-200ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "jasmin-oil-500ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/hair-oil/jasmin-oil-500ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/hair-oil/jasmin-oil-500ml.webp",
+        "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-500ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/hair-oil/jasmin-oil-500ml-2.webp",
+        "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-500ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/hair-oil/jasmin-oil-500ml-3.webp",
+        "publicId": "enjoyful/products/daily/hair-oil/jasmin-oil-500ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "mix-fruit-body-lotion-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683964/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "mix-fruit-body-lotion-350ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/mix-fruit-body-lotion-350ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "mix-fruit-moisturising-cream": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream.webp",
+        "publicId": "enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream-2.webp",
+        "publicId": "enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream-3.webp",
+        "publicId": "enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683965/enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream-4.webp",
+        "publicId": "enjoyful/products/daily/body-cream/mix-fruit-moisturising-cream-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "moisture-balance-body-lotion": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/body-lotion/moisture-balance-body-lotion.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/body-lotion/moisture-balance-body-lotion.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/moisture-balance-body-lotion",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/body-lotion/moisture-balance-body-lotion-2.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/moisture-balance-body-lotion-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/body-lotion/moisture-balance-body-lotion-3.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/moisture-balance-body-lotion-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/body-lotion/moisture-balance-body-lotion-4.webp",
+        "publicId": "enjoyful/products/daily/body-lotion/moisture-balance-body-lotion-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "morning-buzz-shower-gel": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/shower-gel/morning-buzz-shower-gel.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/shower-gel/morning-buzz-shower-gel.webp",
+        "publicId": "enjoyful/products/daily/shower-gel/morning-buzz-shower-gel",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/shower-gel/morning-buzz-shower-gel-2.webp",
+        "publicId": "enjoyful/products/daily/shower-gel/morning-buzz-shower-gel-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683966/enjoyful/products/daily/shower-gel/morning-buzz-shower-gel-3.webp",
+        "publicId": "enjoyful/products/daily/shower-gel/morning-buzz-shower-gel-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "onion-shampoo-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-100ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-100ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-100ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "onion-shampoo-400ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-400ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-400ml.webp",
+        "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-400ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683967/enjoyful/products/daily/shampoo/onion-shampoo-400ml-2.webp",
+        "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-400ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/daily/shampoo/onion-shampoo-400ml-3.webp",
+        "publicId": "enjoyful/products/daily/shampoo/onion-shampoo-400ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "amber-glow-body-mist-70ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/body-mist/amber-glow-body-mist-70ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/body-mist/amber-glow-body-mist-70ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/amber-glow-body-mist-70ml",
+        "isPrimary": true
+      }
+    ]
+  },
+  "amber-glow-body-mist-250ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/body-mist/amber-glow-body-mist-250ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/body-mist/amber-glow-body-mist-250ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/amber-glow-body-mist-250ml",
+        "isPrimary": true
+      }
+    ]
+  },
+  "amber-imperial": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/perfume/amber-imperial.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/perfume/amber-imperial.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/amber-imperial",
+        "isPrimary": true
+      }
+    ]
+  },
+  "amber-ophir": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/perfume/amber-ophir.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/perfume/amber-ophir.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/amber-ophir",
+        "isPrimary": true
+      }
+    ]
+  },
+  "apex-72h-roll-on": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/roll-on/apex-72h-roll-on.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683968/enjoyful/products/fragrances/roll-on/apex-72h-roll-on.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/apex-72h-roll-on",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/roll-on/apex-72h-roll-on-2.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/apex-72h-roll-on-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/roll-on/apex-72h-roll-on-3.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/apex-72h-roll-on-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/roll-on/apex-72h-roll-on-4.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/apex-72h-roll-on-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "atlas-oud": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/perfume/atlas-oud.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/perfume/atlas-oud.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/atlas-oud",
+        "isPrimary": true
+      }
+    ]
+  },
+  "blossom-veil-body-mist-70ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-70ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "blossom-veil-body-mist-250ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683969/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683970/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683970/enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/blossom-veil-body-mist-250ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "coastal-pulse-body-mist-70ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683970/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683970/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683970/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683970/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-70ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "coastal-pulse-body-mist-250ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/coastal-pulse-body-mist-250ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "cuir-imperial": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/perfume/cuir-imperial.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/perfume/cuir-imperial.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/cuir-imperial",
+        "isPrimary": true
+      }
+    ]
+  },
+  "ebene-noir": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/perfume/ebene-noir.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683971/enjoyful/products/fragrances/perfume/ebene-noir.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/ebene-noir",
+        "isPrimary": true
+      }
+    ]
+  },
+  "element-zero-roll-on": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/roll-on/element-zero-roll-on.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/roll-on/element-zero-roll-on.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/element-zero-roll-on",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/roll-on/element-zero-roll-on-2.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/element-zero-roll-on-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "gold-victorie": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/perfume/gold-victorie.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/perfume/gold-victorie.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/gold-victorie",
+        "isPrimary": true
+      }
+    ]
+  },
+  "imperium-noir": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/perfume/imperium-noir.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683972/enjoyful/products/fragrances/perfume/imperium-noir.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/imperium-noir",
+        "isPrimary": true
+      }
+    ]
+  },
+  "intense-aibek": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/perfume/intense-aibek.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/perfume/intense-aibek.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/intense-aibek",
+        "isPrimary": true
+      }
+    ]
+  },
+  "jasmine-nomade": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/perfume/jasmine-nomade.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/perfume/jasmine-nomade.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/jasmine-nomade",
+        "isPrimary": true
+      }
+    ]
+  },
+  "laichu-signature": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/perfume/laichu-signature.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/perfume/laichu-signature.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/laichu-signature",
+        "isPrimary": true
+      }
+    ]
+  },
+  "lumi-glow-roll-on": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/roll-on/lumi-glow-roll-on.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/roll-on/lumi-glow-roll-on.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/lumi-glow-roll-on",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/roll-on/lumi-glow-roll-on-2.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/lumi-glow-roll-on-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "midnight-velvet-body-mist-70ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683973/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-70ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "midnight-velvet-body-mist-250ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/midnight-velvet-body-mist-250ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "minuit-noir": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/perfume/minuit-noir.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/perfume/minuit-noir.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/minuit-noir",
+        "isPrimary": true
+      }
+    ]
+  },
+  "monarach-oud": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/perfume/monarach-oud.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/perfume/monarach-oud.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/monarach-oud",
+        "isPrimary": true
+      }
+    ]
+  },
+  "noir-element-body-mist-70ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/noir-element-body-mist-70ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683974/enjoyful/products/fragrances/body-mist/noir-element-body-mist-70ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/noir-element-body-mist-70ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/body-mist/noir-element-body-mist-70ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/noir-element-body-mist-70ml-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "noir-element-body-mist-250ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/body-mist/noir-element-body-mist-250ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/body-mist/noir-element-body-mist-250ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/noir-element-body-mist-250ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/body-mist/noir-element-body-mist-250ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/noir-element-body-mist-250ml-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "noir-lehan": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/perfume/noir-lehan.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/perfume/noir-lehan.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/noir-lehan",
+        "isPrimary": true
+      }
+    ]
+  },
+  "noir-oud-roll-on": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/roll-on/noir-oud-roll-on.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/roll-on/noir-oud-roll-on.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/noir-oud-roll-on",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/roll-on/noir-oud-roll-on-2.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/noir-oud-roll-on-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683975/enjoyful/products/fragrances/roll-on/noir-oud-roll-on-3.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/noir-oud-roll-on-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/roll-on/noir-oud-roll-on-4.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/noir-oud-roll-on-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "noir-velours": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/noir-velours.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/noir-velours.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/noir-velours",
+        "isPrimary": true
+      }
+    ]
+  },
+  "obsidien": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/obsidien.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/obsidien.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/obsidien",
+        "isPrimary": true
+      }
+    ]
+  },
+  "oud-prive": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/oud-prive.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/oud-prive.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/oud-prive",
+        "isPrimary": true
+      }
+    ]
+  },
+  "petal-d-aamichu": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/petal-d-aamichu.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/petal-d-aamichu.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/petal-d-aamichu",
+        "isPrimary": true
+      }
+    ]
+  },
+  "pure-renewal-roll-on": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/roll-on/pure-renewal-roll-on.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/roll-on/pure-renewal-roll-on.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/pure-renewal-roll-on",
+        "isPrimary": true
+      }
+    ]
+  },
+  "reine-florale": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/reine-florale.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/reine-florale.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/reine-florale",
+        "isPrimary": true
+      }
+    ]
+  },
+  "royal-safran": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/royal-safran.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683976/enjoyful/products/fragrances/perfume/royal-safran.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/royal-safran",
+        "isPrimary": true
+      }
+    ]
+  },
+  "safran-intense": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/perfume/safran-intense.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/perfume/safran-intense.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/safran-intense",
+        "isPrimary": true
+      }
+    ]
+  },
+  "vanilla-aura-body-mist-70ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-70ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "vanilla-aura-body-mist-250ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml-2.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683977/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml-3.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml-4.webp",
+        "publicId": "enjoyful/products/fragrances/body-mist/vanilla-aura-body-mist-250ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "velvet-repair-roll-on": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/fragrances/roll-on/velvet-repair-roll-on.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/fragrances/roll-on/velvet-repair-roll-on.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/velvet-repair-roll-on",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/fragrances/roll-on/velvet-repair-roll-on-2.webp",
+        "publicId": "enjoyful/products/fragrances/roll-on/velvet-repair-roll-on-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "zoya-flora": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/fragrances/perfume/zoya-flora.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/fragrances/perfume/zoya-flora.webp",
+        "publicId": "enjoyful/products/fragrances/perfume/zoya-flora",
+        "isPrimary": true
+      }
+    ]
+  },
+  "aloevera-gel-60ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml.webp",
+        "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml-2.webp",
+        "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml-3.webp",
+        "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-60ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "aloevera-gel-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683978/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml.webp",
+        "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/aloe-vera-gel/aloevera-gel-150ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "apricot-face-scrub-50ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-50ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "apricot-face-scrub-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683979/enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml-4.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/apricot-face-scrub-150ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "charcoal-face-wash": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-wash/charcoal-face-wash.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-wash/charcoal-face-wash.webp",
+        "publicId": "enjoyful/products/glow/face-wash/charcoal-face-wash",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-wash/charcoal-face-wash-2.webp",
+        "publicId": "enjoyful/products/glow/face-wash/charcoal-face-wash-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-wash/charcoal-face-wash-3.webp",
+        "publicId": "enjoyful/products/glow/face-wash/charcoal-face-wash-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "coffee-face-scrub-50ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-50ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "coffee-face-scrub-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683980/enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml-4.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/coffee-face-scrub-150ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "peel-off-mask-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-100ml.webp",
+        "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-100ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-100ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-100ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-100ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "peel-off-mask-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683981/enjoyful/products/glow/face-mask/peel-off-mask-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/face-mask/peel-off-mask-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-mask/peel-off-mask-150ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "sunscreen-cream-50ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-50ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-50ml.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-50ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-50ml-2.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-50ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-50ml-3.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-50ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "sunscreen-cream-100ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-100ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-100ml.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-100ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/sunscreen/sunscreen-cream-100ml-2.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-100ml-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "sunscreen-cream-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683982/enjoyful/products/glow/sunscreen/sunscreen-cream-150ml.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/sunscreen/sunscreen-cream-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/sunscreen/sunscreen-cream-150ml-2",
+        "isPrimary": false
+      }
+    ]
+  },
+  "vit-c-lemon-face-wash-60ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-60ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "vit-c-lemon-face-wash-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683983/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-lemon-face-wash-150ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "vit-c-orange-face-wash-60ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-60ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "vit-c-orange-face-wash-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-orange-face-wash-150ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "vit-c-papaya-face-wash-60ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-60ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683984/enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-60ml.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-60ml",
+        "isPrimary": true
+      }
+    ]
+  },
+  "vit-c-papaya-face-wash-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-wash/vit-c-papaya-face-wash-150ml",
+        "isPrimary": true
+      }
+    ]
+  },
+  "walnut-apricot-face-scrub-50ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-50ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "walnut-apricot-face-scrub-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683985/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml-4.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-apricot-face-scrub-150ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "walnut-face-scrub-50ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683986/enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-50ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "walnut-face-scrub-150ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml-2.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml-3.webp",
+        "publicId": "enjoyful/products/glow/face-scrub/walnut-face-scrub-150ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "3x-power-clean-citrus-burst": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-citrus-burst.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-citrus-burst.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-citrus-burst",
+        "isPrimary": true
+      }
+    ]
+  },
+  "3x-power-clean-lavender-floor-disinfectant-cleaner": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683987/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "3x-power-clean-pine-floor-disinfectant-cleaner": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "9x-power-clean-ultra-freshness-2l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l-2.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683988/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l-3.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "9x-power-clean-ultra-freshness-3l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l-2.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l-3.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "abaya-wash-3l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/abaya-wash-3l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/abaya-wash-3l.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/abaya-wash-3l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/abaya-wash-3l-2.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/abaya-wash-3l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/laundry-care/abaya-wash-3l-3.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/abaya-wash-3l-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "abaya-wash-5l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/abaya-wash-5l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683989/enjoyful/products/home-care/laundry-care/abaya-wash-5l.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/abaya-wash-5l",
+        "isPrimary": true
+      }
+    ]
+  },
+  "all-purpose-baking-soda": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda-4.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "cherry-blossom-handwash-1l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683990/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l-2.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l-3.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "cherry-blossom-handwash-500ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml-2.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml-3.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-500ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "dishwashing-liquid-aloe-and-mint-fresh": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-aloe-and-mint-fresh.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-aloe-and-mint-fresh.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-aloe-and-mint-fresh",
+        "isPrimary": true
+      }
+    ]
+  },
+  "dishwashing-liquid-apple-breeze": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-apple-breeze.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683991/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-apple-breeze.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-apple-breeze",
+        "isPrimary": true
+      }
+    ]
+  },
+  "dishwashing-liquid-lemon-fresh-1l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l-2.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l-3.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l-4.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "dishwashing-liquid-lemon-fresh-5l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-5l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-5l.webp",
+        "publicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-5l",
+        "isPrimary": true
+      }
+    ]
+  },
+  "fabric-softener-relaxing-lavender": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender-2.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683992/enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender-3.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "fabric-softener-soft-floral-scents": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents-2.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents-3.webp",
+        "publicId": "enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "glass-and-surface-cleaner": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "lavender-handwash": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/hand-care/lavender-handwash.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/hand-care/lavender-handwash.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/lavender-handwash",
+        "isPrimary": true
+      }
+    ]
+  },
+  "lemon-fresh-multi-purpose-cream-cleaner-1l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683993/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l-4.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "lemon-fresh-multi-purpose-cream-cleaner-750ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml-3",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml-4.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml-4",
+        "isPrimary": false
+      }
+    ]
+  },
+  "mint-handwash": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/hand-care/mint-handwash.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683994/enjoyful/products/home-care/hand-care/mint-handwash.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/mint-handwash",
+        "isPrimary": true
+      }
+    ]
+  },
+  "oud-handwash": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/hand-care/oud-handwash.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/hand-care/oud-handwash.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/oud-handwash",
+        "isPrimary": true
+      }
+    ]
+  },
+  "papaya-handwash": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/hand-care/papaya-handwash.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/hand-care/papaya-handwash.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/papaya-handwash",
+        "isPrimary": true
+      }
+    ]
+  },
+  "pure-shield-disinfectant-cleaner-5l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-5l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-5l.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-5l",
+        "isPrimary": true
+      }
+    ]
+  },
+  "pure-shield-disinfectant-cleaner-750ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683995/enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml-2.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml-3.webp",
+        "publicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "rich-musk-handwash-1l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-1l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-1l.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-1l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-1l-2.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-1l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-1l-3.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-1l-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "rich-musk-handwash-500ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml-2.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml-3.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-500ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "sweet-vanilla-handwash-1l": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683996/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l-2.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l-3.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "sweet-vanilla-handwash-500ml": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml-2.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683998/enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml-3.webp",
+        "publicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-500ml-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "ultra-clean-toilet-cleaner-aqua": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua.webp",
+        "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua-2.webp",
+        "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683997/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua-3.webp",
+        "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-aqua-3",
+        "isPrimary": false
+      }
+    ]
+  },
+  "ultra-clean-toilet-cleaner-pine": {
+    "image": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683998/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine.webp",
+    "images": [
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683998/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine.webp",
+        "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine",
+        "isPrimary": true
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683998/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine-2.webp",
+        "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine-2",
+        "isPrimary": false
+      },
+      {
+        "url": "https://res.cloudinary.com/dk9mwcx68/image/upload/v1783683998/enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine-3.webp",
+        "publicId": "enjoyful/products/home-care/bathroom-care/ultra-clean-toilet-cleaner-pine-3",
+        "isPrimary": false
+      }
+    ]
+  }
+}

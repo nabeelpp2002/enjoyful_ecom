@@ -61,3 +61,14 @@ desktop.ini
 # Local tooling scratch
 /tmp/
 *.log
+
+# ---- Large local product-image assets (NOT committed) ----
+# These raw/mockup/print image folders + archive are big (multiple GB). The app never
+# reads them at runtime — product image URLs live in MongoDB + Cloudinary. Keep them
+# locally; regenerate the clean web library any time with:
+#   node product-data/master/stage-images.js
+product-data/product-images.rar
+product-data/product-images/
+product-data/product-images (2)/
+product-data/product-images-clean/
+product-data/home-care/Mockup/

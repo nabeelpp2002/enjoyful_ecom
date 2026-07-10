@@ -21,13 +21,13 @@ const menuCategories = [
     },
     {
         name: "Glow",
-        subcategories: ["Face Wash", "Face Scrub", "Face Mask", "Sunscreen", "Aloe Vera Gel", "Toner"],
+        subcategories: ["Face Wash", "Face Scrub", "Face Mask", "Sunscreen", "Aloe Vera Gel", "Toner", "Body Scrub"],
         imageUrl: "/assets/placeholder.png",
         themeColor: "bg-[#F0EDF6]",
     },
     {
         name: "Daily",
-        subcategories: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash"],
+        subcategories: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash", "Hair Removal"],
         imageUrl: "/assets/category/Mix-Fruit-Moisturising-Cream-100ml21.avif",
         themeColor: "bg-[#FBEBE5]",
     },

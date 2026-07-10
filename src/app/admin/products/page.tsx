@@ -42,9 +42,10 @@ interface AdminProduct {
     isFeatured?: boolean;
     onSale?: boolean;
     bestDeal?: boolean;
+    isBestSeller?: boolean;
 }
 
-type PromoFlag = "isFeatured" | "onSale" | "bestDeal";
+type PromoFlag = "isFeatured" | "onSale" | "bestDeal" | "isBestSeller";
 
 const PRODUCTS_CACHE_KEY = "enjoyful-admin-products-cache";
 
@@ -133,7 +134,7 @@ export default function AdminProductsPage() {
 
     // Export the products table as a CSV (one row per variant / SKU).
     const handleExportCsv = () => {
-        const cols = ["Name", "Category", "Subcategory", "Type", "Size", "Product Code", "SKU Code", "Variant", "Unit Type", "Mockup Status", "Family", "Price", "Original Price", "Discount %", "Status", "Featured", "Sale", "Deal", "Slug"];
+        const cols = ["Name", "Category", "Subcategory", "Type", "Size", "Product Code", "SKU Code", "Variant", "Unit Type", "Mockup Status", "Family", "Price", "Original Price", "Discount %", "Status", "Featured", "Sale", "Deal", "Favourite", "Slug"];
         const esc = (v: unknown) => {
             const s = v === null || v === undefined ? "" : String(v);
             return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
@@ -141,7 +142,7 @@ export default function AdminProductsPage() {
         const rows = products.map(p => [
             p.name, p.category, p.subcategory ?? "", p.productType ?? "", p.size ?? "", p.productCode ?? "", p.skuCode ?? "", p.variant ?? "", p.unitType ?? "", p.mockupStatus ?? "", p.productFamily ?? "",
             p.price, p.originalPrice ?? "", p.discountPct ?? "", p.isHidden ? "Hidden" : "Visible",
-            p.isFeatured ? "Yes" : "No", p.onSale ? "Yes" : "No", p.bestDeal ? "Yes" : "No", p.slug ?? "",
+            p.isFeatured ? "Yes" : "No", p.onSale ? "Yes" : "No", p.bestDeal ? "Yes" : "No", p.isBestSeller ? "Yes" : "No", p.slug ?? "",
         ].map(esc).join(","));
         const csv = [cols.join(","), ...rows].join("\n");
         const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
@@ -488,6 +489,7 @@ export default function AdminProductsPage() {
                                                     ["onSale", "Sale", "bg-red-500"],
                                                     ["bestDeal", "Deal", "bg-[#735697]"],
                                                     ["isFeatured", "Feat", "bg-[#1A1A1B]"],
+                                                    ["isBestSeller", "Fav", "bg-[#F4B449]"],
                                                 ] as [PromoFlag, string, string][]).map(([flag, label, color]) => {
                                                     const on = rep[flag] ?? false;
                                                     return (

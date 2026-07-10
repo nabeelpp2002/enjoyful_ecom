@@ -9,7 +9,14 @@ import { ProductCardSkeleton } from "@/components/ui/ProductCardSkeleton";
 
 export function BestSellingProducts() {
     const { products, productsLoading } = useData();
-    const bestSellingProducts = useMemo(() => [...products].sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0)).slice(0, 8), [products]);
+    // Show admin-curated "Customer Favourites" first (flagged in /admin/products via the
+    // "Fav" toggle); if fewer than 8 are flagged, fill the row with the highest-reviewed rest.
+    const bestSellingProducts = useMemo(() => {
+        const picked = products.filter(p => p.isBestSeller);
+        const used = new Set(picked.map(p => p.id));
+        const fill = [...products.filter(p => !used.has(p.id))].sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0));
+        return [...picked, ...fill].slice(0, 8);
+    }, [products]);
 
     return (
         <section className="py-12 bg-white relative overflow-hidden">

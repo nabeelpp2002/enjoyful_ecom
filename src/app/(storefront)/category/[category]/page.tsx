@@ -2,7 +2,7 @@
 
 import { use, useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, ChevronDown, SlidersHorizontal, X, Loader2, Search } from "lucide-react";
+import { Heart, ChevronDown, SlidersHorizontal, X, Search } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,10 +91,22 @@ const SORT_OPTIONS: { value: string; label: string }[] = [
     { value: 'rating', label: 'Highest Rated' },
 ];
 
+// Upper bound for the price control (Home Care tops out ~35 AED; skincare is price-on-request).
+const PRICE_MAX = 100;
+
+// Top-level categories — shown in the filter drawer when browsing "Shop All".
+const TOP_CATEGORIES: { name: string; slug: string }[] = [
+    { name: "Glow", slug: "glow" },
+    { name: "Daily", slug: "daily" },
+    { name: "Baby", slug: "baby" },
+    { name: "Fragrances", slug: "fragrances" },
+    { name: "Home Care", slug: "home-care" },
+];
+
 // Subcategory options per category (must match seeded product `subcategory` values)
 const SUBCATEGORIES_BY_CATEGORY: Record<string, string[]> = {
-    Glow: ["Face Wash", "Face Scrub", "Face Mask", "Sunscreen", "Aloe Vera Gel", "Toner"],
-    Daily: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash"],
+    Glow: ["Face Wash", "Face Scrub", "Face Mask", "Sunscreen", "Aloe Vera Gel", "Toner", "Body Scrub"],
+    Daily: ["Body Lotion", "Body Cream", "Shower Gel", "Shampoo", "Hair Oil", "Hair Serum", "Intimate Wash", "Hair Removal"],
     Baby: ["Baby Lotion", "Baby Wash", "Baby Talc", "Baby Rash Cream", "Baby Soap"],
     Fragrances: ["Perfume", "Body Mist", "Roll On", "Deo Stick"],
     "Home Care": ["Kitchen Care", "Bathroom Care", "Floor & Surface Care", "Hand Care", "Laundry Care"],
@@ -118,15 +130,14 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     const query = searchParams.get("q") || "";
     const subcategoryParam = searchParams.get("subcategory") || "";
     const subcategoryOptions = SUBCATEGORIES_BY_CATEGORY[category] ?? [];
+    // Multi-select: the subcategory param is a comma-separated list of selected types.
+    const selectedSubs = subcategoryParam ? subcategoryParam.split(",").map(s => s.trim()).filter(Boolean) : [];
 
     const { addToCart, addToWishlist, removeFromWishlist, isInWishlist, showProductPrices } = useData();
     const [sortBy, setSortBy] = useState("featured");
-    const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
-    const [selectedSkinTypes, setSelectedSkinTypes] = useState<string[]>([]);
-    const [selectedProductTypes, setSelectedProductTypes] = useState<string[]>([]);
+    const [priceRange, setPriceRange] = useState<[number, number]>([0, PRICE_MAX]);
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [filtersOpen, setFiltersOpen] = useState(false);
-    const SKIN_TYPES = ["Dry", "Oily", "Combination", "Normal", "Sensitive"];
 
     // Server-side filtered/sorted results, streamed in via infinite scroll.
     const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
@@ -172,7 +183,7 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     // Reset to page 1 whenever filters/sort/category/query/subcategory change
     useEffect(() => {
         setPage(1);
-    }, [urlCategoryRaw, sortBy, priceRange, selectedSkinTypes, selectedProductTypes, query, subcategoryParam]);
+    }, [urlCategoryRaw, sortBy, priceRange, query, subcategoryParam]);
 
     const fetchProducts = useCallback(async () => {
         const append = page > 1;
@@ -189,9 +200,7 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
         }
         if (subcategoryParam) params.set('subcategory', subcategoryParam);
         if (priceRange[0] > 0) params.set('minPrice', String(priceRange[0]));
-        if (priceRange[1] < 500) params.set('maxPrice', String(priceRange[1]));
-        if (selectedSkinTypes.length > 0) params.set('skinType', selectedSkinTypes.join(','));
-        if (selectedProductTypes.length > 0) params.set('productType', selectedProductTypes.join(','));
+        if (priceRange[1] < PRICE_MAX) params.set('maxPrice', String(priceRange[1]));
         if (query) params.set('q', query);
 
         try {
@@ -215,7 +224,7 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
             if (append) setLoadingMore(false);
             else setLoadingProducts(false);
         }
-    }, [page, sortBy, priceRange, selectedSkinTypes, selectedProductTypes, query, subcategoryParam, category, urlCategoryRaw]);
+    }, [page, sortBy, priceRange, query, subcategoryParam, category, urlCategoryRaw]);
 
     useEffect(() => { fetchProducts(); }, [fetchProducts]);
 
@@ -270,11 +279,12 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
     };
 
     let info = categoryInfo[category] || { title: category, description: "Explore our collection.", bgColor: "bg-[var(--color-brand-sand)]" };
-    if (subcategoryParam) {
+    if (selectedSubs.length) {
+        const label = selectedSubs.length === 1 ? selectedSubs[0] : `${selectedSubs.length} types`;
         info = {
             ...info,
-            title: `${categoryInfo[category]?.title ?? category} — ${subcategoryParam}`,
-            description: `Browse our ${subcategoryParam} collection.`,
+            title: `${categoryInfo[category]?.title ?? category} — ${label}`,
+            description: `Browse our ${selectedSubs.join(", ")} collection.`,
         };
     }
     if (query) {
@@ -289,10 +299,18 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
         sub ? `/category/${encodeURIComponent(urlCategoryRaw)}?subcategory=${encodeURIComponent(sub)}`
             : `/category/${encodeURIComponent(urlCategoryRaw)}`;
 
+    // Toggle one subcategory in/out of the multi-select (updates the comma-separated URL param).
+    // Filters apply in place; the drawer stays open so several can be picked in a row.
+    const toggleSub = useCallback((sub: string) => {
+        const next = selectedSubs.includes(sub)
+            ? selectedSubs.filter((s) => s !== sub)
+            : [...selectedSubs, sub];
+        const qs = next.length ? `?subcategory=${encodeURIComponent(next.join(","))}` : "";
+        router.push(`/category/${encodeURIComponent(urlCategoryRaw)}${qs}`, { scroll: false });
+    }, [selectedSubs, router, urlCategoryRaw]);
+
     const clearAll = useCallback(() => {
-        setPriceRange([0, 500]);
-        setSelectedSkinTypes([]);
-        setSelectedProductTypes([]);
+        setPriceRange([0, PRICE_MAX]);
         setOpenDropdown(null);
         // Also strip q + subcategory from the URL so everything is truly cleared
         if (query || subcategoryParam) {
@@ -308,11 +326,22 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
         router.push(`/category/${encodeURIComponent(urlCategoryRaw)}`);
     }, [router, urlCategoryRaw]);
 
-    const toggleSkinType = (type: string) => {
-        setSelectedSkinTypes((prev) =>
-            prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-        );
-    };
+    // Price filter only appears where products actually carry a price (Home Care today;
+    // skincare is price-on-request). Auto-adapts if prices are added to other categories later.
+    const showPriceFilter = showProductPrices && (category === "Home Care" || categoryProducts.some((p) => (p.price ?? 0) > 0));
+
+    // Active-filter count drives the badge on the Filters button.
+    const priceActive = priceRange[0] > 0 || priceRange[1] < PRICE_MAX;
+    const activeFilterCount = selectedSubs.length + (priceActive ? 1 : 0);
+
+    // Close the drawer on Escape and lock background scroll while it is open.
+    useEffect(() => {
+        if (!filtersOpen) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setFiltersOpen(false); };
+        document.addEventListener("keydown", onKey);
+        document.body.style.overflow = "hidden";
+        return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    }, [filtersOpen]);
 
     const handleWishlistToggle = (product: Product) => {
         if (isInWishlist(product.id)) {
@@ -404,186 +433,65 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                             </span>
                         </motion.div>
                     )}
-                    {/* Dismissible subcategory chip */}
-                    {!query && subcategoryParam && (
+                    {/* Dismissible subcategory chips (one per selected type) */}
+                    {!query && selectedSubs.length > 0 && (
                         <motion.div
                             initial={{ opacity: 0, y: 8 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="mt-4 flex items-center gap-2"
+                            className="mt-4 flex flex-wrap items-center gap-2"
                         >
-                            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--color-brand-purple)] text-white text-sm font-medium">
-                                {subcategoryParam}
+                            {selectedSubs.map((sub) => (
+                                <span key={sub} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--color-brand-purple)] text-white text-sm font-medium">
+                                    {sub}
+                                    <button
+                                        onClick={() => toggleSub(sub)}
+                                        aria-label={`Remove ${sub} filter`}
+                                        className="hover:text-gray-300 transition-colors ml-0.5"
+                                    >
+                                        <X size={13} />
+                                    </button>
+                                </span>
+                            ))}
+                            {selectedSubs.length > 1 && (
                                 <button
                                     onClick={clearSubcategory}
-                                    aria-label="Clear subcategory filter"
-                                    className="hover:text-gray-300 transition-colors ml-0.5"
+                                    className="text-sm font-medium text-[var(--color-brand-onyx)]/45 hover:text-red-500 transition-colors ml-1"
                                 >
-                                    <X size={13} />
+                                    Clear
                                 </button>
-                            </span>
+                            )}
                         </motion.div>
                     )}
                 </div>
 
 
 
-                {/* Modern Filter Top Bar */}
-                <div ref={dropdownRef} className="flex flex-row justify-between items-center gap-2 md:gap-4 mb-6 md:mb-8 z-30 relative">
-                    <div className="flex flex-wrap items-center gap-2 md:gap-3 flex-1 md:flex-none">
-                        {/* Subcategory Dropdown (Hidden on Mobile) — only for real categories */}
-                        {subcategoryOptions.length > 0 && (
-                            <div className="relative hidden md:block">
-                                <button
-                                    onClick={() => setOpenDropdown(openDropdown === 'type' ? null : 'type')}
-                                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-sans text-sm font-medium border transition-colors ${openDropdown === 'type' || subcategoryParam ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-gray-100 text-[var(--color-brand-onyx)] border-transparent hover:bg-gray-200'}`}
-                                >
-                                    {subcategoryParam || 'Category'}
-                                    <ChevronDown size={14} className={`transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
-                                </button>
-
-                                <AnimatePresence>
-                                    {openDropdown === 'type' && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 10 }}
-                                            transition={{ duration: 0.2 }}
-                                            className="absolute top-full left-0 mt-3 w-60 bg-white rounded-2xl p-2 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 z-50"
-                                        >
-                                            <button
-                                                onClick={() => { setOpenDropdown(null); router.push(categoryUrl()); }}
-                                                className={`w-full text-left px-3 py-2 rounded-xl text-sm font-sans transition-colors ${!subcategoryParam ? 'bg-[var(--color-brand-sand)] font-semibold text-[var(--color-brand-onyx)]' : 'text-[var(--color-brand-onyx)]/70 hover:bg-gray-50'}`}
-                                            >
-                                                All {category}
-                                            </button>
-                                            {subcategoryOptions.map((sub) => (
-                                                <button
-                                                    key={sub}
-                                                    onClick={() => { setOpenDropdown(null); router.push(categoryUrl(sub)); }}
-                                                    className={`w-full text-left px-3 py-2 rounded-xl text-sm font-sans transition-colors ${subcategoryParam === sub ? 'bg-[var(--color-brand-onyx)] text-white font-semibold' : 'text-[var(--color-brand-onyx)]/70 hover:bg-gray-50'}`}
-                                                >
-                                                    {sub}
-                                                </button>
-                                            ))}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        )}
-
-                        {/* Price Range Dropdown (Hidden on Mobile) */}
-                        <div className="relative hidden md:block">
-                            <button
-                                onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')}
-                                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-sans text-sm font-medium border transition-colors ${openDropdown === 'price' || priceRange[0] > 0 || priceRange[1] < 100 ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-gray-100 text-[var(--color-brand-onyx)] border-transparent hover:bg-gray-200'}`}
-                            >
-                                Price {(priceRange[0] > 0 || priceRange[1] < 500) && `(${priceRange[0]} - ${priceRange[1]} AED)`}
-                                <ChevronDown size={14} className={`transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
-                            </button>
-
-                            <AnimatePresence>
-                                {openDropdown === 'price' && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 10 }}
-                                        transition={{ duration: 0.2 }}
-                                        className="absolute top-full left-0 mt-3 w-72 bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 z-50"
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <div className="flex-1 relative">
-                                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-sans text-xs">AED</span>
-                                                <input
-                                                    type="number"
-                                                    value={priceRange[0]}
-                                                    onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
-                                                    className="w-full pl-10 pr-3 py-2 rounded-xl bg-gray-50 border border-gray-200 font-sans text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-onyx)]/20"
-                                                />
-                                            </div>
-                                            <span className="text-gray-400">-</span>
-                                            <div className="flex-1 relative">
-                                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-sans text-xs">AED</span>
-                                                <input
-                                                    type="number"
-                                                    value={priceRange[1]}
-                                                    onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
-                                                    className="w-full pl-10 pr-3 py-2 rounded-xl bg-gray-50 border border-gray-200 font-sans text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-onyx)]/20"
-                                                />
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-
-                        {/* Skin Type Dropdown (Hidden on Mobile) */}
-                        {category === "Glow" && (
-                            <div className="relative hidden md:block">
-                                <button
-                                    onClick={() => setOpenDropdown(openDropdown === 'skin' ? null : 'skin')}
-                                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-sans text-sm font-medium border transition-colors ${openDropdown === 'skin' || selectedSkinTypes.length > 0 ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-gray-100 text-[var(--color-brand-onyx)] border-transparent hover:bg-gray-200'}`}
-                                >
-                                    Skin Type {selectedSkinTypes.length > 0 && `(${selectedSkinTypes.length})`}
-                                    <ChevronDown size={14} className={`transition-transform ${openDropdown === 'skin' ? 'rotate-180' : ''}`} />
-                                </button>
-
-                                <AnimatePresence>
-                                    {openDropdown === 'skin' && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 10 }}
-                                            transition={{ duration: 0.2 }}
-                                            className="absolute top-full left-0 mt-3 w-64 bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 z-50"
-                                        >
-                                            <div className="space-y-3">
-                                                {["Dry", "Oily", "Combination", "Normal", "Sensitive"].map((type) => (
-                                                    <label key={type} className="flex items-center gap-3 cursor-pointer group">
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={selectedSkinTypes.includes(type)}
-                                                            onChange={() => toggleSkinType(type)}
-                                                            className="w-5 h-5 rounded border-gray-300 text-[var(--color-brand-onyx)] focus:ring-[var(--color-brand-onyx)]"
-                                                        />
-                                                        <span className="font-sans text-sm text-[var(--color-brand-onyx)]">
-                                                            {type}
-                                                        </span>
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        )}
-
-                        {/* All Filters / Clear Filters */}
-                        <div className="flex items-center gap-2 md:gap-3 md:ml-2 md:border-l border-gray-200 md:pl-4 w-full md:w-auto">
-                            <button
-                                type="button"
-                                onClick={() => setFiltersOpen(true)}
-                                className="flex items-center justify-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full font-sans text-xs md:text-sm font-medium border border-gray-200 bg-white hover:bg-gray-50 transition-colors text-[var(--color-brand-onyx)] flex-1 md:flex-shrink-0"
-                            >
-                                <SlidersHorizontal size={14} /> All Filters
-                            </button>
-
-                            {(selectedProductTypes.length > 0 || selectedSkinTypes.length > 0 || priceRange[0] > 0 || priceRange[1] < 100 || query) && (
-                                <button
-                                    onClick={clearAll}
-                                    className="font-sans text-sm font-medium text-gray-400 hover:text-red-500 transition-colors"
-                                >
-                                    Clear all
-                                </button>
+                {/* Controls: Filters button + count (left) · Sort (right) */}
+                <div ref={dropdownRef} className="flex flex-row justify-between items-center gap-3 mb-6 md:mb-8 z-30 relative">
+                    <div className="flex items-center gap-2 md:gap-3">
+                        {/* Filters — opens a left sidebar on desktop, a bottom sheet on mobile */}
+                        <button
+                            type="button"
+                            onClick={() => setFiltersOpen(true)}
+                            className={`flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full font-sans text-xs md:text-sm font-semibold border transition-colors ${activeFilterCount > 0 ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
+                        >
+                            <SlidersHorizontal size={15} />
+                            Filters
+                            {activeFilterCount > 0 && (
+                                <span className="ml-0.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--color-brand-purple)] text-white text-[10px] font-bold leading-none">{activeFilterCount}</span>
                             )}
-                        </div>
+                        </button>
+                        <p className="hidden sm:block text-sm text-[var(--color-brand-onyx)]/55 whitespace-nowrap">
+                            {loadingProducts ? 'Loading…' : (<><span className="font-semibold text-[var(--color-brand-onyx)]">{totalCount}</span> {totalCount === 1 ? 'product' : 'products'}</>)}
+                        </p>
                     </div>
 
-                    {/* Sort By — custom styled dropdown */}
-                    <div className="relative flex-1 md:flex-shrink-0 md:w-auto">
+                    {/* Sort */}
+                    <div className="relative flex-shrink-0">
                         <button
                             type="button"
                             onClick={() => setOpenDropdown(openDropdown === 'sort' ? null : 'sort')}
-                            className={`w-full flex items-center justify-between gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full border font-sans text-xs md:text-sm font-medium transition-colors ${openDropdown === 'sort' ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
+                            className={`flex items-center justify-between gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full border font-sans text-xs md:text-sm font-medium transition-colors ${openDropdown === 'sort' ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
                         >
                             <span className="whitespace-nowrap">Sort: {SORT_OPTIONS.find(o => o.value === sortBy)?.label ?? 'Featured'}</span>
                             <ChevronDown size={14} className={`transition-transform ${openDropdown === 'sort' ? 'rotate-180' : ''}`} />
@@ -614,12 +522,7 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
                 </div>
 
 
-                {/* Result count + loading hint */}
-                {!loadingProducts && categoryProducts.length > 0 && (
-                    <p className="text-sm text-[var(--color-brand-onyx)]/55 mb-4">
-                        Showing <span className="font-semibold text-[var(--color-brand-onyx)]">{categoryProducts.length}</span> of {totalCount} products
-                    </p>
-                )}
+                {/* (result count now lives in the controls row above) */}
 
                 {/* Product Grid */}
                 {loadingProducts ? (
@@ -830,116 +733,124 @@ function CategoryPageContent({ params }: { params: Promise<{ category: string }>
             {/* SEO content + FAQ (keyed by category; nothing renders for "Shop All") */}
             <SeoContent data={SEO_CONTENT[category.toLowerCase()]} />
 
-            {/* All Filters drawer (bottom sheet on mobile, centered modal on desktop) */}
-            <AnimatePresence>
-                {filtersOpen && (
-                    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center">
-                        <motion.div
-                            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute inset-0 bg-black/50"
-                            onClick={() => setFiltersOpen(false)}
-                        />
-                        <motion.div
-                            initial={{ y: "100%", opacity: 0.5 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: "100%", opacity: 0.5 }}
-                            transition={{ type: "spring", damping: 32, stiffness: 320 }}
-                            className="relative w-full md:max-w-lg bg-white rounded-t-[2rem] md:rounded-[2rem] max-h-[85vh] overflow-y-auto shadow-2xl"
-                        >
-                            {/* Header */}
-                            <div className="sticky top-0 bg-white flex items-center justify-between px-6 py-5 border-b border-black/5 z-10">
-                                <h2 className="font-heading font-extrabold text-xl text-[var(--color-brand-onyx)]">Filters</h2>
-                                <button onClick={() => setFiltersOpen(false)} aria-label="Close"
-                                    className="w-9 h-9 rounded-full bg-[var(--color-brand-sand)] flex items-center justify-center text-[var(--color-brand-onyx)]/60 active:scale-95 transition-transform">
-                                    <X size={18} />
-                                </button>
+            {/* ── Filter drawer: left sidebar on desktop, bottom sheet on mobile ── */}
+            {/* Backdrop */}
+            <div
+                aria-hidden
+                onClick={() => setFiltersOpen(false)}
+                className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-300 ${filtersOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            />
+            {/* Panel — slides up from bottom on mobile, in from the left on desktop */}
+            <div
+                role="dialog"
+                aria-modal="true"
+                aria-label="Filters"
+                className={`fixed z-[70] bg-white flex flex-col shadow-2xl transition-transform duration-300 ease-out will-change-transform
+                    inset-x-0 bottom-0 max-h-[82vh] rounded-t-[1.75rem]
+                    md:inset-y-0 md:left-0 md:right-auto md:bottom-auto md:h-full md:w-[360px] md:max-h-none md:rounded-none md:rounded-r-[1.75rem]
+                    ${filtersOpen ? "translate-y-0 md:translate-x-0" : "translate-y-full md:translate-y-0 md:-translate-x-full"}`}
+            >
+                {/* Mobile grab handle */}
+                <div className="md:hidden pt-3 flex justify-center">
+                    <span className="h-1.5 w-10 rounded-full bg-gray-300" />
+                </div>
+                {/* Header */}
+                <div className="flex items-center justify-between px-6 py-4 md:py-5 border-b border-black/5">
+                    <h2 className="font-heading font-extrabold text-lg md:text-xl text-[var(--color-brand-onyx)]">Filters</h2>
+                    <button
+                        onClick={() => setFiltersOpen(false)}
+                        aria-label="Close filters"
+                        className="w-9 h-9 rounded-full bg-[var(--color-brand-sand)] flex items-center justify-center text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-onyx)] active:scale-95 transition"
+                    >
+                        <X size={18} />
+                    </button>
+                </div>
+
+                {/* Body */}
+                <div className="flex-1 overflow-y-auto px-6 py-5 space-y-8">
+                    {category === "Shop All" ? (
+                        /* Shop All → choose a category */
+                        <div>
+                            <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Category</h3>
+                            <div className="flex flex-col gap-1">
+                                {TOP_CATEGORIES.map((c) => (
+                                    <button
+                                        key={c.slug}
+                                        onClick={() => { setFiltersOpen(false); router.push(`/category/${c.slug}`); }}
+                                        className="flex items-center justify-between text-left px-4 py-3 rounded-xl text-sm font-medium text-[var(--color-brand-onyx)]/80 hover:bg-[var(--color-brand-sand)] transition-colors"
+                                    >
+                                        {c.name}
+                                        <ChevronDown size={16} className="-rotate-90 text-[var(--color-brand-onyx)]/30" />
+                                    </button>
+                                ))}
                             </div>
-
-                            <div className="px-6 py-5 space-y-7">
-                                {/* Subcategory */}
-                                {subcategoryOptions.length > 0 && (
-                                    <div>
-                                        <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Type</h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            <button
-                                                onClick={() => router.push(categoryUrl())}
-                                                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${!subcategoryParam ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)]/70 border-gray-200 hover:border-[var(--color-brand-onyx)]/40'}`}
-                                            >
-                                                All
-                                            </button>
-                                            {subcategoryOptions.map((sub) => (
-                                                <button
-                                                    key={sub}
-                                                    onClick={() => router.push(categoryUrl(sub))}
-                                                    className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${subcategoryParam === sub ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)]/70 border-gray-200 hover:border-[var(--color-brand-onyx)]/40'}`}
-                                                >
-                                                    {sub}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Price range */}
-                                <div>
-                                    <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Price Range (AED)</h3>
-                                    <div className="flex items-center gap-3">
-                                        <input
-                                            type="number" min={0} value={priceRange[0]}
-                                            onChange={(e) => setPriceRange([Math.max(0, +e.target.value || 0), priceRange[1]])}
-                                            placeholder="Min"
-                                            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-sans focus:outline-none focus:border-[var(--color-brand-purple)]"
-                                        />
-                                        <span className="text-[var(--color-brand-onyx)]/30">—</span>
-                                        <input
-                                            type="number" min={0} value={priceRange[1]}
-                                            onChange={(e) => setPriceRange([priceRange[0], +e.target.value || 0])}
-                                            placeholder="Max"
-                                            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-sans focus:outline-none focus:border-[var(--color-brand-purple)]"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Skin type */}
-                                <div>
-                                    <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Skin Type</h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {SKIN_TYPES.map((t) => {
-                                            const on = selectedSkinTypes.includes(t);
-                                            return (
-                                                <button
-                                                    key={t}
-                                                    onClick={() => setSelectedSkinTypes(prev => on ? prev.filter(x => x !== t) : [...prev, t])}
-                                                    className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${on ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)]/70 border-gray-200 hover:border-[var(--color-brand-onyx)]/40'}`}
-                                                >
-                                                    {t}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Footer actions */}
-                            <div className="sticky bottom-0 bg-white flex items-center gap-3 px-6 py-4 border-t border-black/5">
+                        </div>
+                    ) : subcategoryOptions.length > 0 && (
+                        /* Category → choose a type (subcategory) */
+                        <div>
+                            <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Type</h3>
+                            <p className="text-xs text-[var(--color-brand-onyx)]/45 mb-3 -mt-1">Pick one or more — results update as you go.</p>
+                            <div className="flex flex-wrap gap-2">
                                 <button
-                                    onClick={() => { clearAll(); }}
-                                    className="px-5 py-3 rounded-full border border-gray-200 text-[var(--color-brand-onyx)]/60 font-heading font-bold text-sm hover:border-[var(--color-brand-onyx)]/30 transition-colors"
+                                    onClick={() => router.push(categoryUrl(), { scroll: false })}
+                                    className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${selectedSubs.length === 0 ? "bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]" : "bg-white text-[var(--color-brand-onyx)]/70 border-gray-200 hover:border-[var(--color-brand-onyx)]/40"}`}
                                 >
-                                    Clear
+                                    All {category}
                                 </button>
-                                <button
-                                    onClick={() => setFiltersOpen(false)}
-                                    className="flex-1 px-5 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-heading font-bold text-sm hover:opacity-90 transition-opacity"
-                                >
-                                    Show {totalCount} {totalCount === 1 ? "product" : "products"}
-                                </button>
+                                {subcategoryOptions.map((sub) => {
+                                    const on = selectedSubs.includes(sub);
+                                    return (
+                                        <button
+                                            key={sub}
+                                            onClick={() => toggleSub(sub)}
+                                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${on ? "bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]" : "bg-white text-[var(--color-brand-onyx)]/70 border-gray-200 hover:border-[var(--color-brand-onyx)]/40"}`}
+                                        >
+                                            {sub}
+                                        </button>
+                                    );
+                                })}
                             </div>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
+                        </div>
+                    )}
+
+                    {/* Price — only where products actually carry a price */}
+                    {showPriceFilter && (
+                        <div>
+                            <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Price (AED)</h3>
+                            <div className="flex items-center gap-3">
+                                <input
+                                    type="number" min={0} value={priceRange[0]} placeholder="Min"
+                                    onChange={(e) => setPriceRange([Math.max(0, +e.target.value || 0), priceRange[1]])}
+                                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[var(--color-brand-purple)]"
+                                />
+                                <span className="text-[var(--color-brand-onyx)]/30">–</span>
+                                <input
+                                    type="number" min={0} value={priceRange[1]} placeholder="Max"
+                                    onChange={(e) => setPriceRange([priceRange[0], +e.target.value || 0])}
+                                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[var(--color-brand-purple)]"
+                                />
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Footer */}
+                <div className="border-t border-black/5 px-6 py-4 flex items-center gap-3">
+                    <button
+                        onClick={clearAll}
+                        className="px-5 py-3 rounded-full border border-gray-200 text-[var(--color-brand-onyx)]/60 font-heading font-bold text-sm hover:border-[var(--color-brand-onyx)]/30 transition-colors"
+                    >
+                        Clear
+                    </button>
+                    <button
+                        onClick={() => setFiltersOpen(false)}
+                        className="flex-1 px-5 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-heading font-bold text-sm hover:opacity-90 transition-opacity"
+                    >
+                        Show {totalCount} {totalCount === 1 ? "product" : "products"}
+                    </button>
+                </div>
+            </div>
+
         </div>
     );
 }

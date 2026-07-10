@@ -49,6 +49,7 @@ export class CreateProductDto {
   @ApiPropertyOptional() @IsOptional() @IsBoolean() isHidden?: boolean;
   @ApiPropertyOptional() @IsOptional() @IsBoolean() onSale?: boolean;
   @ApiPropertyOptional() @IsOptional() @IsBoolean() bestDeal?: boolean;
+  @ApiPropertyOptional() @IsOptional() @IsBoolean() isBestSeller?: boolean;
 
   @ApiPropertyOptional() @IsOptional() @IsString() image?: string;
   @ApiPropertyOptional() @IsOptional() @IsString() hoverImage?: string;

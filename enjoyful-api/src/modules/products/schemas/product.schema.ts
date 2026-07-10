@@ -70,6 +70,8 @@ export class Product {
   @Prop({ default: false }) isHidden: boolean;
   @Prop({ default: false }) onSale: boolean;
   @Prop({ default: false }) bestDeal: boolean;
+  // Curated "Customer Favourites" flag — drives the homepage Customer Favourites row.
+  @Prop({ default: false }) isBestSeller: boolean;
 
   // External marketplace links — admin can set URL per provider and toggle each on/off.
   // A button renders on the storefront iff url is non-empty AND visible === true.
