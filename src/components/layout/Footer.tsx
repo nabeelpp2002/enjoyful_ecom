@@ -29,9 +29,10 @@ export function Footer() {
                     <h4 className="font-heading font-bold text-[var(--color-brand-onyx)] tracking-wider uppercase text-sm mb-1 md:mb-2">Support</h4>
                     <Link href="/about" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">About Us</Link>
                     <Link href="/contact" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">Contact Us</Link>
-                    <Link href="/contact" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">Shipping &amp; Returns</Link>
-                    <Link href="/contact" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">FAQ</Link>
-                    <Link href="/contact" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">Privacy Policy</Link>
+                    <Link href="/shipping-returns" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">Shipping &amp; Returns</Link>
+                    <Link href="/faq" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">FAQ</Link>
+                    <Link href="/privacy-policy" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">Privacy Policy</Link>
+                    <Link href="/terms-of-service" className="font-sans text-sm text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] transition-colors">Terms of Service</Link>
                 </div>
 
                 {/* Newsletter / Social */}

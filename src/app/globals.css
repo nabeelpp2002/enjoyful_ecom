@@ -17,6 +17,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-open-sans);
   --font-heading: var(--font-montserrat);
+  --font-serif: var(--font-playfair), Georgia, serif;
   --color-brand-purple: #735697;
   --color-brand-mustard: #F4B449;
   --color-brand-onyx: #1A1A1B;

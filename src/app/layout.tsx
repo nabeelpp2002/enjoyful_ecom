@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat, Open_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -10,6 +10,12 @@ const openSans = Open_Sans({
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -90,7 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en-AE">
       <body
-        className={`${openSans.variable} ${montserrat.variable} antialiased min-h-screen flex flex-col bg-[#fdfaff]`}
+        className={`${openSans.variable} ${montserrat.variable} ${playfair.variable} antialiased min-h-screen flex flex-col bg-[#fdfaff]`}
       >
         {children}
       </body>
