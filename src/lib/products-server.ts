@@ -89,17 +89,70 @@ export async function getProductList(search: URLSearchParams | string): Promise<
   };
 }
 
-async function getHomepageProductsUncached(): Promise<{ featured: Product[]; bestSelling: Product[] }> {
-  const result = await fetchProductApi<ApiEnvelope<{ featured: ApiProduct[]; bestSelling: ApiProduct[] }>>(
-    "/products/homepage",
-    ["products-homepage"],
-  );
-  if (!result.ok) throw new Error(`Homepage products API returned ${result.status}`);
-  const data = result.body?.data;
-  return {
-    featured: (data?.featured ?? []).map(normalizeApiProduct),
-    bestSelling: (data?.bestSelling ?? []).map(normalizeApiProduct),
+type HomepageProducts = { featured: Product[]; bestSelling: Product[] };
+
+function selectHomepageProducts(products: Product[]): HomepageProducts {
+  const balanceByCategory = (list: Product[], limit: number) => {
+    const byCategory = new Map<string, Product[]>();
+    for (const product of list) {
+      const category = product.category || "Other";
+      const bucket = byCategory.get(category) ?? [];
+      bucket.push(product);
+      byCategory.set(category, bucket);
+    }
+
+    const buckets = Array.from(byCategory.values());
+    const selected: Product[] = [];
+    let index = 0;
+    while (selected.length < limit && buckets.some((bucket) => bucket.length > 0)) {
+      const bucket = buckets[index % buckets.length];
+      const product = bucket.shift();
+      if (product) selected.push(product);
+      index += 1;
+    }
+    return selected;
   };
+
+  const featured = balanceByCategory(products.filter((product) => product.isFeatured), 8);
+  const featuredIds = new Set(featured.map((product) => product.id));
+  const featuredFill = balanceByCategory(
+    products.filter((product) => !featuredIds.has(product.id)),
+    8 - featured.length,
+  );
+
+  const bestSelling = products.filter((product) => product.isBestSeller);
+  const bestSellingIds = new Set(bestSelling.map((product) => product.id));
+  const bestSellingFill = products
+    .filter((product) => !bestSellingIds.has(product.id))
+    .sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0));
+
+  return {
+    featured: [...featured, ...featuredFill],
+    bestSelling: [...bestSelling, ...bestSellingFill].slice(0, 8),
+  };
+}
+
+async function getHomepageProductsUncached(): Promise<HomepageProducts> {
+  try {
+    const result = await fetchProductApi<ApiEnvelope<{ featured: ApiProduct[]; bestSelling: ApiProduct[] }>>(
+      "/products/homepage",
+      ["products-homepage"],
+    );
+    const data = result.ok ? result.body?.data : undefined;
+    const featured = (data?.featured ?? []).map(normalizeApiProduct);
+    const bestSelling = (data?.bestSelling ?? []).map(normalizeApiProduct);
+    if (featured.length > 0 || bestSelling.length > 0) return { featured, bestSelling };
+
+    console.warn(`[products-server] Homepage products endpoint returned no products (${result.status}); using list fallback`);
+  } catch (error) {
+    console.warn("[products-server] Homepage products endpoint failed; using list fallback", error);
+  }
+
+  // Deployment-safe fallback: the frontend and Nest API can deploy at different
+  // times. Keep the original curated selection available from the established
+  // list endpoint, server-side only, until /products/homepage is ready.
+  const fallback = await getProductList("page=1&limit=100&sort=featured");
+  return selectHomepageProducts(fallback.products);
 }
 
 export const getHomepageProducts = cache(getHomepageProductsUncached);
