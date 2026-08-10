@@ -36,6 +36,8 @@ export function normalizeHeroSlide(s: Record<string, unknown>): Slide {
 export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] }) {
     const [slides, setSlides] = useState<Slide[]>(initialSlides);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [trackIndex, setTrackIndex] = useState(0);
+    const [resetTrackInstantly, setResetTrackInstantly] = useState(false);
     // When the server already provided slides, there's nothing to wait for — the
     // first slide (LCP image) is in the initial HTML. Only show a skeleton when
     // we have to fall back to a client-side fetch (e.g. API was down at SSR time).
@@ -65,6 +67,7 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
         if (slides.length < 2) return;
         const timer = setInterval(() => {
             setCurrentSlide(prev => (prev + 1) % slides.length);
+            setTrackIndex(prev => prev + 1);
         }, 6000);
         return () => clearInterval(timer);
     }, [slides.length]);
@@ -83,47 +86,67 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
     const slide = slides[safe];
     const textColor = slide.textColor || "#FFFFFF";
     const isOutline = slide.buttonStyle === "outline";
+    // Clone the first slide at the end so the last → first transition still
+    // moves exactly one viewport to the left. Once it completes, jump the
+    // shared track back to the real first slide with transitions disabled.
+    const trackSlides = slides.length > 1 ? [...slides, slides[0]] : slides;
+
+    const handleTrackAnimationComplete = () => {
+        if (trackIndex !== slides.length) return;
+        setResetTrackInstantly(true);
+        setTrackIndex(0);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => setResetTrackInstantly(false));
+        });
+    };
 
     return (
         <section className="relative w-full h-[100svh] overflow-hidden bg-[var(--color-brand-onyx)]">
-            {/* initial={false} → the first slide renders statically (no slide-in) on
-                initial load; only subsequent slide changes animate. */}
-            <AnimatePresence initial={false}>
-                <motion.div
-                    key={slide.id}
-                    initial={{ x: "100%" }}
-                    animate={{ x: "0%" }}
-                    exit={{ x: "-100%" }}
-                    transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
-                    className="absolute inset-0 z-0"
-                >
-                    <div className="hidden md:block relative w-full h-full">
-                        <Image
-                            src={slide.desktopImageUrl}
-                            alt={slide.title}
-                            fill
-                            priority
-                            quality={90}
-                            unoptimized={slide.desktopImageUrl.startsWith("http")}
-                            className="object-cover object-center"
-                            sizes="100vw"
-                        />
+            {/* A single translated track keeps neighboring slides in one compositor
+                coordinate system. Independent enter/exit transforms can round in
+                opposite directions on mobile and expose the parent background. */}
+            <motion.div
+                initial={false}
+                animate={{ x: `${trackIndex * -100}%` }}
+                transition={resetTrackInstantly
+                    ? { duration: 0 }
+                    : { duration: 1, ease: [0.65, 0, 0.35, 1] }}
+                onAnimationComplete={handleTrackAnimationComplete}
+                className="absolute inset-0 z-0 flex will-change-transform"
+            >
+                {trackSlides.map((trackSlide, index) => (
+                    <div
+                        key={`${trackSlide.id}-${index}`}
+                        className="relative h-full w-full min-w-full shrink-0 overflow-hidden"
+                    >
+                        <div className="hidden md:block relative w-full h-full">
+                            <Image
+                                src={trackSlide.desktopImageUrl}
+                                alt={trackSlide.title}
+                                fill
+                                priority={index === 0}
+                                quality={90}
+                                unoptimized={trackSlide.desktopImageUrl.startsWith("http")}
+                                className="object-cover object-center"
+                                sizes="100vw"
+                            />
+                        </div>
+                        <div className="md:hidden relative w-full h-full">
+                            <Image
+                                src={trackSlide.mobileImageUrl || trackSlide.desktopImageUrl}
+                                alt={trackSlide.title}
+                                fill
+                                priority={index === 0}
+                                quality={90}
+                                unoptimized={(trackSlide.mobileImageUrl || trackSlide.desktopImageUrl).startsWith("http")}
+                                className="object-cover object-center"
+                                sizes="100vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        </div>
                     </div>
-                    <div className="md:hidden relative w-full h-full">
-                        <Image
-                            src={slide.mobileImageUrl || slide.desktopImageUrl}
-                            alt={slide.title}
-                            fill
-                            priority
-                            quality={90}
-                            unoptimized={(slide.mobileImageUrl || slide.desktopImageUrl).startsWith("http")}
-                            className="object-cover object-center"
-                            sizes="100vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                    </div>
-                </motion.div>
-            </AnimatePresence>
+                ))}
+            </motion.div>
 
             {/* Text overlay — positioned absolutely over the image */}
             <div className="absolute inset-0 z-10 flex items-center md:items-center pb-0 md:pb-0 pt-0">
