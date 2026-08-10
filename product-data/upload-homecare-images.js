@@ -25,6 +25,9 @@ cloudinary.config({
 });
 
 const MONGO_URI = process.env.MONGODB_URI;
+for (const name of ['MONGODB_URI', 'CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET']) {
+  if (!process.env[name]) throw new Error(`${name} must be set in the environment`);
+}
 
 // ── IMAGE → PRODUCT MAPPING (SKU-based) ──
 // Each entry: { folderMatch (lowercase path fragment), skuCode, cloudFolder, productId }

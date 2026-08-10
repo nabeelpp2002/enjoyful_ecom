@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { invalidateProductCaches } from '@/lib/product-cache';
 
 const API_BASE = process.env.NEST_API_URL ?? 'http://localhost:4000/api/v1';
 
@@ -32,6 +33,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     body: JSON.stringify(body),
   });
   const data = await res.json();
+  if (res.ok) invalidateProductCaches();
   return NextResponse.json(data, { status: res.status });
 }
 
@@ -43,5 +45,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
     headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
   const data = await res.json();
+  if (res.ok) invalidateProductCaches();
   return NextResponse.json(data, { status: res.status });
 }

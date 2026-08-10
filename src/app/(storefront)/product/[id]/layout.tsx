@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { resolveProduct } from "@/lib/products-server";
 
 // Raw API images can be objects {url,publicId,alt,isPrimary} or strings.
 type RawImage = { url?: string } | string;
@@ -33,32 +34,9 @@ function toImageUrl(img?: RawImage): string | undefined {
 }
 
 async function getProduct(id: string): Promise<Product | null> {
-  const base = process.env.NEST_API_URL ?? "http://localhost:4000/api/v1";
-  // Timeout so a cold/slow API can't hang the SSR function past Vercel's limit and
-  // 500 the page. Metadata/JSON-LD are enhancements — the page renders client-side
-  // regardless, so on timeout we degrade to generic metadata instead of crashing.
-  const fetchWithTimeout = async (url: string) => {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 4000);
-    try {
-      return await fetch(url, { signal: controller.signal, next: { revalidate: 3600 } });
-    } finally {
-      clearTimeout(timer);
-    }
-  };
   try {
-    const res = await fetchWithTimeout(`${base}/products/${id}`);
-    if (res.ok) {
-      const data = await res.json();
-      return data.data ?? data;
-    }
-    // Fallback: try slug endpoint
-    const slugRes = await fetchWithTimeout(`${base}/products/slug/${id}`);
-    if (slugRes.ok) {
-      const slugData = await slugRes.json();
-      return slugData.data ?? slugData;
-    }
-    return null;
+    const resolved = await resolveProduct(id);
+    return resolved?.rawProduct as Product ?? null;
   } catch {
     return null;
   }

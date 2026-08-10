@@ -168,6 +168,68 @@ export class ProductsService {
     };
   }
 
+  /**
+   * Returns only the two curated homepage rows. The selection logic intentionally
+   * matches the previous storefront implementation, but it runs on the API so the
+   * browser no longer downloads the full catalogue just to display 16 cards.
+   */
+  async findHomepage() {
+    const { data: rawData } = await this.findAll(Object.assign(new ProductQueryDto(), {
+      page: 1,
+      limit: 100,
+      sort: 'featured',
+    }));
+    type HomepageProduct = Record<string, unknown> & {
+      _id: unknown;
+      category?: { name?: string } | null;
+      isFeatured?: boolean;
+      isBestSeller?: boolean;
+      reviews?: number;
+    };
+    const data = rawData as HomepageProduct[];
+
+    const balanceByCategory = (rows: typeof data, limit: number) => {
+      const byCategory = new Map<string, typeof data>();
+      for (const product of rows) {
+        const category = product.category && typeof product.category === 'object'
+          ? String((product.category as { name?: string }).name ?? 'Other')
+          : 'Other';
+        const bucket = byCategory.get(category) ?? [];
+        bucket.push(product);
+        byCategory.set(category, bucket);
+      }
+
+      const buckets = Array.from(byCategory.values());
+      const selected: typeof data = [];
+      let index = 0;
+      while (selected.length < limit && buckets.some((bucket) => bucket.length > 0)) {
+        const bucket = buckets[index % buckets.length];
+        const product = bucket.shift();
+        if (product) selected.push(product);
+        index += 1;
+      }
+      return selected;
+    };
+
+    const featured = balanceByCategory(data.filter((product) => product.isFeatured), 8);
+    const featuredIds = new Set(featured.map((product) => String(product._id)));
+    const featuredFill = balanceByCategory(
+      data.filter((product) => !featuredIds.has(String(product._id))),
+      8 - featured.length,
+    );
+
+    const bestSelling = data.filter((product) => product.isBestSeller);
+    const bestSellingIds = new Set(bestSelling.map((product) => String(product._id)));
+    const bestSellingFill = data
+      .filter((product) => !bestSellingIds.has(String(product._id)))
+      .sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0));
+
+    return {
+      featured: [...featured, ...featuredFill],
+      bestSelling: [...bestSelling, ...bestSellingFill].slice(0, 8),
+    };
+  }
+
   async findOne(id: string) {
     if (!Types.ObjectId.isValid(id)) throw new NotFoundException('Product not found');
     const product = await this.productModel
@@ -185,6 +247,52 @@ export class ProductsService {
       .lean();
     if (!product) throw new NotFoundException('Product not found');
     return product;
+  }
+
+  /** Resolve an id, product slug, or family slug in one API round trip. */
+  async resolveStorefront(identifier: string) {
+    let product: Record<string, unknown> | null = null;
+    let variants: Awaited<ReturnType<ProductsService['findFamily']>> = [];
+
+    if (Types.ObjectId.isValid(identifier)) {
+      product = await this.findOne(identifier) as unknown as Record<string, unknown>;
+    } else {
+      const [familyResult, slugProduct] = await Promise.all([
+        this.findFamily(identifier),
+        this.productModel
+          .findOne({ slug: identifier, deletedAt: null, isActive: true, isHidden: { $ne: true } })
+          .populate('category', 'name slug tintColor')
+          .lean(),
+      ]);
+      variants = familyResult;
+      if (variants.length > 0) {
+        const representative = [...variants].sort((a, b) => (a.price ?? 0) - (b.price ?? 0))[0];
+        product = await this.findOne(String(representative._id)) as unknown as Record<string, unknown>;
+      } else if (slugProduct) {
+        product = slugProduct as unknown as Record<string, unknown>;
+      }
+    }
+
+    if (!product) throw new NotFoundException('Product not found');
+
+    const family = typeof product.productFamily === 'string' ? product.productFamily : '';
+    if (variants.length === 0 && family) variants = await this.findFamily(family);
+
+    const category = product.category as { slug?: string } | null | undefined;
+    let related: Record<string, unknown>[] = [];
+    if (category?.slug) {
+      const list = await this.findAll(Object.assign(new ProductQueryDto(), {
+        page: 1,
+        limit: 6,
+        category: category.slug,
+        sort: 'featured',
+      }));
+      related = (list.data as Record<string, unknown>[])
+        .filter((candidate) => String(candidate._id) !== String(product?._id))
+        .slice(0, 4);
+    }
+
+    return { product, variants, related };
   }
 
   async create(dto: CreateProductDto) {

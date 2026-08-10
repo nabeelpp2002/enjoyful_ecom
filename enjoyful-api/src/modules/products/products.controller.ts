@@ -23,6 +23,18 @@ export class ProductsController {
   @ApiOperation({ summary: 'List products with filtering and pagination' })
   findAll(@Query() query: ProductQueryDto) { return this.service.findAll(query); }
 
+  @Public()
+  @Get('homepage')
+  @ApiOperation({ summary: 'Get curated featured and best-selling homepage rows' })
+  findHomepage() { return this.service.findHomepage(); }
+
+  @Public()
+  @Get('resolve/:identifier')
+  @ApiOperation({ summary: 'Resolve a storefront product id, slug, or family in one request' })
+  resolveStorefront(@Param('identifier') identifier: string) {
+    return this.service.resolveStorefront(identifier);
+  }
+
   @Get('admin/all')
   @Roles('admin')
   @ApiBearerAuth()

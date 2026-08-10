@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HeroSectionServer } from "@/components/sections/HeroSectionServer";
 import { ShopByCategory } from "@/components/sections/ShopByCategory";
-import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
+import {
+  HomepageBestSellingProductsServer,
+  HomepageFeaturedProductsServer,
+} from "@/components/sections/HomepageProductsServer";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
-import { BestSellingProducts } from "@/components/sections/BestSellingProducts";
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
@@ -22,9 +24,9 @@ export default function Home() {
         <HeroSectionServer />
       </Suspense>
       <ShopByCategory />
-      <FeaturedProducts />
+      <HomepageFeaturedProductsServer />
       <FeaturesSection />
-      <BestSellingProducts />
+      <HomepageBestSellingProductsServer />
       <NewsletterSection />
       <SeoContent data={SEO_CONTENT.homepage} />
     </>

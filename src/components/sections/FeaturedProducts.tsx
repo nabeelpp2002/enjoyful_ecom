@@ -1,43 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useData } from "@/context/DataContext";
 import { ProductCard } from "@/components/ui/ProductCard";
-import { ProductCardSkeleton } from "@/components/ui/ProductCardSkeleton";
 import type { Product } from "@/data/products";
 
-// Round-robin across categories so the row shows a MIX (e.g. 2 Glow, 2 Daily, …)
-// instead of all items from one category.
-function balanceByCategory(list: Product[], limit: number): Product[] {
-    const byCat = new Map<string, Product[]>();
-    for (const p of list) {
-        const c = p.category || "Other";
-        if (!byCat.has(c)) byCat.set(c, []);
-        byCat.get(c)!.push(p);
-    }
-    const buckets = Array.from(byCat.values());
-    const out: Product[] = [];
-    let i = 0;
-    while (out.length < limit && buckets.some(b => b.length > 0)) {
-        const b = buckets[i % buckets.length];
-        if (b.length > 0) out.push(b.shift()!);
-        i++;
-    }
-    return out;
-}
-
-export function FeaturedProducts() {
-    const { products, productsLoading } = useData();
-    const featuredProducts = useMemo(() => {
-        // Prioritise admin-flagged featured products, balanced across categories…
-        const featured = balanceByCategory(products.filter(p => p.isFeatured), 8);
-        const used = new Set(featured.map(p => p.id));
-        const fill = balanceByCategory(products.filter(p => !used.has(p.id)), 8 - featured.length);
-        return [...featured, ...fill];
-    }, [products]);
-
+export function FeaturedProducts({ products }: { products: Product[] }) {
     return (
         <section className="py-12 bg-white relative overflow-hidden">
             <div className="absolute top-0 right-0 -mt-20 -mr-20 w-[600px] h-[600px] bg-[#FBEBE5] rounded-full mix-blend-multiply blur-3xl opacity-40 z-0 pointer-events-none"></div>
@@ -59,18 +27,12 @@ export function FeaturedProducts() {
 
                 {/* Products Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pb-8 items-stretch">
-                    {productsLoading ? (
-                        Array.from({ length: 8 }).map((_, i) => (
-                            <div key={i} className={`h-auto ${i >= 6 ? 'hidden lg:block' : ''}`}>
-                                <ProductCardSkeleton />
-                            </div>
-                        ))
-                    ) : products.length === 0 ? (
+                    {products.length === 0 ? (
                         <div className="col-span-2 lg:col-span-4 py-12 text-center text-gray-500 font-sans">
                             No featured products available at the moment.
                         </div>
                     ) : (
-                        featuredProducts.map((product, index) => (
+                        products.map((product, index) => (
                             <div key={product.id} className={`h-auto ${index >= 6 ? 'hidden lg:block' : ''}`}>
                                 <ProductCard product={product} index={index} animateType="inView" />
                             </div>

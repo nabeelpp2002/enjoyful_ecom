@@ -1,23 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useData } from "@/context/DataContext";
 import { ProductCard } from "@/components/ui/ProductCard";
-import { ProductCardSkeleton } from "@/components/ui/ProductCardSkeleton";
+import type { Product } from "@/data/products";
 
-export function BestSellingProducts() {
-    const { products, productsLoading } = useData();
-    // Show admin-curated "Customer Favourites" first (flagged in /admin/products via the
-    // "Fav" toggle); if fewer than 8 are flagged, fill the row with the highest-reviewed rest.
-    const bestSellingProducts = useMemo(() => {
-        const picked = products.filter(p => p.isBestSeller);
-        const used = new Set(picked.map(p => p.id));
-        const fill = [...products.filter(p => !used.has(p.id))].sort((a, b) => (b.reviews ?? 0) - (a.reviews ?? 0));
-        return [...picked, ...fill].slice(0, 8);
-    }, [products]);
-
+export function BestSellingProducts({ products }: { products: Product[] }) {
     return (
         <section className="py-12 bg-white relative overflow-hidden">
             <div className="absolute top-0 right-0 -mt-20 -mr-20 w-[600px] h-[600px] bg-[#FBEBE5] rounded-full mix-blend-multiply blur-3xl opacity-40 z-0 pointer-events-none"></div>
@@ -38,18 +26,12 @@ export function BestSellingProducts() {
                 </div>
 
                 <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-stretch">
-                    {productsLoading ? (
-                        Array.from({ length: 8 }).map((_, i) => (
-                            <div key={i} className="w-[42vw] min-w-[150px] sm:w-[35vw] md:min-w-0 md:w-auto snap-center flex-shrink-0 h-auto">
-                                <ProductCardSkeleton />
-                            </div>
-                        ))
-                    ) : bestSellingProducts.length === 0 ? (
+                    {products.length === 0 ? (
                         <div className="w-full col-span-2 lg:col-span-4 py-12 text-center text-gray-500 font-sans">
                             No customer favorites available at the moment.
                         </div>
                     ) : (
-                        bestSellingProducts.map((product, index) => (
+                        products.map((product, index) => (
                             <div key={product.id} className="w-[42vw] min-w-[150px] sm:w-[35vw] md:min-w-0 md:w-auto snap-center flex-shrink-0 h-auto">
                                 <ProductCard product={product} index={index} animateType="inView" />
                             </div>

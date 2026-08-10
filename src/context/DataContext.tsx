@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { Product } from "@/data/products";
-import { displayName, pickProductImages } from "@/lib/utils";
 
 export interface CartItem {
     product: Product;
@@ -19,8 +18,6 @@ export interface AuthUser {
 
 interface DataContextType {
     showProductPrices: boolean;
-    products: Product[];
-    productsLoading: boolean;
     wishlist: Product[];
     addToWishlist: (product: Product) => void;
     removeFromWishlist: (productId: string) => void;
@@ -47,70 +44,7 @@ interface DataContextType {
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
-export function normalizeApiProduct(p: Record<string, unknown>): Product {
-    const category = typeof p.category === 'object' && p.category !== null
-        ? (p.category as { name: string }).name
-        : (p.category as string) ?? '';
-    const imagesRaw = p.images as Array<{ url: string } | string> | undefined;
-    const imageUrls: string[] = (imagesRaw ?? []).map(img =>
-        typeof img === 'string' ? img : img.url
-    ).filter(Boolean);
-    // Prefer the "*21" thumbnail as the primary; reuse the single image for hover.
-    const { image, hoverImage, images } = pickProductImages(
-        imageUrls.length > 0
-            ? imageUrls
-            : [p.image as string, p.hoverImage as string].filter(Boolean) as string[],
-    );
-    return {
-        id: ((p._id ?? p.id) as string),
-        slug: (p.slug as string) ?? undefined,
-        name: displayName(p.name as string, p.brand as string),
-        category,
-        subcategory: (p.subcategory as string) ?? '',
-        price: p.price as number,
-        originalPrice: (p.originalPrice as number) ?? undefined,
-        discountPct: (p.discountPct as number) ?? undefined,
-        image,
-        hoverImage,
-        images: images.length > 0 ? images : undefined,
-        rating: (p.rating as number) ?? 0,
-        reviews: (p.reviews as number) ?? 0,
-        description: (p.description as string) ?? '',
-        benefits: (p.benefits as string[]) ?? [],
-        ingredients: (p.ingredients as string[]) ?? [],
-        howToUse: (p.howToUse as string) ?? '',
-        skinType: (p.skinType as string[]) ?? [],
-        productType: (p.productType as string) ?? '',
-        tagline: (p.tagline as string) ?? undefined,
-        brand: (p.brand as string) ?? undefined,
-        highlights: (p.highlights as string[]) ?? undefined,
-        suitableFor: (p.suitableFor as string[]) ?? undefined,
-        isHidden: (p.isHidden as boolean) ?? false,
-        isFeatured: (p.isFeatured as boolean) ?? false,
-        onSale: (p.onSale as boolean) ?? false,
-        bestDeal: (p.bestDeal as boolean) ?? false,
-        isBestSeller: (p.isBestSeller as boolean) ?? false,
-        externalBuyLinks: (p.externalBuyLinks as Product['externalBuyLinks']) ?? undefined,
-        size: (p.size as string) ?? undefined,
-        productCode: (p.productCode as string) ?? undefined,
-        productFamily: (p.productFamily as string) ?? undefined,
-        variantCount: (p.variantCount as number) ?? undefined,
-        activeIngredients: (p.activeIngredients as string[]) ?? undefined,
-        features: (p.features as string[]) ?? undefined,
-        scent: (p.scent as string) ?? undefined,
-        texture: (p.texture as string) ?? undefined,
-        targetUse: (p.targetUse as string) ?? undefined,
-        itemForm: (p.itemForm as string) ?? undefined,
-        recommendedUsage: (p.recommendedUsage as string) ?? undefined,
-        precautions: (p.precautions as string) ?? undefined,
-        hairType: (p.hairType as string[]) ?? undefined,
-        countryOfOrigin: (p.countryOfOrigin as string) ?? undefined,
-    };
-}
-
 export function DataProvider({ children }: { children: ReactNode }) {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [productsLoading, setProductsLoading] = useState(true);
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const [cart, setCart] = useState<CartItem[]>([]);
     const [isMounted, setIsMounted] = useState(false);
@@ -127,24 +61,6 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
         const savedCart = localStorage.getItem("enjoyful-cart");
         if (savedCart) setCart(JSON.parse(savedCart));
-
-        // Fetch products from API
-        fetch('/api/products?limit=100')
-            .then(r => {
-                if (!r.ok) throw new Error("API request failed");
-                return r.json();
-            })
-            .then(({ data }) => {
-                if (Array.isArray(data)) {
-                    setProducts(data.map(normalizeApiProduct));
-                } else {
-                    setProducts([]);
-                }
-            })
-            .catch(() => {
-                setProducts([]);
-            })
-            .finally(() => setProductsLoading(false));
 
         // Restore auth session
         fetch('/api/auth/me')
@@ -344,7 +260,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
     return (
         <DataContext.Provider value={{
-            showProductPrices, products, productsLoading,
+            showProductPrices,
             wishlist, addToWishlist, removeFromWishlist, isInWishlist,
             cart, addToCart, removeFromCart, updateCartQuantity, isInCart, getCartTotal, getCartCount, clearCart,
             isAuthenticated, user, login, logout, register,
