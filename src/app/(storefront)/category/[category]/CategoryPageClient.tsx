@@ -55,6 +55,7 @@ interface CategoryPageClientProps {
     initialProducts: Product[];
     initialMeta: { total: number; totalPages: number };
     initialRequestKey: string;
+    initialBanner?: { desktopImageUrl?: string; mobileImageUrl?: string } | null;
 }
 
 export default function CategoryPageClient({
@@ -62,6 +63,7 @@ export default function CategoryPageClient({
     initialProducts,
     initialMeta,
     initialRequestKey,
+    initialBanner = null,
 }: CategoryPageClientProps) {
     // Decode and reconstruct capitalized category from URL path
     const urlCategoryRaw = decodeURIComponent(categoryParam);
@@ -100,23 +102,29 @@ export default function CategoryPageClient({
     const hasMore = page < totalPages;
     const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-    // Admin-managed category banner (shows a skeleton while it loads)
-    const [banner, setBanner] = useState<{ desktopImageUrl?: string; mobileImageUrl?: string } | null>(null);
-    const [bannerLoading, setBannerLoading] = useState(true);
+    // Admin-managed category banner (pre-populated with initialBanner for zero-delay rendering)
+    const [banner, setBanner] = useState<{ desktopImageUrl?: string; mobileImageUrl?: string } | null>(initialBanner);
+    const [bannerLoading, setBannerLoading] = useState(!initialBanner);
     useEffect(() => {
-        setBannerLoading(true);
+        if (!initialBanner) {
+            setBannerLoading(true);
+        }
         fetch("/api/category-banners")
             .then((r) => (r.ok ? r.json() : null))
             .then((body) => {
                 const list = body?.data ?? body;
                 const match = Array.isArray(list)
-                    ? list.find((b: { category?: string }) => b.category === category)
+                    ? list.find((b: { category?: string }) => {
+                        const cat = (b.category || "").toLowerCase().replace(/-/g, ' ').trim();
+                        const norm = category.toLowerCase().replace(/-/g, ' ').trim();
+                        return cat === norm || ((norm === "home care" || norm === "home") && (cat === "home" || cat === "home care"));
+                    })
                     : null;
-                setBanner(match ?? null);
+                if (match) setBanner(match);
             })
-            .catch(() => setBanner(null))
+            .catch(() => {})
             .finally(() => setBannerLoading(false));
-    }, [category]);
+    }, [category, initialBanner]);
 
     // Handle click outside to close dropdowns
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -305,7 +313,7 @@ export default function CategoryPageClient({
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="mb-8 md:mb-12 mt-16 md:mt-18 overflow-hidden shadow-sm border border-black/5 aspect-[4/3] md:aspect-[3/0.9] relative"
             >
-                {bannerLoading ? (
+                {bannerLoading && !banner ? (
                     <Skeleton className="absolute inset-0 rounded-none" />
                 ) : (
                     <>
@@ -315,6 +323,7 @@ export default function CategoryPageClient({
                                 alt={`${category} banner`}
                                 fill
                                 priority
+                                sizes="100vw"
                                 className="object-cover md:hidden"
                             />
                         ) : (
@@ -328,6 +337,7 @@ export default function CategoryPageClient({
                                 alt={`${category} banner`}
                                 fill
                                 priority
+                                sizes="100vw"
                                 className="object-cover hidden md:block"
                             />
                         ) : (

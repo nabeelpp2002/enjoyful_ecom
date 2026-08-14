@@ -1,5 +1,6 @@
 import CategoryPageClient from "./CategoryPageClient";
 import { getProductList } from "@/lib/products-server";
+import { getCategoryBanner, type CategoryBanner } from "@/lib/banners-server";
 import type { Product } from "@/data/products";
 
 const PAGE_SIZE = 16;
@@ -27,12 +28,18 @@ export default async function CategoryPage({
 
   let initialProducts: Product[] = [];
   let initialMeta = { total: 0, totalPages: 1 };
+  let initialBanner: CategoryBanner | null = null;
+
   try {
-    const result = await getProductList(requestParams);
+    const [result, banner] = await Promise.all([
+      getProductList(requestParams),
+      getCategoryBanner(decodedCategory),
+    ]);
     initialProducts = result.products;
     initialMeta = { total: result.meta.total, totalPages: result.meta.totalPages };
+    initialBanner = banner;
   } catch (error) {
-    console.error("[CategoryPage] initial product fetch failed", error);
+    console.error("[CategoryPage] initial fetch failed", error);
   }
 
   const requestKey = requestParams.toString();
@@ -43,6 +50,7 @@ export default async function CategoryPage({
       initialProducts={initialProducts}
       initialMeta={initialMeta}
       initialRequestKey={requestKey}
+      initialBanner={initialBanner}
     />
   );
 }
