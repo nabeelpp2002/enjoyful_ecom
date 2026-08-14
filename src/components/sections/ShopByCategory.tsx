@@ -101,14 +101,14 @@ export function ShopByCategory() {
 
                     {/* View All CTA Card - Mobile Only */}
                     <motion.div
-                        className="lg:hidden"
+                        className="lg:hidden h-full"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.5 }}
                     >
                         <Link
-                            href="/shop"
+                            href="/category/all"
                             className="group flex flex-col h-full items-center justify-center px-4 py-8 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] cursor-pointer border-2 border-[var(--color-brand-purple)]/20 hover:border-[var(--color-brand-purple)]/40 bg-white"
                         >
                             {/* Arrow Icon - Primary Focus */}
