@@ -220,7 +220,7 @@ export default function About() {
                         Explore our carefully formulated skincare routines designed to bring joy and efficacy to your daily personal care ritual.
                     </p>
                     <Link
-                        href="/products"
+                        href="/category/all"
                         className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[var(--color-brand-purple)] text-white font-sans font-semibold text-sm hover:bg-[var(--color-brand-purple)]/90 shadow-lg hover:shadow-xl transition-all group"
                     >
                         Explore Our Collections
