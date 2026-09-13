@@ -125,6 +125,7 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
                                 alt={trackSlide.title}
                                 fill
                                 priority={index === 0}
+                                loading="eager"
                                 quality={90}
                                 unoptimized={trackSlide.desktopImageUrl.startsWith("http")}
                                 className="object-cover object-center"
@@ -137,6 +138,7 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
                                 alt={trackSlide.title}
                                 fill
                                 priority={index === 0}
+                                loading="eager"
                                 quality={90}
                                 unoptimized={(trackSlide.mobileImageUrl || trackSlide.desktopImageUrl).startsWith("http")}
                                 className="object-cover object-center"
