@@ -67,7 +67,7 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
         if (slides.length < 2) return;
         const timer = setInterval(() => {
             setCurrentSlide(prev => (prev + 1) % slides.length);
-            setTrackIndex(prev => prev + 1);
+            setTrackIndex(prev => prev >= slides.length ? 1 : prev + 1);
         }, 6000);
         return () => clearInterval(timer);
     }, [slides.length]);
@@ -92,7 +92,7 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
     const trackSlides = slides.length > 1 ? [...slides, slides[0]] : slides;
 
     const handleTrackAnimationComplete = () => {
-        if (trackIndex !== slides.length) return;
+        if (trackIndex < slides.length) return;
         setResetTrackInstantly(true);
         setTrackIndex(0);
         requestAnimationFrame(() => {
