@@ -16,6 +16,9 @@ export function normalizeApiProduct(p: ApiProduct): Product {
       ? imageUrls
       : [p.image as string, p.hoverImage as string].filter(Boolean),
   );
+  const availableSizes = Array.isArray(p.availableSizes)
+    ? [...new Set(p.availableSizes.map((size) => String(size).trim()).filter(Boolean))]
+    : [];
 
   return {
     id: String(p._id ?? p.id ?? ""),
@@ -51,6 +54,7 @@ export function normalizeApiProduct(p: ApiProduct): Product {
     productCode: (p.productCode as string) ?? undefined,
     productFamily: (p.productFamily as string) ?? undefined,
     variantCount: (p.variantCount as number) ?? undefined,
+    availableSizes: availableSizes.length > 0 ? availableSizes : undefined,
     activeIngredients: (p.activeIngredients as string[]) ?? undefined,
     features: (p.features as string[]) ?? undefined,
     scent: (p.scent as string) ?? undefined,

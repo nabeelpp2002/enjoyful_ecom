@@ -50,6 +50,32 @@ const SUBCATEGORIES_BY_CATEGORY: Record<string, string[]> = {
     "Home Care": ["Kitchen Care", "Bathroom Care", "Floor & Surface Care", "Hand Care", "Laundry Care"],
 };
 
+function ListingCardPrice({ product, showPrice }: { product: Product; showPrice: boolean }) {
+    const availableSizes = [...new Set((product.availableSizes ?? []).map((size) => size.trim()).filter(Boolean))];
+    const hasSizeVariants = (product.variantCount ?? availableSizes.length) > 1 && availableSizes.length > 1;
+    const sizeLabel = hasSizeVariants ? availableSizes.join(" · ") : product.size;
+
+    return (
+        <>
+            {showPrice && (
+                <Price
+                    amount={product.price}
+                    originalAmount={product.originalPrice}
+                    prefix={hasSizeVariants ? "From" : undefined}
+                    className="justify-center gap-1 md:gap-1.5"
+                    prefixClassName="font-heading font-bold text-[12px] md:text-[14px] text-[var(--color-brand-onyx)] leading-none"
+                    amountClassName="font-heading font-extrabold text-[18px] md:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
+                    currencyClassName="font-sans font-semibold text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
+                    originalClassName="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/30 leading-none ml-1"
+                />
+            )}
+            {sizeLabel && (
+                <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/50 mt-1 md:mt-1.5">{sizeLabel}</span>
+            )}
+        </>
+    );
+}
+
 interface CategoryPageClientProps {
     categoryParam: string;
     initialProducts: Product[];
@@ -605,19 +631,7 @@ export default function CategoryPageClient({
                                             {product.name}
                                         </h3>
                                     </Link>
-                                    {showProductPrices && (
-                                        <Price
-                                            amount={product.price}
-                                            originalAmount={product.originalPrice}
-                                            className="justify-center gap-1 md:gap-1.5"
-                                            amountClassName="font-heading font-extrabold text-[18px] md:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
-                                            currencyClassName="font-sans font-semibold text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
-                                            originalClassName="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/30 leading-none ml-1"
-                                        />
-                                    )}
-                                    {product.size && (
-                                        <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/50 mt-1 md:mt-1.5">{product.size}</span>
-                                    )}
+                                    <ListingCardPrice product={product} showPrice={showProductPrices} />
                                 </div>
                             </motion.div>
                         </motion.div>

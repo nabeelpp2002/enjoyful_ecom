@@ -29,6 +29,9 @@ export const ProductCard = memo(function ProductCard({
     const { addToWishlist, removeFromWishlist, isInWishlist, showProductPrices } = useData();
 
     const inWishlist = isInWishlist(product.id);
+    const availableSizes = [...new Set((product.availableSizes ?? []).map((size) => size.trim()).filter(Boolean))];
+    const hasSizeVariants = (product.variantCount ?? availableSizes.length) > 1 && availableSizes.length > 1;
+    const listingSizeLabel = hasSizeVariants ? availableSizes.join(" · ") : product.size;
 
     // List-view images: primary photo + a DISTINCT alternate on hover when the
     // product has more than one image (falls back to the primary so single-image
@@ -200,18 +203,20 @@ export const ProductCard = memo(function ProductCard({
                             <span className="text-[10px] leading-none text-[var(--color-brand-onyx)]/40 ml-0.5">({product.reviews})</span>
                         </div>
                     )}
-                    {product.size && (
-                        <span className="font-sans text-[11px] sm:text-xs text-[var(--color-brand-onyx)]/40 mb-0.5">{product.size}</span>
-                    )}
                     {showProductPrices && (
                         <Price
                             amount={product.price}
                             originalAmount={product.originalPrice}
+                            prefix={hasSizeVariants ? "From" : undefined}
                             className="justify-center pt-1"
+                            prefixClassName="font-heading font-bold text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)] leading-none"
                             amountClassName="font-heading font-extrabold text-[20px] sm:text-[24px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
                             currencyClassName="font-sans font-semibold text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
                             originalClassName="font-sans font-medium text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/30 leading-none"
                         />
+                    )}
+                    {listingSizeLabel && (
+                        <span className="font-sans text-[11px] sm:text-xs text-[var(--color-brand-onyx)]/40 mt-1">{listingSizeLabel}</span>
                     )}
                 </div>
             </motion.div>

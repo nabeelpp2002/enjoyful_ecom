@@ -8,6 +8,8 @@ interface PriceProps {
     /** Compare-at / original price. Only shown struck through when it's a real discount. */
     originalAmount?: number | null;
     currency?: string;
+    /** Optional label immediately before the amount, e.g. "From" on variant cards. */
+    prefix?: string;
     /** Strikethrough beside the price ("inline", default) or below it ("stacked"). */
     layout?: "inline" | "stacked";
     /**
@@ -19,6 +21,7 @@ interface PriceProps {
     className?: string;
     amountClassName?: string;
     currencyClassName?: string;
+    prefixClassName?: string;
     originalClassName?: string;
 }
 
@@ -32,11 +35,13 @@ export const Price = memo(function Price({
     amount,
     originalAmount,
     currency = DEFAULT_CURRENCY,
+    prefix,
     layout = "inline",
     reserveSpace = true,
     className,
     amountClassName,
     currencyClassName,
+    prefixClassName,
     originalClassName,
 }: PriceProps) {
     const formatted = formatPrice(amount);
@@ -57,6 +62,7 @@ export const Price = memo(function Price({
             )}
         >
             <span className="flex items-baseline gap-1">
+                {prefix && <span className={prefixClassName}>{prefix}</span>}
                 <span className={amountClassName}>{formatted}</span>
                 <span className={currencyClassName}>{currency}</span>
             </span>

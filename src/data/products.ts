@@ -44,6 +44,8 @@ export interface Product {
     productCode?: string;
     productFamily?: string;
     variantCount?: number;
+    /** Available sizes for a grouped listing card, ordered by the representative price. */
+    availableSizes?: string[];
     // Rich catalog fields
     activeIngredients?: string[];
     features?: string[];

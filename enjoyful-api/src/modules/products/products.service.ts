@@ -74,8 +74,16 @@ export class ProductsService {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const pipeline: any[] = [
       { $match: match },
-      // Cheapest variant first within each family so $first = the representative
-      { $sort: { price: 1, _id: 1 } },
+      // A zero price is the "not configured" sentinel. Put those variants after
+      // real prices so each family card represents its lowest purchasable size.
+      {
+        $set: {
+          listingPriceSort: {
+            $cond: [{ $gt: ['$price', 0] }, '$price', Number.MAX_SAFE_INTEGER],
+          },
+        },
+      },
+      { $sort: { listingPriceSort: 1, price: 1, _id: 1 } },
       {
         $group: {
           // Real family slug groups variants; null/'' (or missing) stay un-collapsed
@@ -89,6 +97,9 @@ export class ProductsService {
           },
           doc: { $first: '$$ROOT' },
           variantCount: { $sum: 1 },
+          // Preserve every visible sibling size for the collapsed listing card.
+          // Input is already sorted by price, so the cheapest size appears first.
+          availableSizes: { $push: '$size' },
           // Promo flags are per-variant, but the listing shows ONE card per family.
           // Surface a badge if ANY size in the family carries it (and the highest discount).
           anyFeatured: { $max: { $cond: ['$isFeatured', 1, 0] } },
@@ -105,6 +116,7 @@ export class ProductsService {
               '$doc',
               {
                 variantCount: '$variantCount',
+                availableSizes: '$availableSizes',
                 isFeatured: { $gt: ['$anyFeatured', 0] },
                 onSale: { $gt: ['$anyOnSale', 0] },
                 bestDeal: { $gt: ['$anyBestDeal', 0] },
@@ -135,7 +147,7 @@ export class ProductsService {
                 name: 1, slug: 1, price: 1, originalPrice: 1, discountPct: 1,
                 image: 1, hoverImage: 1, images: 1,
                 subcategory: 1, productType: 1, rating: 1, reviews: 1,
-                skinType: 1, size: 1, productCode: 1, productFamily: 1, variantCount: 1,
+                skinType: 1, size: 1, productCode: 1, productFamily: 1, variantCount: 1, availableSizes: 1,
                 currency: 1, isFeatured: 1, onSale: 1, bestDeal: 1, isBestSeller: 1, brand: 1, tagline: 1,
                 externalBuyLinks: 1, description: 1, createdAt: 1,
                 category: {
