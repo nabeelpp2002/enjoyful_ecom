@@ -111,6 +111,24 @@ for (const r of rowsH.slice(hdr + 1)) {
     ingredients: [], benefits: [], mock });
 }
 
+// Confirmed against the retail price list and physical packaging (2026-09-21).
+// Keep these corrections here because the older INCI source workbook contains
+// 60ml for the roll-ons and 100gm for Daily Delight.
+const CONFIRMED_SIZE_BY_CODE = {
+  '#00678': '50ml', // Lumi Glow Roll On
+  '#00679': '50ml', // Velvet Repair Roll On
+  '#00680': '50ml', // Pure Renewal Roll On
+  '#00681': '50ml', // Apex 72H Roll On
+  '#00682': '50ml', // Noir Oud Roll On
+  '#00683': '50ml', // Element Zero Roll On
+  JDDC100: '100ml', // Daily Delight Moisturising Cream
+};
+for (const product of skus) {
+  if (CONFIRMED_SIZE_BY_CODE[product.code]) {
+    product.size = CONFIRMED_SIZE_BY_CODE[product.code];
+  }
+}
+
 // ── Enrich: slugs, family, image paths ──
 for (const p of skus) {
   p.family = slugify(p.baseName);
