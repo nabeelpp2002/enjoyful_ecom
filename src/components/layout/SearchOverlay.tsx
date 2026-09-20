@@ -180,8 +180,8 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                                                         originalAmount={r.originalPrice}
                                                         layout="stacked"
                                                         className="flex-shrink-0"
-                                                        amountClassName="font-heading font-extrabold text-[#1A1A1B] text-sm"
-                                                        currencyClassName="font-sans font-semibold text-xs text-[#1A1A1B]/70"
+                                                        amountClassName="font-heading font-semibold text-[#1A1A1B] text-[13px]"
+                                                        currencyClassName="font-sans font-medium text-xs text-[#1A1A1B]/55"
                                                         originalClassName="text-xs text-[#1A1A1B]/30"
                                                     />
                                                 )}

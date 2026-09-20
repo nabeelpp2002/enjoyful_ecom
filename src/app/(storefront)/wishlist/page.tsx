@@ -156,7 +156,7 @@ export default function Wishlist() {
                                     {/* Product Info Below Image */}
                                     <div className="pt-6 sm:pt-8 pb-2 px-1 sm:px-2 text-center bg-white flex flex-col items-center flex-grow justify-start z-10 relative">
                                         <Link href={`/product/${product.id}`} className="block group/link w-full">
-                                            <h3 className="font-heading font-bold text-sm sm:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-snug mb-1 truncate px-1">
+                                            <h3 className="font-heading font-semibold text-sm sm:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-snug mb-1 truncate px-1">
                                                 {product.name}
                                             </h3>
                                         </Link>
@@ -165,9 +165,9 @@ export default function Wishlist() {
                                                 amount={product.price}
                                                 originalAmount={product.originalPrice}
                                                 className="mt-auto justify-center"
-                                                amountClassName="font-heading font-medium text-xs sm:text-base text-[var(--color-brand-onyx)]"
-                                                currencyClassName="font-heading font-medium text-xs sm:text-base text-[var(--color-brand-onyx)]"
-                                                originalClassName="font-heading font-medium text-[10px] sm:text-sm text-[var(--color-brand-onyx)]/30"
+                                                amountClassName="font-heading font-semibold text-xs sm:text-[15px] text-[var(--color-brand-onyx)]"
+                                                currencyClassName="font-sans font-medium text-[10px] sm:text-sm text-[var(--color-brand-onyx)]/55 uppercase"
+                                                originalClassName="font-sans font-normal text-[10px] sm:text-sm text-[var(--color-brand-onyx)]/30"
                                             />
                                         )}
                                     </div>

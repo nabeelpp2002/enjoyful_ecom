@@ -186,7 +186,7 @@ export const ProductCard = memo(function ProductCard({
                 {/* Product Info */}
                 <div className="pt-8 pb-2 px-1 sm:px-2 text-center flex flex-col items-center flex-grow justify-start z-10 relative">
                     <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="block group/link w-full">
-                        <h3 className="font-heading font-bold text-sm sm:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-snug mb-1 truncate px-1">
+                        <h3 className="font-heading font-semibold text-sm sm:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-snug mb-1 truncate px-1">
                             {product.name}
                         </h3>
                     </Link>
@@ -209,14 +209,14 @@ export const ProductCard = memo(function ProductCard({
                             originalAmount={product.originalPrice}
                             prefix={hasSizeVariants ? "From" : undefined}
                             className="justify-center pt-1"
-                            prefixClassName="font-heading font-bold text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)] leading-none"
-                            amountClassName="font-heading font-extrabold text-[20px] sm:text-[24px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
-                            currencyClassName="font-sans font-semibold text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
-                            originalClassName="font-sans font-medium text-[13px] sm:text-[15px] text-[var(--color-brand-onyx)]/30 leading-none"
+                            prefixClassName="font-sans font-medium text-[12px] sm:text-[14px] text-[var(--color-brand-onyx)]/60 leading-none"
+                            amountClassName="font-heading font-semibold text-[18px] sm:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
+                            currencyClassName="font-sans font-medium text-[12px] sm:text-[14px] text-[var(--color-brand-onyx)]/55 uppercase leading-none"
+                            originalClassName="font-sans font-normal text-[12px] sm:text-[14px] text-[var(--color-brand-onyx)]/30 leading-none"
                         />
                     )}
                     {listingSizeLabel && (
-                        <span className="font-sans text-[11px] sm:text-xs text-[var(--color-brand-onyx)]/40 mt-1">{listingSizeLabel}</span>
+                        <span className="font-sans text-[11px] sm:text-xs text-[var(--color-brand-onyx)]/45 mt-1">{listingSizeLabel}</span>
                     )}
                 </div>
             </motion.div>

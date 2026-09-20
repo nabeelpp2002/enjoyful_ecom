@@ -63,14 +63,14 @@ function ListingCardPrice({ product, showPrice }: { product: Product; showPrice:
                     originalAmount={product.originalPrice}
                     prefix={hasSizeVariants ? "From" : undefined}
                     className="justify-center gap-1 md:gap-1.5"
-                    prefixClassName="font-heading font-bold text-[12px] md:text-[14px] text-[var(--color-brand-onyx)] leading-none"
-                    amountClassName="font-heading font-extrabold text-[18px] md:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
-                    currencyClassName="font-sans font-semibold text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/70 uppercase leading-none"
-                    originalClassName="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/30 leading-none ml-1"
+                    prefixClassName="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/60 leading-none"
+                    amountClassName="font-heading font-semibold text-[17px] md:text-[20px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
+                    currencyClassName="font-sans font-medium text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/55 uppercase leading-none"
+                    originalClassName="font-sans font-normal text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/30 leading-none ml-1"
                 />
             )}
             {sizeLabel && (
-                <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/50 mt-1 md:mt-1.5">{sizeLabel}</span>
+                <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/45 mt-1 md:mt-1.5">{sizeLabel}</span>
             )}
         </>
     );
@@ -627,7 +627,7 @@ export default function CategoryPageClient({
                                 {/* Product Info Below Image */}
                                 <div className="pt-8 md:pt-10 pb-1 md:pb-2 px-1 text-center bg-white flex flex-col items-center flex-grow justify-start z-10 relative">
                                     <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="block group/link w-full">
-                                        <h3 className="font-heading font-bold text-xs md:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-tight mb-2 md:mb-3 truncate px-1">
+                                        <h3 className="font-heading font-semibold text-xs md:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-tight mb-2 md:mb-3 truncate px-1">
                                             {product.name}
                                         </h3>
                                     </Link>
