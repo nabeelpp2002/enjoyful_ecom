@@ -27,7 +27,7 @@ interface ParsedProduct {
     targetUse?: string;
     scent?: string;
     texture?: string;
-    price: number;
+    price: number | null;
     currency: string;
     benefits?: string[];
     ingredients?: string[];
@@ -446,7 +446,7 @@ export default function BulkImportPage() {
                                     )}
                                 </button>
                                 <p className="text-xs text-amber-600">
-                                    Prices will be 0 — update individually after import.
+                                    Prices will be empty and products hidden until updated.
                                 </p>
                             </div>
                         </div>

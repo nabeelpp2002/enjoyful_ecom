@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import slugify from 'slugify';
@@ -23,7 +23,12 @@ export class ProductsService {
     const { page, limit, category, q, minPrice, maxPrice, skinType, productType, subcategory, isFeatured, sort } = query;
 
     // ── 1. $match — same semantics as the old find() filter ──────────────────
-    const match: Record<string, unknown> = { deletedAt: null, isActive: true, isHidden: { $ne: true } };
+    const match: Record<string, unknown> = {
+      deletedAt: null,
+      isActive: true,
+      isHidden: { $ne: true },
+      price: { $gt: 0 },
+    };
 
     if (category && category.toLowerCase() !== 'all') {
       const cat = await this.categoryModel.findOne({ slug: category.toLowerCase() }).lean();
@@ -245,6 +250,19 @@ export class ProductsService {
   async findOne(id: string) {
     if (!Types.ObjectId.isValid(id)) throw new NotFoundException('Product not found');
     const product = await this.productModel
+      .findOne({
+        _id: id, deletedAt: null, isActive: true, isHidden: { $ne: true },
+        price: { $gt: 0 },
+      })
+      .populate('category', 'name slug tintColor')
+      .lean();
+    if (!product) throw new NotFoundException('Product not found');
+    return product;
+  }
+
+  async findOneAdmin(id: string) {
+    if (!Types.ObjectId.isValid(id)) throw new NotFoundException('Product not found');
+    const product = await this.productModel
       .findOne({ _id: id, deletedAt: null })
       .populate('category', 'name slug tintColor')
       .lean();
@@ -254,7 +272,10 @@ export class ProductsService {
 
   async findBySlug(slug: string) {
     const product = await this.productModel
-      .findOne({ slug, deletedAt: null })
+      .findOne({
+        slug, deletedAt: null, isActive: true, isHidden: { $ne: true },
+        price: { $gt: 0 },
+      })
       .populate('category', 'name slug tintColor')
       .lean();
     if (!product) throw new NotFoundException('Product not found');
@@ -272,7 +293,10 @@ export class ProductsService {
       const [familyResult, slugProduct] = await Promise.all([
         this.findFamily(identifier),
         this.productModel
-          .findOne({ slug: identifier, deletedAt: null, isActive: true, isHidden: { $ne: true } })
+          .findOne({
+            slug: identifier, deletedAt: null, isActive: true, isHidden: { $ne: true },
+            price: { $gt: 0 },
+          })
           .populate('category', 'name slug tintColor')
           .lean(),
       ]);
@@ -312,9 +336,11 @@ export class ProductsService {
     const categoryId = await this.resolveCategoryId(dto.category);
     const { images, ...rest } = dto;
     const productImages = this.normalizeImages(images);
+    const hasValidPrice = typeof rest.price === "number" && rest.price > 0;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.productModel.create({
       ...rest, slug, category: categoryId, images: productImages,
+      isHidden: hasValidPrice ? rest.isHidden : true,
       // Keep the flat image/hoverImage (what storefront cards + admin thumbs read) in sync.
       ...(productImages.length ? { image: productImages[0].url, hoverImage: productImages[1]?.url ?? '' } : {}),
     } as any);
@@ -325,6 +351,9 @@ export class ProductsService {
     const update: Record<string, unknown> = { ...rest };
     if (dto.name) update.slug = await this.generateSlug(dto.name, id);
     if (dto.category) update.category = await this.resolveCategoryId(dto.category);
+    if ("price" in dto && (typeof dto.price !== "number" || dto.price <= 0)) {
+      update.isHidden = true;
+    }
     if (images !== undefined) {
       const productImages = this.normalizeImages(images);
       update.images = productImages;
@@ -369,6 +398,7 @@ export class ProductsService {
         deletedAt: null,
         isActive: true,
         isHidden: { $ne: true },
+        price: { $gt: 0 },
         $or: [{ name: regex }, { tagline: regex }, { subcategory: regex }],
       })
       .select('name slug price originalPrice discountPct image images category subcategory productFamily')
@@ -395,6 +425,13 @@ export class ProductsService {
   }
 
   async updateVisibility(id: string, isHidden: boolean) {
+    if (!isHidden) {
+      const current = await this.productModel.findById(id).select('price').lean();
+      if (!current) throw new NotFoundException('Product not found');
+      if (typeof current.price !== 'number' || current.price <= 0) {
+        throw new BadRequestException('Set a valid price before making this product visible');
+      }
+    }
     const product = await this.productModel
       .findByIdAndUpdate(id, { isHidden }, { new: true })
       .lean();
@@ -444,7 +481,10 @@ export class ProductsService {
   // Used by the product-page size selector.
   async findFamily(family: string) {
     return this.productModel
-      .find({ productFamily: family, deletedAt: null, isActive: true, isHidden: { $ne: true } })
+      .find({
+        productFamily: family, deletedAt: null, isActive: true, isHidden: { $ne: true },
+        price: { $gt: 0 },
+      })
       .select('name slug size price compareAtPrice originalPrice discountPct stock productCode currency')
       .sort({ price: 1 })
       .lean();
@@ -515,7 +555,8 @@ export class ProductsService {
         scent,
         texture,
         slug,
-        price: 0,          // price must be set by admin before import
+        price: null,       // unverified prices remain empty and hidden
+        isHidden: true,
         currency: 'AED',
         benefits,
         ingredients: ingredientsList,

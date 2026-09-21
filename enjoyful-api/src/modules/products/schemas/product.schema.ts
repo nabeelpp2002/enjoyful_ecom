@@ -40,8 +40,8 @@ export class Product {
   @Prop() productType: string;
 
   // Latest supplier/current price before the storefront markup is applied.
-  @Prop({ default: 0, min: 0, select: false }) basePrice: number;
-  @Prop({ required: true, min: 0 }) price: number;
+  @Prop({ type: Number, default: null, min: 0, select: false }) basePrice: number | null;
+  @Prop({ type: Number, default: null, min: 0 }) price: number | null;
   @Prop({ min: 0 }) compareAtPrice: number;
   @Prop({ enum: ['AED', 'GBP'], default: 'AED' }) currency: string;
 

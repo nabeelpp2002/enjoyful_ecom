@@ -129,15 +129,33 @@ for (const product of skus) {
   }
 }
 
-// The attached cleaning-products PDF is the current price authority. The derived
-// override file stores both its base price and the required 25%-marked-up website price.
+// Only prices from the two verified update rounds are authoritative. Any catalog
+// price not present in these override files is intentionally cleared and hidden.
+const RETAIL_PRICE_OVERRIDES = require("./retail-price-overrides.json");
 const CLEANING_PRICE_OVERRIDES = require("./cleaning-price-overrides.json");
+const retailPriceBySku = new Map(RETAIL_PRICE_OVERRIDES.products.map(p => [p.sku, p]));
 const cleaningPriceBySku = new Map(CLEANING_PRICE_OVERRIDES.products.map(p => [p.sku, p]));
 for (const product of skus) {
-  const priceOverride = cleaningPriceBySku.get(product.code);
-  if (priceOverride) {
-    product.basePrice = priceOverride.basePrice;
-    product.price = priceOverride.websitePrice;
+  product.basePrice = null;
+  product.price = null;
+  product.priceVerified = false;
+  product.priceSource = null;
+
+  const retailOverride = retailPriceBySku.get(product.code);
+  const cleaningOverride = cleaningPriceBySku.get(product.code);
+  if (retailOverride && cleaningOverride) {
+    throw new Error(`SKU ${product.code} appears in both verified price sources`);
+  }
+  if (retailOverride) {
+    product.price = retailOverride.websitePrice;
+    product.priceVerified = true;
+    product.priceSource = RETAIL_PRICE_OVERRIDES.sourceFile;
+  }
+  if (cleaningOverride) {
+    product.basePrice = cleaningOverride.basePrice;
+    product.price = cleaningOverride.websitePrice;
+    product.priceVerified = true;
+    product.priceSource = CLEANING_PRICE_OVERRIDES.sourceFile;
   }
 }
 

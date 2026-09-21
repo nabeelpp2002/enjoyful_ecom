@@ -34,9 +34,13 @@ export class CartService {
     const product = await this.productModel.findById(productId).lean();
     if (!product) throw new NotFoundException('Product not found');
 
-    if (product.deletedAt || !product.isActive) {
-      throw new BadRequestException('This product is not currently available.');
+    if (
+      product.deletedAt || !product.isActive || product.isHidden ||
+      typeof product.price !== "number" || product.price <= 0
+    ) {
+      throw new BadRequestException("This product is not currently available.");
     }
+    const productPrice = product.price;
 
     const productObjId = new Types.ObjectId(productId);
 
@@ -49,7 +53,7 @@ export class CartService {
           {
             product: productObjId,
             quantity,
-            priceSnapshot: product.price,
+            priceSnapshot: productPrice,
             nameSnapshot: product.name,
             imageSnapshot: product.image ?? '',
             addedAt: new Date(),
@@ -69,7 +73,7 @@ export class CartService {
       cart.items.push({
         product: productObjId,
         quantity,
-        priceSnapshot: product.price,
+        priceSnapshot: productPrice,
         nameSnapshot: product.name,
         imageSnapshot: product.image ?? '',
         addedAt: new Date(),
@@ -135,7 +139,11 @@ export class CartService {
 
     for (const guestItem of guestItems) {
       const product = await this.productModel.findById(guestItem.productId).lean();
-      if (!product) continue;
+      if (
+        !product || product.deletedAt || !product.isActive || product.isHidden ||
+        typeof product.price !== "number" || product.price <= 0
+      ) continue;
+      const productPrice = product.price;
 
       const existingIndex = cart.items.findIndex(
         (item) => item.product.toString() === guestItem.productId,
@@ -150,7 +158,7 @@ export class CartService {
         cart.items.push({
           product: new Types.ObjectId(guestItem.productId),
           quantity: guestItem.quantity,
-          priceSnapshot: product.price,
+          priceSnapshot: productPrice,
           nameSnapshot: product.name,
           imageSnapshot: product.image ?? '',
           addedAt: new Date(),

@@ -12,7 +12,7 @@ async function getToken() {
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const token = await getToken();
-  const res = await fetch(`${API_BASE}/products/${id}`, {
+  const res = await fetch(`${API_BASE}/products/admin/${id}`, {
     headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
   const data = await res.json();

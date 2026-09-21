@@ -41,6 +41,12 @@ export class ProductsController {
   @ApiOperation({ summary: 'List all products for admin (includes hidden/inactive)' })
   findAllAdmin() { return this.service.findAllAdmin(); }
 
+  @Get('admin/:id')
+  @Roles('admin')
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Get any non-deleted product for admin, including hidden/inactive' })
+  findOneAdmin(@Param('id', ParseObjectIdPipe) id: string) { return this.service.findOneAdmin(id); }
+
   @Public()
   @Get('quick-search')
   @ApiOperation({ summary: 'Fast prefix search for the search overlay' })

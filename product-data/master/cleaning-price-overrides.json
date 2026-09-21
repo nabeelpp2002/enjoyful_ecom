@@ -2,7 +2,7 @@
   "sourceFile": "ENJOYFUL CLEANING PRODUCTS PRICE.pdf",
   "sourceSha256": "6f06551fe167844c2bcd9357480b42bf6ef126386d9764a474fc4a166a5ea982",
   "markupMultiplier": 1.25,
-  "generatedAt": "2026-09-21T12:29:58.816Z",
+  "generatedAt": "2026-09-21T15:53:18.585Z",
   "products": [
     {
       "sku": "DW-3XCB-5L",
@@ -44,7 +44,7 @@
       "basePrice": 11,
       "websitePrice": 13.75,
       "pdfRow": 6,
-      "pdfBarcode": "8926081155306"
+      "pdfBarcode": "8906081155306"
     },
     {
       "sku": "DW-APB-5L",
@@ -62,8 +62,8 @@
     },
     {
       "sku": "AB-5L",
-      "basePrice": 13.5,
-      "websitePrice": 16.88,
+      "basePrice": 17.25,
+      "websitePrice": 21.56,
       "pdfRow": 9,
       "pdfBarcode": "8906081155269"
     },
@@ -213,6 +213,20 @@
       "websitePrice": 7.81,
       "pdfRow": 32,
       "pdfBarcode": "8906081155474"
+    },
+    {
+      "sku": "TC-AQA-750",
+      "basePrice": 5.25,
+      "websitePrice": 6.56,
+      "pdfRow": 33,
+      "pdfBarcode": "8906081155535"
+    },
+    {
+      "sku": "TC-PIN-750",
+      "basePrice": 5.25,
+      "websitePrice": 6.56,
+      "pdfRow": 33,
+      "pdfBarcode": "8906081155535"
     }
   ]
 }

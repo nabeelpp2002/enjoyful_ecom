@@ -39,7 +39,7 @@ interface ProductFormData {
     unitType: string;
     mockupStatus: string;
     productFamily: string;
-    price: number;
+    price: number | "";
     originalPrice: number;
     discountPct: number;
     description: string;
@@ -180,7 +180,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
         unitType: (initialData?.unitType as string) || "",
         mockupStatus: (initialData?.mockupStatus as string) || "",
         productFamily: (initialData?.productFamily as string) || "",
-        price: (initialData?.price as number) || 0,
+        price: initialData?.price == null ? "" : Number(initialData.price),
         originalPrice: (initialData?.originalPrice as number) || 0,
         discountPct: (initialData?.discountPct as number) || 0,
         description: (initialData?.description as string) || "",
@@ -253,7 +253,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
 
         const payload = {
             ...form,
-            price: Number(form.price),
+            price: form.price === "" ? null : Number(form.price),
             originalPrice: Number(form.originalPrice),
             rating: Number(form.rating),
             reviews: Number(form.reviews),
@@ -508,9 +508,11 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                     <h2 className="text-sm font-semibold text-[#1A1A1B] mb-4">Pricing</h2>
                     <div className="grid grid-cols-3 gap-4">
                         <div>
-                            <label className={labelCls}>Price (AED) *</label>
-                            <input required type="number" min="0" step="0.01" value={form.price}
-                                onChange={e => updateForm("price", +e.target.value)} className={inputCls} />
+                            <label className={labelCls}>Price (AED)</label>
+                            <input type="number" min="0.01" step="0.01" value={form.price}
+                                placeholder="Not set"
+                                onChange={e => updateForm("price", e.target.value === "" ? "" : Number(e.target.value))} className={inputCls} />
+                            <p className="text-[10px] text-[#1A1A1B]/30 mt-1">Products without a price stay hidden.</p>
                         </div>
                         <div>
                             <label className={labelCls}>Original / Compare-at Price (AED)</label>

@@ -26,7 +26,7 @@ export class CreateProductDto {
   @ApiPropertyOptional() @IsOptional() @IsString() slug?: string;
 
   @ApiPropertyOptional() @IsOptional() @Type(() => Number) @IsNumber() @Min(0) basePrice?: number;
-  @ApiProperty() @Type(() => Number) @IsNumber() @Min(0) price!: number;
+  @ApiPropertyOptional({ nullable: true }) @IsOptional() @Type(() => Number) @IsNumber() @Min(0) price?: number | null;
   @ApiPropertyOptional() @IsOptional() @Type(() => Number) @IsNumber() @Min(0) compareAtPrice?: number;
   @ApiPropertyOptional() @IsOptional() @Type(() => Number) @IsNumber() @Min(0) originalPrice?: number;
   @ApiPropertyOptional() @IsOptional() @Type(() => Number) @IsNumber() @Min(0) discountPct?: number;

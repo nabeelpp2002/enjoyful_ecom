@@ -1,7 +1,7 @@
 /**
  * DESTRUCTIVE (MongoDB): wipe all products, drop the stray "Home" category,
  * import the clean master catalog (size-group model) with image URLs already attached.
- * Imageless products are imported HIDDEN (isHidden:true) so they surface in Admin → Missing Images.
+ * Only verified-price products are public; all unverified products remain in Admin with null prices.
  *   node src/database/import-master.js
  * Prereqs: cloudinary-migrate.js already ran (produces image-urls.json).
  */
@@ -67,8 +67,8 @@ async function main() {
       category: catId,
       subcategory: p.sub,
       productType: p.productType,
-      basePrice: Number(p.basePrice) || 0,
-      price: Number(p.price) || 0,
+      basePrice: p.basePrice == null ? null : Number(p.basePrice),
+      price: p.price == null ? null : Number(p.price),
       currency: 'AED',
       productFamily: p.family,
       size: p.sizeDisplay || '',
@@ -91,13 +91,13 @@ async function main() {
       metaDescription: (description || `${p.baseName} by enJoyful Life.`).slice(0, 160),
       rating: 0, reviews: 0, stock: 0,
       isActive: true, isFeatured: false, onSale: false, bestDeal: false,
-      isHidden: !hasImg,
+      isHidden: !p.priceVerified,
       deletedAt: null,
       externalBuyLinks: { amazon: { url: '', visible: true }, talabat: { url: '', visible: true }, carrefour: { url: '', visible: true } },
     });
-    created++; if (!hasImg) hidden++;
+    created++; if (!p.priceVerified) hidden++;
   }
-  console.log(`\n✅ Imported ${created} SKUs (${created - hidden} visible, ${hidden} hidden — no image).`);
+  console.log(`\n✅ Imported ${created} SKUs (${created - hidden} verified/visible, ${hidden} unverified/hidden).`);
   await mongoose.disconnect();
 }
 main().catch(e => { console.error('FATAL', e); process.exit(1); });

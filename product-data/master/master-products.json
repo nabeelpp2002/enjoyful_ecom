@@ -7,7 +7,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "200ml, 500ml",
-    "Price(s) AED": "200ml:—  500ml:—",
+    "Price(s) AED": "200ml:23.29  500ml:31.39",
     "Family (slug)": "baby-lotion",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -20,7 +20,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "50ml, 100ml",
-    "Price(s) AED": "50ml:—  100ml:—",
+    "Price(s) AED": "50ml:16.88  100ml:20.59",
     "Family (slug)": "baby-rash-cream",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -33,7 +33,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "75gm",
-    "Price(s) AED": "75gm:—",
+    "Price(s) AED": "75gm:11.48",
     "Family (slug)": "baby-soap",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -46,7 +46,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "200gm, 400gm",
-    "Price(s) AED": "200gm:—  400gm:—",
+    "Price(s) AED": "200gm:18.23  400gm:32.4",
     "Family (slug)": "baby-talc",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -59,7 +59,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "300ml, 500ml",
-    "Price(s) AED": "300ml:—  500ml:—",
+    "Price(s) AED": "300ml:25.65  500ml:31.39",
     "Family (slug)": "baby-wash",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -72,7 +72,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 350ml",
-    "Price(s) AED": "100ml:—  350ml:—",
+    "Price(s) AED": "100ml:9.79  350ml:21.6",
     "Family (slug)": "almond-body-lotion",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -85,7 +85,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "100ml",
-    "Price(s) AED": "100ml:—",
+    "Price(s) AED": "100ml:9.79",
     "Family (slug)": "almond-moisturising-cream",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -98,7 +98,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "500ml",
-    "Price(s) AED": "500ml:—",
+    "Price(s) AED": "500ml:24.3",
     "Family (slug)": "aloe-bliss-shower-gel",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -111,7 +111,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 400ml",
-    "Price(s) AED": "100ml:—  400ml:—",
+    "Price(s) AED": "100ml:8.78  400ml:19.24",
     "Family (slug)": "aloe-calm-shampoo",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -124,7 +124,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 350ml",
-    "Price(s) AED": "100ml:—  350ml:—",
+    "Price(s) AED": "100ml:8.78  350ml:22.28",
     "Family (slug)": "aloevera-body-lotion",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -137,7 +137,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "25gm, 60gm",
-    "Price(s) AED": "25gm:—  60gm:—",
+    "Price(s) AED": "25gm:12.49  60gm:17.89",
     "Family (slug)": "aloevera-hair-removal-cream",
     "Source": "Skincare/INCI",
     "Flags": "NEW subcategory"
@@ -150,7 +150,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 400ml",
-    "Price(s) AED": "100ml:—  400ml:—",
+    "Price(s) AED": "100ml:8.78  400ml:18.23",
     "Family (slug)": "bamboo-balance-shampoo",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -163,7 +163,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 400ml",
-    "Price(s) AED": "100ml:—  400ml:—",
+    "Price(s) AED": "100ml:8.78  400ml:21.6",
     "Family (slug)": "botanical-deep-clean-shampoo",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -176,7 +176,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "500ml",
-    "Price(s) AED": "500ml:—",
+    "Price(s) AED": "500ml:24.3",
     "Family (slug)": "c-glow-shower-gel",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -189,7 +189,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "100ml",
-    "Price(s) AED": "100ml:—",
+    "Price(s) AED": "100ml:16.54",
     "Family (slug)": "daily-delight-moisturising-cream",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -202,7 +202,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "500ml",
-    "Price(s) AED": "500ml:—",
+    "Price(s) AED": "500ml:24.3",
     "Family (slug)": "ice-blast-shower-gel",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -215,7 +215,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "100ml",
-    "Price(s) AED": "100ml:—",
+    "Price(s) AED": "100ml:28.35",
     "Family (slug)": "intimate-wash",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -241,7 +241,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 350ml",
-    "Price(s) AED": "100ml:—  350ml:—",
+    "Price(s) AED": "100ml:8.78  350ml:21.6",
     "Family (slug)": "mix-fruit-body-lotion",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -254,7 +254,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "100ml",
-    "Price(s) AED": "100ml:—",
+    "Price(s) AED": "100ml:11.48",
     "Family (slug)": "mix-fruit-moisturising-cream",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -280,7 +280,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "500ml",
-    "Price(s) AED": "500ml:—",
+    "Price(s) AED": "500ml:24.3",
     "Family (slug)": "morning-buzz-shower-gel",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -306,7 +306,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 400ml",
-    "Price(s) AED": "100ml:—  400ml:—",
+    "Price(s) AED": "100ml:8.44  400ml:19.24",
     "Family (slug)": "onion-shampoo",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -332,7 +332,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "100ml",
-    "Price(s) AED": "100ml:—",
+    "Price(s) AED": "100ml:20.59",
     "Family (slug)": "silky-touch-hair-serum",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -345,7 +345,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "70ml, 250ml",
-    "Price(s) AED": "70ml:—  250ml:—",
+    "Price(s) AED": "70ml:11.48  250ml:19.58",
     "Family (slug)": "amber-glow-body-mist",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -397,7 +397,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "50ml",
-    "Price(s) AED": "50ml:—",
+    "Price(s) AED": "50ml:9.11",
     "Family (slug)": "apex-72h-roll-on",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -436,7 +436,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "70ml, 250ml",
-    "Price(s) AED": "70ml:—  250ml:—",
+    "Price(s) AED": "70ml:11.48  250ml:19.58",
     "Family (slug)": "blossom-veil-body-mist",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -449,7 +449,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "70ml, 250ml",
-    "Price(s) AED": "70ml:—  250ml:—",
+    "Price(s) AED": "70ml:11.48  250ml:19.58",
     "Family (slug)": "coastal-pulse-body-mist",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -488,7 +488,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "50ml",
-    "Price(s) AED": "50ml:—",
+    "Price(s) AED": "50ml:9.11",
     "Family (slug)": "element-zero-roll-on",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -566,7 +566,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "50ml",
-    "Price(s) AED": "50ml:—",
+    "Price(s) AED": "50ml:9.11",
     "Family (slug)": "lumi-glow-roll-on",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -579,7 +579,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "70ml, 250ml",
-    "Price(s) AED": "70ml:—  250ml:—",
+    "Price(s) AED": "70ml:11.48  250ml:19.58",
     "Family (slug)": "midnight-velvet-body-mist",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -618,7 +618,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "70ml, 250ml",
-    "Price(s) AED": "70ml:—  250ml:—",
+    "Price(s) AED": "70ml:11.48  250ml:19.58",
     "Family (slug)": "noir-element-body-mist",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -644,7 +644,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "50ml",
-    "Price(s) AED": "50ml:—",
+    "Price(s) AED": "50ml:9.11",
     "Family (slug)": "noir-oud-roll-on",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -709,7 +709,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "70gm",
-    "Price(s) AED": "70gm:—",
+    "Price(s) AED": "70gm:19.58",
     "Family (slug)": "pure-fresh-deo-stick",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -722,7 +722,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "50ml",
-    "Price(s) AED": "50ml:—",
+    "Price(s) AED": "50ml:9.11",
     "Family (slug)": "pure-renewal-roll-on",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -787,7 +787,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "70gm",
-    "Price(s) AED": "70gm:—",
+    "Price(s) AED": "70gm:19.58",
     "Family (slug)": "silk-bloom-deo-stick",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -800,7 +800,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "70gm",
-    "Price(s) AED": "70gm:—",
+    "Price(s) AED": "70gm:19.58",
     "Family (slug)": "ultra-fresh-deo-stick",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -813,7 +813,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "70ml, 250ml",
-    "Price(s) AED": "70ml:—  250ml:—",
+    "Price(s) AED": "70ml:11.48  250ml:19.58",
     "Family (slug)": "vanilla-aura-body-mist",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -826,7 +826,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "50ml",
-    "Price(s) AED": "50ml:—",
+    "Price(s) AED": "50ml:9.11",
     "Family (slug)": "velvet-repair-roll-on",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -852,7 +852,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "60ml, 150ml",
-    "Price(s) AED": "60ml:—  150ml:—",
+    "Price(s) AED": "60ml:9.79  150ml:—",
     "Family (slug)": "aloevera-gel",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -865,7 +865,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "50ml, 150ml",
-    "Price(s) AED": "50ml:—  150ml:—",
+    "Price(s) AED": "50ml:9.79  150ml:—",
     "Family (slug)": "apricot-face-scrub",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -891,7 +891,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "50ml, 150ml",
-    "Price(s) AED": "50ml:—  150ml:—",
+    "Price(s) AED": "50ml:9.79  150ml:—",
     "Family (slug)": "coffee-face-scrub",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -904,7 +904,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 150ml",
-    "Price(s) AED": "100ml:—  150ml:—",
+    "Price(s) AED": "100ml:17.89  150ml:—",
     "Family (slug)": "peel-off-mask",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -917,7 +917,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "100ml, 240ml",
-    "Price(s) AED": "100ml:—  240ml:—",
+    "Price(s) AED": "100ml:8.78  240ml:12.83",
     "Family (slug)": "rose-water-premium",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -956,7 +956,7 @@
     "Scent/Variant": "",
     "# Sizes": 3,
     "Sizes": "50ml, 100ml, 150ml",
-    "Price(s) AED": "50ml:—  100ml:—  150ml:—",
+    "Price(s) AED": "50ml:17.55  100ml:—  150ml:—",
     "Family (slug)": "sunscreen-cream",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -969,7 +969,7 @@
     "Scent/Variant": "",
     "# Sizes": 1,
     "Sizes": "150ml",
-    "Price(s) AED": "150ml:—",
+    "Price(s) AED": "150ml:25.65",
     "Family (slug)": "vit-c-foaming-face-wash",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -982,7 +982,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "60ml, 150ml",
-    "Price(s) AED": "60ml:—  150ml:—",
+    "Price(s) AED": "60ml:8.44  150ml:—",
     "Family (slug)": "vit-c-lemon-face-wash",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -995,7 +995,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "60ml, 150ml",
-    "Price(s) AED": "60ml:—  150ml:—",
+    "Price(s) AED": "60ml:10.13  150ml:—",
     "Family (slug)": "vit-c-orange-face-wash",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -1008,7 +1008,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "60ml, 150ml",
-    "Price(s) AED": "60ml:—  150ml:—",
+    "Price(s) AED": "60ml:10.13  150ml:—",
     "Family (slug)": "vit-c-papaya-face-wash",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -1021,7 +1021,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "50ml, 150ml",
-    "Price(s) AED": "50ml:—  150ml:—",
+    "Price(s) AED": "50ml:10.13  150ml:—",
     "Family (slug)": "walnut-apricot-face-scrub",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -1034,7 +1034,7 @@
     "Scent/Variant": "",
     "# Sizes": 2,
     "Sizes": "50ml, 150ml",
-    "Price(s) AED": "50ml:—  150ml:—",
+    "Price(s) AED": "50ml:9.79  150ml:—",
     "Family (slug)": "walnut-face-scrub",
     "Source": "Skincare/INCI",
     "Flags": ""
@@ -1099,7 +1099,7 @@
     "Scent/Variant": "Color & Fiber Revival",
     "# Sizes": 2,
     "Sizes": "3L, 5L",
-    "Price(s) AED": "3L:16.88  5L:16.88",
+    "Price(s) AED": "3L:16.88  5L:21.56",
     "Family (slug)": "abaya-wash",
     "Source": "Home Care",
     "Flags": ""
@@ -1138,7 +1138,7 @@
     "Scent/Variant": "Cherry Blossom",
     "# Sizes": 2,
     "Sizes": "1L, 500ml",
-    "Price(s) AED": "1L:7.81  500ml:12",
+    "Price(s) AED": "1L:7.81  500ml:—",
     "Family (slug)": "cherry-blossom-handwash",
     "Source": "Home Care",
     "Flags": ""
@@ -1333,7 +1333,7 @@
     "Scent/Variant": "Rich Musk",
     "# Sizes": 2,
     "Sizes": "1L, 500ml",
-    "Price(s) AED": "1L:7.81  500ml:12",
+    "Price(s) AED": "1L:7.81  500ml:—",
     "Family (slug)": "rich-musk-handwash",
     "Source": "Home Care",
     "Flags": ""
@@ -1346,7 +1346,7 @@
     "Scent/Variant": "Sweet Vanilla",
     "# Sizes": 2,
     "Sizes": "1L, 500ml",
-    "Price(s) AED": "1L:7.81  500ml:12",
+    "Price(s) AED": "1L:7.81  500ml:—",
     "Family (slug)": "sweet-vanilla-handwash",
     "Source": "Home Care",
     "Flags": ""
@@ -1359,7 +1359,7 @@
     "Scent/Variant": "Aqua Fresh",
     "# Sizes": 1,
     "Sizes": "750ml",
-    "Price(s) AED": "750ml:12",
+    "Price(s) AED": "750ml:6.56",
     "Family (slug)": "ultra-clean-toilet-cleaner-aqua",
     "Source": "Home Care",
     "Flags": ""
@@ -1372,7 +1372,7 @@
     "Scent/Variant": "Pine",
     "# Sizes": 1,
     "Sizes": "750ml",
-    "Price(s) AED": "750ml:12",
+    "Price(s) AED": "750ml:6.56",
     "Family (slug)": "ultra-clean-toilet-cleaner-pine",
     "Source": "Home Care",
     "Flags": ""

@@ -22,7 +22,7 @@ interface Product {
     size?: string;
     productCode?: string;
     productFamily?: string;
-    price: number;
+    price: number | null;
     originalPrice?: number;
     discountPct?: number;
     currency?: string;
@@ -63,7 +63,7 @@ interface Variant {
     id: string;
     size?: string;
     productCode?: string;
-    price: number;
+    price: number | null;
     originalPrice?: number;
     discountPct?: number;
     isHidden?: boolean;
@@ -175,7 +175,7 @@ export default function AdminProductViewPage() {
     const categoryName = extractCategory(product.category);
     const isHidden = product.isHidden ?? false;
     const hasDiscount = product.discountPct && product.discountPct > 0;
-    const hasOriginal = product.originalPrice && product.originalPrice > product.price;
+    const hasOriginal = product.price != null && product.originalPrice && product.originalPrice > product.price;
 
     const handleDelete = async () => {
         if (!product || !confirm(`Delete "${shortName}"? This cannot be undone.`)) return;
@@ -430,7 +430,9 @@ export default function AdminProductViewPage() {
                                                     </td>
                                                     <td className="py-2.5 px-1 font-mono text-xs text-[#1A1A1B]/60">{v.productCode || "—"}</td>
                                                     <td className="py-2.5 px-1 text-right">
-                                                        <span className="font-semibold text-[#1A1A1B]">{v.price} AED</span>
+                                                        <span className={v.price == null ? "font-semibold text-amber-600" : "font-semibold text-[#1A1A1B]"}>
+                                                            {v.price == null ? "Not set" : `${v.price} AED`}
+                                                        </span>
                                                         {v.discountPct ? (
                                                             <span className="ml-1.5 text-[10px] text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded">-{v.discountPct}%</span>
                                                         ) : null}
@@ -484,7 +486,11 @@ export default function AdminProductViewPage() {
                             <div className={row}>
                                 <span className={label}>Sale Price</span>
                                 <span className="text-lg font-bold text-[#1A1A1B]">
-                                    {product.price} <span className="text-sm font-semibold text-[#1A1A1B]/50">{product.currency ?? "AED"}</span>
+                                    {product.price == null ? (
+                                        <span className="text-amber-600">Not set</span>
+                                    ) : (
+                                        <>{product.price} <span className="text-sm font-semibold text-[#1A1A1B]/50">{product.currency ?? "AED"}</span></>
+                                    )}
                                 </span>
                             </div>
                             {hasOriginal && (

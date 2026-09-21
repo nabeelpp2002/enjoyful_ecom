@@ -27,10 +27,11 @@ const PDF_ROWS = [
   [3, '8906081155399', 'Mint Handwash - 5 LTR', 11.50, 'HW-MINT-5L', '5L'],
   [4, '8906081155382', 'Oud Handwash - 5 LTR', 11.00, 'HW-OUD-5L', '5L'],
   [5, '8906081155368', 'Papaya Handwash - 5 LTR', 12.25, 'HW-PAP-5L', '5L'],
-  [6, '8926081155306', 'Dishwashing Liquid Aloe & Mint Fresh - 5 LTR', 11.00, 'DW-ALM-5L', '5L'],
+  // Barcode corrected after client confirmation; the PDF prints 8926081155306.
+  [6, '8906081155306', 'Dishwashing Liquid Aloe & Mint Fresh - 5 LTR', 11.00, 'DW-ALM-5L', '5L'],
   [7, '8906081155290', 'Dishwashing Liquid Apple Breeze - 5 LTR', 14.25, 'DW-APB-5L', '5L'],
   [8, '8906081155283', 'Dishwashing Liquid Lemon Fresh - 5 LTR', 11.25, 'DW-LF-5L', '5L'],
-  [9, '8906081155269', 'Abaya Wash - 5 LTR', 13.50, 'AB-5L', '5L'],
+  [9, '8906081155269', 'Abaya Wash - 5 LTR', 17.25, 'AB-5L', '5L'],
   [10, '8906081155375', 'Lavender Handwash - 5 LTR', 11.00, 'HW-LAV-5L', '5L'],
   [11, '8906081155405', 'Antiseptic - 5 LTR', 14.25, 'DC-PS-5L', '5L'],
   [12, '8906081155559', 'Lavender Cleaning Gel 1 kg', 8.25, 'CG-LAV-1KG', '1kg'],
@@ -54,10 +55,11 @@ const PDF_ROWS = [
   [30, '8906081155412', 'Antiseptic - 750 ml', 5.25, 'DC-PS-750', '750ml'],
   [31, '8906081155436', 'Glass & Surface Cleaner - 750 ml', 4.25, 'GC-750', '750ml'],
   [32, '8906081155474', 'Lemon Fresh Multi-Purpose Cream Cleaner - 750 ml', 6.25, 'CC-LEM-750', '750ml'],
-  [33, '8906081155535', 'Ultra Clean Toilet Cleaner 750 Ml', 5.25, 'AMBIGUOUS', '750ml'],
-  [34, '8906081155528', 'Baby Liquid Cleaning Liquid 500 ml', 12.25, null, '500ml'],
+  // The PDF's single toilet-cleaner price applies to both confirmed scents.
+  [33, '8906081155535', 'Ultra Clean Toilet Cleaner 750 Ml', 5.25, ['TC-AQA-750', 'TC-PIN-750'], '750ml'],
+  [34, '8906081155528', 'Baby Bottle Cleaning Liquid 500 ml', 12.25, null, '500ml'],
   [35, '6298042340916', 'Detergent Powder 5 kg', 16.00, null, '5kg'],
-  [36, '6298042340909', 'Detergent Powder 3 kg', 12.25, null, '3kg'],
+  [36, '6298042340909', 'Detergent Powder 3 kg', 14.75, null, '3kg'],
   [37, '6298042340923', 'Detergent Powder 2.5 kg box', 13.50, null, '2.5kg'],
 ].map(function (row) {
   return { no: row[0], barcode: row[1], description: row[2], basePrice: row[3], sku: row[4], size: row[5] };
@@ -96,15 +98,16 @@ async function main() {
   });
   const invalidBarcodes = PDF_ROWS.filter(function (row) { return !isValidEan13(row.barcode); });
   const invalidPrices = PDF_ROWS.filter(function (row) { return !Number.isFinite(row.basePrice) || row.basePrice <= 0; });
-  const mappedRows = PDF_ROWS.filter(function (row) { return row.sku && row.sku !== 'AMBIGUOUS'; });
+  const mappedRows = PDF_ROWS.flatMap(function (row) {
+    const skus = Array.isArray(row.sku) ? row.sku : [row.sku];
+    return skus.filter(Boolean).map(function (sku) { return { ...row, sku: sku }; });
+  });
   const missingInDatabase = PDF_ROWS.filter(function (row) { return row.sku === null; });
-  const ambiguousPdfRows = PDF_ROWS.filter(function (row) { return row.sku === 'AMBIGUOUS'; });
 
   if (duplicateBarcodes.length || duplicateProducts.length || invalidPrices.length) {
     throw new Error('PDF validation failed: duplicate rows/barcodes or invalid prices were found');
   }
-  const unexpectedInvalidBarcodes = invalidBarcodes.filter(function (row) { return row.no !== 6; });
-  if (unexpectedInvalidBarcodes.length) throw new Error('Unexpected invalid PDF barcodes found');
+  if (invalidBarcodes.length) throw new Error('Invalid confirmed barcodes found');
 
   await mongoose.connect(process.env.MONGODB_URI);
   const collection = mongoose.connection.db.collection('products');
@@ -115,7 +118,7 @@ async function main() {
     projection: {
       name: 1, slug: 1, size: 1, variant: 1, productCode: 1, skuCode: 1,
       basePrice: 1, price: 1, currency: 1, category: 1, subcategory: 1,
-      images: 1, image: 1, isHidden: 1,
+      images: 1, image: 1, isHidden: 1, barcode: 1,
     },
   }).toArray();
 
@@ -150,7 +153,6 @@ async function main() {
   console.log('Validated existing SKU matches: ' + matches.length);
   console.log('Match errors: ' + matchErrors.length);
   console.log('PDF products missing in database: ' + missingInDatabase.length);
-  console.log('Ambiguous PDF products: ' + ambiguousPdfRows.length);
 
   if (invalidBarcodes.length) {
     console.log('\nPDF barcode issue:');
@@ -165,13 +167,6 @@ async function main() {
       console.log('  row ' + row.no + ': ' + row.description + ' | barcode ' + row.barcode + ' | base ' + row.basePrice + ' | website ' + money(row.basePrice * MARKUP_MULTIPLIER));
     });
   }
-  if (ambiguousPdfRows.length) {
-    console.log('\nAmbiguous PDF products (not updated):');
-    ambiguousPdfRows.forEach(function (row) {
-      console.log('  row ' + row.no + ': ' + row.description + ' matches both Ultra Clean Toilet Cleaner Aqua and Pine');
-    });
-  }
-
   console.log('\nValidated price changes:');
   matches.forEach(function (match) {
     console.log('  ' + match.row.no + '. ' + match.product.name + ' ' + match.product.size + ' [' + match.row.sku + '] | base ' + String(match.product.basePrice == null ? 'unset' : match.product.basePrice) + ' -> ' + match.row.basePrice + ' | website ' + match.product.price + ' -> ' + match.websitePrice);
@@ -202,8 +197,10 @@ async function main() {
         productCode: match.product.productCode,
         previousBasePrice: match.product.basePrice == null ? null : match.product.basePrice,
         previousWebsitePrice: match.product.price,
+        previousBarcode: match.product.barcode == null ? null : match.product.barcode,
         newBasePrice: match.row.basePrice,
         newWebsitePrice: match.websitePrice,
+        newBarcode: match.row.no === 6 ? match.row.barcode : match.product.barcode,
         pdfRow: match.row.no,
         pdfBarcode: match.row.barcode,
         pdfDescription: match.row.description,
@@ -217,7 +214,12 @@ async function main() {
     return {
       updateOne: {
         filter: { _id: match.product._id, price: match.product.price },
-        update: { $set: { basePrice: match.row.basePrice, price: match.websitePrice, updatedAt: now } },
+        update: { $set: {
+          basePrice: match.row.basePrice,
+          price: match.websitePrice,
+          ...(match.row.no === 6 ? { barcode: match.row.barcode } : {}),
+          updatedAt: now,
+        } },
       },
     };
   });
@@ -227,11 +229,12 @@ async function main() {
   }
 
   const ids = matches.map(function (match) { return match.product._id; });
-  const verified = await collection.find({ _id: { $in: ids } }, { projection: { basePrice: 1, price: 1 } }).toArray();
+  const verified = await collection.find({ _id: { $in: ids } }, { projection: { basePrice: 1, price: 1, barcode: 1 } }).toArray();
   const byId = new Map(verified.map(function (product) { return [String(product._id), product]; }));
   const failures = matches.filter(function (match) {
     const product = byId.get(String(match.product._id));
-    return !product || product.basePrice !== match.row.basePrice || product.price !== match.websitePrice;
+    return !product || product.basePrice !== match.row.basePrice || product.price !== match.websitePrice ||
+      (match.row.no === 6 && product.barcode !== match.row.barcode);
   });
   if (failures.length) throw new Error('Post-update verification failed for ' + failures.length + ' products');
 

@@ -17,7 +17,7 @@ interface AdminProduct {
     productType?: string;
     tagline?: string;
     brand?: string;
-    price: number;
+    price: number | null;
     originalPrice?: number;
     discountPct?: number;
     description?: string;
@@ -379,6 +379,12 @@ export default function AdminProductsPage() {
                                 }
                                 const allHidden = variants.every(v => v.isHidden);
                                 const someHidden = variants.some(v => v.isHidden);
+                                const prices = variants.flatMap(v => v.price == null ? [] : [v.price]);
+                                const priceLabel = prices.length === 0
+                                    ? "Not set"
+                                    : Math.min(...prices) === Math.max(...prices)
+                                        ? `${prices[0]} AED`
+                                        : `${Math.min(...prices)}–${Math.max(...prices)} AED`;
                                 // A product with a family opens the GROUP view (by family slug);
                                 // a stand-alone product opens its single view (by id).
                                 const fam = rep.productFamily?.trim();
@@ -463,16 +469,14 @@ export default function AdminProductsPage() {
                                         {/* Price */}
                                         <td className="px-5 py-3.5">
                                             {isMulti ? (
-                                                // Show price range across variants
-                                                <span className="text-[#1A1A1B] font-semibold text-sm">
-                                                    {Math.min(...variants.map(v => v.price))}
-                                                    {Math.min(...variants.map(v => v.price)) !== Math.max(...variants.map(v => v.price))
-                                                        ? `–${Math.max(...variants.map(v => v.price))}`
-                                                        : ""} AED
+                                                <span className={`font-semibold text-sm ${prices.length ? "text-[#1A1A1B]" : "text-amber-600"}`}>
+                                                    {priceLabel}
                                                 </span>
                                             ) : (
                                                 <>
-                                                    <span className="text-[#1A1A1B] font-semibold">{rep.price} AED</span>
+                                                    <span className={rep.price == null ? "text-amber-600 font-semibold" : "text-[#1A1A1B] font-semibold"}>
+                                                        {rep.price == null ? "Not set" : `${rep.price} AED`}
+                                                    </span>
                                                     {rep.discountPct ? (
                                                         <span className="ml-2 text-xs text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-md font-medium">
                                                             -{rep.discountPct}%

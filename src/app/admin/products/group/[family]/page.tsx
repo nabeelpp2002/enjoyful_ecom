@@ -22,7 +22,7 @@ interface Product {
     size?: string;
     productCode?: string;
     productFamily?: string;
-    price: number;
+    price: number | null;
     originalPrice?: number;
     discountPct?: number;
     currency?: string;
@@ -127,10 +127,12 @@ export default function ProductGroupPage() {
     });
     const mainImg = images[selectedImg] || images[0] || null;
 
-    const prices = variants.map(v => v.price ?? 0);
-    const priceLabel = Math.min(...prices) === Math.max(...prices)
-        ? `${Math.min(...prices)} AED`
-        : `${Math.min(...prices)}–${Math.max(...prices)} AED`;
+    const prices = variants.flatMap(v => v.price == null ? [] : [v.price]);
+    const priceLabel = prices.length === 0
+        ? "Not set"
+        : Math.min(...prices) === Math.max(...prices)
+            ? `${prices[0]} AED`
+            : `${Math.min(...prices)}–${Math.max(...prices)} AED`;
     const allHidden = variants.every(v => v.isHidden);
 
     // "Add Size" → open the new-product form pre-filled with this family's shared info.
@@ -300,8 +302,10 @@ export default function ProductGroupPage() {
                                             </td>
                                             <td className="py-2.5 px-1 font-mono text-xs text-[#1A1A1B]/60">{v.productCode || "—"}</td>
                                             <td className="py-2.5 px-1 text-right">
-                                                <span className="font-semibold text-[#1A1A1B]">{v.price} AED</span>
-                                                {v.originalPrice && v.originalPrice > v.price ? (
+                                                <span className={v.price == null ? "font-semibold text-amber-600" : "font-semibold text-[#1A1A1B]"}>
+                                                    {v.price == null ? "Not set" : `${v.price} AED`}
+                                                </span>
+                                                {v.price != null && v.originalPrice && v.originalPrice > v.price ? (
                                                     <span className="ml-1.5 text-[10px] text-[#1A1A1B]/30 line-through">{v.originalPrice}</span>
                                                 ) : null}
                                                 {v.discountPct ? (

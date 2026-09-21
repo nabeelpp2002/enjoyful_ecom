@@ -1,0 +1,415 @@
+{
+  "sourceFile": "Enjoyful_Life_Retail_Price_List.xlsx",
+  "sourceSha256": "982a2c9e555ee6185bc83124b94cbb8ed686c6bfc3c09b204137389289d87d1d",
+  "generatedAt": "2026-09-21T16:21:16.882Z",
+  "products": [
+    {
+      "sku": "#00677",
+      "websitePrice": 11.48,
+      "workbookRow": 3,
+      "workbookDescription": "ENJOYFUL LIFE BABY SOAP 75 GM"
+    },
+    {
+      "sku": "#00678",
+      "websitePrice": 9.11,
+      "workbookRow": 4,
+      "workbookDescription": "ENJOYFUL LIFE LUMI GLOW ROLL ON 50ML"
+    },
+    {
+      "sku": "#00679",
+      "websitePrice": 9.11,
+      "workbookRow": 5,
+      "workbookDescription": "ENJOYFUL LIFE VELVET REPAIR ROLL ON 50 ML"
+    },
+    {
+      "sku": "#00680",
+      "websitePrice": 9.11,
+      "workbookRow": 6,
+      "workbookDescription": "ENJOYFUL LIFE PURE RENEWAL ROLL ON 50 ML"
+    },
+    {
+      "sku": "#00681",
+      "websitePrice": 9.11,
+      "workbookRow": 7,
+      "workbookDescription": "ENJOYFUL LIFE APEX 72H ROLL ON 50 ML"
+    },
+    {
+      "sku": "#00682",
+      "websitePrice": 9.11,
+      "workbookRow": 8,
+      "workbookDescription": "ENJOYFUL LIFE NOIR OUD ROLL ON 50 ML"
+    },
+    {
+      "sku": "#00683",
+      "websitePrice": 9.11,
+      "workbookRow": 9,
+      "workbookDescription": "ENJOYFUL LIFE ELEMENT ZERO ROLL ON 50 ML"
+    },
+    {
+      "sku": "#00684",
+      "websitePrice": 19.58,
+      "workbookRow": 10,
+      "workbookDescription": "ENJOYFUL LIFE PURE FRESH DEO STICK 70 GM"
+    },
+    {
+      "sku": "#00685",
+      "websitePrice": 19.58,
+      "workbookRow": 11,
+      "workbookDescription": "ENJOYFUL LIFE SILK BLOOM DEO STICK 70 GM"
+    },
+    {
+      "sku": "#00686",
+      "websitePrice": 19.58,
+      "workbookRow": 12,
+      "workbookDescription": "ENJOYFUL LIFE ULTRA FRESH DEO STICK 70 GM"
+    },
+    {
+      "sku": "JVPF60",
+      "websitePrice": 10.13,
+      "workbookRow": 13,
+      "workbookDescription": "ENJOYFUL LIFE VIT C PAPAYA FACE WASH 60 ML"
+    },
+    {
+      "sku": "JML350",
+      "websitePrice": 21.6,
+      "workbookRow": 14,
+      "workbookDescription": "ENJOYFUL LIFE MIX FRUIT BODY LOTION 350 ML"
+    },
+    {
+      "sku": "JRW240P",
+      "websitePrice": 12.83,
+      "workbookRow": 15,
+      "workbookDescription": "ENJOYFUL LIFE ROSE WATER-PREMIUM 240 ML"
+    },
+    {
+      "sku": "JAVL100",
+      "websitePrice": 8.78,
+      "workbookRow": 16,
+      "workbookDescription": "ENJOYFUL LIFE ALOEVERA BODY LOTION 100 ML"
+    },
+    {
+      "sku": "JALL350",
+      "websitePrice": 21.6,
+      "workbookRow": 17,
+      "workbookDescription": "ENJOYFUL LIFE ALMOND BODY LOTION 350 ML"
+    },
+    {
+      "sku": "JAS400",
+      "websitePrice": 19.24,
+      "workbookRow": 18,
+      "workbookDescription": "ENJOYFUL LIFE ALOE CALM SHAMPOO 400 ML"
+    },
+    {
+      "sku": "JBS100",
+      "websitePrice": 8.78,
+      "workbookRow": 19,
+      "workbookDescription": "ENJOYFUL LIFE BAMBOO BALANCE SHAMPOO 100 ML"
+    },
+    {
+      "sku": "JIBSG500",
+      "websitePrice": 24.3,
+      "workbookRow": 20,
+      "workbookDescription": "ENJOYFUL LIFE ICE BLAST SHOWER GEL 500 ML"
+    },
+    {
+      "sku": "JRW100P",
+      "websitePrice": 8.78,
+      "workbookRow": 21,
+      "workbookDescription": "ENJOYFUL LIFE ROSE WATER-PREMIUM 100 ML"
+    },
+    {
+      "sku": "JOS400",
+      "websitePrice": 19.24,
+      "workbookRow": 22,
+      "workbookDescription": "ENJOYFUL LIFE ONION SHAMPOO 400 ML"
+    },
+    {
+      "sku": "JABSG500",
+      "websitePrice": 24.3,
+      "workbookRow": 23,
+      "workbookDescription": "ENJOYFUL LIFE ALOE BLISS SHOWER GEL 500 ML"
+    },
+    {
+      "sku": "JML100",
+      "websitePrice": 8.78,
+      "workbookRow": 24,
+      "workbookDescription": "ENJOYFUL LIFE MIX FRUIT BODY LOTION 100 ML"
+    },
+    {
+      "sku": "JALC100",
+      "websitePrice": 9.79,
+      "workbookRow": 25,
+      "workbookDescription": "ENJOYFUL LIFE ALMOND MOISTURISING CREAM 100 ML"
+    },
+    {
+      "sku": "JVOF60",
+      "websitePrice": 10.13,
+      "workbookRow": 26,
+      "workbookDescription": "ENJOYFUL LIFE VIT C ORANGE FACE WASH 60 ML"
+    },
+    {
+      "sku": "JAHRC25",
+      "websitePrice": 12.49,
+      "workbookRow": 27,
+      "workbookDescription": "ENJOYFUL LIFE ALOEVERA HAIR REMOVAL CREAM 25 GM"
+    },
+    {
+      "sku": "JSS100",
+      "websitePrice": 8.78,
+      "workbookRow": 28,
+      "workbookDescription": "ENJOYFUL LIFE BOTANICAL DEEP CLEAN SHAMPOO 100 ML"
+    },
+    {
+      "sku": "JVLF60",
+      "websitePrice": 8.44,
+      "workbookRow": 29,
+      "workbookDescription": "ENJOYFUL LIFE VIT C LEMON FACE WASH 60 ML"
+    },
+    {
+      "sku": "JBS400",
+      "websitePrice": 18.23,
+      "workbookRow": 30,
+      "workbookDescription": "ENJOYFUL LIFE BAMBOO BALANCE SHAMPOO 400 ML"
+    },
+    {
+      "sku": "JAFS50",
+      "websitePrice": 9.79,
+      "workbookRow": 31,
+      "workbookDescription": "ENJOYFUL LIFE APRICOT FACE SCRUB 50 ML"
+    },
+    {
+      "sku": "JAG60",
+      "websitePrice": 9.79,
+      "workbookRow": 32,
+      "workbookDescription": "ENJOYFUL LIFE ALOEVERA GEL 60 ML"
+    },
+    {
+      "sku": "JSTS100",
+      "websitePrice": 20.59,
+      "workbookRow": 33,
+      "workbookDescription": "ENJOYFUL LIFE SILKY TOUCH HAIR SERUM 100 ML"
+    },
+    {
+      "sku": "JMC100",
+      "websitePrice": 11.48,
+      "workbookRow": 34,
+      "workbookDescription": "ENJOYFUL LIFE MIX FRUIT MOISTURISING CREAM 100 ML"
+    },
+    {
+      "sku": "JWAFS50",
+      "websitePrice": 10.13,
+      "workbookRow": 35,
+      "workbookDescription": "ENJOYFUL LIFE WALNUT APRICOT FACE SCRUB 50 ML"
+    },
+    {
+      "sku": "JALL100",
+      "websitePrice": 9.79,
+      "workbookRow": 36,
+      "workbookDescription": "ENJOYFUL LIFE ALMOND BODY LOTION 100 ML"
+    },
+    {
+      "sku": "JOS100",
+      "websitePrice": 8.44,
+      "workbookRow": 37,
+      "workbookDescription": "ENJOYFUL LIFE ONION SHAMPOO 100 ML"
+    },
+    {
+      "sku": "JAHRC60",
+      "websitePrice": 17.89,
+      "workbookRow": 38,
+      "workbookDescription": "ENJOYFUL LIFE ALOEVERA HAIR REMOVAL CREAM 60 GM"
+    },
+    {
+      "sku": "JCGSG500",
+      "websitePrice": 24.3,
+      "workbookRow": 39,
+      "workbookDescription": "ENJOYFUL LIFE C GLOW SHOWER GEL 500 ML"
+    },
+    {
+      "sku": "JSS400",
+      "websitePrice": 21.6,
+      "workbookRow": 40,
+      "workbookDescription": "ENJOYFUL LIFE BOTANICAL DEEP CLEAN SHAMPOO 400 ML"
+    },
+    {
+      "sku": "JAVL350",
+      "websitePrice": 22.28,
+      "workbookRow": 41,
+      "workbookDescription": "ENJOYFUL LIFE ALOEVERA BODY LOTION 350 ML"
+    },
+    {
+      "sku": "JAS100",
+      "websitePrice": 8.78,
+      "workbookRow": 42,
+      "workbookDescription": "ENJOYFUL LIFE ALOE CALM SHAMPOO 100 ML"
+    },
+    {
+      "sku": "JDDC100",
+      "websitePrice": 16.54,
+      "workbookRow": 43,
+      "workbookDescription": "ENJOYFUL LIFE DAILY DELIGHT MOISTURISING CREAM 100 ML"
+    },
+    {
+      "sku": "JWFS50",
+      "websitePrice": 9.79,
+      "workbookRow": 45,
+      "workbookDescription": "ENJOYFUL LIFE WALNUT FACE SCRUB 50 ML"
+    },
+    {
+      "sku": "JMBSG500",
+      "websitePrice": 24.3,
+      "workbookRow": 47,
+      "workbookDescription": "ENJOYFUL LIFE MORNING BUZZ SHOWER GEL 500 ML"
+    },
+    {
+      "sku": "#00660",
+      "websitePrice": 19.58,
+      "workbookRow": 57,
+      "workbookDescription": "ENJOYFUL LIFE MIDNIGHT VELVET BODY MIST 250 ML"
+    },
+    {
+      "sku": "#00661",
+      "websitePrice": 19.58,
+      "workbookRow": 58,
+      "workbookDescription": "ENJOYFUL LIFE VANILLA AURA BODY MIST 250 ML"
+    },
+    {
+      "sku": "#00662",
+      "websitePrice": 19.58,
+      "workbookRow": 59,
+      "workbookDescription": "ENJOYFUL LIFE BLOSSOM VEIL BODY MIST 250 ML"
+    },
+    {
+      "sku": "#00663",
+      "websitePrice": 19.58,
+      "workbookRow": 60,
+      "workbookDescription": "ENJOYFUL LIFE AMBER GLOW MIST 250 ML"
+    },
+    {
+      "sku": "#00664",
+      "websitePrice": 19.58,
+      "workbookRow": 61,
+      "workbookDescription": "ENJOYFUL LIFE NOIR ELEMENT BODY MIST 250 ML"
+    },
+    {
+      "sku": "#00665",
+      "websitePrice": 19.58,
+      "workbookRow": 62,
+      "workbookDescription": "ENJOYFUL LIFE COASTAL PULSE BODY MIST 250 ML"
+    },
+    {
+      "sku": "#00666",
+      "websitePrice": 11.48,
+      "workbookRow": 63,
+      "workbookDescription": "ENJOYFUL LIFE MIDNIGHT VELVET BODY MIST 70 ML"
+    },
+    {
+      "sku": "#00667",
+      "websitePrice": 11.48,
+      "workbookRow": 64,
+      "workbookDescription": "ENJOYFUL LIFE VANILLA AURA BODY MIST 70 ML"
+    },
+    {
+      "sku": "#00668",
+      "websitePrice": 11.48,
+      "workbookRow": 65,
+      "workbookDescription": "ENJOYFUL LIFE BLOSSOM VEIL BODY MIST 70 ML"
+    },
+    {
+      "sku": "#00670",
+      "websitePrice": 11.48,
+      "workbookRow": 66,
+      "workbookDescription": "ENJOYFUL LIFE NOIR ELEMENT BODY MIST 70 ML"
+    },
+    {
+      "sku": "#00671",
+      "websitePrice": 11.48,
+      "workbookRow": 67,
+      "workbookDescription": "ENJOYFUL LIFE COASTAL PULSE BODY MIST 70 ML"
+    },
+    {
+      "sku": "JCFS50",
+      "websitePrice": 9.79,
+      "workbookRow": 68,
+      "workbookDescription": "ENJOYFUL LIFE COFFEE FACE SCRUB 50 ML"
+    },
+    {
+      "sku": "JSSC50",
+      "websitePrice": 17.55,
+      "workbookRow": 69,
+      "workbookDescription": "ENJOYFUL LIFE SUNSCREEN CREAM 50 ML"
+    },
+    {
+      "sku": "JPOM100",
+      "websitePrice": 17.89,
+      "workbookRow": 70,
+      "workbookDescription": "ENJOYFUL LIFE PEEL OFF MASK 100 ML"
+    },
+    {
+      "sku": "JBRC50",
+      "websitePrice": 16.88,
+      "workbookRow": 71,
+      "workbookDescription": "ENJOYFUL LIFE BABY RASH CREAM 50 ML"
+    },
+    {
+      "sku": "JBRC100",
+      "websitePrice": 20.59,
+      "workbookRow": 72,
+      "workbookDescription": "ENJOYFUL LIFE BABY RASH CREAM 100 ML"
+    },
+    {
+      "sku": "JBL200",
+      "websitePrice": 23.29,
+      "workbookRow": 73,
+      "workbookDescription": "ENJOYFUL LIFE BABY LOTION 200 ML"
+    },
+    {
+      "sku": "JBL500",
+      "websitePrice": 31.39,
+      "workbookRow": 74,
+      "workbookDescription": "ENJOYFUL LIFE BABY LOTION 500 ML"
+    },
+    {
+      "sku": "JBW300",
+      "websitePrice": 25.65,
+      "workbookRow": 75,
+      "workbookDescription": "ENJOYFUL LIFE BABY WASH 300 ML"
+    },
+    {
+      "sku": "JBW500",
+      "websitePrice": 31.39,
+      "workbookRow": 76,
+      "workbookDescription": "ENJOYFUL LIFE BABY WASH 500 ML"
+    },
+    {
+      "sku": "JBT400",
+      "websitePrice": 32.4,
+      "workbookRow": 77,
+      "workbookDescription": "ENJOYFUL LIFE BABY POWDER 400 GM"
+    },
+    {
+      "sku": "JVFF150",
+      "websitePrice": 25.65,
+      "workbookRow": 78,
+      "workbookDescription": "ENJOYFUL LIFE VIT C FOAMING FACE WASH 150 ML"
+    },
+    {
+      "sku": "JIW100",
+      "websitePrice": 28.35,
+      "workbookRow": 79,
+      "workbookDescription": "ENJOYFUL LIFE INTIMATE WASH 100 ML"
+    },
+    {
+      "sku": "#00669",
+      "websitePrice": 11.48,
+      "workbookRow": 80,
+      "workbookDescription": "ENJOYFUL LIFE AMBER GLOW MIST 70 ML"
+    },
+    {
+      "sku": "JBT200",
+      "websitePrice": 18.23,
+      "workbookRow": 81,
+      "workbookDescription": "ENJOYFUL LIFE BABY POWDER 200 GM"
+    }
+  ]
+}
