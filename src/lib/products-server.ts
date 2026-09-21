@@ -47,18 +47,24 @@ type ApiEnvelope<T> = {
   meta?: Partial<ProductListMeta>;
 };
 
-async function fetchProductApi<T>(path: string, tags: string[] = []): Promise<UpstreamResult<T>> {
+async function fetchProductApi<T>(
+  path: string,
+  tags: string[] = [],
+  cacheResult = true,
+): Promise<UpstreamResult<T>> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8_000);
 
   try {
-    const response = await fetch(`${API_BASE}${path}`, {
-      signal: controller.signal,
-      next: {
-        revalidate: PRODUCT_REVALIDATE_SECONDS,
-        tags: [PRODUCT_CACHE_TAG, ...tags],
-      },
-    });
+    const response = await fetch(`${API_BASE}${path}`, cacheResult
+      ? {
+          signal: controller.signal,
+          next: {
+            revalidate: PRODUCT_REVALIDATE_SECONDS,
+            tags: [PRODUCT_CACHE_TAG, ...tags],
+          },
+        }
+      : { signal: controller.signal, cache: "no-store" });
     const body = await response.json() as T;
     return { ok: response.ok, status: response.status, body };
   } finally {
@@ -184,7 +190,11 @@ async function resolveProductUncached(identifier: string): Promise<ResolvedProdu
     product: ApiProduct;
     variants: SizeVariant[];
     related: ApiProduct[];
-  }>>(`/products/resolve/${encodeURIComponent(identifier)}`, [`product:${identifier}`]);
+  }>>(
+    `/products/resolve/${encodeURIComponent(identifier)}`,
+    [],
+    false,
+  );
   const data = result.ok ? result.body?.data : null;
   if (!data?.product) return null;
   return {
