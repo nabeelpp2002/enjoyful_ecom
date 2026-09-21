@@ -39,6 +39,8 @@ export class Product {
   @Prop() subcategory: string;
   @Prop() productType: string;
 
+  // Latest supplier/current price before the storefront markup is applied.
+  @Prop({ default: 0, min: 0, select: false }) basePrice: number;
   @Prop({ required: true, min: 0 }) price: number;
   @Prop({ min: 0 }) compareAtPrice: number;
   @Prop({ enum: ['AED', 'GBP'], default: 'AED' }) currency: string;

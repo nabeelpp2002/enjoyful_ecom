@@ -1,0 +1,218 @@
+{
+  "sourceFile": "ENJOYFUL CLEANING PRODUCTS PRICE.pdf",
+  "sourceSha256": "6f06551fe167844c2bcd9357480b42bf6ef126386d9764a474fc4a166a5ea982",
+  "markupMultiplier": 1.25,
+  "generatedAt": "2026-09-21T12:29:58.816Z",
+  "products": [
+    {
+      "sku": "DW-3XCB-5L",
+      "basePrice": 11.5,
+      "websitePrice": 14.38,
+      "pdfRow": 1,
+      "pdfBarcode": "8906081155566"
+    },
+    {
+      "sku": "MP-BS-750",
+      "basePrice": 7.25,
+      "websitePrice": 9.06,
+      "pdfRow": 2,
+      "pdfBarcode": "8906081155429"
+    },
+    {
+      "sku": "HW-MINT-5L",
+      "basePrice": 11.5,
+      "websitePrice": 14.38,
+      "pdfRow": 3,
+      "pdfBarcode": "8906081155399"
+    },
+    {
+      "sku": "HW-OUD-5L",
+      "basePrice": 11,
+      "websitePrice": 13.75,
+      "pdfRow": 4,
+      "pdfBarcode": "8906081155382"
+    },
+    {
+      "sku": "HW-PAP-5L",
+      "basePrice": 12.25,
+      "websitePrice": 15.31,
+      "pdfRow": 5,
+      "pdfBarcode": "8906081155368"
+    },
+    {
+      "sku": "DW-ALM-5L",
+      "basePrice": 11,
+      "websitePrice": 13.75,
+      "pdfRow": 6,
+      "pdfBarcode": "8926081155306"
+    },
+    {
+      "sku": "DW-APB-5L",
+      "basePrice": 14.25,
+      "websitePrice": 17.81,
+      "pdfRow": 7,
+      "pdfBarcode": "8906081155290"
+    },
+    {
+      "sku": "DW-LF-5L",
+      "basePrice": 11.25,
+      "websitePrice": 14.06,
+      "pdfRow": 8,
+      "pdfBarcode": "8906081155283"
+    },
+    {
+      "sku": "AB-5L",
+      "basePrice": 13.5,
+      "websitePrice": 16.88,
+      "pdfRow": 9,
+      "pdfBarcode": "8906081155269"
+    },
+    {
+      "sku": "HW-LAV-5L",
+      "basePrice": 11,
+      "websitePrice": 13.75,
+      "pdfRow": 10,
+      "pdfBarcode": "8906081155375"
+    },
+    {
+      "sku": "DC-PS-5L",
+      "basePrice": 14.25,
+      "websitePrice": 17.81,
+      "pdfRow": 11,
+      "pdfBarcode": "8906081155405"
+    },
+    {
+      "sku": "CG-LAV-1KG",
+      "basePrice": 8.25,
+      "websitePrice": 10.31,
+      "pdfRow": 12,
+      "pdfBarcode": "8906081155559"
+    },
+    {
+      "sku": "CG-CIT-1KG",
+      "basePrice": 8.25,
+      "websitePrice": 10.31,
+      "pdfRow": 13,
+      "pdfBarcode": "8906081155542"
+    },
+    {
+      "sku": "FL-3XLAV-3L",
+      "basePrice": 9.25,
+      "websitePrice": 11.56,
+      "pdfRow": 14,
+      "pdfBarcode": "8906081155511"
+    },
+    {
+      "sku": "FS-FLR-3L",
+      "basePrice": 11,
+      "websitePrice": 13.75,
+      "pdfRow": 15,
+      "pdfBarcode": "8906081155313"
+    },
+    {
+      "sku": "AB-3L",
+      "basePrice": 13.5,
+      "websitePrice": 16.88,
+      "pdfRow": 16,
+      "pdfBarcode": "8906081155252"
+    },
+    {
+      "sku": "BL-3784",
+      "basePrice": 8.5,
+      "websitePrice": 10.63,
+      "pdfRow": 17,
+      "pdfBarcode": "8906081155450"
+    },
+    {
+      "sku": "FL-3XPIN-3L",
+      "basePrice": 9.25,
+      "websitePrice": 11.56,
+      "pdfRow": 18,
+      "pdfBarcode": "8906081155481"
+    },
+    {
+      "sku": "FS-LAV-3L",
+      "basePrice": 11,
+      "websitePrice": 13.75,
+      "pdfRow": 19,
+      "pdfBarcode": "8906081155320"
+    },
+    {
+      "sku": "LD-9X-3L",
+      "basePrice": 13.75,
+      "websitePrice": 17.19,
+      "pdfRow": 20,
+      "pdfBarcode": "8906081155214"
+    },
+    {
+      "sku": "LD-9X-2L",
+      "basePrice": 10.25,
+      "websitePrice": 12.81,
+      "pdfRow": 22,
+      "pdfBarcode": "8906081155207"
+    },
+    {
+      "sku": "BL-1L",
+      "basePrice": 4.25,
+      "websitePrice": 5.31,
+      "pdfRow": 24,
+      "pdfBarcode": "8906081155443"
+    },
+    {
+      "sku": "CC-LEM-1L",
+      "basePrice": 7.25,
+      "websitePrice": 9.06,
+      "pdfRow": 25,
+      "pdfBarcode": "8906081155467"
+    },
+    {
+      "sku": "HW-MUSK-1L",
+      "basePrice": 6.25,
+      "websitePrice": 7.81,
+      "pdfRow": 26,
+      "pdfBarcode": "8906081155337"
+    },
+    {
+      "sku": "HW-CHB-1L",
+      "basePrice": 6.25,
+      "websitePrice": 7.81,
+      "pdfRow": 27,
+      "pdfBarcode": "8906081155344"
+    },
+    {
+      "sku": "HW-VAN-1L",
+      "basePrice": 6.25,
+      "websitePrice": 7.81,
+      "pdfRow": 28,
+      "pdfBarcode": "8906081155351"
+    },
+    {
+      "sku": "DW-LF-1L",
+      "basePrice": 3.25,
+      "websitePrice": 4.06,
+      "pdfRow": 29,
+      "pdfBarcode": "8906081155276"
+    },
+    {
+      "sku": "DC-PS-750",
+      "basePrice": 5.25,
+      "websitePrice": 6.56,
+      "pdfRow": 30,
+      "pdfBarcode": "8906081155412"
+    },
+    {
+      "sku": "GC-750",
+      "basePrice": 4.25,
+      "websitePrice": 5.31,
+      "pdfRow": 31,
+      "pdfBarcode": "8906081155436"
+    },
+    {
+      "sku": "CC-LEM-750",
+      "basePrice": 6.25,
+      "websitePrice": 7.81,
+      "pdfRow": 32,
+      "pdfBarcode": "8906081155474"
+    }
+  ]
+}

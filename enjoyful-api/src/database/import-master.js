@@ -67,6 +67,7 @@ async function main() {
       category: catId,
       subcategory: p.sub,
       productType: p.productType,
+      basePrice: Number(p.basePrice) || 0,
       price: Number(p.price) || 0,
       currency: 'AED',
       productFamily: p.family,

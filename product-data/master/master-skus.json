@@ -4892,7 +4892,7 @@
     "productType": "Floor Cleaner",
     "scent": "Citrus Burst",
     "baseName": "3X Power Clean Citrus Burst",
-    "price": "30",
+    "price": 14.38,
     "unit": "Jerry Can",
     "shortDesc": "Triple-action citrus-powered floor disinfectant cleaner that delivers deep cleaning, disinfecting, and a long-lasting fresh scent in one pass.",
     "features": [
@@ -4916,7 +4916,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-citrus-burst",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11.5
   },
   {
     "source": "Home Care",
@@ -4927,7 +4928,7 @@
     "productType": "Floor Cleaner",
     "scent": "Lavender",
     "baseName": "3X Power Clean Lavender Floor Disinfectant Cleaner",
-    "price": "22",
+    "price": 11.56,
     "unit": "Jerry Can",
     "shortDesc": "Triple-action floor disinfectant cleaner with relaxing lavender fragrance for deep cleaning floors.",
     "features": [
@@ -4950,7 +4951,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-lavender-floor-disinfectant-cleaner",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 9.25
   },
   {
     "source": "Home Care",
@@ -4961,7 +4963,7 @@
     "productType": "Floor Cleaner",
     "scent": "Pine",
     "baseName": "3X Power Clean Pine Floor Disinfectant Cleaner",
-    "price": "22",
+    "price": 11.56,
     "unit": "Jerry Can",
     "shortDesc": "Triple-action floor disinfectant cleaner with refreshing pine fragrance for deep cleaning floors.",
     "features": [
@@ -4984,7 +4986,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/3x-power-clean-pine-floor-disinfectant-cleaner",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 9.25
   },
   {
     "source": "Home Care",
@@ -4995,7 +4998,7 @@
     "productType": "Liquid Detergent",
     "scent": "Ultra Freshness",
     "baseName": "9X Power Clean Ultra Freshness",
-    "price": "17",
+    "price": 12.81,
     "unit": "Bottle",
     "shortDesc": "9X power laundry liquid detergent delivering ultra freshness and deep stain removal, compact 2L size.",
     "features": [
@@ -5018,7 +5021,8 @@
     "imagePublicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-2l",
     "imageFolder": "home-care/laundry-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 10.25
   },
   {
     "source": "Home Care",
@@ -5029,7 +5033,7 @@
     "productType": "Liquid Detergent",
     "scent": "Ultra Freshness",
     "baseName": "9X Power Clean Ultra Freshness",
-    "price": "23",
+    "price": 17.19,
     "unit": "Bottle",
     "shortDesc": "9X power laundry liquid detergent delivering ultra freshness and deep stain removal.",
     "features": [
@@ -5052,7 +5056,8 @@
     "imagePublicId": "enjoyful/products/home-care/laundry-care/9x-power-clean-ultra-freshness-3l",
     "imageFolder": "home-care/laundry-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 13.75
   },
   {
     "source": "Home Care",
@@ -5063,7 +5068,7 @@
     "productType": "Abaya Liquid Detergent",
     "scent": "Color & Fiber Revival",
     "baseName": "Abaya Wash",
-    "price": "24",
+    "price": 16.88,
     "unit": "Jerry Can",
     "shortDesc": "Specially formulated abaya shampoo for color & fiber revival with long-lasting fresh scent.",
     "features": [
@@ -5085,7 +5090,8 @@
     "imagePublicId": "enjoyful/products/home-care/laundry-care/abaya-wash-3l",
     "imageFolder": "home-care/laundry-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 13.5
   },
   {
     "source": "Home Care",
@@ -5096,7 +5102,7 @@
     "productType": "Abaya Liquid Detergent",
     "scent": "Color & Fiber Revival",
     "baseName": "Abaya Wash",
-    "price": "35",
+    "price": 16.88,
     "unit": "Jerry Can",
     "shortDesc": "Specially formulated abaya shampoo for color & fiber revival with long-lasting fresh scent, bulk 5L size.",
     "features": [
@@ -5119,7 +5125,8 @@
     "imagePublicId": "enjoyful/products/home-care/laundry-care/abaya-wash-5l",
     "imageFolder": "home-care/laundry-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 13.5
   },
   {
     "source": "Home Care",
@@ -5130,7 +5137,7 @@
     "productType": "Multipurpose Cleaner",
     "scent": "Baking Soda Formula",
     "baseName": "All Purpose Baking Soda",
-    "price": "13",
+    "price": 9.06,
     "unit": "Trigger Spray",
     "shortDesc": "Deep-cleaning multi-purpose cleaner powered by natural baking soda, tackles stubborn grease with a crystal-clear shine.",
     "features": [
@@ -5153,7 +5160,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/all-purpose-baking-soda",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 7.25
   },
   {
     "source": "Home Care",
@@ -5164,7 +5172,7 @@
     "productType": "Liquid Bleach",
     "scent": "Original",
     "baseName": "Bleach",
-    "price": "8",
+    "price": 5.31,
     "unit": "Bottle",
     "shortDesc": "High-strength multi-surface bleach for disinfecting and whitening household surfaces.",
     "features": [
@@ -5187,7 +5195,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/bleach-1l",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 4.25
   },
   {
     "source": "Home Care",
@@ -5198,7 +5207,7 @@
     "productType": "Liquid Bleach",
     "scent": "Original",
     "baseName": "Bleach",
-    "price": "17",
+    "price": 10.63,
     "unit": "Jerry Can",
     "shortDesc": "High-strength multi-surface bleach for disinfecting and whitening, bulk 3.78L size.",
     "features": [
@@ -5221,7 +5230,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/bleach-3-78l",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 8.5
   },
   {
     "source": "Home Care",
@@ -5232,7 +5242,7 @@
     "productType": "Handwash",
     "scent": "Cherry Blossom",
     "baseName": "Cherry Blossom Handwash",
-    "price": "18",
+    "price": 7.81,
     "unit": "Pump Bottle",
     "shortDesc": "Premium hand wash infused with delicate cherry blossom fragrance for gentle cleansing & moisturizing.",
     "features": [
@@ -5255,7 +5265,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/cherry-blossom-handwash-1l",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 6.25
   },
   {
     "source": "Home Care",
@@ -5300,7 +5311,7 @@
     "productType": "Cleaning Gel",
     "scent": "Citrus Burst",
     "baseName": "Citrus Burst Cleaning Gel",
-    "price": "19",
+    "price": 10.31,
     "unit": "Tub/Bottle",
     "shortDesc": "Powerful citrus cleaning gel that lifts grime while leaving a fresh citrus scent.",
     "features": [
@@ -5323,7 +5334,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/citrus-burst-cleaning-gel",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 8.25
   },
   {
     "source": "Home Care",
@@ -5334,7 +5346,7 @@
     "productType": "Dishwashing Liquid",
     "scent": "Aloe & Mint Fresh",
     "baseName": "Dishwashing Liquid Aloe & Mint Fresh",
-    "price": "28",
+    "price": 13.75,
     "unit": "Jerry Can",
     "shortDesc": "Advanced grease-cutting dishwashing liquid with aloe & mint, cuts through grease & leaves dishes sparkling clean.",
     "features": [
@@ -5357,7 +5369,8 @@
     "imagePublicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-aloe-and-mint-fresh",
     "imageFolder": "home-care/kitchen-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11
   },
   {
     "source": "Home Care",
@@ -5368,7 +5381,7 @@
     "productType": "Dishwashing Liquid",
     "scent": "Apple Breeze",
     "baseName": "Dishwashing Liquid Apple Breeze",
-    "price": "28",
+    "price": 17.81,
     "unit": "Jerry Can",
     "shortDesc": "Refreshing grease-cutting dishwashing liquid with apple breeze fragrance, leaves dishes sparkling clean.",
     "features": [
@@ -5391,7 +5404,8 @@
     "imagePublicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-apple-breeze",
     "imageFolder": "home-care/kitchen-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 14.25
   },
   {
     "source": "Home Care",
@@ -5402,7 +5416,7 @@
     "productType": "Dishwashing Liquid",
     "scent": "Lemon Fresh",
     "baseName": "Dishwashing Liquid Lemon Fresh",
-    "price": "10",
+    "price": 4.06,
     "unit": "Bottle",
     "shortDesc": "Ultra-concentrated lemon fresh dishwashing liquid that cuts grease fast and is gentle on hands.",
     "features": [
@@ -5425,7 +5439,8 @@
     "imagePublicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-1l",
     "imageFolder": "home-care/kitchen-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 3.25
   },
   {
     "source": "Home Care",
@@ -5436,7 +5451,7 @@
     "productType": "Dishwashing Liquid",
     "scent": "Lemon Fresh",
     "baseName": "Dishwashing Liquid Lemon Fresh",
-    "price": "28",
+    "price": 14.06,
     "unit": "Jerry Can",
     "shortDesc": "Powerful grease-cutting dishwashing liquid with lemon fresh fragrance, leaves dishes sparkling clean.",
     "features": [
@@ -5459,7 +5474,8 @@
     "imagePublicId": "enjoyful/products/home-care/kitchen-care/dishwashing-liquid-lemon-fresh-5l",
     "imageFolder": "home-care/kitchen-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11.25
   },
   {
     "source": "Home Care",
@@ -5470,7 +5486,7 @@
     "productType": "Fabric Softener",
     "scent": "Relaxing Lavender",
     "baseName": "Fabric Softener Relaxing Lavender",
-    "price": "20",
+    "price": 13.75,
     "unit": "Bottle",
     "shortDesc": "Fabric softener with relaxing lavender fragrance, suitable for machine & hand wash with long-lasting freshness.",
     "features": [
@@ -5493,7 +5509,8 @@
     "imagePublicId": "enjoyful/products/home-care/laundry-care/fabric-softener-relaxing-lavender",
     "imageFolder": "home-care/laundry-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11
   },
   {
     "source": "Home Care",
@@ -5504,7 +5521,7 @@
     "productType": "Fabric Softener",
     "scent": "Soft Floral Scents",
     "baseName": "Fabric Softener Soft Floral Scents",
-    "price": "20",
+    "price": 13.75,
     "unit": "Bottle",
     "shortDesc": "Fabric softener with soft floral fragrance, suitable for machine & hand wash with long-lasting freshness.",
     "features": [
@@ -5527,7 +5544,8 @@
     "imagePublicId": "enjoyful/products/home-care/laundry-care/fabric-softener-soft-floral-scents",
     "imageFolder": "home-care/laundry-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11
   },
   {
     "source": "Home Care",
@@ -5538,7 +5556,7 @@
     "productType": "Glass Cleaner",
     "scent": "Original",
     "baseName": "Glass & Surface Cleaner",
-    "price": "11",
+    "price": 5.31,
     "unit": "Trigger Spray",
     "shortDesc": "Streak-free glass and surface cleaner for a crystal-clear shine on mirrors, windows, and all glass.",
     "features": [
@@ -5561,7 +5579,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/glass-and-surface-cleaner",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 4.25
   },
   {
     "source": "Home Care",
@@ -5572,7 +5591,7 @@
     "productType": "Cleaning Gel",
     "scent": "Lavender",
     "baseName": "Lavender Cleaning Gel",
-    "price": "19",
+    "price": 10.31,
     "unit": "Tub/Bottle",
     "shortDesc": "Thick cleaning gel infused with calming lavender for everyday surface cleaning.",
     "features": [
@@ -5595,7 +5614,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/lavender-cleaning-gel",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 8.25
   },
   {
     "source": "Home Care",
@@ -5606,7 +5626,7 @@
     "productType": "Handwash",
     "scent": "Lavender",
     "baseName": "Lavender Handwash",
-    "price": "26",
+    "price": 13.75,
     "unit": "Jerry Can",
     "shortDesc": "Advanced moisturising hand wash with calming lavender fragrance, kills 99.9% of germs & bacteria. Bulk refill size.",
     "features": [
@@ -5629,7 +5649,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/lavender-handwash",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11
   },
   {
     "source": "Home Care",
@@ -5640,7 +5661,7 @@
     "productType": "Multi-Purpose Cream Cleaner",
     "scent": "Lemon",
     "baseName": "Lemon Fresh Multi-Purpose Cream Cleaner",
-    "price": "19",
+    "price": 9.06,
     "unit": "Bottle",
     "shortDesc": "Lemon-scented cream cleaner that removes 100% of the toughest dirt with damage-free cleaning particles.",
     "features": [
@@ -5664,7 +5685,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-1l",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 7.25
   },
   {
     "source": "Home Care",
@@ -5675,7 +5697,7 @@
     "productType": "Multi-Purpose Cream Cleaner",
     "scent": "Lemon",
     "baseName": "Lemon Fresh Multi-Purpose Cream Cleaner",
-    "price": "15",
+    "price": 7.81,
     "unit": "Bottle",
     "shortDesc": "Lemon-scented cream cleaner that removes 100% of the toughest dirt with damage-free cleaning particles.",
     "features": [
@@ -5698,7 +5720,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/lemon-fresh-multi-purpose-cream-cleaner-750ml",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 6.25
   },
   {
     "source": "Home Care",
@@ -5709,7 +5732,7 @@
     "productType": "Handwash",
     "scent": "Mint Fresh",
     "baseName": "Mint Handwash",
-    "price": "26",
+    "price": 14.38,
     "unit": "Jerry Can",
     "shortDesc": "Advanced moisturising hand wash with refreshing mint fragrance, kills 99.9% of germs & bacteria. Bulk refill size.",
     "features": [
@@ -5732,7 +5755,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/mint-handwash",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11.5
   },
   {
     "source": "Home Care",
@@ -5743,7 +5767,7 @@
     "productType": "Handwash",
     "scent": "Oud Royale",
     "baseName": "Oud Handwash",
-    "price": "29",
+    "price": 13.75,
     "unit": "Jerry Can",
     "shortDesc": "Advanced moisturising hand wash infused with luxurious Oud Royale fragrance, kills 99.9% of germs & bacteria. Bulk refill size.",
     "features": [
@@ -5766,7 +5790,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/oud-handwash",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 11
   },
   {
     "source": "Home Care",
@@ -5777,7 +5802,7 @@
     "productType": "Handwash",
     "scent": "Papaya",
     "baseName": "Papaya Handwash",
-    "price": "26",
+    "price": 15.31,
     "unit": "Jerry Can",
     "shortDesc": "Advanced moisturising hand wash with tropical papaya fragrance, kills 99.9% of germs & bacteria. Bulk refill size.",
     "features": [
@@ -5800,7 +5825,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/papaya-handwash",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 12.25
   },
   {
     "source": "Home Care",
@@ -5811,7 +5837,7 @@
     "productType": "Disinfectant Cleaner",
     "scent": "Pure-Shield",
     "baseName": "Pure-Shield Disinfectant Cleaner",
-    "price": "32",
+    "price": 17.81,
     "unit": "Jerry Can",
     "shortDesc": "Advanced antiseptic disinfectant cleaner that kills 99.9% of germs & bacteria, bulk 5L size for homes & businesses.",
     "features": [
@@ -5835,7 +5861,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-5l",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 14.25
   },
   {
     "source": "Home Care",
@@ -5846,7 +5873,7 @@
     "productType": "Disinfectant Cleaner",
     "scent": "Pure-Shield",
     "baseName": "Pure-Shield Disinfectant Cleaner",
-    "price": "14",
+    "price": 6.56,
     "unit": "Bottle",
     "shortDesc": "Advanced antiseptic disinfectant cleaner that kills 99.9% of germs & bacteria with multi-surface protection for floors, counters, and appliances.",
     "features": [
@@ -5870,7 +5897,8 @@
     "imagePublicId": "enjoyful/products/home-care/floor-and-surface-care/pure-shield-disinfectant-cleaner-750ml",
     "imageFolder": "home-care/floor-and-surface-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 5.25
   },
   {
     "source": "Home Care",
@@ -5881,7 +5909,7 @@
     "productType": "Handwash",
     "scent": "Rich Musk",
     "baseName": "Rich Musk Handwash",
-    "price": "18",
+    "price": 7.81,
     "unit": "Pump Bottle",
     "shortDesc": "Premium hand wash infused with rich musk fragrance for gentle cleansing & long-lasting luxurious freshness.",
     "features": [
@@ -5904,7 +5932,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/rich-musk-handwash-1l",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 6.25
   },
   {
     "source": "Home Care",
@@ -5949,7 +5978,7 @@
     "productType": "Handwash",
     "scent": "Sweet Vanilla",
     "baseName": "Sweet Vanilla Handwash",
-    "price": "18",
+    "price": 7.81,
     "unit": "Pump Bottle",
     "shortDesc": "Premium hand wash with sweet vanilla fragrance for gentle cleansing & moisturizing, made with natural ingredients.",
     "features": [
@@ -5972,7 +6001,8 @@
     "imagePublicId": "enjoyful/products/home-care/hand-care/sweet-vanilla-handwash-1l",
     "imageFolder": "home-care/hand-care",
     "imageStatus": "Pending",
-    "flags": ""
+    "flags": "",
+    "basePrice": 6.25
   },
   {
     "source": "Home Care",

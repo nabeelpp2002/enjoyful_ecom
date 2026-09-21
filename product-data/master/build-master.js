@@ -129,6 +129,18 @@ for (const product of skus) {
   }
 }
 
+// The attached cleaning-products PDF is the current price authority. The derived
+// override file stores both its base price and the required 25%-marked-up website price.
+const CLEANING_PRICE_OVERRIDES = require("./cleaning-price-overrides.json");
+const cleaningPriceBySku = new Map(CLEANING_PRICE_OVERRIDES.products.map(p => [p.sku, p]));
+for (const product of skus) {
+  const priceOverride = cleaningPriceBySku.get(product.code);
+  if (priceOverride) {
+    product.basePrice = priceOverride.basePrice;
+    product.price = priceOverride.websitePrice;
+  }
+}
+
 // ── Enrich: slugs, family, image paths ──
 for (const p of skus) {
   p.family = slugify(p.baseName);
