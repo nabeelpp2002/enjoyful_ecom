@@ -337,10 +337,11 @@ export class ProductsService {
     const { images, ...rest } = dto;
     const productImages = this.normalizeImages(images);
     const hasValidPrice = typeof rest.price === "number" && rest.price > 0;
+    const hasImage = this.hasUsableImage(rest.image, productImages);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return this.productModel.create({
       ...rest, slug, category: categoryId, images: productImages,
-      isHidden: hasValidPrice ? rest.isHidden : true,
+      isHidden: hasValidPrice && hasImage ? rest.isHidden : true,
       // Keep the flat image/hoverImage (what storefront cards + admin thumbs read) in sync.
       ...(productImages.length ? { image: productImages[0].url, hoverImage: productImages[1]?.url ?? '' } : {}),
     } as any);
@@ -361,6 +362,7 @@ export class ProductsService {
       // with the gallery, so replacing the photo actually changes what's displayed.
       update.image = productImages[0]?.url ?? '';
       update.hoverImage = productImages[1]?.url ?? '';
+      if (!this.hasUsableImage(undefined, productImages)) update.isHidden = true;
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const product = await this.productModel
@@ -426,10 +428,13 @@ export class ProductsService {
 
   async updateVisibility(id: string, isHidden: boolean) {
     if (!isHidden) {
-      const current = await this.productModel.findById(id).select('price').lean();
+      const current = await this.productModel.findById(id).select("price image images").lean();
       if (!current) throw new NotFoundException('Product not found');
-      if (typeof current.price !== 'number' || current.price <= 0) {
-        throw new BadRequestException('Set a valid price before making this product visible');
+      if (typeof current.price !== "number" || current.price <= 0) {
+        throw new BadRequestException("Set a valid price before making this product visible");
+      }
+      if (!this.hasUsableImage(current.image, current.images)) {
+        throw new BadRequestException("Add a product image before making this product visible");
       }
     }
     const product = await this.productModel
@@ -437,6 +442,12 @@ export class ProductsService {
       .lean();
     if (!product) throw new NotFoundException('Product not found');
     return product;
+  }
+
+  private hasUsableImage(image?: string, images: Array<{ url?: string }> = []): boolean {
+    const usable = (url?: string) => typeof url === "string" &&
+      url.trim().length > 0 && !url.includes("/assets/placeholder.png");
+    return usable(image) || images.some((entry) => usable(entry.url));
   }
 
   private normalizeImages(images?: string[]): Array<{ url: string; publicId: string; alt: string; isPrimary: boolean }> {

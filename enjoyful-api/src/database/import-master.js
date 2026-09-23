@@ -91,13 +91,13 @@ async function main() {
       metaDescription: (description || `${p.baseName} by enJoyful Life.`).slice(0, 160),
       rating: 0, reviews: 0, stock: 0,
       isActive: true, isFeatured: false, onSale: false, bestDeal: false,
-      isHidden: !p.priceVerified,
+      isHidden: !p.priceVerified || !hasImg,
       deletedAt: null,
       externalBuyLinks: { amazon: { url: '', visible: true }, talabat: { url: '', visible: true }, carrefour: { url: '', visible: true } },
     });
-    created++; if (!p.priceVerified) hidden++;
+    created++; if (!p.priceVerified || !hasImg) hidden++;
   }
-  console.log(`\n✅ Imported ${created} SKUs (${created - hidden} verified/visible, ${hidden} unverified/hidden).`);
+  console.log(`\n✅ Imported ${created} SKUs (${created - hidden} priced-with-image/visible, ${hidden} hidden).`);
   await mongoose.disconnect();
 }
 main().catch(e => { console.error('FATAL', e); process.exit(1); });

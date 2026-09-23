@@ -1,78 +1,226 @@
 /**
- * Enjoyful Life — Hide Products Without Real Photos
+ * Hide products without usable images, preserve every other field, and export
+ * an Excel image-status audit.
  *
- * Sets isHidden=true on any product whose image is missing/empty/placeholder
- * AND whose images[] array is empty. Sets isHidden=false on products that DO
- * have a real image. Fully reversible from the admin products page.
- *
- * Idempotent — safe to re-run after new photos are added and
- * rebuild-images-from-cloudinary.js has assigned them.
- *
- * Run from enjoyful-api/:
- *   node src/database/hide-products-without-images.js
+ * Dry run: node src/database/hide-products-without-images.js
+ * Apply:   node src/database/hide-products-without-images.js --apply
  */
 'use strict';
 
-require('dotenv/config');
+require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
+const XLSX = require('xlsx');
 
-const MONGODB_URI = process.env.MONGODB_URI;
-if (!MONGODB_URI) { console.error('❌ MONGODB_URI not set'); process.exit(1); }
-
+const APPLY = process.argv.includes('--apply');
 const PLACEHOLDER = '/assets/placeholder.png';
 
-const ProductSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  hoverImage: String,
-  images: [{ url: String, publicId: String, alt: String, isPrimary: Boolean }],
-  isHidden: Boolean,
-}, { strict: false });
-const ProductModel = mongoose.model('Product', ProductSchema);
+function usable(value) {
+  return typeof value === 'string' && value.trim() && !value.includes(PLACEHOLDER);
+}
 
-// A product has a real photo if its `image` is a non-empty, non-placeholder
-// string OR its images[] array contains at least one entry with a url.
-function hasRealImage(p) {
-  const img = (p.image || '').trim();
-  const imgOk = img && img !== PLACEHOLDER && !img.endsWith('/placeholder.png');
-  const arrOk = Array.isArray(p.images) && p.images.some(i => i && i.url && i.url.trim());
-  return Boolean(imgOk || arrOk);
+function urls(product) {
+  const gallery = Array.isArray(product.images)
+    ? product.images.map(function (entry) {
+        return typeof entry === 'string' ? entry : entry && entry.url;
+      })
+    : [];
+  return Array.from(new Set(
+    [product.image, product.hoverImage].concat(gallery).filter(usable),
+  ));
+}
+
+async function loadProducts(collection) {
+  return collection.aggregate([
+    { $match: { deletedAt: null } },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'category',
+        foreignField: '_id',
+        as: 'categoryDoc',
+      },
+    },
+    {
+      $set: {
+        categoryName: { $ifNull: [{ $first: '$categoryDoc.name' }, 'Unknown'] },
+      },
+    },
+    {
+      $project: {
+        name: 1, slug: 1, size: 1, productCode: 1, skuCode: 1,
+        productFamily: 1, categoryName: 1, subcategory: 1,
+        price: 1, basePrice: 1, isHidden: 1, isActive: 1,
+        image: 1, hoverImage: 1, images: 1, updatedAt: 1,
+      },
+    },
+    { $sort: { categoryName: 1, name: 1, size: 1 } },
+  ]).toArray();
+}
+
+function row(product) {
+  const imageUrls = urls(product);
+  return {
+    'Product Name': product.name || '',
+    Size: product.size || '',
+    'Product Code': product.productCode || '',
+    'SKU Code': product.skuCode || '',
+    Category: product.categoryName || '',
+    Subcategory: product.subcategory || '',
+    'Price AED': product.price == null ? '' : product.price,
+    'Has Image': imageUrls.length ? 'Yes' : 'No',
+    Visibility: product.isHidden === true ? 'Hidden' : 'Visible',
+    'Image Count': imageUrls.length,
+    'Primary Image URL': imageUrls[0] || '',
+    'All Image URLs': imageUrls.join('\n'),
+    Slug: product.slug || '',
+    'Product Family': product.productFamily || '',
+  };
+}
+
+function formatSheet(sheet, rows) {
+  sheet['!cols'] = [
+    { wch: 34 }, { wch: 12 }, { wch: 18 }, { wch: 18 },
+    { wch: 18 }, { wch: 22 }, { wch: 12 }, { wch: 12 },
+    { wch: 12 }, { wch: 70 }, { wch: 90 }, { wch: 36 }, { wch: 36 },
+  ];
+  if (rows.length) sheet['!autofilter'] = { ref: sheet['!ref'] };
+  sheet['!freeze'] = { xSplit: 0, ySplit: 1 };
+}
+
+function writeReport(products, changedIds, reportPath) {
+  const allRows = products.map(row);
+  const withImages = allRows.filter(function (item) { return item['Has Image'] === 'Yes'; });
+  const missingImages = allRows.filter(function (item) { return item['Has Image'] === 'No'; });
+  const hiddenThisRun = products
+    .filter(function (product) { return changedIds.has(String(product._id)); })
+    .map(row);
+  const summary = [
+    { Metric: 'Generated At', Value: new Date().toISOString() },
+    { Metric: 'Total Products / SKUs', Value: allRows.length },
+    { Metric: 'Products With Images', Value: withImages.length },
+    { Metric: 'Products Missing Images', Value: missingImages.length },
+    { Metric: 'Hidden During This Run', Value: hiddenThisRun.length },
+    { Metric: 'Rule', Value: 'No usable image means hidden; products remain in Admin and are never deleted.' },
+  ];
+
+  const workbook = XLSX.utils.book_new();
+  const sheets = [
+    ['Summary', summary],
+    ['Products With Images', withImages],
+    ['Missing Images', missingImages],
+    ['Hidden This Run', hiddenThisRun],
+  ];
+  for (const [name, data] of sheets) {
+    const sheet = XLSX.utils.json_to_sheet(data);
+    if (name === 'Summary') sheet['!cols'] = [{ wch: 30 }, { wch: 100 }];
+    else formatSheet(sheet, data);
+    XLSX.utils.book_append_sheet(workbook, sheet, name);
+  }
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  XLSX.writeFile(workbook, reportPath);
 }
 
 async function main() {
-  console.log('🔗 Connecting to MongoDB...');
-  await mongoose.connect(MONGODB_URI);
-  console.log('✅ Connected\n');
+  if (!process.env.MONGODB_URI) throw new Error('MONGODB_URI is not set');
+  await mongoose.connect(process.env.MONGODB_URI);
 
-  const products = await ProductModel.find({ deletedAt: null }).lean();
-  console.log(`Scanning ${products.length} products...\n`);
+  const collection = mongoose.connection.db.collection('products');
+  const before = await loadProducts(collection);
+  if (!before.length) throw new Error('No products found; refusing to continue');
 
-  const hidden = [];
-  const shown = [];
+  const missing = before.filter(function (product) { return urls(product).length === 0; });
+  const toHide = missing.filter(function (product) { return product.isHidden !== true; });
 
-  for (const p of products) {
-    const real = hasRealImage(p);
-    const desiredHidden = !real;
-
-    // Only write when the state needs to change (keeps the run quiet + fast)
-    if (Boolean(p.isHidden) !== desiredHidden) {
-      await ProductModel.findByIdAndUpdate(p._id, { $set: { isHidden: desiredHidden } });
-    }
-
-    if (desiredHidden) hidden.push(p.name);
-    else shown.push(p.name);
+  console.log('Products retained in Admin/database: ' + before.length);
+  console.log('Products with usable images: ' + (before.length - missing.length));
+  console.log('Products missing images: ' + missing.length);
+  console.log('Missing-image products already hidden: ' + (missing.length - toHide.length));
+  console.log('Missing-image products to hide: ' + toHide.length);
+  if (toHide.length) {
+    console.log('\nProducts to hide:');
+    toHide.forEach(function (product) {
+      console.log('  ' + product.name + ' | ' + (product.size || 'no size') +
+        ' | ' + (product.productCode || 'no code'));
+    });
   }
 
-  console.log('🙈 HIDDEN (no real photo yet):');
-  if (hidden.length === 0) console.log('   (none)');
-  hidden.forEach(n => console.log(`   • ${n}`));
+  if (!APPLY) {
+    console.log('\nDry run only; no database changes or report files were made.');
+    return;
+  }
 
-  console.log(`\n${'─'.repeat(60)}`);
-  console.log(`🙈 Hidden:  ${hidden.length} products (no photo — un-hide in admin once shot)`);
-  console.log(`👁  Visible: ${shown.length} products (have real photos)`);
-  console.log('\n✅ Done. Re-run anytime after adding photos to un-hide automatically.');
+  const backupDir = path.resolve(__dirname, 'image-visibility-backups');
+  fs.mkdirSync(backupDir, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const backupPath = path.join(backupDir, 'image-visibility-backup-' + stamp + '.json');
+  const backup = {
+    createdAt: new Date().toISOString(),
+    rule: 'Hide products without a usable image; never auto-unhide',
+    totalProducts: before.length,
+    missingImageProducts: missing.length,
+    productsChanged: toHide.length,
+    products: toHide.map(function (product) {
+      return {
+        _id: String(product._id), name: product.name, slug: product.slug,
+        size: product.size, productCode: product.productCode,
+        previousIsHidden: product.isHidden === true, newIsHidden: true,
+        pricePreserved: product.price == null ? null : product.price,
+        basePricePreserved: product.basePrice == null ? null : product.basePrice,
+        imagePreserved: product.image || '',
+        hoverImagePreserved: product.hoverImage || '',
+        imagesPreserved: product.images || [],
+      };
+    }),
+  };
+  fs.writeFileSync(backupPath, JSON.stringify(backup, null, 2) + '\n', { flag: 'wx' });
 
-  await mongoose.disconnect();
+  const now = new Date();
+  const operations = toHide.map(function (product) {
+    return {
+      updateOne: {
+        filter: { _id: product._id, updatedAt: product.updatedAt },
+        update: { $set: { isHidden: true, updatedAt: now } },
+      },
+    };
+  });
+  const result = operations.length
+    ? await collection.bulkWrite(operations, { ordered: true })
+    : { matchedCount: 0, modifiedCount: 0 };
+  if (result.matchedCount !== operations.length) {
+    throw new Error('Concurrent-change guard failed: expected ' + operations.length +
+      ' matches, got ' + result.matchedCount);
+  }
+
+  const after = await loadProducts(collection);
+  const visibleWithoutImage = after.filter(function (product) {
+    return urls(product).length === 0 && product.isHidden !== true;
+  });
+  if (after.length !== before.length || visibleWithoutImage.length) {
+    throw new Error('Post-update verification failed: retained=' + after.length + '/' +
+      before.length + ', visible-without-image=' + visibleWithoutImage.length);
+  }
+
+  const changedIds = new Set(toHide.map(function (product) { return String(product._id); }));
+  const reportPath = path.resolve(
+    __dirname, '..', '..', '..', 'product-data', 'reports',
+    'Product_Image_Status_2026-09-23.xlsx',
+  );
+  writeReport(after, changedIds, reportPath);
+
+  console.log('\nApplied and verified ' + operations.length + ' visibility changes.');
+  console.log('Modified products: ' + result.modifiedCount);
+  console.log('All ' + after.length + ' products remain in Admin/database.');
+  console.log('Backup: ' + backupPath);
+  console.log('Excel report: ' + reportPath);
 }
 
-main().catch(err => { console.error('❌ Fatal:', err.message); process.exit(1); });
+main()
+  .catch(function (error) {
+    console.error('ERROR: ' + error.message);
+    process.exitCode = 1;
+  })
+  .finally(async function () {
+    await mongoose.disconnect();
+  });
