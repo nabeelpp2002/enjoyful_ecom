@@ -12,7 +12,7 @@ export default function Wishlist() {
 
     return (
         <div className="bg-[var(--color-brand-sand)] min-h-screen">
-            <div className="max-w-7xl mx-auto px-8 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
                 <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} />
 
                 <motion.div
@@ -30,14 +30,15 @@ export default function Wishlist() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6 }}
-                        className="text-center"
+                        className="flex w-full flex-col items-center text-center"
                     >
-                        <div className="relative w-full max-w-xl aspect-[16/9] mx-auto overflow-hidden rounded-[2rem]">
+                        <div className="relative mx-auto aspect-square w-60 self-center overflow-hidden sm:aspect-[16/9] sm:w-full sm:max-w-xl sm:rounded-[2rem]">
                             <Image
                                 src="/assets/emptyWishlist.png"
                                 alt="Empty Wishlist"
                                 fill
-                                className="object-cover object-center"
+                                sizes="(max-width: 639px) 240px, 576px"
+                                className="object-contain object-center sm:object-cover"
                             />
                         </div>
                         <h2 className="mb-8 editorial-section-heading text-[24px] text-[var(--color-brand-onyx)] tracking-tight">

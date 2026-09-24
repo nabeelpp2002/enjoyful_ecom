@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Instagram, Facebook, Youtube } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
     return (
@@ -8,7 +9,7 @@ export function Footer() {
 
                 {/* Brand Info */}
                 <div className="col-span-2 md:col-span-1 flex flex-row md:flex-col items-start md:items-start text-left gap-3 md:gap-6">
-                    <img src="/assets/Enjoyful_logo_transparent.png" alt="enJoyful Life Logo" className="h-[5rem] md:h-[6.5rem] w-auto opacity-90 -ml-2 flex-shrink-0" />
+                    <Image src="/assets/Enjoyful_logo_transparent.png" alt="Enjoyful Life" width={180} height={104} sizes="(max-width: 767px) 139px, 180px" className="h-[5rem] md:h-[6.5rem] w-auto opacity-90 -ml-2 flex-shrink-0" />
                     <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/70 leading-relaxed max-w-sm md:max-w-sm self-center md:self-start">
                         Premium natural skincare and daily essentials crafted to protect and nourish your skin every single day.
                     </p>
@@ -58,7 +59,7 @@ export function Footer() {
 
             <div className="max-w-7xl mx-auto px-6 md:px-8 mt-12 md:mt-16 pt-6 md:pt-8 border-t border-[var(--color-brand-onyx)]/5 flex flex-col-reverse md:flex-row justify-between items-start md:items-center gap-4">
                 <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/50">
-                    © {new Date().getFullYear()} enJoyful Life. All rights reserved. Dubai, UAE &nbsp;|&nbsp; GST (UTC+4) &nbsp;|&nbsp; +971 XX XXX XXXX (UAE)
+                    © {new Date().getFullYear()} Enjoyful Life. All rights reserved. Dubai, UAE &nbsp;|&nbsp; GST (UTC+4)
                 </p>
                 <div className="flex gap-4">
                     <a href="https://instagram.com/enjoyfullife" target="_blank" rel="noopener noreferrer" className="text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-purple)] transition-colors" aria-label="Instagram">

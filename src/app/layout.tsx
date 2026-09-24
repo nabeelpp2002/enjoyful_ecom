@@ -1,6 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Khand, Montserrat } from "next/font/google";
 import "./globals.css";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_ALT,
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_WIDTH,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,23 +35,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://enjoyfullife.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Enjoyful Life — Premium Natural Skincare UAE | Free UAE Delivery",
+    default: DEFAULT_TITLE,
     template: "%s | Enjoyful Life",
   },
-  description:
-    "Shop premium natural skincare across the UAE. Cruelty-free, dermatologist-tested face serums, body care, baby skincare, home fragrances and more. Free delivery across UAE.",
-  keywords: [
-    "natural skincare UAE",
-    "premium skincare Dubai",
-    "cruelty free skincare",
-    "organic face serum UAE",
-    "baby skincare UAE",
-    "skincare online UAE",
-    "skincare delivery Dubai",
-    "Enjoyful Life",
-  ],
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  category: "shopping",
   authors: [{ name: "Enjoyful Life" }],
   creator: "Enjoyful Life",
   publisher: "Enjoyful Life",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  alternates: { canonical: "https://enjoyfullife.com" },
+  alternates: { canonical: SITE_URL },
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -63,28 +64,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_AE",
     alternateLocale: ["ar_AE"],
-    url: "https://enjoyfullife.com",
-    siteName: "Enjoyful Life",
-    title: "Enjoyful Life — Premium Natural Skincare UAE",
-    description:
-      "Discover premium natural skincare crafted for UAE customers. Free UAE delivery. Cruelty-free. Dermatologist-tested.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
-        url: "/og/homepage.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Enjoyful Life Premium Natural Skincare",
+        url: DEFAULT_OG_IMAGE,
+        width: DEFAULT_OG_IMAGE_WIDTH,
+        height: DEFAULT_OG_IMAGE_HEIGHT,
+        alt: DEFAULT_OG_IMAGE_ALT,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@enjoyfullife",
-    creator: "@enjoyfullife",
-    title: "Enjoyful Life — Premium Natural Skincare UAE",
-    description:
-      "Discover premium natural skincare crafted for UAE customers. Free UAE delivery. Cruelty-free.",
-    images: ["/og/homepage.jpg"],
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: DEFAULT_OG_IMAGE, alt: DEFAULT_OG_IMAGE_ALT }],
   },
 };
 

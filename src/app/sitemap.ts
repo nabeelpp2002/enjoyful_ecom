@@ -1,16 +1,21 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo";
 
 // Regenerate daily at runtime instead of being a hard build-time dependency.
 export const revalidate = 86400;
 
-const BASE_URL = "https://enjoyfullife.com";
-
-const CATEGORY_SLUGS = ["glow", "daily", "baby", "fragrances", "home-care"];
+const CATEGORY_SLUGS = ["all", "glow", "daily", "baby", "fragrances", "home-care"];
 
 interface Product {
   slug?: string;
   _id?: string;
   isHidden?: boolean;
+}
+
+interface ProductResponse {
+  data?: Product[];
+  products?: Product[];
+  meta?: { totalPages?: number };
 }
 
 async function fetchProductSlugs(): Promise<string[]> {
@@ -21,17 +26,27 @@ async function fetchProductSlugs(): Promise<string[]> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8000);
   try {
-    const res = await fetch(`${base}/products?limit=500&page=1`, {
-      signal: controller.signal,
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) return [];
-    const data = await res.json();
-    const products: Product[] = data.data ?? data.products ?? data ?? [];
-    return products
+    const fetchPage = async (page: number): Promise<ProductResponse> => {
+      const res = await fetch(`${base}/products?limit=100&page=${page}`, {
+        signal: controller.signal,
+        next: { revalidate: 3600 },
+      });
+      if (!res.ok) throw new Error(`Products API returned ${res.status}`);
+      return res.json() as Promise<ProductResponse>;
+    };
+
+    const firstPage = await fetchPage(1);
+    const totalPages = Math.max(1, firstPage.meta?.totalPages ?? 1);
+    const remainingPages = await Promise.all(
+      Array.from({ length: totalPages - 1 }, (_, index) => fetchPage(index + 2)),
+    );
+    const payloads = [firstPage, ...remainingPages];
+    const products = payloads.flatMap((data) => data.data ?? data.products ?? []);
+
+    return [...new Set(products
       .filter((p) => !p.isHidden)
       .map((p) => p.slug ?? p._id ?? "")
-      .filter(Boolean);
+      .filter(Boolean))];
   } catch {
     return [];
   } finally {
@@ -44,35 +59,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: BASE_URL,
-      lastModified: new Date(),
+      url: SITE_URL,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/about`,
-      lastModified: new Date(),
+      url: `${SITE_URL}/about`,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
+      url: `${SITE_URL}/contact`,
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...["faq", "shipping-returns", "privacy-policy", "terms-of-service"].map(
+      (path) => ({
+        url: `${SITE_URL}/${path}`,
+        changeFrequency: "monthly" as const,
+        priority: path === "faq" || path === "shipping-returns" ? 0.6 : 0.3,
+      }),
+    ),
   ];
 
   const categoryPages: MetadataRoute.Sitemap = CATEGORY_SLUGS.map((slug) => ({
-    url: `${BASE_URL}/category/${slug}`,
-    lastModified: new Date(),
+    url: `${SITE_URL}/category/${slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
 
   const productPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
-    url: `${BASE_URL}/product/${slug}`,
-    lastModified: new Date(),
+    url: `${SITE_URL}/product/${slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));

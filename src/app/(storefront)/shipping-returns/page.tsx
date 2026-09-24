@@ -118,7 +118,7 @@ export default function ShippingReturnsPage() {
                         <div className="p-5 bg-[var(--color-brand-sand)]/60 rounded-2xl border border-white/80">
                             <h3 className="editorial-heading font-bold text-base text-[var(--color-brand-onyx)] mb-2">How to Request a Return</h3>
                             <ol className="list-decimal pl-5 space-y-1.5 editorial-body text-xs sm:text-sm text-[var(--color-brand-onyx)]/80">
-                                <li>Contact our support team via <Link href="/contact" className="text-[var(--color-brand-purple)] underline font-medium">Contact Us</Link> or email support@enjoyfullife.ae with your order number.</li>
+                                <li>Contact our support team via <Link href="/contact" className="text-[var(--color-brand-purple)] underline font-medium">Contact Us</Link> or email hello@enjoyfullife.com with your order number.</li>
                                 <li>Our team will issue a return authorization and schedule a courier pickup from your location in the UAE.</li>
                                 <li>Upon receipt and inspection, refunds will be credited back to your original payment card within 5–7 business days.</li>
                             </ol>

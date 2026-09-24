@@ -5,38 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Search, HelpCircle, Truck, RefreshCw, ShieldCheck, CreditCard } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import Link from "next/link";
-
-interface FaqItem {
-    q: string;
-    a: string;
-    category: string;
-}
-
-const FAQ_DATA: FaqItem[] = [
-    // Delivery & Shipping
-    { category: "Shipping & Delivery", q: "Where does enJoyful Life deliver?", a: "We deliver across all seven Emirates in the UAE (Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain) as well as select GCC countries." },
-    { category: "Shipping & Delivery", q: "How long does shipping take in the UAE?", a: "Standard delivery in Dubai and Abu Dhabi takes 1–2 business days. Delivery to other Emirates typically takes 2–3 business days." },
-    { category: "Shipping & Delivery", q: "Is shipping free?", a: "We offer complimentary standard shipping on all UAE orders over AED 200. Orders below AED 200 incur a nominal flat shipping fee of AED 15." },
-    { category: "Shipping & Delivery", q: "Can I track my order?", a: "Yes, once your order is dispatched, you will receive an SMS and email notification with your live tracking link." },
-
-    // Products & Usage
-    { category: "Products & Usage", q: "Are enJoyful Life products cruelty-free?", a: "Yes, 100%. None of our ingredients or finished products are tested on animals, and we strictly partner with ethically certified suppliers." },
-    { category: "Products & Usage", q: "Are your formulas suitable for the UAE climate?", a: "Absolutely. Our textures are formulated specifically for hot, humid climates and air-conditioned interiors — lightweight, non-greasy, fast-absorbing, and non-comedogenic." },
-    { category: "Products & Usage", q: "Do your products contain harsh chemicals or parabens?", a: "No. All enJoyful Life products are formulated without parabens, sulfates (SLS/SLES), phthalates, mineral oil, or synthetic dyes." },
-    { category: "Products & Usage", q: "How should I store skincare products in a warm climate?", a: "Keep products in a dry place away from direct sunlight and excessive heat. Room temperature (below 25°C) is ideal." },
-
-    // Returns & Refunds
-    { category: "Returns & Refunds", q: "What is your return policy?", a: "Under UAE Consumer Protection regulations, we offer a 14-day return window for unopened, sealed products in their original packaging, or if an item arrives damaged/defective." },
-    { category: "Returns & Refunds", q: "How do I request a return?", a: "You can request a return by contacting our customer care team via email at support@enjoyfullife.ae or through our Contact Us page with your order details." },
-    { category: "Returns & Refunds", q: "When will I receive my refund?", a: "Once your returned items are received and inspected at our warehouse, credit card refunds are processed within 5–7 business days to your original payment method." },
-
-    // Payment & Ordering
-    { category: "Payments & Orders", q: "What payment methods do you accept?", a: "We accept Visa, MasterCard, Apple Pay, Google Pay, and Cash on Delivery (COD) across the UAE." },
-    { category: "Payments & Orders", q: "Is my payment security guaranteed?", a: "Yes. All online payments are encrypted using 256-bit SSL encryption via PCI-DSS compliant payment gateways." },
-    { category: "Payments & Orders", q: "Can I cancel or modify my order after placing it?", a: "Orders are processed quickly. If you need to cancel or modify an order, please contact customer support within 1 hour of placing it." },
-];
-
-const CATEGORIES = ["All", "Shipping & Delivery", "Products & Usage", "Returns & Refunds", "Payments & Orders"];
+import { FAQ_CATEGORIES as CATEGORIES, FAQ_DATA } from "@/data/faq";
 
 export default function FaqPage() {
     const [selectedCategory, setSelectedCategory] = useState("All");

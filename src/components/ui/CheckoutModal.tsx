@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
+import { formatPrice } from "@/lib/price";
 
 export type DeliveryDetails = {
     name: string;
@@ -72,7 +73,7 @@ export function CheckoutModal({ isOpen, onClose, onConfirm, total }: CheckoutMod
                     Almost There! 🛍️
                 </h2>
                 <p className="text-sm text-[var(--color-brand-onyx)]/60 mt-1 mb-4">
-                    Order Total: {total.toFixed(0)} AED
+                    Order Total: {formatPrice(total) ?? Math.round(total)} AED
                 </p>
 
                 {/* Form */}

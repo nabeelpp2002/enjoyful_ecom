@@ -28,7 +28,7 @@ export default function CartPage() {
         const itemLines = cart
             .map(
                 (item) =>
-                    `- ${item.product.name}${item.product.size ? ` (${item.product.size})` : ""} x${item.quantity} = ${(item.product.price * item.quantity).toFixed(0)} AED`
+                    `- ${item.product.name}${item.product.size ? ` (${item.product.size})` : ""} x${item.quantity} = ${formatPrice(item.product.price * item.quantity) ?? Math.round(item.product.price * item.quantity)} AED`
             )
             .join("\n");
         const deliverySection = [
@@ -41,7 +41,7 @@ export default function CartPage() {
         ]
             .filter(Boolean)
             .join("\n");
-        const message = `*New Order - enJoyful Life*\n\n*Items:*\n${itemLines}\n\n*Total: ${cartSubtotal} AED*\nDelivery: Free\n\n${deliverySection}\n\nPlease confirm my order. Thank you!`;
+        const message = `*New Order - enJoyful Life*\n\n*Items:*\n${itemLines}\n\n*Total: ${formatPrice(cartSubtotal) ?? Math.round(cartSubtotal)} AED*\nDelivery: Free\n\n${deliverySection}\n\nPlease confirm my order. Thank you!`;
         track({
             type: "checkout_initiated",
             metadata: { total: cartSubtotal, itemCount: cart.length },
@@ -97,7 +97,7 @@ export default function CartPage() {
                                     ) : (
                                         <>
                                             <p className="text-sm editorial-body text-[var(--color-brand-onyx)]/70 mb-2">
-                                                Add <span className="font-semibold text-[var(--color-brand-onyx)]">{shippingRemaining.toFixed(0)} AED</span> more for free UAE delivery
+                                                Add <span className="font-semibold text-[var(--color-brand-onyx)]">{formatPrice(shippingRemaining) ?? Math.round(shippingRemaining)} AED</span> more for free UAE delivery
                                             </p>
                                             <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
                                                 <div
@@ -190,7 +190,7 @@ export default function CartPage() {
                                         <div className="space-y-4 mb-8">
                                             <div className="flex justify-between text-[var(--color-brand-onyx)]/80">
                                                 <span>Subtotal</span>
-                                                <span className="font-medium">{formatPrice(cartSubtotal) ?? cartSubtotal} AED</span>
+                                                <span className="font-medium">{formatPrice(cartSubtotal) ?? Math.round(cartSubtotal)} AED</span>
                                             </div>
                                             <div className="flex justify-between text-[var(--color-brand-onyx)]/80">
                                                 <span>Shipping</span>
@@ -199,7 +199,7 @@ export default function CartPage() {
                                             <div className="h-px bg-[var(--color-brand-onyx)]/10 my-4" />
                                             <div className="flex justify-between text-xl editorial-heading font-bold text-[var(--color-brand-onyx)]">
                                                 <span>Total</span>
-                                                <span>{formatPrice(cartSubtotal) ?? cartSubtotal} AED</span>
+                                                <span>{formatPrice(cartSubtotal) ?? Math.round(cartSubtotal)} AED</span>
                                             </div>
                                         </div>
                                         <motion.button

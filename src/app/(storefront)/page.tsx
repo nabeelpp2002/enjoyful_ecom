@@ -10,12 +10,13 @@ import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
-export const metadata: Metadata = {
-  title: "Enjoyful Life — Premium Natural Skincare UAE | Free UAE Delivery",
-  description:
-    "Shop premium natural skincare in the UAE. Glow serums, daily essentials, baby care, fragrances and home wellness. Free delivery across UAE. Cruelty-free and dermatologist tested.",
-  alternates: { canonical: "https://enjoyfullife.com" },
-};
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
+  path: "/",
+});
 
 export default function Home() {
   return (

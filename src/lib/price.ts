@@ -21,13 +21,18 @@ export function hasValidPrice(value?: number | null): value is number {
 }
 
 /**
- * Format a valid amount for display: integers stay integer, decimals are trimmed
- * to at most 2 places with no trailing zeros. Returns `null` for any invalid price
- * so callers can decide to render nothing rather than a placeholder.
+ * UI price pipe. Rounds a valid monetary amount to the nearest whole AED without
+ * mutating the source value used by the database, API, filters, or calculations.
  */
-export function formatPrice(value?: number | null): string | null {
+export function roundPrice(value?: number | null): number | null {
     if (!hasValidPrice(value)) return null;
-    return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(2)));
+    return Math.round(value);
+}
+
+/** Format any valid amount through the centralized whole-AED display pipe. */
+export function formatPrice(value?: number | null): string | null {
+    const rounded = roundPrice(value);
+    return rounded === null ? null : String(rounded);
 }
 
 /**
@@ -35,5 +40,7 @@ export function formatPrice(value?: number | null): string | null {
  * the selling price — i.e. a genuine discount worth showing struck through.
  */
 export function isDiscounted(price?: number | null, originalPrice?: number | null): boolean {
-    return hasValidPrice(price) && hasValidPrice(originalPrice) && (originalPrice as number) > (price as number);
+    const roundedPrice = roundPrice(price);
+    const roundedOriginal = roundPrice(originalPrice);
+    return roundedPrice !== null && roundedOriginal !== null && roundedOriginal > roundedPrice;
 }

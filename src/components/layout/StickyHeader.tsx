@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Heart, X, ArrowLeft } from "lucide-react";
 import { MegaMenu } from "./MegaMenu";
 import { AuthModal } from "./AuthModal";
+import { SearchOverlay } from "./SearchOverlay";
 import { AnimatePresence, motion } from "framer-motion";
 import { useData } from "@/context/DataContext";
 
@@ -56,11 +57,11 @@ export function StickyHeader() {
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const [scrolled, setScrolled] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const searchInputRef = useRef<HTMLInputElement>(null);
-    const mobileSearchInputRef = useRef<HTMLInputElement>(null);
     const hasSearchInteractionRef = useRef(false);
     const lastSearchUrlRef = useRef("");
     const pathname = usePathname();
@@ -104,16 +105,18 @@ export function StickyHeader() {
     useEffect(() => {
         if (isSearchOpen) {
             const focusTimer = window.setTimeout(() => {
-                const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-                (isDesktop ? searchInputRef.current : mobileSearchInputRef.current)?.focus();
+                searchInputRef.current?.focus();
             }, 100);
             return () => window.clearTimeout(focusTimer);
-        } else {
-            setSearchQuery("");
-            hasSearchInteractionRef.current = false;
-            lastSearchUrlRef.current = "";
         }
     }, [isSearchOpen]);
+
+    const closeDesktopSearch = () => {
+        setIsSearchOpen(false);
+        setSearchQuery("");
+        hasSearchInteractionRef.current = false;
+        lastSearchUrlRef.current = "";
+    };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         hasSearchInteractionRef.current = true;
@@ -205,7 +208,7 @@ export function StickyHeader() {
                                         className="w-full bg-transparent border-none outline-none pl-3 pr-10 py-3 text-base text-[var(--color-brand-onyx)] placeholder-gray-400"
                                     />
                                     <button
-                                        onClick={() => setIsSearchOpen(false)}
+                                        onClick={closeDesktopSearch}
                                         className="absolute right-3 p-1.5 rounded-full text-gray-400 hover:text-[var(--color-brand-onyx)] hover:bg-gray-200 transition-colors"
                                     >
                                         <X size={16} />
@@ -258,7 +261,10 @@ export function StickyHeader() {
                     <div className="flex items-center gap-3">
                         {!isSearchOpen && (
                             <button
-                                onClick={() => setIsSearchOpen(true)}
+                                onClick={() => {
+                                    if (window.matchMedia("(max-width: 767px)").matches) setIsMobileSearchOpen(true);
+                                    else setIsSearchOpen(true);
+                                }}
                                 className={`${iconColor} transition-transform duration-200 active:scale-95 flex items-center justify-center p-2`}
                             >
                                 <Search size={22} strokeWidth={1.5} />
@@ -309,44 +315,10 @@ export function StickyHeader() {
                     </div>
                 </div>
 
-                {/* Mobile search bar — the desktop search input is `hidden md:flex`,
-                    so on phones we drop a full-width bar below the header when open. */}
-                <AnimatePresence>
-                    {isSearchOpen && (
-                        <motion.div
-                            key="mobile-search"
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.25, ease: "easeOut" }}
-                            className="md:hidden overflow-hidden border-t border-gray-100"
-                        >
-                            <div className="px-4 py-3">
-                                <div className="flex items-center bg-gray-50 rounded-full px-4 border border-gray-100/50 shadow-inner">
-                                    <Search size={20} className="text-gray-400 flex-shrink-0" />
-                                    <input
-                                        ref={mobileSearchInputRef}
-                                        type="text"
-                                        inputMode="search"
-                                        enterKeyHint="search"
-                                        placeholder="Search for products, brands..."
-                                        value={searchQuery}
-                                        onChange={handleSearchChange}
-                                        className="w-full bg-transparent border-none outline-none pl-3 pr-2 py-2.5 text-base text-[var(--color-brand-onyx)] placeholder-gray-400"
-                                    />
-                                    <button
-                                        onClick={() => setIsSearchOpen(false)}
-                                        aria-label="Close search"
-                                        className="p-1.5 rounded-full text-gray-400 hover:text-[var(--color-brand-onyx)] hover:bg-gray-200 transition-colors"
-                                    >
-                                        <X size={16} />
-                                    </button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </header>
+            <Suspense fallback={null}>
+                <SearchOverlay isOpen={isMobileSearchOpen} onClose={() => setIsMobileSearchOpen(false)} />
+            </Suspense>
             <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
         </>
     );

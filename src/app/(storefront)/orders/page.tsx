@@ -105,7 +105,7 @@ export default function OrdersPage() {
                                         <span className={`px-3 py-1 rounded-full text-[11px] font-semibold border capitalize ${STATUS_STYLE[order.status] ?? "bg-gray-50 text-gray-500 border-gray-100"}`}>
                                             {order.status}
                                         </span>
-                                        <span className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]">{formatPrice(order.total) ?? order.total} AED</span>
+                                        <span className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]">{formatPrice(order.total) ?? Math.round(order.total)} AED</span>
                                     </div>
                                 </div>
                                 {/* Items */}
@@ -125,7 +125,7 @@ export default function OrdersPage() {
                                                     {item.size ? `${item.size} · ` : ""}Qty {item.quantity}
                                                 </p>
                                             </div>
-                                            <span className="editorial-body text-sm font-semibold text-[var(--color-brand-onyx)]/80">{(() => { const t = item.subtotal ?? item.price * item.quantity; return formatPrice(t) ?? t; })()} AED</span>
+                                            <span className="editorial-body text-sm font-semibold text-[var(--color-brand-onyx)]/80">{(() => { const t = item.subtotal ?? item.price * item.quantity; return formatPrice(t) ?? Math.round(t); })()} AED</span>
                                         </div>
                                     ))}
                                 </div>

@@ -12,13 +12,7 @@ import type { SeoBlock } from "@/data/seo-content";
  * UX Strategy:
  * - Show only the first paragraph as intro with "Learn More" CTA to About page
  * - Display only 3 key FAQ questions on homepage; link to full FAQ on Contact page
- * - All content remains in DOM for crawler indexing and structured data
- * - Hidden content is accessible but visually concealed for better mobile UX
- *
- * SEO Preservation:
- * - Full FAQ data in structured JSON-LD schema
- * - All hidden content in HTML (role="doc-note" marks content as supplementary)
- * - Maintains internal link equity through CTA links
+ * Structured data mirrors only the FAQ content visibly offered in this block.
  */
 export function SeoContent({ data }: { data?: SeoBlock }) {
     const [faqOpen, setFaqOpen] = useState<number | null>(null);
@@ -34,7 +28,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
             ? {
                   "@context": "https://schema.org",
                   "@type": "FAQPage",
-                  mainEntity: data.faqs.map((f) => ({
+                  mainEntity: previewFaqs.map((f) => ({
                       "@type": "Question",
                       name: f.q,
                       acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -67,17 +61,6 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                             </p>
                         )}
 
-                        {/* Hidden paragraphs for SEO - crawler can read but not visible */}
-                        {data.paragraphs && data.paragraphs.length > 1 && (
-                            <div className="sr-only" role="doc-note">
-                                {data.paragraphs.slice(1).map((p, i) => (
-                                    <p key={i} className="mb-4">
-                                        {p}
-                                    </p>
-                                ))}
-                            </div>
-                        )}
-
                         {/* Learn More CTA */}
                         <Link
                             href="/about"
@@ -102,7 +85,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                                 </h3>
                                 {hasMoreFaqs && (
                                     <Link
-                                        href="/contact"
+                                        href="/faq"
                                         className="hidden md:block editorial-body text-xs lg:text-sm text-[var(--color-brand-purple)] hover:text-[var(--color-brand-purple)]/80 transition-colors font-medium whitespace-nowrap"
                                     >
                                         View All →
@@ -150,25 +133,11 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                             ))}
                             </div>
 
-                            {/* Hidden FAQs for SEO - In DOM but not visible */}
-                            {data.faqs.length > FAQ_PREVIEW_COUNT && (
-                                <div className="sr-only" role="doc-note">
-                                    <div>
-                                        {data.faqs.slice(FAQ_PREVIEW_COUNT).map((f, i) => (
-                                            <div key={FAQ_PREVIEW_COUNT + i} className="mb-6">
-                                                <h4 className="editorial-heading font-semibold mb-2">{f.q}</h4>
-                                                <p className="text-[var(--color-brand-onyx)]/65">{f.a}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
                             {/* View All CTA - Mobile */}
                             {hasMoreFaqs && (
                                 <div className="mt-8 md:hidden text-center">
                                     <Link
-                                        href="/contact"
+                                        href="/faq"
                                         className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[var(--color-brand-onyx)]/20 text-[var(--color-brand-onyx)] editorial-subtitle text-sm hover:border-[var(--color-brand-purple)] hover:text-[var(--color-brand-purple)] transition-all duration-200 group"
                                     >
                                         Explore All Questions
@@ -180,7 +149,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                     )}
                 </div>
 
-                {/* FAQ JSON-LD Schema - All FAQs indexed */}
+                {/* FAQ schema exactly matches the visible preview questions. */}
                 {faqJsonLd && (
                     <script
                         type="application/ld+json"

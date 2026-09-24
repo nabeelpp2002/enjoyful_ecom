@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MessageCircle, Phone, ChevronDown, ChevronUp } from "lucide-react";
+import { Mail, MessageCircle, MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
@@ -49,27 +49,27 @@ export default function Contact() {
     const faqs = [
         {
             question: "What is your shipping policy?",
-            answer: "We offer free shipping on all orders over $50. Standard shipping takes 3-5 business days, and express shipping is available for 1-2 day delivery.",
+            answer: "We deliver throughout the UAE. Dubai and Abu Dhabi orders typically arrive in 1–2 business days, while other Emirates typically take 2–3 business days. Standard UAE shipping is complimentary on orders of AED 200 or more.",
         },
         {
             question: "Are your products cruelty-free?",
-            answer: "Yes! All enJoyful Life products are 100% cruelty-free. We never test on animals and are certified by leading cruelty-free organizations.",
+            answer: "Yes. Enjoyful Life states that its ingredients and finished products are not tested on animals.",
         },
         {
             question: "Can I return a product?",
-            answer: "We want you to love your purchase. If you're not satisfied, you can return unused products within 30 days for a full refund or exchange.",
+            answer: "Unopened, sealed products in their original packaging may be returned within 14 days. Please contact customer support with your order details to begin a return.",
         },
         {
             question: "How do I know which products are right for my skin?",
             answer: "Each product page includes detailed information about skin types and concerns. You can also reach out to our skincare specialists for personalized recommendations.",
         },
         {
-            question: "Do you offer samples?",
-            answer: "Yes! We include complimentary samples with every order. You can also purchase sample sets to try multiple products before committing to full sizes.",
+            question: "Where does Enjoyful Life deliver?",
+            answer: "We deliver across all seven Emirates: Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain.",
         },
         {
-            question: "Where are your products made?",
-            answer: "All enJoyful Life products are formulated and manufactured in sustainable facilities that meet the highest quality and safety standards.",
+            question: "How can I get help with an order?",
+            answer: "Send us your order details using the contact form or email hello@enjoyfullife.com, and our customer-support team will assist you.",
         },
     ];
 
@@ -90,7 +90,7 @@ export default function Contact() {
                         Get in Touch
                     </h1>
                     <p className="editorial-body text-base sm:text-lg text-[var(--color-brand-onyx)]/70 max-w-[600px] mx-auto">
-                        Have a question or feedback? We'd love to hear from you. Our team is here to help!
+                        Have a question or feedback? We&apos;d love to hear from you. Our team is here to help!
                     </p>
                 </motion.div>
 
@@ -121,26 +121,23 @@ export default function Contact() {
                             <MessageCircle size={28} strokeWidth={1.5} />
                         </div>
                         <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
-                            Live Chat
+                            Contact Form
                         </h3>
                         <p className="editorial-body text-base text-[var(--color-brand-onyx)]/70">
-                            Mon-Fri, 9am-6pm EST
+                            Mon–Fri, 9am–6pm GST (UTC+4)
                         </p>
                     </div>
 
                     <div className="rounded-2xl p-6 sm:p-8 text-center bg-white shadow-[0_4px_20px_rgba(26,26,27,0.04)]">
                         <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
-                            <Phone size={28} strokeWidth={1.5} />
+                            <MapPin size={28} strokeWidth={1.5} />
                         </div>
                         <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
-                            Call Us
+                            Delivery Area
                         </h3>
-                        <a
-                            href="tel:+1234567890"
-                            className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
-                        >
-                            +1 (234) 567-890
-                        </a>
+                        <p className="editorial-body text-base text-[var(--color-brand-purple)]">
+                            All seven UAE Emirates
+                        </p>
                     </div>
                 </motion.div>
 

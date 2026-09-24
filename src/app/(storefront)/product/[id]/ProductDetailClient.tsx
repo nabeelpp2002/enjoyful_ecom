@@ -519,7 +519,7 @@ export default function ProductDetailClient({
 
                 {/* Mobile Action Bar */}
                 {showProductPrices && (
-                    <div className="md:hidden fixed bottom-[calc(4rem+env(safe-area-inset-bottom))] left-0 w-full p-4 bg-white/95 backdrop-blur-md border-t border-gray-100 z-40">
+                    <div className="md:hidden fixed bottom-0 left-0 w-full px-4 pt-3 pb-[calc(1.5rem+env(safe-area-inset-bottom))] bg-white/95 backdrop-blur-md border-t border-gray-100 z-40">
                         <div className="flex flex-row items-center gap-4 max-w-7xl mx-auto">
                             {hasValidPrice(displayPrice) && (
                                 <div className="flex flex-col flex-shrink-0 min-w-[30%]">

@@ -43,6 +43,8 @@ export function MobileBottomNav() {
     const isCartActive = pathname === "/cart";
     const isProfileActive = pathname === "/profile";
 
+    if (pathname?.startsWith("/product/")) return null;
+
     return (
         <>
             <nav className="fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/55 shadow-[0_10px_35px_rgba(18,18,22,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-white/45 md:hidden">

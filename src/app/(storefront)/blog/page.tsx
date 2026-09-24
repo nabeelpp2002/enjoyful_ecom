@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
     title: "Skincare Journal | Enjoyful Life UAE",
-    description:
-        "The Enjoyful Life Skincare Journal — expert guides on natural skincare, body and hair care, baby care and fragrance for the UAE. Coming soon.",
-    alternates: { canonical: "https://enjoyfullife.com/blog" },
-};
+    description: "The Enjoyful Life skincare and personal-care journal is coming soon.",
+    path: "/blog",
+    index: false,
+});
 
 export default function BlogPage() {
     return (

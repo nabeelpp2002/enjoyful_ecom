@@ -320,7 +320,7 @@ export default function CategoryPageClient({
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mb-8 md:mb-12 mt-16 md:mt-18 overflow-hidden shadow-sm border border-black/5 aspect-[4/3] md:aspect-[3/0.9] relative"
+                className={`mb-8 md:mb-12 mt-16 md:mt-18 overflow-hidden shadow-sm border border-black/5 aspect-[4/3] md:aspect-[3/0.9] relative ${query ? "hidden md:block" : ""}`}
             >
                 {bannerLoading && !banner ? (
                     <Skeleton className="absolute inset-0 rounded-none" />
@@ -357,7 +357,7 @@ export default function CategoryPageClient({
                     </>
                 )}
             </motion.div>
-            <div className="max-w-7xl mx-auto px-4 md:px-8 pb-12">
+            <div className={`max-w-7xl mx-auto px-4 md:px-8 pb-12 ${query ? "pt-24 md:pt-0" : ""}`}>
                 {/* Category Ad Banner */}
 
                 {/* Page Header */}
