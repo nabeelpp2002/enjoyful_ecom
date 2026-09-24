@@ -26,6 +26,7 @@ interface Product {
   hoverImage?: string;
   brand?: string;
   productCode?: string;
+  productFamily?: string;
   size?: string;
   price?: number;
   currency?: string;
@@ -74,7 +75,8 @@ export async function generateMetadata({
   const title = `${product.name}${sizeLabel} | Enjoyful Life UAE`;
   const rawDescription = product.shortDescription ?? product.description ?? "";
   const description = rawDescription.slice(0, 160);
-  const productPath = `/product/${product.slug ?? id}`;
+  const canonicalIdentifier = product.productFamily || product.slug || id;
+  const productPath = `/product/${canonicalIdentifier}`;
   const canonical = `${SITE_URL}${productPath}`;
   // images from the API are objects {url,publicId,...} — extract the URL string
   const imageUrl = toImageUrl(product.images?.[0]) ?? product.image;
@@ -130,7 +132,7 @@ export default async function ProductLayout({
         name: product.name,
         description: product.shortDescription ?? product.description,
         image: imageUrls.length > 0 ? imageUrls : [product.image].filter(Boolean),
-        "@id": `${SITE_URL}/product/${product.slug ?? id}#product`,
+        "@id": `${SITE_URL}/product/${product.productFamily || product.slug || id}#product`,
         brand: {
           "@type": "Brand",
           name: SITE_NAME,
@@ -144,7 +146,7 @@ export default async function ProductLayout({
             (product.stock ?? 0) > 0
               ? "https://schema.org/InStock"
               : "https://schema.org/OutOfStock",
-          url: `${SITE_URL}/product/${product.slug ?? id}`,
+          url: `${SITE_URL}/product/${product.productFamily || product.slug || id}`,
           seller: { "@id": `${SITE_URL}/#organization` },
         },
         // API fields: rating (number 0-5), reviews (count)
@@ -170,7 +172,7 @@ export default async function ProductLayout({
             "@type": "ListItem",
             position: 2,
             name: product.name,
-            item: `${SITE_URL}/product/${product.slug ?? id}`,
+            item: `${SITE_URL}/product/${product.productFamily || product.slug || id}`,
           },
         ],
       }

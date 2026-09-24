@@ -4,11 +4,21 @@ import { SITE_URL } from "@/lib/seo";
 // Regenerate daily at runtime instead of being a hard build-time dependency.
 export const revalidate = 86400;
 
-const CATEGORY_SLUGS = ["all", "glow", "daily", "baby", "fragrances", "home-care"];
+const FALLBACK_CATEGORY_SLUGS = ["glow", "daily", "baby", "fragrances", "home-care"];
+const PUBLIC_STATIC_PAGES = [
+  { path: "", changeFrequency: "daily" as const, priority: 1 },
+  { path: "/about", changeFrequency: "monthly" as const, priority: 0.7 },
+  { path: "/contact", changeFrequency: "monthly" as const, priority: 0.6 },
+  { path: "/faq", changeFrequency: "monthly" as const, priority: 0.6 },
+  { path: "/shipping-returns", changeFrequency: "monthly" as const, priority: 0.6 },
+  { path: "/privacy-policy", changeFrequency: "monthly" as const, priority: 0.3 },
+  { path: "/terms-of-service", changeFrequency: "monthly" as const, priority: 0.3 },
+];
 
 interface Product {
   slug?: string;
   _id?: string;
+  productFamily?: string;
   isHidden?: boolean;
 }
 
@@ -16,6 +26,34 @@ interface ProductResponse {
   data?: Product[];
   products?: Product[];
   meta?: { totalPages?: number };
+}
+
+interface CategoryResponse {
+  data?: Array<{ slug?: string; isActive?: boolean }>;
+}
+
+async function fetchCategorySlugs(): Promise<string[]> {
+  const base = process.env.NEST_API_URL ?? "http://localhost:4000/api/v1";
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+
+  try {
+    const response = await fetch(`${base}/categories`, {
+      signal: controller.signal,
+      next: { revalidate: 3600 },
+    });
+    if (!response.ok) throw new Error(`Categories API returned ${response.status}`);
+    const payload = await response.json() as CategoryResponse;
+    const slugs = (payload.data ?? [])
+      .filter((category) => category.isActive !== false)
+      .map((category) => category.slug ?? "")
+      .filter(Boolean);
+    return [...new Set(["all", ...slugs])];
+  } catch {
+    return ["all", ...FALLBACK_CATEGORY_SLUGS];
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function fetchProductSlugs(): Promise<string[]> {
@@ -45,7 +83,7 @@ async function fetchProductSlugs(): Promise<string[]> {
 
     return [...new Set(products
       .filter((p) => !p.isHidden)
-      .map((p) => p.slug ?? p._id ?? "")
+      .map((p) => p.productFamily || p.slug || p._id || "")
       .filter(Boolean))];
   } catch {
     return [];
@@ -55,34 +93,18 @@ async function fetchProductSlugs(): Promise<string[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const productSlugs = await fetchProductSlugs();
+  const [productSlugs, categorySlugs] = await Promise.all([
+    fetchProductSlugs(),
+    fetchCategorySlugs(),
+  ]);
 
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: SITE_URL,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${SITE_URL}/about`,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/contact`,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    ...["faq", "shipping-returns", "privacy-policy", "terms-of-service"].map(
-      (path) => ({
-        url: `${SITE_URL}/${path}`,
-        changeFrequency: "monthly" as const,
-        priority: path === "faq" || path === "shipping-returns" ? 0.6 : 0.3,
-      }),
-    ),
-  ];
+  const staticPages: MetadataRoute.Sitemap = PUBLIC_STATIC_PAGES.map((page) => ({
+    url: `${SITE_URL}${page.path}`,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 
-  const categoryPages: MetadataRoute.Sitemap = CATEGORY_SLUGS.map((slug) => ({
+  const categoryPages: MetadataRoute.Sitemap = categorySlugs.map((slug) => ({
     url: `${SITE_URL}/category/${slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.9,
