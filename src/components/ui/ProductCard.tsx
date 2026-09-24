@@ -57,7 +57,7 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
         : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.35, delay: index * 0.04 } };
 
     return (
-        <motion.article {...animProps} initial="initial" whileHover="hover" className="group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-white shadow-[0_10px_28px_rgba(31,25,18,0.09)] sm:rounded-[1.5rem]">
+        <motion.article {...animProps} initial="initial" whileHover="hover" className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-[0_10px_28px_rgba(31,25,18,0.09)] sm:rounded-[1.25rem]">
             <div className="relative aspect-[1.08/1] min-h-0 overflow-hidden bg-[#f2eee8]">
                 <Link href={productHref} onClick={() => track({ type: "product_click", productId: product.id, productName: product.name })} className="absolute inset-0">
                     <Image src={mainImage} alt={product.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" priority={index < 4} />
@@ -69,7 +69,7 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
                 </button>
             </div>
 
-            <div className="relative z-10 -mt-5 flex flex-1 flex-col rounded-t-[1.55rem] bg-white px-3 pb-3 pt-3.5 sm:-mt-7 sm:rounded-t-[2rem] sm:px-4 sm:pb-4 sm:pt-5">
+            <div className="relative z-10 -mt-5 flex flex-1 flex-col rounded-t-xl bg-white px-3 pb-3 pt-3.5 sm:-mt-7 sm:rounded-t-[1.5rem] sm:px-4 sm:pb-4 sm:pt-5">
                 <Link href={productHref} className="group/link block min-w-0"><h3 className="editorial-subtitle truncate text-[13px] font-semibold leading-tight text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-[var(--color-brand-purple)] sm:text-base">{product.name}</h3></Link>
                 <p className="editorial-body mt-1 truncate text-[9px] leading-tight text-[var(--color-brand-onyx)]/50 sm:text-xs">{product.tagline || product.description}</p>
                 <div className="mt-2 flex items-end justify-between gap-2 sm:mt-2.5">
@@ -77,14 +77,14 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
                     {showProductPrices && <Price amount={product.price} originalAmount={product.originalPrice} prefix={hasSizeVariants ? "From" : undefined} className="ml-auto flex-wrap justify-end gap-x-1" prefixClassName="editorial-body text-[7px] text-black/50 sm:text-[9px]" amountClassName="editorial-number text-base font-semibold leading-none text-[var(--color-brand-onyx)] sm:text-xl" currencyClassName="editorial-subtitle text-[8px] uppercase text-black/45 sm:text-[10px]" originalClassName="editorial-body text-[8px] text-black/30 sm:text-[10px]" />}
                 </div>
                 {showProductPrices && <div className="mt-2.5 flex items-stretch gap-2 sm:mt-3">
-                    {cartQuantity > 0 && <div className="flex h-8 w-[42%] min-w-0 items-center rounded-full border border-black/10 px-0.5 sm:h-10 sm:px-1">
+                    {cartQuantity > 0 && <div className="hidden h-8 w-[42%] min-w-0 items-center rounded-[10px] border border-black/10 px-0.5 sm:flex sm:h-10 sm:rounded-xl sm:px-1">
                         <button type="button" onClick={() => changeQuantity(-1)} className="flex h-full flex-1 items-center justify-center text-black/45" aria-label="Decrease quantity"><Minus className="h-3 w-3" /></button>
                         <span className="editorial-ui min-w-3 text-center text-[10px] sm:text-xs">{cartQuantity}</span>
                         <button type="button" onClick={() => changeQuantity(1)} className="flex h-full flex-1 items-center justify-center" aria-label="Increase quantity"><Plus className="h-3 w-3" /></button>
                     </div>}
                     {wishlistMode
-                        ? <button type="button" onClick={removeWishlistItem} className="editorial-ui flex h-8 flex-1 items-center justify-center gap-1 rounded-full bg-[var(--color-brand-purple)] px-2 text-[9px] font-medium text-white transition-opacity hover:opacity-90 sm:h-10 sm:text-xs"><X className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> Remove</button>
-                        : <button type="button" onClick={handleAddToCart} className={`editorial-ui flex h-8 flex-1 items-center justify-center gap-1 rounded-full px-1.5 text-[9px] font-medium text-white transition-opacity sm:h-10 sm:px-2 sm:text-xs ${added ? "bg-emerald-600" : "bg-[var(--color-brand-purple)] hover:opacity-90"}`}><ShoppingCart className="h-3 w-3 sm:h-3.5 sm:w-3.5" /><span className="truncate">{added ? "Added" : "Add to Cart"}</span></button>}
+                        ? <button type="button" onClick={removeWishlistItem} className="editorial-ui flex h-8 flex-1 items-center justify-center gap-1 rounded-[10px] bg-[var(--color-brand-purple)] px-2 text-[9px] font-medium text-white transition-opacity hover:opacity-90 sm:h-10 sm:rounded-xl sm:text-xs"><X className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> Remove</button>
+                        : <button type="button" onClick={handleAddToCart} className={`editorial-ui flex h-8 flex-1 items-center justify-center gap-1 rounded-[10px] px-1.5 text-[9px] font-medium text-white transition-opacity sm:h-10 sm:rounded-xl sm:px-2 sm:text-xs ${added ? "bg-emerald-600" : "bg-[var(--color-brand-purple)] hover:opacity-90"}`}><ShoppingCart className="h-3 w-3 sm:h-3.5 sm:w-3.5" /><span className="truncate">{added ? "Added" : "Add to Cart"}</span></button>}
                 </div>}
             </div>
         </motion.article>
