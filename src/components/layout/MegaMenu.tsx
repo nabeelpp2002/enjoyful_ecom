@@ -39,7 +39,7 @@ export function MegaMenu({ category, subcategories, imageUrl, isOpen, themeColor
                     <div className="px-6 md:px-10 py-5 flex gap-8 items-start">
                         {/* Left: Featured 4:3 Image */}
                         <div className="w-[180px] shrink-0">
-                            <h3 className="font-heading font-medium text-[11px] tracking-widest uppercase text-gray-400 mb-2.5">
+                            <h3 className="editorial-label font-medium text-[11px] tracking-widest uppercase text-gray-400 mb-2.5">
                                 Featured
                             </h3>
                             <div className="relative aspect-[4/3] bg-[var(--color-brand-sand)] rounded-xl overflow-hidden shadow-sm">
@@ -55,7 +55,7 @@ export function MegaMenu({ category, subcategories, imageUrl, isOpen, themeColor
 
                         {/* Right: Content Grid */}
                         <div className="flex-1 border-l border-gray-100 pl-8">
-                            <h3 className="font-heading font-bold text-base text-[var(--color-brand-onyx)] mb-3">
+                            <h3 className="editorial-heading font-bold text-base text-[var(--color-brand-onyx)] mb-3">
                                 Shop {category}
                             </h3>
                             <ul className="columns-2 md:columns-3 gap-8 space-y-2">
@@ -69,7 +69,7 @@ export function MegaMenu({ category, subcategories, imageUrl, isOpen, themeColor
                                     >
                                         <Link
                                             href={subHref(category, sub)}
-                                            className="font-sans text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] hover:font-medium transition-all duration-200 text-[13px] block py-0.5"
+                                            className="editorial-ui text-[var(--color-brand-onyx)]/70 hover:text-[var(--color-brand-purple)] hover:font-medium transition-all duration-200 text-[13px] block py-0.5"
                                         >
                                             {sub}
                                         </Link>
@@ -79,7 +79,7 @@ export function MegaMenu({ category, subcategories, imageUrl, isOpen, themeColor
 
                             <Link
                                 href={`/category/${category.toLowerCase()}`}
-                                className="mt-4 text-[13px] font-sans font-bold text-[var(--color-brand-purple)] hover:text-[var(--color-brand-onyx)] transition-colors inline-flex items-center gap-1 group"
+                                className="mt-4 text-[13px] editorial-ui font-bold text-[var(--color-brand-purple)] hover:text-[var(--color-brand-onyx)] transition-colors inline-flex items-center gap-1 group"
                             >
                                 Browse Collection
                                 <span className="transform group-hover:translate-x-1 transition-transform">→</span>

@@ -16,13 +16,13 @@ export default function BlogPage() {
                 <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Journal" }]} />
 
                 <div className="max-w-2xl mx-auto text-center py-16 md:py-24">
-                    <p className="font-sans text-xs font-semibold text-[var(--color-brand-purple)] tracking-widest uppercase mb-4">
+                    <p className="editorial-label text-xs font-semibold text-[var(--color-brand-purple)] tracking-widest uppercase mb-4">
                         Skincare Journal
                     </p>
-                    <h1 className="font-heading font-bold text-3xl md:text-[44px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.1] mb-5">
+                    <h1 className="editorial-title display-md font-bold text-3xl md:text-[44px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.1] mb-5">
                         Expert guides, coming soon
                     </h1>
-                    <p className="font-sans text-base text-[var(--color-brand-onyx)]/70 leading-relaxed mb-8">
+                    <p className="editorial-body text-base text-[var(--color-brand-onyx)]/70 leading-relaxed mb-8">
                         We&apos;re crafting a journal of practical skincare, body care, baby care and fragrance
                         guides — written for life in the UAE. In the meantime, explore our
                         collections or reach out for personalised routine advice.
@@ -30,13 +30,13 @@ export default function BlogPage() {
                     <div className="flex flex-wrap items-center justify-center gap-3">
                         <Link
                             href="/category/glow"
-                            className="px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-heading font-bold text-sm hover:opacity-90 transition-opacity"
+                            className="px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white editorial-heading font-bold text-sm hover:opacity-90 transition-opacity"
                         >
                             Shop the Collections
                         </Link>
                         <Link
                             href="/contact"
-                            className="px-6 py-3 rounded-full border border-[var(--color-brand-onyx)]/15 text-[var(--color-brand-onyx)] font-heading font-bold text-sm hover:border-[var(--color-brand-onyx)]/40 transition-colors"
+                            className="px-6 py-3 rounded-full border border-[var(--color-brand-onyx)]/15 text-[var(--color-brand-onyx)] editorial-heading font-bold text-sm hover:border-[var(--color-brand-onyx)]/40 transition-colors"
                         >
                             Ask Our Team
                         </Link>

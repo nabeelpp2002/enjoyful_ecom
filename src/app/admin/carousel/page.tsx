@@ -54,7 +54,7 @@ type SlideForm = {
 
 const EMPTY_FORM: SlideForm = {
     title: "", subtitle: "", description: "",
-    buttonText: "Shop Now", buttonLink: "/category/all",
+    buttonText: "", buttonLink: "",
     textColor: "#FFFFFF", buttonStyle: "solid",
     desktopImageUrl: "", mobileImageUrl: "",
 };
@@ -62,11 +62,19 @@ const EMPTY_FORM: SlideForm = {
 const inputCls = "w-full px-4 py-2.5 bg-[#F9F5F0] border border-black/8 rounded-xl text-[#1A1A1B] text-sm placeholder:text-[#1A1A1B]/20 focus:outline-none focus:border-[#735697]/40 focus:bg-white transition-all";
 
 const TEXT_FIELDS = [
-    { key: "title", label: "Title *", placeholder: "Pure Joy", req: true },
+    { key: "title", label: "Title", placeholder: "Optional title", req: false },
     { key: "subtitle", label: "Subtitle", placeholder: "Gentle Care", req: false },
     { key: "description", label: "Description", placeholder: "Short description...", req: false },
-    { key: "buttonText", label: "Button Label", placeholder: "Shop Now", req: false },
-    { key: "buttonLink", label: "Button URL", placeholder: "/category/all", req: false },
+] as const;
+
+const CATEGORY_DESTINATIONS = [
+    { label: "No redirect", value: "" },
+    { label: "Shop All", value: "/category/all" },
+    { label: "Glow", value: "/category/glow" },
+    { label: "Daily", value: "/category/daily" },
+    { label: "Baby", value: "/category/baby" },
+    { label: "Fragrances", value: "/category/fragrances" },
+    { label: "Home Care", value: "/category/home-care" },
 ] as const;
 
 interface UploadDualImagesProps {
@@ -265,6 +273,29 @@ function TextFields({ form, setForm }: { form: SlideForm; setForm: React.Dispatc
                         placeholder={f.placeholder} required={f.req} className={inputCls} />
                 </div>
             ))}
+            <div>
+                <label className="block text-xs text-[#1A1A1B]/40 mb-1">Click destination</label>
+                <select value={form.buttonLink} onChange={e => setForm(p => ({ ...p, buttonLink: e.target.value, buttonText: e.target.value ? p.buttonText : "" }))} className={inputCls}>
+                    {CATEGORY_DESTINATIONS.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+                <p className="mt-1 text-[10px] text-[#1A1A1B]/30">Clicking the slide opens this category. Choose No redirect to disable slide clicks.</p>
+            </div>
+            <label className="flex items-center gap-2 text-xs text-[#1A1A1B]/60">
+                <input
+                    type="checkbox"
+                    checked={Boolean(form.buttonText)}
+                    disabled={!form.buttonLink}
+                    onChange={e => setForm(p => ({ ...p, buttonText: e.target.checked ? "Shop Now" : "" }))}
+                    className="h-4 w-4 accent-[#735697]"
+                />
+                Show button
+            </label>
+            {form.buttonText && form.buttonLink && (
+                <div>
+                    <label className="block text-xs text-[#1A1A1B]/40 mb-1">Button label</label>
+                    <input value={form.buttonText} onChange={e => setForm(p => ({ ...p, buttonText: e.target.value }))} placeholder="Shop Now" className={inputCls} />
+                </div>
+            )}
         </div>
     );
 }
@@ -346,7 +377,7 @@ function SlideFormModal({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         // Validate required fields (allow blob: URLs — upload still in flight)
-        if (!form.desktopImageUrl || !form.mobileImageUrl || !form.title) return;
+        if (!form.desktopImageUrl || !form.mobileImageUrl) return;
         setSaving(true);
         await onSubmit(form);
         setSaving(false);
@@ -376,7 +407,7 @@ function SlideFormModal({
                 )}
                 <div className="flex gap-3 mt-5">
                     <motion.button type="submit"
-                        disabled={isBusy || pendingUpload || !form.desktopImageUrl || !form.mobileImageUrl || !form.title}
+                        disabled={isBusy || pendingUpload || !form.desktopImageUrl || !form.mobileImageUrl}
                         whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}
                         className="flex-1 py-2.5 rounded-xl bg-[#735697] text-white font-semibold text-sm disabled:opacity-40 flex items-center justify-center gap-2">
                         {saving ? <><Loader2 className="w-4 h-4 animate-spin" />Saving...</> : (initialValues ? "Save Changes" : "Add Slide")}
@@ -452,7 +483,7 @@ export default function AdminCarouselPage() {
         <div>
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Carousel Slides</h1>
+                    <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">Carousel Slides</h1>
                     <p className="text-[#1A1A1B]/40 text-xs mt-0.5">{slides.length} slides · desktop &amp; mobile images per slide</p>
                 </div>
                 <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
@@ -477,8 +508,8 @@ export default function AdminCarouselPage() {
                             title: editingSlide.title,
                             subtitle: editingSlide.subtitle || "",
                             description: editingSlide.description || "",
-                            buttonText: editingSlide.buttonText || "Shop Now",
-                            buttonLink: editingSlide.buttonLink || "/category/all",
+                            buttonText: editingSlide.buttonText || "",
+                            buttonLink: editingSlide.buttonLink || "",
                             textColor: editingSlide.textColor || "#FFFFFF",
                             buttonStyle: editingSlide.buttonStyle || "solid",
                             desktopImageUrl: editingSlide.desktopImageUrl || editingSlide.imageUrl || "",
@@ -510,23 +541,25 @@ export default function AdminCarouselPage() {
                                 <div className="flex gap-2 flex-shrink-0">
                                     <div className="relative w-24 aspect-video rounded-lg overflow-hidden bg-[#F9F5F0] border border-black/5">
                                         {desktop ? (
-                                            <Image src={desktop} alt={`${slide.title} desktop`} fill className="object-cover" unoptimized={desktop.startsWith("http")} />
+                                            <Image src={desktop} alt={`${slide.title || "Carousel slide"} desktop`} fill className="object-cover" unoptimized={desktop.startsWith("http")} />
                                         ) : (
                                             <div className="flex items-center justify-center h-full text-[#1A1A1B]/20"><Monitor className="w-4 h-4" /></div>
                                         )}
                                     </div>
                                     <div className="relative w-12 aspect-[3/4] rounded-lg overflow-hidden bg-[#F9F5F0] border border-black/5">
                                         {mobile ? (
-                                            <Image src={mobile} alt={`${slide.title} mobile`} fill className="object-cover" unoptimized={mobile.startsWith("http")} />
+                                            <Image src={mobile} alt={`${slide.title || "Carousel slide"} mobile`} fill className="object-cover" unoptimized={mobile.startsWith("http")} />
                                         ) : (
                                             <div className="flex items-center justify-center h-full text-[#1A1A1B]/20"><Smartphone className="w-3 h-3" /></div>
                                         )}
                                     </div>
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[#1A1A1B] font-semibold text-sm truncate">{slide.title}</p>
+                                    <p className="text-[#1A1A1B] font-semibold text-sm truncate">{slide.title || "Image-only slide"}</p>
                                     {slide.subtitle && <p className="text-[#1A1A1B]/40 text-xs mt-0.5 truncate">{slide.subtitle}</p>}
-                                    <p className="text-[#735697] text-xs mt-1 truncate">{slide.buttonText || "Shop Now"} → {slide.buttonLink}</p>
+                                    <p className="text-[#735697] text-xs mt-1 truncate">
+                                        {slide.buttonLink ? `${slide.buttonText ? `${slide.buttonText} · ` : ""}${CATEGORY_DESTINATIONS.find(option => option.value === slide.buttonLink)?.label || slide.buttonLink}` : "No redirect"}
+                                    </p>
                                 </div>
                                 <div className="flex items-center gap-2 flex-shrink-0">
                                     <button onClick={() => setEditingSlide(slide)}

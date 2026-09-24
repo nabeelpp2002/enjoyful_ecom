@@ -19,7 +19,7 @@ export function BestSellingProducts({ products }: { products: Product[] }) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="font-heading font-extrabold text-2xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
+                        <h2 className="editorial-section-heading display-sm text-2xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
                             Customer Favorites
                         </h2>
                     </motion.div>
@@ -27,7 +27,7 @@ export function BestSellingProducts({ products }: { products: Product[] }) {
 
                 <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pb-8 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-stretch">
                     {products.length === 0 ? (
-                        <div className="w-full col-span-2 lg:col-span-4 py-12 text-center text-gray-500 font-sans">
+                        <div className="w-full col-span-2 lg:col-span-4 py-12 text-center text-gray-500 editorial-body">
                             No customer favorites available at the moment.
                         </div>
                     ) : (
@@ -46,7 +46,7 @@ export function BestSellingProducts({ products }: { products: Product[] }) {
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg>
                             </div>
-                            <span className="font-heading font-bold text-sm text-center text-[var(--color-brand-onyx)]">View All<br />Best Sellers</span>
+                            <span className="editorial-heading font-bold text-sm text-center text-[var(--color-brand-onyx)]">View All<br />Best Sellers</span>
                         </Link>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ export function BestSellingProducts({ products }: { products: Product[] }) {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-center md:mt-12 hidden md:block"
                 >
-                    <Link href="/category/all" className="inline-flex items-center justify-center px-12 py-4 rounded-full border-2 border-[var(--color-brand-purple)] bg-[var(--color-brand-purple)] text-white font-heading font-bold hover:bg-white hover:text-[var(--color-brand-purple)] shadow-[0_8px_20px_rgba(164,136,211,0.25)] transition-all duration-300">
+                    <Link href="/category/all" className="inline-flex items-center justify-center px-12 py-4 rounded-full border-2 border-[var(--color-brand-purple)] bg-[var(--color-brand-purple)] text-white editorial-heading font-bold hover:bg-white hover:text-[var(--color-brand-purple)] shadow-[0_8px_20px_rgba(164,136,211,0.25)] transition-all duration-300">
                         Shop Best Sellers
                     </Link>
                 </motion.div>

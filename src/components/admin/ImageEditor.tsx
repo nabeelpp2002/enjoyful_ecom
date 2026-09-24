@@ -222,7 +222,7 @@ export function ImageEditor({
                     {/* Header */}
                     <div className="flex items-center justify-between px-6 py-4 border-b border-black/5">
                         <div>
-                            <h2 className="text-[#1A1A1B] font-heading font-bold text-base">{title}</h2>
+                            <h2 className="text-[#1A1A1B] editorial-heading font-bold text-base">{title}</h2>
                             <p className="text-[#1A1A1B]/40 text-xs mt-0.5">
                                 {aspect ? `Aspect ratio ${aspect >= 1 ? `${aspect.toFixed(2)}:1` : `1:${(1 / aspect).toFixed(2)}`}` : "Free-form crop"} · Drag to reposition, scroll to zoom
                                 {safeAreaGuide ? " · Align key content inside the safe zones" : ""}

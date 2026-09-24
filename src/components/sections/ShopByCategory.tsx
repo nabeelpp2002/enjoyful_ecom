@@ -50,10 +50,7 @@ export function ShopByCategory() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <p className="mb-4 font-sans font-semibold text-xs md:text-sm text-[var(--color-brand-purple)] tracking-widest uppercase">
-                            Shop by Category
-                        </p>
-                        <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-[var(--color-brand-onyx)] tracking-tight">
+                        <h2 className="editorial-section-heading display-sm text-3xl md:text-5xl text-[var(--color-brand-onyx)] tracking-tight">
                             Shop Your Lifestyle
                         </h2>
                     </motion.div>
@@ -91,7 +88,7 @@ export function ShopByCategory() {
                                     className="flex flex-col flex-grow justify-center px-5 md:px-6 py-6 md:py-7"
                                     style={{ backgroundColor: category.bgColor }}
                                 >
-                                    <h3 className="font-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] truncate leading-tight text-center">
+                                    <h3 className="editorial-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] truncate leading-tight text-center">
                                         {category.name}
                                     </h3>
                                 </div>
@@ -117,10 +114,10 @@ export function ShopByCategory() {
                             </div>
 
                             {/* CTA Text */}
-                            <h3 className="font-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] text-center mb-1">
+                            <h3 className="editorial-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] text-center mb-1">
                                 View All
                             </h3>
-                            <p className="font-sans text-xs md:text-sm text-[var(--color-brand-onyx)]/60 text-center">
+                            <p className="editorial-body text-xs md:text-sm text-[var(--color-brand-onyx)]/60 text-center">
                                 Browse all products
                             </p>
                         </Link>

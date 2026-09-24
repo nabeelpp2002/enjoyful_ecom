@@ -19,7 +19,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="font-heading font-extrabold text-2xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
+                        <h2 className="editorial-section-heading display-sm text-2xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
                             Featured Products
                         </h2>
                     </motion.div>
@@ -28,7 +28,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
                 {/* Products Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pb-8 items-stretch">
                     {products.length === 0 ? (
-                        <div className="col-span-2 lg:col-span-4 py-12 text-center text-gray-500 font-sans">
+                        <div className="col-span-2 lg:col-span-4 py-12 text-center text-gray-500 editorial-body">
                             No featured products available at the moment.
                         </div>
                     ) : (
@@ -48,7 +48,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="flex justify-center w-full mt-8 md:mt-16"
                 >
-                    <Link href="/category/all" className="inline-flex items-center justify-center px-12 py-4 rounded-full border-2 border-[var(--color-brand-onyx)] font-heading font-bold text-[var(--color-brand-onyx)] hover:bg-[var(--color-brand-onyx)] hover:text-white transition-all duration-300">
+                    <Link href="/category/all" className="inline-flex items-center justify-center px-12 py-4 rounded-full border-2 border-[var(--color-brand-onyx)] editorial-heading font-bold text-[var(--color-brand-onyx)] hover:bg-[var(--color-brand-onyx)] hover:text-white transition-all duration-300">
                         View All Products
                     </Link>
                 </motion.div>

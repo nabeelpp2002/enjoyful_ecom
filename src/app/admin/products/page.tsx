@@ -231,7 +231,7 @@ export default function AdminProductsPage() {
         <div>
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Products</h1>
+                    <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">Products</h1>
                     <p className="text-[#1A1A1B]/40 text-xs mt-0.5">{grouped.length} products · {products.length} variants</p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -351,13 +351,13 @@ export default function AdminProductsPage() {
                     <table className="w-full text-sm">
                         <thead>
                             <tr className="border-b border-black/5 bg-[#F9F5F0]/80">
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">Product</th>
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden sm:table-cell">Category</th>
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden lg:table-cell">SKU</th>
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Size / Variants</th>
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">Price</th>
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden lg:table-cell">Promo</th>
-                                <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Status</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">Product</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden sm:table-cell">Category</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden lg:table-cell">SKU</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Size / Variants</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">Price</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden lg:table-cell">Promo</th>
+                                <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Status</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-black/4">

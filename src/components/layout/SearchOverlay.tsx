@@ -126,7 +126,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                                 placeholder="Search products, brands, or categories..."
                                 value={query}
                                 onChange={e => setQuery(e.target.value)}
-                                className="flex-1 text-lg lg:text-xl font-sans text-[var(--color-brand-onyx)] placeholder-gray-400 bg-transparent border-none outline-none px-4 py-2"
+                                className="flex-1 text-lg lg:text-xl editorial-body text-[var(--color-brand-onyx)] placeholder-gray-400 bg-transparent border-none outline-none px-4 py-2"
                             />
                             {loading && <Loader2 className="w-5 h-5 text-[#735697] animate-spin mr-2" />}
                             {query && !loading && (
@@ -180,8 +180,8 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                                                         originalAmount={r.originalPrice}
                                                         layout="stacked"
                                                         className="flex-shrink-0"
-                                                        amountClassName="font-heading font-semibold text-[#1A1A1B] text-[13px]"
-                                                        currencyClassName="font-sans font-medium text-xs text-[#1A1A1B]/55"
+                                                        amountClassName="editorial-number font-semibold text-[#1A1A1B] text-[13px]"
+                                                        currencyClassName="editorial-subtitle text-xs text-[#1A1A1B]/55"
                                                         originalClassName="text-xs text-[#1A1A1B]/30"
                                                     />
                                                 )}

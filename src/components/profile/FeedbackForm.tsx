@@ -41,7 +41,7 @@ export function FeedbackForm({ onDone }: { onDone?: () => void }) {
         return (
             <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-6 flex flex-col items-center text-center">
                 <CheckCircle2 size={32} className="text-emerald-500 mb-2" strokeWidth={1.6} />
-                <p className="font-heading font-bold text-[var(--color-brand-onyx)]">Thank you!</p>
+                <p className="editorial-heading font-bold text-[var(--color-brand-onyx)]">Thank you!</p>
                 <p className="text-sm text-[var(--color-brand-onyx)]/55 mt-0.5">Your feedback has been sent to our team.</p>
             </div>
         );
@@ -86,7 +86,7 @@ export function FeedbackForm({ onDone }: { onDone?: () => void }) {
             <button
                 onClick={submit}
                 disabled={submitting}
-                className="mt-3 flex items-center justify-center gap-2 w-full rounded-xl bg-[var(--color-brand-purple)] py-3 text-white font-sans font-semibold text-[15px] active:scale-[0.98] transition-transform disabled:opacity-60"
+                className="mt-3 flex items-center justify-center gap-2 w-full rounded-xl bg-[var(--color-brand-purple)] py-3 text-white editorial-subtitle font-semibold text-[15px] active:scale-[0.98] transition-transform disabled:opacity-60"
             >
                 {submitting ? <Loader2 size={18} className="animate-spin" /> : <Send size={17} strokeWidth={1.8} />}
                 {submitting ? "Sending…" : "Send feedback"}

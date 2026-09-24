@@ -217,9 +217,9 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
 
         <div className="flex items-center gap-2 text-[var(--color-brand-purple)] mb-2">
           <Sparkles className="w-4 h-4" />
-          <span className="text-xs font-medium tracking-wide uppercase">enJoyful Life</span>
+          <span className="editorial-label text-xs font-medium tracking-wide uppercase">enJoyful Life</span>
         </div>
-        <h2 className="font-heading font-bold text-2xl text-[var(--color-brand-onyx)]">{heading}</h2>
+        <h2 className="editorial-heading font-bold text-2xl text-[var(--color-brand-onyx)]">{heading}</h2>
         <p className="text-sm text-[var(--color-brand-onyx)]/55 mt-1 mb-6">{sub}</p>
 
         {/* Google */}
@@ -233,7 +233,7 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
           )}
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-[10px] tracking-wide uppercase text-gray-400">or</span>
+            <span className="editorial-label text-[10px] tracking-wide uppercase text-gray-400">or</span>
             <div className="flex-1 h-px bg-gray-200" />
           </div>
         </div>

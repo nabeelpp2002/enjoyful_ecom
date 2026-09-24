@@ -86,10 +86,10 @@ export default function Contact() {
                     transition={{ duration: 0.6 }}
                     className="mb-10 sm:mb-16 text-center"
                 >
-                    <h1 className="mb-4 sm:mb-6 font-heading font-extrabold text-[34px] sm:text-[56px] leading-tight text-[var(--color-brand-onyx)] tracking-tight">
+                    <h1 className="mb-4 sm:mb-6 editorial-title display-md font-extrabold text-[34px] sm:text-[56px] leading-tight text-[var(--color-brand-onyx)] tracking-tight">
                         Get in Touch
                     </h1>
-                    <p className="font-sans text-base sm:text-lg text-[var(--color-brand-onyx)]/70 max-w-[600px] mx-auto">
+                    <p className="editorial-body text-base sm:text-lg text-[var(--color-brand-onyx)]/70 max-w-[600px] mx-auto">
                         Have a question or feedback? We'd love to hear from you. Our team is here to help!
                     </p>
                 </motion.div>
@@ -105,12 +105,12 @@ export default function Contact() {
                         <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
                             <Mail size={28} strokeWidth={1.5} />
                         </div>
-                        <h3 className="mb-3 font-heading font-bold text-xl text-[var(--color-brand-onyx)]">
+                        <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
                             Email Us
                         </h3>
                         <a
                             href="mailto:hello@enjoyfullife.com"
-                            className="font-sans text-base text-[var(--color-brand-purple)] hover:underline"
+                            className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
                         >
                             hello@enjoyfullife.com
                         </a>
@@ -120,10 +120,10 @@ export default function Contact() {
                         <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
                             <MessageCircle size={28} strokeWidth={1.5} />
                         </div>
-                        <h3 className="mb-3 font-heading font-bold text-xl text-[var(--color-brand-onyx)]">
+                        <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
                             Live Chat
                         </h3>
-                        <p className="font-sans text-base text-[var(--color-brand-onyx)]/70">
+                        <p className="editorial-body text-base text-[var(--color-brand-onyx)]/70">
                             Mon-Fri, 9am-6pm EST
                         </p>
                     </div>
@@ -132,12 +132,12 @@ export default function Contact() {
                         <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
                             <Phone size={28} strokeWidth={1.5} />
                         </div>
-                        <h3 className="mb-3 font-heading font-bold text-xl text-[var(--color-brand-onyx)]">
+                        <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
                             Call Us
                         </h3>
                         <a
                             href="tel:+1234567890"
-                            className="font-sans text-base text-[var(--color-brand-purple)] hover:underline"
+                            className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
                         >
                             +1 (234) 567-890
                         </a>
@@ -151,7 +151,7 @@ export default function Contact() {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="mb-16 sm:mb-24 max-w-3xl mx-auto rounded-2xl p-6 sm:p-8 md:p-12 bg-white shadow-[0_4px_20px_rgba(26,26,27,0.04)]"
                 >
-                    <h2 className="mb-6 sm:mb-8 text-center font-heading font-bold text-2xl sm:text-[32px] text-[var(--color-brand-onyx)] tracking-tight">
+                    <h2 className="mb-6 sm:mb-8 text-center editorial-section-heading text-2xl sm:text-[32px] text-[var(--color-brand-onyx)] tracking-tight">
                         Send Us a Message
                     </h2>
                     {submitSuccess ? (
@@ -159,8 +159,8 @@ export default function Contact() {
                             <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
                                 <Mail size={28} strokeWidth={1.5} />
                             </div>
-                            <h3 className="mb-3 font-heading font-bold text-2xl text-[var(--color-brand-onyx)]">Message Received!</h3>
-                            <p className="font-sans text-base text-[var(--color-brand-onyx)]/70 max-w-sm mx-auto">
+                            <h3 className="mb-3 editorial-heading font-bold text-2xl text-[var(--color-brand-onyx)]">Message Received!</h3>
+                            <p className="editorial-body text-base text-[var(--color-brand-onyx)]/70 max-w-sm mx-auto">
                                 Thank you for reaching out. Our team will get back to you within 24 hours.
                             </p>
                         </div>
@@ -170,7 +170,7 @@ export default function Contact() {
                                 <div>
                                     <label
                                         htmlFor="name"
-                                        className="block mb-2 font-heading font-bold text-sm text-[var(--color-brand-onyx)]"
+                                        className="block mb-2 editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]"
                                     >
                                         Name
                                     </label>
@@ -180,14 +180,14 @@ export default function Contact() {
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 font-sans text-base transition-shadow"
+                                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 editorial-body text-base transition-shadow"
                                         placeholder="Your name"
                                     />
                                 </div>
                                 <div>
                                     <label
                                         htmlFor="email"
-                                        className="block mb-2 font-heading font-bold text-sm text-[var(--color-brand-onyx)]"
+                                        className="block mb-2 editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]"
                                     >
                                         Email
                                     </label>
@@ -197,7 +197,7 @@ export default function Contact() {
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         required
-                                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 font-sans text-base transition-shadow"
+                                        className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 editorial-body text-base transition-shadow"
                                         placeholder="your@email.com"
                                     />
                                 </div>
@@ -205,7 +205,7 @@ export default function Contact() {
                             <div>
                                 <label
                                     htmlFor="subject"
-                                    className="block mb-2 font-heading font-bold text-sm text-[var(--color-brand-onyx)]"
+                                    className="block mb-2 editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]"
                                 >
                                     Subject
                                 </label>
@@ -215,14 +215,14 @@ export default function Contact() {
                                     value={formData.subject}
                                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                     required
-                                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 font-sans text-base transition-shadow"
+                                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 editorial-body text-base transition-shadow"
                                     placeholder="How can we help?"
                                 />
                             </div>
                             <div>
                                 <label
                                     htmlFor="message"
-                                    className="block mb-2 font-heading font-bold text-sm text-[var(--color-brand-onyx)]"
+                                    className="block mb-2 editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]"
                                 >
                                     Message
                                 </label>
@@ -232,7 +232,7 @@ export default function Contact() {
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     required
                                     rows={6}
-                                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 font-sans text-base resize-none transition-shadow"
+                                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-brand-sand)] border border-[var(--color-brand-onyx)]/10 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)]/20 editorial-body text-base resize-none transition-shadow"
                                     placeholder="Tell us more about your inquiry..."
                                 />
                             </div>
@@ -241,12 +241,12 @@ export default function Contact() {
                                 disabled={isSubmitting}
                                 whileHover={isSubmitting ? {} : { y: -2 }}
                                 whileTap={isSubmitting ? {} : { scale: 0.98 }}
-                                className="w-full py-4 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] font-heading font-bold text-base shadow-[0_8px_20px_rgba(244,180,73,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
+                                className="w-full py-4 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] editorial-heading font-bold text-base shadow-[0_8px_20px_rgba(244,180,73,0.2)] disabled:opacity-60 disabled:cursor-not-allowed"
                             >
                                 {isSubmitting ? "Sending..." : "Send Message"}
                             </motion.button>
                             {submitError && (
-                                <p className="text-center font-sans text-sm text-red-600">
+                                <p className="text-center editorial-body text-sm text-red-600">
                                     {submitError}
                                 </p>
                             )}
@@ -262,7 +262,7 @@ export default function Contact() {
                     transition={{ duration: 0.6 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <h2 className="mb-8 sm:mb-12 text-center font-heading font-bold text-[28px] sm:text-[40px] leading-tight text-[var(--color-brand-onyx)] tracking-tight">
+                    <h2 className="mb-8 sm:mb-12 text-center editorial-section-heading text-[28px] sm:text-[40px] leading-tight text-[var(--color-brand-onyx)] tracking-tight">
                         Frequently Asked Questions
                     </h2>
                     <div className="space-y-4">
@@ -275,7 +275,7 @@ export default function Contact() {
                                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                                     className="w-full px-6 py-6 sm:px-8 flex justify-between items-center text-left focus:outline-none"
                                 >
-                                    <span className="font-heading font-bold text-lg text-[var(--color-brand-onyx)] pr-4">
+                                    <span className="editorial-heading font-bold text-lg text-[var(--color-brand-onyx)] pr-4">
                                         {faq.question}
                                     </span>
                                     {openFaq === index ? (
@@ -293,7 +293,7 @@ export default function Contact() {
                                             transition={{ duration: 0.3 }}
                                             className="px-6 sm:px-8 pb-6"
                                         >
-                                            <p className="font-sans text-base text-[var(--color-brand-onyx)]/80 leading-relaxed">
+                                            <p className="editorial-body text-base text-[var(--color-brand-onyx)]/80 leading-relaxed">
                                                 {faq.answer}
                                             </p>
                                         </motion.div>

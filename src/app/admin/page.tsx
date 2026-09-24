@@ -169,7 +169,7 @@ export default function AdminDashboard() {
         <div>
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Dashboard</h1>
+                    <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">Dashboard</h1>
                     <p className="text-[#1A1A1B]/40 text-sm mt-0.5">Welcome back, Admin.</p>
                 </div>
                 <div className="flex gap-1 bg-white border border-black/5 rounded-xl p-1">

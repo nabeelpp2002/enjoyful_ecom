@@ -2,7 +2,7 @@ import { IsString, IsOptional, IsBoolean, IsNumber, Min } from 'class-validator'
 import { Type } from 'class-transformer';
 
 export class CreateSlideDto {
-  @IsString() title: string;
+  @IsOptional() @IsString() title?: string;
   @IsOptional() @IsString() subtitle?: string;
   @IsOptional() @IsString() description?: string;
   @IsOptional() @IsString() buttonText?: string;

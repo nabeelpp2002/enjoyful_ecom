@@ -45,7 +45,7 @@ export function MobileBottomNav() {
 
     return (
         <>
-            <nav className="fixed bottom-0 left-0 w-full z-50 md:hidden bg-white/95 backdrop-blur-lg border-t border-[var(--color-brand-onyx)]/10 pb-[env(safe-area-inset-bottom)]">
+            <nav className="fixed bottom-0 left-0 w-full z-50 md:hidden bg-white/95 border-t border-[var(--color-brand-onyx)]/10 pb-[env(safe-area-inset-bottom)]">
                 <div className="flex justify-around items-center h-16 px-4">
                     {/* Home */}
                     <Link
@@ -57,7 +57,7 @@ export function MobileBottomNav() {
                             strokeWidth={pathname === "/" ? 2 : 1.5}
                             className={pathname === "/" ? "text-[var(--color-brand-purple)]" : "text-[var(--color-brand-onyx)]/60"}
                         />
-                        <span className={`text-[10px] font-sans ${pathname === "/" ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
+                        <span className={`text-[10px] editorial-ui ${pathname === "/" ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
                             Home
                         </span>
                     </Link>
@@ -73,7 +73,7 @@ export function MobileBottomNav() {
                             strokeWidth={shopOpen ? 2 : 1.5}
                             className={shopOpen ? "text-[var(--color-brand-purple)]" : "text-[var(--color-brand-onyx)]/60"}
                         />
-                        <span className={`text-[10px] font-sans ${shopOpen ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
+                        <span className={`text-[10px] editorial-ui ${shopOpen ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
                             Shop
                         </span>
                     </button>
@@ -95,7 +95,7 @@ export function MobileBottomNav() {
                                 </span>
                             )}
                         </span>
-                        <span className={`text-[10px] font-sans ${isCartActive ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
+                        <span className={`text-[10px] editorial-ui ${isCartActive ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
                             Cart
                         </span>
                     </Link>
@@ -111,7 +111,7 @@ export function MobileBottomNav() {
                             strokeWidth={isProfileActive ? 2 : 1.5}
                             className={isProfileActive ? "text-[var(--color-brand-purple)]" : "text-[var(--color-brand-onyx)]/60"}
                         />
-                        <span className={`text-[10px] font-sans ${isProfileActive ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
+                        <span className={`text-[10px] editorial-ui ${isProfileActive ? "text-[var(--color-brand-purple)] font-semibold" : "text-[var(--color-brand-onyx)]/60"}`}>
                             Profile
                         </span>
                     </button>
@@ -140,7 +140,7 @@ export function MobileBottomNav() {
                             className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[2rem] px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.12)]"
                         >
                             <div className="flex items-center justify-between mb-5">
-                                <h2 className="font-heading font-extrabold text-2xl text-[var(--color-brand-onyx)]">Categories</h2>
+                                <h2 className="editorial-heading font-extrabold text-2xl text-[var(--color-brand-onyx)]">Categories</h2>
                                 <button
                                     onClick={() => setShopOpen(false)}
                                     aria-label="Close"
@@ -157,7 +157,7 @@ export function MobileBottomNav() {
                                 className="flex flex-col items-center justify-center gap-1.5 w-full rounded-2xl bg-[var(--color-brand-sand)] py-4 mb-3 active:scale-[0.98] transition-transform"
                             >
                                 <LayoutGrid size={24} className="text-[var(--color-brand-onyx)]/70" strokeWidth={1.6} />
-                                <span className="font-sans font-medium text-[15px] text-[var(--color-brand-onyx)]">Shop All</span>
+                                <span className="editorial-ui text-[15px] text-[var(--color-brand-onyx)]">Shop All</span>
                             </Link>
 
                             {/* Category grid */}
@@ -170,7 +170,7 @@ export function MobileBottomNav() {
                                         className={`flex flex-col items-center justify-center gap-1.5 rounded-2xl ${cat.bg} py-5 active:scale-[0.98] transition-transform`}
                                     >
                                         <cat.icon size={24} className="text-[var(--color-brand-onyx)]/75" strokeWidth={1.6} />
-                                        <span className="font-sans font-medium text-[15px] text-[var(--color-brand-onyx)]">{cat.name}</span>
+                                        <span className="editorial-ui text-[15px] text-[var(--color-brand-onyx)]">{cat.name}</span>
                                     </Link>
                                 ))}
                             </div>

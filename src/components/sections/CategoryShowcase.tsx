@@ -43,10 +43,10 @@ export function CategoryShowcase() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <p className="mb-4 font-sans font-semibold text-sm text-[var(--color-brand-purple)] tracking-widest uppercase">
+                        <p className="mb-4 editorial-label font-semibold text-sm text-[var(--color-brand-purple)] tracking-widest uppercase">
                             Explore by Category
                         </p>
-                        <h2 className="font-heading font-extrabold text-4xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
+                        <h2 className="editorial-section-heading display-sm text-4xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
                             Shop Your Lifestyle
                         </h2>
                     </motion.div>
@@ -80,10 +80,10 @@ export function CategoryShowcase() {
 
                                 {/* Category Info */}
                                 <div className="p-6 text-center">
-                                    <h3 className="mb-2 font-heading font-bold text-xl text-[var(--color-brand-onyx)]">
+                                    <h3 className="mb-2 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
                                         {category.name}
                                     </h3>
-                                    <p className="font-sans font-normal text-sm text-[var(--color-brand-onyx)]/70">
+                                    <p className="editorial-body font-normal text-sm text-[var(--color-brand-onyx)]/70">
                                         {category.description}
                                     </p>
                                 </div>

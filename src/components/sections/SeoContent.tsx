@@ -56,13 +56,13 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="font-heading font-bold text-2xl md:text-3xl lg:text-[32px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.2] mb-6">
+                        <h2 className="editorial-section-heading display-sm text-2xl md:text-3xl lg:text-[32px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.2] mb-6">
                             {data.heading}
                         </h2>
 
                         {/* First paragraph visible */}
                         {data.paragraphs && data.paragraphs.length > 0 && (
-                            <p className="font-sans text-[15px] md:text-base text-[var(--color-brand-onyx)]/75 leading-relaxed mb-8">
+                            <p className="editorial-body text-[15px] md:text-base text-[var(--color-brand-onyx)]/75 leading-relaxed mb-8">
                                 {data.paragraphs[0]}
                             </p>
                         )}
@@ -81,7 +81,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                         {/* Learn More CTA */}
                         <Link
                             href="/about"
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-sans font-medium text-sm hover:bg-[var(--color-brand-purple)] transition-colors duration-200 group"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white editorial-subtitle text-sm hover:bg-[var(--color-brand-purple)] transition-colors duration-200 group"
                         >
                             Learn Our Story
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -97,13 +97,13 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                             transition={{ duration: 0.6, delay: 0.15 }}
                             >
                             <div className="flex items-center justify-between mb-6 lg:mb-8">
-                                <h3 className="font-heading font-bold text-xl md:text-2xl text-[var(--color-brand-onyx)] tracking-tight">
+                                <h3 className="editorial-heading font-bold text-xl md:text-2xl text-[var(--color-brand-onyx)] tracking-tight">
                                     Quick Questions
                                 </h3>
                                 {hasMoreFaqs && (
                                     <Link
                                         href="/contact"
-                                        className="hidden md:block font-sans text-xs lg:text-sm text-[var(--color-brand-purple)] hover:text-[var(--color-brand-purple)]/80 transition-colors font-medium whitespace-nowrap"
+                                        className="hidden md:block editorial-body text-xs lg:text-sm text-[var(--color-brand-purple)] hover:text-[var(--color-brand-purple)]/80 transition-colors font-medium whitespace-nowrap"
                                     >
                                         View All →
                                     </Link>
@@ -122,7 +122,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                                         className="w-full px-5 py-4 md:py-5 flex justify-between items-start gap-4 text-left focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)] focus:ring-offset-2 rounded-xl"
                                         aria-expanded={faqOpen === i}
                                     >
-                                        <span className="font-heading font-semibold text-[15px] md:text-base text-[var(--color-brand-onyx)] flex-1 leading-snug">
+                                        <span className="editorial-heading font-semibold text-[15px] md:text-base text-[var(--color-brand-onyx)] flex-1 leading-snug">
                                             {f.q}
                                         </span>
                                         {faqOpen === i ? (
@@ -140,7 +140,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                                                 transition={{ duration: 0.25 }}
                                                 className="px-5 pb-4 md:pb-5"
                                             >
-                                                <p className="font-sans text-sm md:text-[15px] text-[var(--color-brand-onyx)]/65 leading-relaxed">
+                                                <p className="editorial-body text-sm md:text-[15px] text-[var(--color-brand-onyx)]/65 leading-relaxed">
                                                     {f.a}
                                                 </p>
                                             </motion.div>
@@ -156,7 +156,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                                     <div>
                                         {data.faqs.slice(FAQ_PREVIEW_COUNT).map((f, i) => (
                                             <div key={FAQ_PREVIEW_COUNT + i} className="mb-6">
-                                                <h4 className="font-heading font-semibold mb-2">{f.q}</h4>
+                                                <h4 className="editorial-heading font-semibold mb-2">{f.q}</h4>
                                                 <p className="text-[var(--color-brand-onyx)]/65">{f.a}</p>
                                             </div>
                                         ))}
@@ -169,7 +169,7 @@ export function SeoContent({ data }: { data?: SeoBlock }) {
                                 <div className="mt-8 md:hidden text-center">
                                     <Link
                                         href="/contact"
-                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[var(--color-brand-onyx)]/20 text-[var(--color-brand-onyx)] font-sans font-medium text-sm hover:border-[var(--color-brand-purple)] hover:text-[var(--color-brand-purple)] transition-all duration-200 group"
+                                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[var(--color-brand-onyx)]/20 text-[var(--color-brand-onyx)] editorial-subtitle text-sm hover:border-[var(--color-brand-purple)] hover:text-[var(--color-brand-purple)] transition-all duration-200 group"
                                     >
                                         Explore All Questions
                                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

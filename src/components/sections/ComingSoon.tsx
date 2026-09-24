@@ -67,8 +67,7 @@ const TypewriterText = ({ text }: { text: string }) => {
     return (
         <div className="absolute bottom-6 sm:bottom-12 pb-6 sm:pb-0 w-full text-center z-30 pointer-events-none px-4">
             <span
-                className="text-[#2b1055] font-semibold text-xs sm:text-sm md:text-base opacity-80 inline-flex items-center"
-                style={{ fontFamily: "'Space Mono', var(--font-open-sans), sans-serif", letterSpacing: "0.15em" }}
+                className="editorial-subtitle text-[#2b1055] font-semibold text-xs sm:text-sm md:text-base opacity-80 inline-flex items-center tracking-[0.15em]"
             >
                 {displayText}
                 <span className="animate-pulse ml-1 font-bold text-[#f7ac16]">|</span>
@@ -126,7 +125,7 @@ export function ComingSoon() {
     ];
 
     return (
-        <div className="fixed inset-0 h-[100dvh] w-full flex flex-col items-center justify-center relative overflow-hidden font-sans text-center bg-[#fdfaff]">
+        <div className="fixed inset-0 h-[100dvh] w-full flex flex-col items-center justify-center relative overflow-hidden editorial-body text-center bg-[#fdfaff]">
             {/* Switched from svh to dvh (dynamic viewport height) to fix Safari bottom bar bleeding issues */}
 
             {/* Background Base with full height to prevent cutoff */}
@@ -188,15 +187,13 @@ export function ComingSoon() {
                     className="text-center w-full flex flex-col items-center mt-[-20px] md:mt-[-40px]" // Pull text closer to larger logo
                 >
                     <h1
-                        className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#2b1055] mb-3 tracking-wider uppercase leading-tight drop-shadow-sm" // Dark deep purple representative text
-                        style={{ fontFamily: "var(--font-montserrat), sans-serif", letterSpacing: "0.1em" }}
+                        className="editorial-title text-2xl sm:text-3xl md:text-4xl text-[#2b1055] mb-3 tracking-wider uppercase leading-tight drop-shadow-sm" // Dark deep purple representative text
                     >
                         Coming Soon
                     </h1>
 
                     <p
-                        className="text-[#2b1055] opacity-90 text-xs sm:text-sm md:text-base font-semibold mb-6 max-w-lg mx-auto" // Dark deep purple representative text
-                        style={{ fontFamily: "'Space Mono', var(--font-open-sans), sans-serif" }}
+                        className="editorial-subtitle text-[#2b1055] opacity-90 text-xs sm:text-sm md:text-base font-semibold mb-6 max-w-lg mx-auto" // Dark deep purple representative text
                     >
                         Be the first to know when we launch and get exclusive updates!
                     </p>
@@ -216,7 +213,7 @@ export function ComingSoon() {
                             <button
                                 type="submit"
                                 disabled={status === 'loading' || status === 'success'}
-                                className="px-5 py-2 rounded-full bg-[#f7ac16] text-[#19181a] font-bold uppercase tracking-wider hover:bg-white hover:text-[#19181a] transition-colors shadow-sm flex-shrink-0 text-xs sm:text-sm border-2 border-[#19181a] disabled:opacity-50"
+                                className="editorial-label px-5 py-2 rounded-full bg-[#f7ac16] text-[#19181a] font-bold uppercase tracking-wider hover:bg-white hover:text-[#19181a] transition-colors shadow-sm flex-shrink-0 text-xs sm:text-sm border-2 border-[#19181a] disabled:opacity-50"
                             >
                                 {status === 'loading' ? 'Sending...' : status === 'success' ? 'Notified' : 'Notify Me'}
                             </button>

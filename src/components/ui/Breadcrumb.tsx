@@ -17,12 +17,12 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                     {item.href ? (
                         <Link
                             href={item.href}
-                            className="font-sans text-sm text-[var(--color-brand-onyx)]/60 transition-opacity duration-200 hover:opacity-100"
+                            className="editorial-ui text-sm text-[var(--color-brand-onyx)]/60 transition-opacity duration-200 hover:opacity-100"
                         >
                             {item.label}
                         </Link>
                     ) : (
-                        <span className="font-sans text-sm text-[var(--color-brand-purple)]">
+                        <span className="editorial-ui text-sm text-[var(--color-brand-purple)]">
                             {item.label}
                         </span>
                     )}

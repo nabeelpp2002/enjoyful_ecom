@@ -94,7 +94,7 @@ export default function AdminOrdersPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Orders</h1>
+          <h1 className="editorial-title text-2xl font-bold text-gray-900">Orders</h1>
           <p className="text-sm text-gray-500 mt-1">{total} total</p>
         </div>
       </div>

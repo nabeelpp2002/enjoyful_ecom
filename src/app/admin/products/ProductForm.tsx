@@ -306,7 +306,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                     <ArrowLeft className="w-5 h-5" />
                 </Link>
                 <div>
-                    <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">
+                    <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">
                         {isEdit ? "Edit Product" : "New Product"}
                     </h1>
                     <p className="text-[#1A1A1B]/40 text-xs mt-0.5">
@@ -319,7 +319,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
             {isEdit && family && siblings.length > 1 && (
                 <div className="mb-6 bg-[#735697]/5 border border-[#735697]/15 rounded-2xl p-4">
                     <div className="flex items-center justify-between mb-2.5">
-                        <span className="text-xs font-semibold text-[#735697] uppercase tracking-wider">
+                        <span className="editorial-label text-xs font-semibold text-[#735697] uppercase tracking-wider">
                             Editing one size of &ldquo;{family}&rdquo; family
                         </span>
                         <Link
@@ -576,7 +576,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                                         <div className="flex items-center justify-between gap-2 mb-1.5">
                                             <label className="text-xs font-semibold text-[#1A1A1B]">{meta.label}</label>
                                             <label className="inline-flex items-center gap-2 cursor-pointer">
-                                                <span className="text-[10px] font-medium text-[#1A1A1B]/45 uppercase tracking-wide">
+                                                <span className="editorial-label text-[10px] font-medium text-[#1A1A1B]/45 uppercase tracking-wide">
                                                     {willShow ? "Showing" : link.url.trim() ? "Hidden" : "—"}
                                                 </span>
                                                 <span className="relative inline-flex items-center">

@@ -240,7 +240,7 @@ export default function AdminProductViewPage() {
                         <ArrowLeft className="w-5 h-5" />
                     </button>
                     <div>
-                        <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">{shortName}</h1>
+                        <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">{shortName}</h1>
                         <p className="text-[#1A1A1B]/40 text-xs mt-0.5">
                             {product.productCode && <span className="mr-2 font-mono">#{product.productCode}</span>}
                             {categoryName}{product.subcategory ? ` · ${product.subcategory}` : ""}
@@ -340,7 +340,7 @@ export default function AdminProductViewPage() {
                 <div className="lg:col-span-2 space-y-4">
                     {/* Core Details */}
                     <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
-                        <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                             <Tag className="w-3.5 h-3.5" /> Basic Info
                         </h2>
                         <div>
@@ -393,7 +393,7 @@ export default function AdminProductViewPage() {
                     {/* SKU & Variants */}
                     <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
                         <div className="flex items-center justify-between mb-3">
-                            <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider flex items-center gap-1.5">
+                            <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider flex items-center gap-1.5">
                                 <Layers className="w-3.5 h-3.5" />
                                 {variants.length > 1 ? `Variants (${variants.length} sizes)` : "Product Code & Size"}
                             </h2>
@@ -410,10 +410,10 @@ export default function AdminProductViewPage() {
                                 <table className="w-full text-sm">
                                     <thead>
                                         <tr className="border-b border-black/5 text-left">
-                                            <th className="py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide">Size</th>
-                                            <th className="py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide">SKU</th>
-                                            <th className="py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide text-right">Price</th>
-                                            <th className="py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide text-center">Status</th>
+                                            <th className="editorial-label py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide">Size</th>
+                                            <th className="editorial-label py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide">SKU</th>
+                                            <th className="editorial-label py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide text-right">Price</th>
+                                            <th className="editorial-label py-2 px-1 text-[10px] font-medium text-[#1A1A1B]/40 uppercase tracking-wide text-center">Status</th>
                                             <th className="py-2 px-1"></th>
                                         </tr>
                                     </thead>
@@ -479,7 +479,7 @@ export default function AdminProductViewPage() {
 
                     {/* Pricing */}
                     <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
-                        <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                             <BarChart2 className="w-3.5 h-3.5" /> Pricing
                         </h2>
                         <div>
@@ -517,7 +517,7 @@ export default function AdminProductViewPage() {
                     {/* Description */}
                     {product.description && (
                         <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
-                            <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3">Description</h2>
+                            <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3">Description</h2>
                             <p className="text-sm text-[#1A1A1B]/70 leading-relaxed">{product.description}</p>
                         </div>
                     )}
@@ -525,7 +525,7 @@ export default function AdminProductViewPage() {
                     {/* Benefits */}
                     {product.benefits && product.benefits.length > 0 && (
                         <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
-                            <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3">Key Benefits</h2>
+                            <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3">Key Benefits</h2>
                             <ul className="space-y-1.5">
                                 {product.benefits.map((b, i) => (
                                     <li key={i} className="text-sm text-[#1A1A1B]/70 flex gap-2">

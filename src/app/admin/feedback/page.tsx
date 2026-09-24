@@ -134,7 +134,7 @@ export default function AdminFeedbackPage() {
     return (
         <div>
             <div className="mb-6">
-                <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Customer Feedback</h1>
+                <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">Customer Feedback</h1>
                 <p className="text-[#1A1A1B]/40 text-xs mt-0.5">
                     {data ? `${data.stats.total} total · ${data.stats.new} new · ${data.stats.read} read · ${data.stats.archived} archived` : "Loading…"}
                 </p>

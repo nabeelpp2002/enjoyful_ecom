@@ -38,10 +38,10 @@ export function FeaturesSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="mb-4 font-heading font-extrabold text-4xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
+                        <h2 className="mb-4 editorial-section-heading display-sm text-4xl md:text-[48px] text-[var(--color-brand-onyx)] tracking-tight">
                             Why Choose enJoyful Life
                         </h2>
-                        <p className="font-sans font-normal text-lg text-[var(--color-brand-onyx)]/70 max-w-[600px] mx-auto">
+                        <p className="editorial-body font-normal text-lg text-[var(--color-brand-onyx)]/70 max-w-[600px] mx-auto">
                             We believe in creating products that are good for you and good for the earth
                         </p>
                     </motion.div>
@@ -69,10 +69,10 @@ export function FeaturesSection() {
                                 </motion.div>
 
                                 {/* Feature Content */}
-                                <h3 className="mb-2 sm:mb-3 font-heading font-bold text-sm sm:text-xl text-[var(--color-brand-onyx)]">
+                                <h3 className="mb-2 sm:mb-3 editorial-heading font-bold text-sm sm:text-xl text-[var(--color-brand-onyx)]">
                                     {feature.title}
                                 </h3>
-                                <p className="font-sans font-normal text-xs sm:text-[15px] text-[var(--color-brand-onyx)]/70 leading-relaxed max-w-[250px]">
+                                <p className="editorial-body font-normal text-xs sm:text-[15px] text-[var(--color-brand-onyx)]/70 leading-relaxed max-w-[250px]">
                                     {feature.description}
                                 </p>
                             </motion.div>

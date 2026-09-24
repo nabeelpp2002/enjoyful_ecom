@@ -171,7 +171,7 @@ export default function AdminBannersPage() {
     return (
         <div>
             <div className="mb-6">
-                <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Category Banners</h1>
+                <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">Category Banners</h1>
                 <p className="text-[#1A1A1B]/40 text-xs mt-0.5">Desktop and mobile banners per category</p>
             </div>
 

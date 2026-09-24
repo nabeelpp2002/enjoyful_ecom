@@ -104,7 +104,7 @@ export function EmptyState({ variant, title, description, ctaLabel, ctaHref }: E
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="font-heading font-bold text-xl sm:text-2xl text-[var(--color-brand-onyx)] tracking-tight mb-2"
+                className="editorial-heading font-bold text-xl sm:text-2xl text-[var(--color-brand-onyx)] tracking-tight mb-2"
             >
                 {title}
             </motion.h2>
@@ -113,7 +113,7 @@ export function EmptyState({ variant, title, description, ctaLabel, ctaHref }: E
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.28 }}
-                className="font-sans text-sm text-[var(--color-brand-onyx)]/55 max-w-[260px] leading-relaxed mb-8"
+                className="editorial-body text-sm text-[var(--color-brand-onyx)]/55 max-w-[260px] leading-relaxed mb-8"
             >
                 {description}
             </motion.p>
@@ -127,7 +127,7 @@ export function EmptyState({ variant, title, description, ctaLabel, ctaHref }: E
                     <motion.span
                         whileHover={{ y: -2, boxShadow: "0 12px 28px rgba(244,180,73,0.35)" }}
                         whileTap={{ scale: 0.97 }}
-                        className="inline-block px-8 py-3.5 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] font-heading font-bold text-sm sm:text-base shadow-[0_6px_18px_rgba(244,180,73,0.25)] transition-shadow"
+                        className="inline-block px-8 py-3.5 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] editorial-heading font-bold text-sm sm:text-base shadow-[0_6px_18px_rgba(244,180,73,0.25)] transition-shadow"
                     >
                         {ctaLabel}
                     </motion.span>

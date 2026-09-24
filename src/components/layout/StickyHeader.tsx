@@ -61,6 +61,8 @@ export function StickyHeader() {
     const [searchQuery, setSearchQuery] = useState("");
     const searchInputRef = useRef<HTMLInputElement>(null);
     const mobileSearchInputRef = useRef<HTMLInputElement>(null);
+    const hasSearchInteractionRef = useRef(false);
+    const lastSearchUrlRef = useRef("");
     const pathname = usePathname();
     const router = useRouter();
     const isHomePage = pathname === "/";
@@ -101,41 +103,54 @@ export function StickyHeader() {
 
     useEffect(() => {
         if (isSearchOpen) {
-            setTimeout(() => {
+            const focusTimer = window.setTimeout(() => {
                 const isDesktop = window.matchMedia("(min-width: 768px)").matches;
                 (isDesktop ? searchInputRef.current : mobileSearchInputRef.current)?.focus();
             }, 100);
+            return () => window.clearTimeout(focusTimer);
         } else {
             setSearchQuery("");
+            hasSearchInteractionRef.current = false;
+            lastSearchUrlRef.current = "";
         }
     }, [isSearchOpen]);
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const val = e.target.value;
-        const isFirstType = searchQuery === "" && val !== "";
-        setSearchQuery(val);
-
-        const targetUrl = val.trim() ? `/category/all?q=${encodeURIComponent(val.trim())}` : `/category/all`;
-
-        if (isFirstType && !pathname.includes('/category/all')) {
-            router.push(targetUrl);
-        } else {
-            router.replace(targetUrl);
-        }
+        hasSearchInteractionRef.current = true;
+        setSearchQuery(e.target.value);
     };
 
-    const isTransparent = false;
+    // Avoid a full App Router navigation and product request for every keystroke.
+    // The short delay also lets fast typing coalesce into a single database query.
+    useEffect(() => {
+        if (!isSearchOpen || !hasSearchInteractionRef.current) return;
+
+        const searchTimer = window.setTimeout(() => {
+            const query = searchQuery.trim();
+            const targetUrl = query
+                ? `/category/all?q=${encodeURIComponent(query)}`
+                : "/category/all";
+            if (lastSearchUrlRef.current === targetUrl) return;
+            lastSearchUrlRef.current = targetUrl;
+
+            if (!pathname.startsWith("/category/all")) router.push(targetUrl);
+            else router.replace(targetUrl);
+        }, 300);
+
+        return () => window.clearTimeout(searchTimer);
+    }, [isSearchOpen, pathname, router, searchQuery]);
 
     // Determine if the header should act floating (only on home page when not scrolled)
     const shouldFloat = isHomePage && !scrolled;
+    const isTransparent = false;
 
     // Set dynamic classes based on scroll state
-    const headerBg = !shouldFloat ? "bg-white/70 backdrop-blur-md shadow-sm border-b border-gray-100" : "bg-white shadow-[0_4px_30px_rgba(26,26,27,0.06)]";
+    const headerBg = !shouldFloat ? "bg-white/95 md:bg-white/70 md:backdrop-blur-md shadow-sm border-b border-gray-100" : "bg-white shadow-[0_4px_30px_rgba(26,26,27,0.06)]";
     const headerWrapperClasses = !shouldFloat
         ? "top-0 inset-x-0 w-full rounded-none"
         : "top-4 inset-x-4 max-w-7xl mx-auto rounded-[1rem] border border-gray-100";
 
-    const textColor = "text-[var(--color-brand-onyx)] font-sans font-medium text-sm";
+    const textColor = "text-[var(--color-brand-onyx)] editorial-ui text-sm";
     const iconColor = "text-[var(--color-brand-onyx)] hover:text-[var(--color-brand-purple)] bg-transparent";
     const logoSrc = "/assets/Enjoyful_logo_transparent.png";
 

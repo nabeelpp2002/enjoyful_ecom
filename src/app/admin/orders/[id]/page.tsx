@@ -154,7 +154,7 @@ export default function OrderDetailPage() {
 
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="editorial-title text-2xl font-bold text-gray-900">
             Order #{order.orderNumber ?? order._id.slice(-8).toUpperCase()}
           </h1>
           <p className="text-sm text-gray-500 mt-1">{formatDate(order.createdAt)}</p>

@@ -145,7 +145,7 @@ export default function AdminUsersPage() {
     return (
         <div>
             <div className="mb-6">
-                <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">Users</h1>
+                <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">Users</h1>
                 <p className="text-[#1A1A1B]/40 text-xs mt-0.5">
                     {data ? `${data.meta.total} total registered` : "Loading…"}
                 </p>
@@ -161,7 +161,7 @@ export default function AdminUsersPage() {
                             <div className={`w-9 h-9 rounded-xl ${card.bg} flex items-center justify-center mb-2`}>
                                 <Icon className={`w-4 h-4 ${card.color}`} />
                             </div>
-                            <p className="text-2xl font-heading font-bold text-[#1A1A1B] tabular-nums">{value}</p>
+                            <p className="text-2xl editorial-number font-bold text-[#1A1A1B] tabular-nums">{value}</p>
                             <p className="text-[#1A1A1B]/40 text-xs mt-0.5">{card.label}</p>
                         </div>
                     );
@@ -213,13 +213,13 @@ export default function AdminUsersPage() {
                         <table className="w-full text-sm">
                             <thead>
                                 <tr className="border-b border-black/5 bg-[#F9F5F0]/80">
-                                    <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">User</th>
-                                    <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Providers</th>
-                                    <th className="text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden sm:table-cell">Orders</th>
-                                    <th className="text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden sm:table-cell">Spent</th>
-                                    <th className="text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden lg:table-cell">Reviews</th>
-                                    <th className="text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Joined</th>
-                                    <th className="text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">Status</th>
+                                    <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">User</th>
+                                    <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Providers</th>
+                                    <th className="editorial-label text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden sm:table-cell">Orders</th>
+                                    <th className="editorial-label text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden sm:table-cell">Spent</th>
+                                    <th className="editorial-label text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden lg:table-cell">Reviews</th>
+                                    <th className="editorial-label text-left px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide hidden md:table-cell">Joined</th>
+                                    <th className="editorial-label text-right px-5 py-3.5 text-[#1A1A1B]/40 font-medium text-xs uppercase tracking-wide">Status</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-black/4">

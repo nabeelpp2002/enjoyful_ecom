@@ -72,7 +72,7 @@ export default function OrdersPage() {
             <div className="max-w-4xl mx-auto px-4 md:px-8 pt-8 pb-40 md:pb-16">
                 <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "My Orders" }]} />
 
-                <h1 className="font-heading font-bold text-2xl md:text-3xl text-[var(--color-brand-onyx)] tracking-tight mt-4 mb-6">
+                <h1 className="editorial-title display-md font-bold text-2xl md:text-3xl text-[var(--color-brand-onyx)] tracking-tight mt-4 mb-6">
                     My Orders
                 </h1>
 
@@ -83,11 +83,11 @@ export default function OrdersPage() {
                 ) : needsAuth ? (
                     <div className="bg-white rounded-2xl border border-[var(--color-brand-onyx)]/5 shadow-sm py-16 px-6 text-center">
                         <Package className="w-10 h-10 text-[var(--color-brand-onyx)]/15 mx-auto mb-4" />
-                        <p className="font-heading font-bold text-lg text-[var(--color-brand-onyx)] mb-1">Sign in to view your orders</p>
-                        <p className="font-sans text-sm text-[var(--color-brand-onyx)]/55 mb-6 max-w-sm mx-auto">
+                        <p className="editorial-heading font-bold text-lg text-[var(--color-brand-onyx)] mb-1">Sign in to view your orders</p>
+                        <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/55 mb-6 max-w-sm mx-auto">
                             Use the account icon in the header to sign in, then your order history will appear here.
                         </p>
-                        <Link href="/" className="inline-block px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-heading font-bold text-sm hover:opacity-90 transition-opacity">
+                        <Link href="/" className="inline-block px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white editorial-heading font-bold text-sm hover:opacity-90 transition-opacity">
                             Continue Shopping
                         </Link>
                     </div>
@@ -98,14 +98,14 @@ export default function OrdersPage() {
                                 {/* Order header */}
                                 <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-[var(--color-brand-onyx)]/5 bg-[var(--color-brand-sand)]/40">
                                     <div>
-                                        <p className="font-heading font-bold text-sm text-[var(--color-brand-onyx)]">{order.orderNumber}</p>
-                                        <p className="font-sans text-xs text-[var(--color-brand-onyx)]/45">{formatDate(order.createdAt)}</p>
+                                        <p className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]">{order.orderNumber}</p>
+                                        <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/45">{formatDate(order.createdAt)}</p>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <span className={`px-3 py-1 rounded-full text-[11px] font-semibold border capitalize ${STATUS_STYLE[order.status] ?? "bg-gray-50 text-gray-500 border-gray-100"}`}>
                                             {order.status}
                                         </span>
-                                        <span className="font-heading font-bold text-sm text-[var(--color-brand-onyx)]">{formatPrice(order.total) ?? order.total} AED</span>
+                                        <span className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)]">{formatPrice(order.total) ?? order.total} AED</span>
                                     </div>
                                 </div>
                                 {/* Items */}
@@ -120,12 +120,12 @@ export default function OrdersPage() {
                                                 )}
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <p className="font-sans text-sm font-medium text-[var(--color-brand-onyx)] line-clamp-1">{item.name}</p>
-                                                <p className="font-sans text-xs text-[var(--color-brand-onyx)]/45">
+                                                <p className="editorial-body text-sm font-medium text-[var(--color-brand-onyx)] line-clamp-1">{item.name}</p>
+                                                <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/45">
                                                     {item.size ? `${item.size} · ` : ""}Qty {item.quantity}
                                                 </p>
                                             </div>
-                                            <span className="font-sans text-sm font-semibold text-[var(--color-brand-onyx)]/80">{(() => { const t = item.subtotal ?? item.price * item.quantity; return formatPrice(t) ?? t; })()} AED</span>
+                                            <span className="editorial-body text-sm font-semibold text-[var(--color-brand-onyx)]/80">{(() => { const t = item.subtotal ?? item.price * item.quantity; return formatPrice(t) ?? t; })()} AED</span>
                                         </div>
                                     ))}
                                 </div>
@@ -135,9 +135,9 @@ export default function OrdersPage() {
                 ) : (
                     <div className="bg-white rounded-2xl border border-[var(--color-brand-onyx)]/5 shadow-sm py-16 px-6 text-center">
                         <ShoppingBag className="w-10 h-10 text-[var(--color-brand-onyx)]/15 mx-auto mb-4" />
-                        <p className="font-heading font-bold text-lg text-[var(--color-brand-onyx)] mb-1">No orders yet</p>
-                        <p className="font-sans text-sm text-[var(--color-brand-onyx)]/55 mb-6">When you place an order, it will show up here.</p>
-                        <Link href="/category/all" className="inline-block px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-heading font-bold text-sm hover:opacity-90 transition-opacity">
+                        <p className="editorial-heading font-bold text-lg text-[var(--color-brand-onyx)] mb-1">No orders yet</p>
+                        <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/55 mb-6">When you place an order, it will show up here.</p>
+                        <Link href="/category/all" className="inline-block px-6 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white editorial-heading font-bold text-sm hover:opacity-90 transition-opacity">
                             Start Shopping
                         </Link>
                     </div>

@@ -22,13 +22,13 @@ export function NewsletterSection() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
                             >
-                                <p className="mb-4 font-sans font-semibold text-sm text-white tracking-widest uppercase opacity-90">
+                                <p className="mb-4 editorial-label font-semibold text-sm text-white tracking-widest uppercase opacity-90">
                                     Stay Connected
                                 </p>
-                                <h2 className="mb-6 font-heading font-extrabold text-4xl md:text-[48px] text-white leading-[1.1] tracking-tight">
+                                <h2 className="mb-6 editorial-section-heading display-sm text-4xl md:text-[48px] text-white leading-[1.1] tracking-tight">
                                     Join Our Community
                                 </h2>
-                                <p className="mb-10 font-sans font-normal text-lg text-white/90 leading-relaxed max-w-[450px]">
+                                <p className="mb-10 editorial-body font-normal text-lg text-white/90 leading-relaxed max-w-[450px]">
                                     Subscribe to get special offers, free giveaways, and exclusive updates on new products.
                                 </p>
 
@@ -37,12 +37,12 @@ export function NewsletterSection() {
                                     <input
                                         type="email"
                                         placeholder="Enter your email"
-                                        className="flex-1 px-6 py-4 rounded-full focus:outline-none font-sans text-base bg-white text-[var(--color-brand-onyx)] placeholder:text-[var(--color-brand-onyx)]/50 focus:ring-2 focus:ring-[var(--color-brand-mustard)]/50"
+                                        className="flex-1 px-6 py-4 rounded-full focus:outline-none editorial-body text-base bg-white text-[var(--color-brand-onyx)] placeholder:text-[var(--color-brand-onyx)]/50 focus:ring-2 focus:ring-[var(--color-brand-mustard)]/50"
                                     />
                                     <motion.button
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="px-10 py-4 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] font-heading font-bold text-base whitespace-nowrap shadow-[0_4px_14px_rgba(244,180,73,0.3)] transition-shadow hover:shadow-[0_6px_20px_rgba(244,180,73,0.4)]"
+                                        className="px-10 py-4 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] editorial-heading font-bold text-base whitespace-nowrap shadow-[0_4px_14px_rgba(244,180,73,0.3)] transition-shadow hover:shadow-[0_6px_20px_rgba(244,180,73,0.4)]"
                                     >
                                         Subscribe
                                     </motion.button>

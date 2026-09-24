@@ -60,7 +60,7 @@ export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
                 <button onClick={onClose} className="absolute left-4 p-2 text-[var(--color-brand-onyx)] hover:bg-gray-100 rounded-full transition-colors flex items-center justify-center">
                     <X size={22} strokeWidth={1.5} />
                 </button>
-                <h2 className="font-heading font-bold text-lg text-[var(--color-brand-onyx)]">Share</h2>
+                <h2 className="editorial-heading font-bold text-lg text-[var(--color-brand-onyx)]">Share</h2>
             </div>
 
             <div className="bg-white m-4 mb-2 rounded-[1rem] p-3 flex items-center gap-4 shadow-sm border border-gray-100">
@@ -68,14 +68,14 @@ export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
                     <Image src={product.image} alt={product.name} fill className="object-contain" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <h3 className="font-heading font-semibold text-[var(--color-brand-onyx)] line-clamp-1 text-sm">{product.name}</h3>
+                    <h3 className="editorial-heading font-semibold text-[var(--color-brand-onyx)] line-clamp-1 text-sm">{product.name}</h3>
                     {showProductPrices && (
                         <Price
                             amount={product.price}
                             reserveSpace={false}
                             className="mt-1"
-                            amountClassName="font-sans text-xs text-[var(--color-brand-purple)] font-medium"
-                            currencyClassName="font-sans text-xs text-[var(--color-brand-purple)] font-medium"
+                            amountClassName="editorial-body text-xs text-[var(--color-brand-purple)] font-medium"
+                            currencyClassName="editorial-body text-xs text-[var(--color-brand-purple)] font-medium"
                         />
                     )}
                 </div>
@@ -90,7 +90,7 @@ export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
                         >
                             {option.icon}
                         </button>
-                        <span className="font-sans text-[11px] text-[var(--color-brand-onyx)]/70 font-medium whitespace-nowrap">
+                        <span className="editorial-body text-[11px] text-[var(--color-brand-onyx)]/70 font-medium whitespace-nowrap">
                             {option.name}
                         </span>
                     </div>

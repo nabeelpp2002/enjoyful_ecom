@@ -1,12 +1,11 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, X } from "lucide-react";
+import { Heart, Minus, Plus, ShoppingCart, X } from "lucide-react";
 import { useData } from "@/context/DataContext";
-import { AddToCartButton } from "@/components/ui/AddToCartButton";
 import { Price } from "@/components/ui/Price";
 import { track } from "@/lib/analytics";
 import type { Product } from "@/data/products";
@@ -14,212 +13,80 @@ import type { Product } from "@/data/products";
 interface ProductCardProps {
     product: Product;
     index?: number;
-    /** When true, replaces wishlist toggle with a Remove button — used on /wishlist */
     wishlistMode?: boolean;
-    /** Animation type: "inView" for section grids, "animate" for page mounts */
     animateType?: "inView" | "animate";
 }
 
-export const ProductCard = memo(function ProductCard({
-    product,
-    index = 0,
-    wishlistMode = false,
-    animateType = "inView",
-}: ProductCardProps) {
-    const { addToWishlist, removeFromWishlist, isInWishlist, showProductPrices } = useData();
-
+export const ProductCard = memo(function ProductCard({ product, index = 0, wishlistMode = false, animateType = "inView" }: ProductCardProps) {
+    const { cart, addToCart, updateCartQuantity, addToWishlist, removeFromWishlist, isInWishlist, showProductPrices } = useData();
+    const [added, setAdded] = useState(false);
     const inWishlist = isInWishlist(product.id);
-    const availableSizes = [...new Set((product.availableSizes ?? []).map((size) => size.trim()).filter(Boolean))];
+    const cartQuantity = cart.find(item => item.product.id === product.id)?.quantity ?? 0;
+    const availableSizes = [...new Set((product.availableSizes ?? []).map(size => size.trim()).filter(Boolean))];
     const hasSizeVariants = (product.variantCount ?? availableSizes.length) > 1 && availableSizes.length > 1;
     const listingSizeLabel = hasSizeVariants ? availableSizes.join(" · ") : product.size;
+    const mainImage = product.images?.[1] || product.images?.[0] || "/assets/placeholder.png";
+    const hoverImage = product.images?.find(image => image && image !== mainImage) || (product.hoverImage && product.hoverImage !== mainImage ? product.hoverImage : undefined) || mainImage;
+    const productHref = `/product/${product.productFamily || product.slug || product.id}`;
+    const badge = product.isFeatured ? "FEATURED" : showProductPrices && product.onSale ? "SALE" : showProductPrices && product.discountPct && product.discountPct > 0 ? `${product.discountPct}% OFF` : null;
 
-    // List-view images: primary photo + a DISTINCT alternate on hover when the
-    // product has more than one image (falls back to the primary so single-image
-    // products still render). Deterministic on purpose — a Math.random pick would
-    // differ between server and client render and break hydration.
-    const PLACEHOLDER = "/assets/placeholder.png";
-    const mainImage = product.images?.[1] || product.images?.[0] || PLACEHOLDER;
-    const hoverImage =
-        product.images?.find((img) => img && img !== mainImage) ||
-        (product.hoverImage && product.hoverImage !== mainImage ? product.hoverImage : undefined) ||
-        mainImage;
-
-    const toggleWishlist = (e: React.MouseEvent) => {
-        e.preventDefault();
-        if (inWishlist) {
-            removeFromWishlist(product.id);
-        } else {
+    const toggleWishlist = (event: React.MouseEvent) => {
+        event.preventDefault();
+        if (inWishlist) removeFromWishlist(product.id);
+        else {
             addToWishlist(product);
             track({ type: "add_to_wishlist", productId: product.id, productName: product.name });
         }
     };
-
-    const removeWishlistItem = (e: React.MouseEvent) => {
-        e.preventDefault();
+    const removeWishlistItem = (event: React.MouseEvent) => {
+        event.preventDefault();
         removeFromWishlist(product.id);
     };
-
+    const handleAddToCart = (event: React.MouseEvent) => {
+        event.preventDefault();
+        addToCart(product, 1);
+        track({ type: "add_to_cart", productId: product.id, productName: product.name, metadata: { quantity: 1, price: product.price } });
+        setAdded(true);
+        window.setTimeout(() => setAdded(false), 1600);
+    };
+    const changeQuantity = (change: number) => {
+        if (cartQuantity > 0) updateCartQuantity(product.id, Math.max(1, cartQuantity + change));
+    };
     const animProps = animateType === "inView"
-        ? {
-            initial: { opacity: 0, y: 30 },
-            whileInView: { opacity: 1, y: 0 },
-            viewport: { once: true },
-            transition: { duration: 0.5, delay: index * 0.08 },
-        }
-        : {
-            initial: { opacity: 0, y: 30 },
-            animate: { opacity: 1, y: 0 },
-            transition: { duration: 0.4, delay: index * 0.05 },
-        };
+        ? { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.4, delay: index * 0.05 } }
+        : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.35, delay: index * 0.04 } };
 
     return (
-        <motion.div initial="initial" whileHover="hover" className="group h-full">
-            <motion.div
-                {...animProps}
-                className="flex flex-col h-full bg-white rounded-[1.5rem] p-1 md:p-3 shadow-sm relative"
-            >
-                {/* Image Area */}
-                <div className="relative pt-[100%] rounded-[1.25rem] bg-gray-50 flex-shrink-0 group/image">
-                    {/* Wishlist / Remove button */}
-                    <div className="absolute top-4 inset-x-4 z-30 flex justify-end items-start pointer-events-none">
-                        {wishlistMode ? (
-                            <button
-                                onClick={removeWishlistItem}
-                                className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-[var(--color-brand-onyx)] hover:bg-white hover:text-red-500 transition-colors shadow-sm pointer-events-auto"
-                                aria-label="Remove from wishlist"
-                            >
-                                <Heart className="w-3 h-3 sm:w-4 sm:h-4 fill-red-500 text-red-500" />
-                            </button>
-                        ) : (
-                            <button
-                                onClick={toggleWishlist}
-                                className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-[var(--color-brand-onyx)] hover:bg-white hover:text-red-500 transition-colors shadow-sm pointer-events-auto"
-                                aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
-                            >
-                                <Heart className={`w-3 h-3 sm:w-4 sm:h-4 transition-colors ${inWishlist ? "fill-red-500 text-red-500" : ""}`} />
-                            </button>
-                        )}
-                    </div>
+        <motion.article {...animProps} initial="initial" whileHover="hover" className="group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-white shadow-[0_10px_28px_rgba(31,25,18,0.09)] sm:rounded-[1.5rem]">
+            <div className="relative aspect-[1.08/1] min-h-0 overflow-hidden bg-[#f2eee8]">
+                <Link href={productHref} onClick={() => track({ type: "product_click", productId: product.id, productName: product.name })} className="absolute inset-0">
+                    <Image src={mainImage} alt={product.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" priority={index < 4} />
+                    {hoverImage !== mainImage && <motion.div variants={{ initial: { opacity: 0 }, hover: { opacity: 1 } }} transition={{ duration: 0.35 }} className="absolute inset-0 hidden bg-[#f2eee8] sm:block"><Image src={hoverImage} alt={`${product.name} alternate view`} fill sizes="25vw" className="object-cover" /></motion.div>}
+                </Link>
+                {badge && <span className={`editorial-ui absolute left-3 top-3 z-20 rounded-full px-3 py-1 text-[8px] font-semibold tracking-wide sm:left-4 sm:top-4 sm:px-4 sm:py-1.5 sm:text-[10px] ${product.isFeatured ? "bg-[var(--color-brand-mustard)]/50 text-[var(--color-brand-onyx)] backdrop-blur-[4px] shadow-sm" : "bg-[#a9342f] text-white"}`}>{badge}</span>}
+                <button type="button" onClick={wishlistMode ? removeWishlistItem : toggleWishlist} className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[var(--color-brand-onyx)] shadow-sm transition-transform hover:scale-105 sm:right-4 sm:top-4 sm:h-10 sm:w-10" aria-label={wishlistMode ? "Remove from wishlist" : inWishlist ? "Remove from wishlist" : "Add to wishlist"}>
+                    {wishlistMode ? <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> : <Heart className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${inWishlist ? "fill-red-500 text-red-500" : ""}`} />}
+                </button>
+            </div>
 
-                    {/* Promo / discount badges (stacked) */}
-                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-30 pointer-events-none flex flex-col items-start gap-1">
-                        {showProductPrices && product.discountPct && product.discountPct > 0 ? (
-                            <span className="bg-[#F6DE7F] text-[var(--color-brand-onyx)] font-bold text-[9px] sm:text-[11px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-sm whitespace-nowrap">
-                                {product.discountPct}% OFF
-                            </span>
-                        ) : null}
-                        {showProductPrices && product.onSale && (
-                            <span className="bg-red-500 text-white font-bold text-[9px] sm:text-[11px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-sm whitespace-nowrap">
-                                SALE
-                            </span>
-                        )}
-                        {product.isFeatured && (
-                            <span className="bg-[var(--color-brand-onyx)] text-white font-bold text-[9px] sm:text-[11px] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-sm whitespace-nowrap">
-                                FEATURED
-                            </span>
-                        )}
-                    </div>
-
-                    {/* Image Link */}
-                    <Link
-                        href={`/product/${product.productFamily || product.slug || product.id}`}
-                        onClick={() => track({ type: "product_click", productId: product.id, productName: product.name })}
-                        className="block absolute inset-0 cursor-pointer overflow-hidden rounded-[1.25rem]"
-                    >
-                        <div className="relative w-full h-full">
-                            {/* Primary Image */}
-                            <Image
-                                src={mainImage}
-                                alt={product.name}
-                                fill
-                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                priority={index < 4}
-                            />
-                            {/* Hover Image Slide Up */}
-                            <motion.div
-                                variants={{ initial: { y: "100%" }, hover: { y: 0 } }}
-                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                                className="absolute inset-0 z-10 bg-gray-50"
-                            >
-                                <Image
-                                    src={hoverImage}
-                                    alt={`${product.name} alternate view`}
-                                    fill
-                                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                    className="object-cover"
-                                />
-                            </motion.div>
-                        </div>
-                    </Link>
-
-                    {/* Arch Action Bar */}
-                    <div className="absolute -bottom-6 sm:-bottom-8 w-full z-20 flex justify-center pointer-events-none">
-                        <div className="relative bg-white w-[85%] h-8 sm:h-[3.5rem] rounded-[1.5rem] flex items-center justify-around px-2 sm:px-4 pointer-events-auto ">
-                            {/* View button */}
-                            <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="text-[var(--color-brand-onyx)] hover:text-gray-500 transition-colors p-1 sm:p-2">
-                                <motion.div whileHover={{ scale: 1.05 }}>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] sm:w-[24px] sm:h-[24px]">
-                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-                                        <circle cx="12" cy="12" r="3" />
-                                    </svg>
-                                </motion.div>
-                            </Link>
-
-                            {/* Right action: Add to Cart or Remove from Wishlist */}
-                            {wishlistMode ? (
-                                <button
-                                    onClick={removeWishlistItem}
-                                    className="text-red-400 hover:text-red-500 transition-colors p-1 sm:p-2"
-                                >
-                                    <motion.div whileHover={{ scale: 1.05 }}>
-                                        <X className="w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />
-                                    </motion.div>
-                                </button>
-                            ) : (
-                                showProductPrices && <AddToCartButton product={product} className="p-1 sm:p-2" iconClassName="w-[20px] h-[20px] sm:w-[26px] sm:h-[26px]" />
-                            )}
-                        </div>
-                    </div>
+            <div className="relative z-10 -mt-5 flex flex-1 flex-col rounded-t-[1.55rem] bg-white px-3 pb-3 pt-3.5 sm:-mt-7 sm:rounded-t-[2rem] sm:px-4 sm:pb-4 sm:pt-5">
+                <Link href={productHref} className="group/link block min-w-0"><h3 className="editorial-subtitle truncate text-[13px] font-semibold leading-tight text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-[var(--color-brand-purple)] sm:text-base">{product.name}</h3></Link>
+                <p className="editorial-body mt-1 truncate text-[9px] leading-tight text-[var(--color-brand-onyx)]/50 sm:text-xs">{product.tagline || product.description}</p>
+                <div className="mt-2 flex items-end justify-between gap-2 sm:mt-2.5">
+                    {listingSizeLabel ? <span className="editorial-body max-w-[52%] truncate rounded-full bg-[#f3eee6] px-2.5 py-1 text-[9px] text-[var(--color-brand-onyx)]/65 sm:px-4 sm:py-1.5 sm:text-xs">{listingSizeLabel}</span> : <span />}
+                    {showProductPrices && <Price amount={product.price} originalAmount={product.originalPrice} prefix={hasSizeVariants ? "From" : undefined} className="ml-auto flex-wrap justify-end gap-x-1" prefixClassName="editorial-body text-[7px] text-black/50 sm:text-[9px]" amountClassName="editorial-number text-base font-semibold leading-none text-[var(--color-brand-onyx)] sm:text-xl" currencyClassName="editorial-subtitle text-[8px] uppercase text-black/45 sm:text-[10px]" originalClassName="editorial-body text-[8px] text-black/30 sm:text-[10px]" />}
                 </div>
-
-                {/* Product Info */}
-                <div className="pt-8 pb-2 px-1 sm:px-2 text-center flex flex-col items-center flex-grow justify-start z-10 relative">
-                    <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="block group/link w-full">
-                        <h3 className="font-heading font-semibold text-sm sm:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-snug mb-1 truncate px-1">
-                            {product.name}
-                        </h3>
-                    </Link>
-                    {(product.rating > 0 || product.reviews > 0) && (
-                        <div className="flex items-center gap-1 mb-0.5">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                                <span
-                                    key={i}
-                                    className={`text-[10px] leading-none ${i < Math.round(product.rating) ? "text-[var(--color-brand-mustard)]" : "text-gray-300"}`}
-                                >
-                                    {i < Math.round(product.rating) ? "★" : "☆"}
-                                </span>
-                            ))}
-                            <span className="text-[10px] leading-none text-[var(--color-brand-onyx)]/40 ml-0.5">({product.reviews})</span>
-                        </div>
-                    )}
-                    {showProductPrices && (
-                        <Price
-                            amount={product.price}
-                            originalAmount={product.originalPrice}
-                            prefix={hasSizeVariants ? "From" : undefined}
-                            className="justify-center pt-1"
-                            prefixClassName="font-sans font-medium text-[12px] sm:text-[14px] text-[var(--color-brand-onyx)]/60 leading-none"
-                            amountClassName="font-heading font-semibold text-[18px] sm:text-[22px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
-                            currencyClassName="font-sans font-medium text-[12px] sm:text-[14px] text-[var(--color-brand-onyx)]/55 uppercase leading-none"
-                            originalClassName="font-sans font-normal text-[12px] sm:text-[14px] text-[var(--color-brand-onyx)]/30 leading-none"
-                        />
-                    )}
-                    {listingSizeLabel && (
-                        <span className="font-sans text-[11px] sm:text-xs text-[var(--color-brand-onyx)]/45 mt-1">{listingSizeLabel}</span>
-                    )}
-                </div>
-            </motion.div>
-        </motion.div>
+                {showProductPrices && <div className="mt-2.5 flex items-stretch gap-2 sm:mt-3">
+                    {cartQuantity > 0 && <div className="flex h-8 w-[42%] min-w-0 items-center rounded-full border border-black/10 px-0.5 sm:h-10 sm:px-1">
+                        <button type="button" onClick={() => changeQuantity(-1)} className="flex h-full flex-1 items-center justify-center text-black/45" aria-label="Decrease quantity"><Minus className="h-3 w-3" /></button>
+                        <span className="editorial-ui min-w-3 text-center text-[10px] sm:text-xs">{cartQuantity}</span>
+                        <button type="button" onClick={() => changeQuantity(1)} className="flex h-full flex-1 items-center justify-center" aria-label="Increase quantity"><Plus className="h-3 w-3" /></button>
+                    </div>}
+                    {wishlistMode
+                        ? <button type="button" onClick={removeWishlistItem} className="editorial-ui flex h-8 flex-1 items-center justify-center gap-1 rounded-full bg-[var(--color-brand-purple)] px-2 text-[9px] font-medium text-white transition-opacity hover:opacity-90 sm:h-10 sm:text-xs"><X className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> Remove</button>
+                        : <button type="button" onClick={handleAddToCart} className={`editorial-ui flex h-8 flex-1 items-center justify-center gap-1 rounded-full px-1.5 text-[9px] font-medium text-white transition-opacity sm:h-10 sm:px-2 sm:text-xs ${added ? "bg-emerald-600" : "bg-[var(--color-brand-purple)] hover:opacity-90"}`}><ShoppingCart className="h-3 w-3 sm:h-3.5 sm:w-3.5" /><span className="truncate">{added ? "Added" : "Add to Cart"}</span></button>}
+                </div>}
+            </div>
+        </motion.article>
     );
 });

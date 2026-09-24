@@ -98,11 +98,11 @@ export default function SettingsPage() {
             </AnimatePresence>
 
             <div className="mb-10">
-                <h1 className="font-heading text-[32px] text-[#1A1A1B] tracking-tight flex items-center gap-3">
+                <h1 className="editorial-title text-[32px] text-[#1A1A1B] tracking-tight flex items-center gap-3">
                     <Settings className="w-8 h-8 text-[#1A1A1B]/40" />
                     Store Settings
                 </h1>
-                <p className="font-sans text-[#1A1A1B]/60 mt-2">
+                <p className="editorial-body text-[#1A1A1B]/60 mt-2">
                     Manage global platform configuration and feature flags.
                 </p>
             </div>
@@ -110,10 +110,10 @@ export default function SettingsPage() {
             <div className="bg-white rounded-3xl shadow-sm border border-black/5 overflow-hidden p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
                     <div>
-                        <h2 className="font-heading font-bold text-xl text-[#1A1A1B] mb-1">
+                        <h2 className="editorial-heading font-bold text-xl text-[#1A1A1B] mb-1">
                             Show Product Prices
                         </h2>
-                        <p className="font-sans text-[#1A1A1B]/60 text-sm max-w-lg leading-relaxed">
+                        <p className="editorial-body text-[#1A1A1B]/60 text-sm max-w-lg leading-relaxed">
                             When enabled, prices are visible to all users. When disabled, prices, discounts, and checkout features are globally hidden. Useful when auditing or updating catalog pricing.
                         </p>
                     </div>

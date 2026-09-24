@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export interface Slide {
     id: string;
@@ -24,8 +25,8 @@ export function normalizeHeroSlide(s: Record<string, unknown>): Slide {
         title: String(s.title ?? ""),
         subtitle: s.subtitle as string | undefined,
         description: s.description as string | undefined,
-        buttonText: (s.buttonText as string) || "Shop Now",
-        buttonLink: (s.buttonLink as string) || "/category/all",
+        buttonText: (s.buttonText as string) || "",
+        buttonLink: (s.buttonLink as string) || "",
         textColor: (s.textColor as string) || "#FFFFFF",
         buttonStyle: (s.buttonStyle as string) || "solid",
         desktopImageUrl: (s.desktopImageUrl as string) || (s.imageUrl as string) || "",
@@ -34,14 +35,28 @@ export function normalizeHeroSlide(s: Record<string, unknown>): Slide {
 }
 
 export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] }) {
+    const router = useRouter();
     const [slides, setSlides] = useState<Slide[]>(initialSlides);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [trackIndex, setTrackIndex] = useState(0);
     const [resetTrackInstantly, setResetTrackInstantly] = useState(false);
+    const draggedRef = useRef(false);
     // When the server already provided slides, there's nothing to wait for — the
     // first slide (LCP image) is in the initial HTML. Only show a skeleton when
     // we have to fall back to a client-side fetch (e.g. API was down at SSR time).
     const [loading, setLoading] = useState(initialSlides.length === 0);
+
+    const goToNextSlide = useCallback(() => {
+        if (slides.length < 2) return;
+        setCurrentSlide(prev => (prev + 1) % slides.length);
+        setTrackIndex(prev => prev >= slides.length ? 1 : prev + 1);
+    }, [slides.length]);
+
+    const goToPreviousSlide = useCallback(() => {
+        if (slides.length < 2 || currentSlide === 0) return;
+        setCurrentSlide(prev => prev - 1);
+        setTrackIndex(prev => Math.max(0, prev - 1));
+    }, [currentSlide, slides.length]);
 
     useEffect(() => {
         // Slides already hydrated from the server render — skip the client fetch.
@@ -65,12 +80,9 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
 
     useEffect(() => {
         if (slides.length < 2) return;
-        const timer = setInterval(() => {
-            setCurrentSlide(prev => (prev + 1) % slides.length);
-            setTrackIndex(prev => prev >= slides.length ? 1 : prev + 1);
-        }, 6000);
+        const timer = setInterval(goToNextSlide, 6000);
         return () => clearInterval(timer);
-    }, [slides.length]);
+    }, [goToNextSlide, slides.length]);
 
     if (loading) {
         return (
@@ -101,7 +113,14 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
     };
 
     return (
-        <section className="relative w-full h-[100svh] overflow-hidden bg-[var(--color-brand-onyx)]">
+        <section
+            className={`relative w-full h-[100svh] overflow-hidden bg-[var(--color-brand-onyx)] ${slide.buttonLink ? "cursor-pointer" : ""}`}
+            onClick={(event) => {
+                if (!slide.buttonLink || draggedRef.current) return;
+                if ((event.target as HTMLElement).closest("a, button")) return;
+                router.push(slide.buttonLink);
+            }}
+        >
             {/* A single translated track keeps neighboring slides in one compositor
                 coordinate system. Independent enter/exit transforms can round in
                 opposite directions on mobile and expose the parent background. */}
@@ -110,48 +129,56 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
                 animate={{ x: `${trackIndex * -100}%` }}
                 transition={resetTrackInstantly
                     ? { duration: 0 }
-                    : { duration: 1, ease: [0.65, 0, 0.35, 1] }}
+                    : { duration: 0.65, ease: [0.65, 0, 0.35, 1] }}
+                drag={slides.length > 1 ? "x" : false}
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.08}
+                onDragEnd={(_, info) => {
+                    draggedRef.current = Math.abs(info.offset.x) > 8;
+                    if (draggedRef.current) window.setTimeout(() => { draggedRef.current = false; }, 0);
+                    if (info.offset.x < -60 || info.velocity.x < -500) goToNextSlide();
+                    else if (info.offset.x > 60 || info.velocity.x > 500) goToPreviousSlide();
+                }}
                 onAnimationComplete={handleTrackAnimationComplete}
-                className="absolute inset-0 z-0 flex will-change-transform"
+                className="absolute inset-0 z-0 flex will-change-transform touch-pan-y"
             >
-                {trackSlides.map((trackSlide, index) => (
+                {trackSlides.map((trackSlide, index) => {
+                    const shouldRenderImage = slides.length <= 3 || Math.abs(index - trackIndex) <= 1;
+                    return (
                     <div
                         key={`${trackSlide.id}-${index}`}
                         className="relative h-full w-full min-w-full shrink-0 overflow-hidden"
                     >
-                        <div className="hidden md:block relative w-full h-full">
+                        {shouldRenderImage && <div className="hidden md:block relative w-full h-full">
                             <Image
                                 src={trackSlide.desktopImageUrl}
-                                alt={trackSlide.title}
+                                alt={trackSlide.title || "Enjoyful Life carousel slide"}
                                 fill
                                 priority={index === 0}
-                                loading="eager"
-                                quality={90}
-                                unoptimized={trackSlide.desktopImageUrl.startsWith("http")}
+                                quality={75}
                                 className="object-cover object-center"
                                 sizes="100vw"
                             />
-                        </div>
-                        <div className="md:hidden relative w-full h-full">
+                        </div>}
+                        {shouldRenderImage && <div className="md:hidden relative w-full h-full">
                             <Image
                                 src={trackSlide.mobileImageUrl || trackSlide.desktopImageUrl}
-                                alt={trackSlide.title}
+                                alt={trackSlide.title || "Enjoyful Life carousel slide"}
                                 fill
                                 priority={index === 0}
-                                loading="eager"
-                                quality={90}
-                                unoptimized={(trackSlide.mobileImageUrl || trackSlide.desktopImageUrl).startsWith("http")}
+                                quality={75}
                                 className="object-cover object-center"
                                 sizes="100vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                        </div>
+                        </div>}
                     </div>
-                ))}
+                    );
+                })}
             </motion.div>
 
             {/* Text overlay — positioned absolutely over the image */}
-            <div className="absolute inset-0 z-10 flex items-center md:items-center pb-0 md:pb-0 pt-0">
+            <div className="pointer-events-none absolute inset-0 z-10 flex items-center md:items-center pb-0 md:pb-0 pt-0">
                 <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
                     <div className="max-w-2xl relative flex flex-col justify-center">
                         <AnimatePresence mode="wait">
@@ -169,21 +196,21 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: 0.4 }}
                                         style={{ color: textColor }}
-                                        className="inline-block px-5 py-2 rounded-full backdrop-blur-md bg-white/10 font-sans text-xs md:text-sm tracking-[0.2em] uppercase font-bold border border-white/20"
+                                        className="inline-block px-5 py-2 rounded-full backdrop-blur-md bg-white/10 editorial-label text-xs md:text-sm tracking-[0.2em] uppercase font-bold border border-white/20"
                                     >
                                         {slide.subtitle}
                                     </motion.div>
                                 )}
 
-                                <motion.h1
+                                {slide.title && <motion.h1
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.5 }}
                                     style={{ color: textColor }}
-                                    className="font-heading font-extrabold text-[40px] md:text-6xl lg:text-[84px] leading-[0.95] tracking-tighter drop-shadow-xl whitespace-pre-line"
+                                    className="editorial-title display-xl text-[40px] md:text-6xl lg:text-[84px] leading-[0.95] tracking-tighter drop-shadow-xl whitespace-pre-line"
                                 >
                                     {slide.title}
-                                </motion.h1>
+                                </motion.h1>}
 
                                 {slide.description && (
                                     <motion.p
@@ -191,30 +218,31 @@ export function HeroSection({ initialSlides = [] }: { initialSlides?: Slide[] })
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: 0.6 }}
                                         style={{ color: textColor }}
-                                        className="font-sans font-normal text-sm md:text-base leading-relaxed max-w-md drop-shadow-md opacity-90"
+                                        className="editorial-body font-normal text-sm md:text-base leading-relaxed max-w-md drop-shadow-md opacity-90"
                                     >
                                         {slide.description}
                                     </motion.p>
                                 )}
 
-                                <motion.div
+                                {slide.buttonText && slide.buttonLink && <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.7 }}
                                     className="pt-4"
                                 >
                                     <Link
-                                        href={slide.buttonLink || "/category/all"}
-                                        style={isOutline ? { color: textColor, borderColor: textColor } : undefined}
+                                        href={slide.buttonLink}
+                                        onClick={event => event.stopPropagation()}
+                                        style={isOutline ? { color: textColor, borderColor: textColor, pointerEvents: "auto" } : { pointerEvents: "auto" }}
                                         className={
                                             isOutline
-                                                ? "inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-transparent font-sans font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 border-2 hover:bg-white hover:text-black hover:border-white"
-                                                : "inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black font-sans font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-black hover:text-white border border-transparent hover:border-white"
+                                                ? "inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-transparent subtitle font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 border-2 hover:bg-white hover:text-black hover:border-white"
+                                                : "inline-block px-6 py-3 md:px-8 md:py-3.5 rounded-full bg-white text-black subtitle font-semibold text-xs md:text-sm tracking-wider uppercase transition-all duration-300 hover:bg-black hover:text-white border border-transparent hover:border-white"
                                         }
                                     >
                                         {slide.buttonText}
                                     </Link>
-                                </motion.div>
+                                </motion.div>}
                             </motion.div>
                         </AnimatePresence>
                     </div>

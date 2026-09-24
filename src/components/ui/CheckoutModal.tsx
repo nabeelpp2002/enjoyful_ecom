@@ -46,7 +46,7 @@ export function CheckoutModal({ isOpen, onClose, onConfirm, total }: CheckoutMod
     }
 
     const inputClass =
-        "w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-brand-purple)] focus:outline-none text-sm font-sans";
+        "w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-brand-purple)] focus:outline-none text-sm editorial-body";
     const labelClass =
         "block text-xs font-semibold text-[var(--color-brand-onyx)]/70 uppercase tracking-wider mb-1";
 
@@ -68,7 +68,7 @@ export function CheckoutModal({ isOpen, onClose, onConfirm, total }: CheckoutMod
                 </button>
 
                 {/* Header */}
-                <h2 className="font-heading font-bold text-xl text-[var(--color-brand-onyx)] pr-8">
+                <h2 className="editorial-heading font-bold text-xl text-[var(--color-brand-onyx)] pr-8">
                     Almost There! 🛍️
                 </h2>
                 <p className="text-sm text-[var(--color-brand-onyx)]/60 mt-1 mb-4">
@@ -154,7 +154,7 @@ export function CheckoutModal({ isOpen, onClose, onConfirm, total }: CheckoutMod
                     <button
                         type="submit"
                         disabled={!isValid}
-                        className={`w-full py-3.5 rounded-full bg-[#25D366] text-white font-heading font-bold text-sm mt-4 flex items-center justify-center gap-2 transition-opacity ${
+                        className={`w-full py-3.5 rounded-full bg-[#25D366] text-white editorial-heading font-bold text-sm mt-4 flex items-center justify-center gap-2 transition-opacity ${
                             !isValid ? "opacity-50 cursor-not-allowed" : "hover:brightness-105"
                         }`}
                     >

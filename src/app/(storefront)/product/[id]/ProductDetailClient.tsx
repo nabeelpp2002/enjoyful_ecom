@@ -203,20 +203,20 @@ export default function ProductDetailClient({
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="lg:col-span-5 flex flex-col justify-center"
                     >
-                        <p className="mb-3 font-sans text-sm text-[var(--color-brand-purple)] tracking-widest uppercase font-semibold">
+                        <p className="mb-3 editorial-label text-sm text-[var(--color-brand-purple)] tracking-widest uppercase font-semibold">
                             <Link href={`/category/${product.category.toLowerCase()}`} className="hover:underline">
                                 {product.category}
                             </Link>{" "}/ {product.subcategory}
                         </p>
 
-                        <h1 className="mb-3 font-heading text-2xl lg:text-[32px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.2]">
+                        <h1 className="mb-3 editorial-title display-md text-2xl lg:text-[32px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.2]">
                             {product.name}
                         </h1>
 
                         {/* Size variant selector — shown only when productFamily has siblings */}
                         {sizeVariants.length > 0 && (
                             <div className="mb-5">
-                                <p className="font-sans text-xs font-semibold text-[var(--color-brand-onyx)]/50 uppercase tracking-widest mb-2.5">
+                                <p className="editorial-label text-xs font-semibold text-[var(--color-brand-onyx)]/50 uppercase tracking-widest mb-2.5">
                                     Size{selectedVariantSize ? ` · ${selectedVariantSize}` : ''}
                                 </p>
                                 <div className="flex flex-wrap gap-2">
@@ -227,7 +227,7 @@ export default function ProductDetailClient({
                                                 key={v._id}
                                                 onClick={() => selectVariant(v)}
                                                 title={displayName(v.name)}
-                                                className={`relative flex flex-col items-center px-4 py-2 rounded-2xl text-sm font-semibold font-sans border-2 transition-all duration-150 ${
+                                                className={`relative flex flex-col items-center px-4 py-2 rounded-2xl text-sm font-semibold editorial-body border-2 transition-all duration-150 ${
                                                     isSelected
                                                         ? 'border-[var(--color-brand-onyx)] bg-[var(--color-brand-onyx)] text-white shadow-[0_2px_10px_rgba(26,26,27,0.18)]'
                                                         : 'border-gray-200 text-[var(--color-brand-onyx)] bg-white hover:border-[var(--color-brand-onyx)]/50 hover:bg-[var(--color-brand-sand)]'
@@ -253,9 +253,9 @@ export default function ProductDetailClient({
                                         <span key={i} className={`text-xl ${i < Math.floor(product.rating) ? "text-[var(--color-brand-mustard)]" : "text-gray-300"}`}>★</span>
                                     ))}
                                 </div>
-                                <span className="font-heading font-bold text-base text-[var(--color-brand-onyx)]">{product.rating}</span>
+                                <span className="editorial-heading font-bold text-base text-[var(--color-brand-onyx)]">{product.rating}</span>
                             </div>
-                            <span className="font-sans text-sm text-[var(--color-brand-onyx)]/60">({product.reviews} reviews)</span>
+                            <span className="editorial-body text-sm text-[var(--color-brand-onyx)]/60">({product.reviews} reviews)</span>
                         </div>
 
                         {showProductPrices && (
@@ -264,42 +264,42 @@ export default function ProductDetailClient({
                                     amount={displayPrice}
                                     originalAmount={displayOriginal}
                                     reserveSpace={false}
-                                    amountClassName="font-heading text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold"
-                                    currencyClassName="font-heading text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold"
-                                    originalClassName="font-sans text-base text-gray-400"
+                                    amountClassName="editorial-number text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold"
+                                    currencyClassName="editorial-number text-2xl lg:text-3xl text-[var(--color-brand-onyx)] font-bold"
+                                    originalClassName="editorial-body text-base text-gray-400"
                                 />
                                 {selectedVariantSize && sizeVariants.length === 0 && (
-                                    <span className="font-sans text-sm text-[var(--color-brand-onyx)]/50">/ {selectedVariantSize}</span>
+                                    <span className="editorial-body text-sm text-[var(--color-brand-onyx)]/50">/ {selectedVariantSize}</span>
                                 )}
                                 {displayDiscount && displayDiscount > 0 ? (
-                                    <span className="font-sans font-bold text-xs bg-red-100 text-red-600 px-2.5 py-0.5 rounded-full">{displayDiscount}% OFF</span>
+                                    <span className="editorial-body font-bold text-xs bg-red-100 text-red-600 px-2.5 py-0.5 rounded-full">{displayDiscount}% OFF</span>
                                 ) : null}
                                 {/* Promo flags */}
                                 {product.onSale && (
-                                    <span className="font-sans font-bold text-xs bg-red-500 text-white px-2.5 py-0.5 rounded-full">SALE</span>
+                                    <span className="editorial-body font-bold text-xs bg-red-500 text-white px-2.5 py-0.5 rounded-full">SALE</span>
                                 )}
                                 {product.isFeatured && (
-                                    <span className="font-sans font-bold text-xs bg-[var(--color-brand-onyx)] text-white px-2.5 py-0.5 rounded-full">FEATURED</span>
+                                    <span className="editorial-body font-bold text-xs bg-[var(--color-brand-onyx)] text-white px-2.5 py-0.5 rounded-full">FEATURED</span>
                                 )}
                             </div>
                         )}
 
-                        <p className="mb-4 font-sans text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">{product.description}</p>
+                        <p className="mb-4 editorial-body text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">{product.description}</p>
 
                         {showProductPrices ? (
                             <div className="flex flex-col gap-3 md:mb-6">
                                 <div className="flex items-center gap-4">
-                                    <span className="font-heading font-medium text-[var(--color-brand-onyx)]">Quantity:</span>
+                                    <span className="editorial-heading font-medium text-[var(--color-brand-onyx)]">Quantity:</span>
                                     <div className="flex items-center border border-[var(--color-brand-onyx)]/10 rounded-full bg-white">
                                         <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-10 h-10 flex items-center justify-center text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-onyx)] transition-colors">-</button>
-                                        <span className="w-8 text-center font-heading font-medium text-[var(--color-brand-onyx)]">{quantity}</span>
+                                        <span className="w-8 text-center editorial-heading font-medium text-[var(--color-brand-onyx)]">{quantity}</span>
                                         <button onClick={() => setQuantity(quantity + 1)} className="w-10 h-10 flex items-center justify-center text-[var(--color-brand-onyx)]/60 hover:text-[var(--color-brand-onyx)] transition-colors">+</button>
                                     </div>
                                 </div>
 
                                 {/* Mobile: also available */}
                                 <div className="md:hidden flex flex-col gap-2 pt-1">
-                                    <p className="font-sans text-[10px] text-[var(--color-brand-onyx)]/50 font-semibold tracking-widest uppercase">Also available at</p>
+                                    <p className="editorial-label text-[10px] text-[var(--color-brand-onyx)]/50 font-semibold tracking-widest uppercase">Also available at</p>
                                     <div className="flex items-center gap-3">
                                         {[
                                             { name: "Amazon", src: "https://www.google.com/s2/favicons?domain=amazon.com&sz=128" },
@@ -318,7 +318,7 @@ export default function ProductDetailClient({
                                         whileHover={{ y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => addToCart(cartProduct, quantity)}
-                                        className="w-full py-3.5 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] font-heading font-bold text-sm shadow-[0_8px_20px_rgba(244,180,73,0.2)] flex items-center justify-center gap-3"
+                                        className="w-full py-3.5 rounded-full bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] editorial-heading font-bold text-sm shadow-[0_8px_20px_rgba(244,180,73,0.2)] flex items-center justify-center gap-3"
                                     >
                                         <span>Add to Cart</span>
                                         {hasValidPrice(displayPrice) && (
@@ -339,7 +339,7 @@ export default function ProductDetailClient({
                                         if (active.length === 0) return null;
                                         return (
                                             <div className="flex flex-col gap-2">
-                                                <p className="font-sans text-[10px] text-[var(--color-brand-onyx)]/50 font-semibold tracking-widest uppercase">Also available at</p>
+                                                <p className="editorial-label text-[10px] text-[var(--color-brand-onyx)]/50 font-semibold tracking-widest uppercase">Also available at</p>
                                                 <div className="flex rounded-xl border border-[var(--color-brand-purple)]/25 overflow-hidden divide-x divide-[var(--color-brand-purple)]/15">
                                                     {active.map(p => (
                                                         <a
@@ -351,7 +351,7 @@ export default function ProductDetailClient({
                                                         >
                                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                                             <img src={p.favicon} alt="" width={22} height={22} className="rounded-md object-contain flex-shrink-0" />
-                                                            <span className="font-sans text-xs font-semibold text-[var(--color-brand-onyx)]/70">{p.name}</span>
+                                                            <span className="editorial-body text-xs font-semibold text-[var(--color-brand-onyx)]/70">{p.name}</span>
                                                         </a>
                                                     ))}
                                                 </div>
@@ -386,12 +386,12 @@ export default function ProductDetailClient({
                     if (specs.length === 0) return null;
                     return (
                         <div className="mb-8 rounded-[1.5rem] bg-white shadow-sm border border-[var(--color-brand-onyx)]/5 p-6 md:p-8">
-                            <h2 className="font-heading font-bold text-base text-[var(--color-brand-onyx)] mb-4">Product Details</h2>
+                            <h2 className="editorial-section-heading text-base text-[var(--color-brand-onyx)] mb-4">Product Details</h2>
                             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2.5">
                                 {specs.map(([label, value]) => (
                                     <div key={label} className="flex justify-between gap-4 border-b border-[var(--color-brand-onyx)]/5 pb-2">
-                                        <dt className="font-sans text-[13px] text-[var(--color-brand-onyx)]/50">{label}</dt>
-                                        <dd className="font-sans text-[13px] font-medium text-[var(--color-brand-onyx)] text-right">{value}</dd>
+                                        <dt className="editorial-body text-[13px] text-[var(--color-brand-onyx)]/50">{label}</dt>
+                                        <dd className="editorial-body text-[13px] font-medium text-[var(--color-brand-onyx)] text-right">{value}</dd>
                                     </div>
                                 ))}
                             </dl>
@@ -405,7 +405,7 @@ export default function ProductDetailClient({
                         { key: "benefits", label: "Key Benefits", content: product.benefits.length > 0 ? (
                             <ul className="space-y-2">
                                 {product.benefits.map((benefit, i) => (
-                                    <li key={i} className="font-sans text-sm text-[var(--color-brand-onyx)]/80 pl-5 relative list-none">
+                                    <li key={i} className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 pl-5 relative list-none">
                                         <span className="absolute left-0 text-[var(--color-brand-purple)] font-bold">•</span>
                                         {benefit}
                                     </li>
@@ -415,7 +415,7 @@ export default function ProductDetailClient({
                         { key: "active", label: "Active Ingredients", content: product.activeIngredients && product.activeIngredients.length > 0 ? (
                             <ul className="space-y-2">
                                 {product.activeIngredients.map((ing, i) => (
-                                    <li key={i} className="font-sans text-sm text-[var(--color-brand-onyx)]/80 pl-5 relative list-none">
+                                    <li key={i} className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 pl-5 relative list-none">
                                         <span className="absolute left-0 text-[var(--color-brand-purple)] font-bold">•</span>
                                         {ing}
                                     </li>
@@ -425,7 +425,7 @@ export default function ProductDetailClient({
                         { key: "features", label: "Features", content: product.features && product.features.length > 0 ? (
                             <ul className="space-y-2">
                                 {product.features.map((f, i) => (
-                                    <li key={i} className="font-sans text-sm text-[var(--color-brand-onyx)]/80 pl-5 relative list-none">
+                                    <li key={i} className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 pl-5 relative list-none">
                                         <span className="absolute left-0 text-[var(--color-brand-purple)] font-bold">•</span>
                                         {f}
                                     </li>
@@ -433,7 +433,7 @@ export default function ProductDetailClient({
                             </ul>
                         ) : null },
                         { key: "howto", label: "How to Use", content: product.howToUse ? (
-                            <div className="font-sans text-sm text-[var(--color-brand-onyx)]/80 leading-[1.7] space-y-2">
+                            <div className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 leading-[1.7] space-y-2">
                                 <p>{product.howToUse}</p>
                                 {product.recommendedUsage && (
                                     <p className="text-[var(--color-brand-onyx)]/60"><strong className="text-[var(--color-brand-onyx)]/80">Recommended usage:</strong> {product.recommendedUsage}</p>
@@ -441,10 +441,10 @@ export default function ProductDetailClient({
                             </div>
                         ) : null },
                         { key: "ingredients", label: "Full Ingredients (INCI)", content: product.ingredients.length > 0 ? (
-                            <p className="font-sans text-sm text-[var(--color-brand-onyx)]/80 leading-[1.7]">{product.ingredients.join(", ")}</p>
+                            <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 leading-[1.7]">{product.ingredients.join(", ")}</p>
                         ) : null },
                         { key: "precautions", label: "Precautions", content: product.precautions ? (
-                            <p className="font-sans text-sm text-[var(--color-brand-onyx)]/80 leading-[1.7]">{product.precautions}</p>
+                            <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 leading-[1.7]">{product.precautions}</p>
                         ) : null },
                     ].filter(a => a.content).map((accordion) => (
                         <div key={accordion.key} className="rounded-[1.5rem] overflow-hidden bg-white shadow-sm border border-[var(--color-brand-onyx)]/5">
@@ -452,7 +452,7 @@ export default function ProductDetailClient({
                                 onClick={() => toggleAccordion(accordion.key)}
                                 className="w-full px-6 py-4 flex justify-between items-center focus:outline-none"
                             >
-                                <span className="font-heading font-bold text-base text-[var(--color-brand-onyx)]">{accordion.label}</span>
+                                <span className="editorial-heading font-bold text-base text-[var(--color-brand-onyx)]">{accordion.label}</span>
                                 {openAccordion === accordion.key
                                     ? <ChevronUp size={20} className="text-[var(--color-brand-purple)]" />
                                     : <ChevronDown size={20} className="text-[var(--color-brand-purple)]" />}
@@ -484,11 +484,11 @@ export default function ProductDetailClient({
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2">
                         <div className="p-10 lg:p-16 flex flex-col justify-center">
-                            <h2 className="mb-6 font-heading font-bold text-2xl lg:text-[40px] text-[var(--color-brand-onyx)] tracking-tight">Our Philosophy</h2>
-                            <p className="mb-6 font-sans text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">
+                            <h2 className="mb-6 editorial-section-heading text-2xl lg:text-[40px] text-[var(--color-brand-onyx)] tracking-tight">Our Philosophy</h2>
+                            <p className="mb-6 editorial-body text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">
                                 We believe in the power of nature to transform skin. Every product is carefully crafted with premium, sustainably sourced ingredients that deliver real results.
                             </p>
-                            <p className="font-sans text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">
+                            <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">
                                 Our formulations are free from harmful chemicals, cruelty-free, and designed to work in harmony with your skin&apos;s natural processes.
                             </p>
                         </div>
@@ -508,7 +508,7 @@ export default function ProductDetailClient({
                 {/* Related Products */}
                 {relatedProducts.length > 0 && (
                     <div>
-                        <h2 className="mb-12 font-heading font-bold text-2xl lg:text-[40px] text-[var(--color-brand-onyx)] tracking-tight text-center">You May Also Like</h2>
+                        <h2 className="mb-12 editorial-section-heading text-2xl lg:text-[40px] text-[var(--color-brand-onyx)] tracking-tight text-center">You May Also Like</h2>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-8 sm:gap-y-12">
                             {relatedProducts.map((relatedProduct, index) => (
                                 <ProductCard key={relatedProduct.id} product={relatedProduct} index={index} animateType="inView" />
@@ -523,14 +523,14 @@ export default function ProductDetailClient({
                         <div className="flex flex-row items-center gap-4 max-w-7xl mx-auto">
                             {hasValidPrice(displayPrice) && (
                                 <div className="flex flex-col flex-shrink-0 min-w-[30%]">
-                                    <span className="text-[10px] text-[var(--color-brand-onyx)]/60 font-sans uppercase tracking-widest font-semibold mb-0.5">Total</span>
-                                    <span className="font-heading font-bold text-lg text-[var(--color-brand-onyx)] leading-none">{formatPrice(displayPrice * quantity)} AED</span>
+                                    <span className="text-[10px] text-[var(--color-brand-onyx)]/60 editorial-label uppercase tracking-widest font-semibold mb-0.5">Total</span>
+                                    <span className="editorial-heading font-bold text-lg text-[var(--color-brand-onyx)] leading-none">{formatPrice(displayPrice * quantity)} AED</span>
                                 </div>
                             )}
                             <motion.button
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => addToCart(cartProduct, quantity)}
-                                className="flex-[2] py-3 rounded-full text-center bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] font-heading font-bold text-sm shadow-[0_8px_20px_rgba(244,180,73,0.3)] flex items-center justify-center"
+                                className="flex-[2] py-3 rounded-full text-center bg-[var(--color-brand-mustard)] text-[var(--color-brand-onyx)] editorial-heading font-bold text-sm shadow-[0_8px_20px_rgba(244,180,73,0.3)] flex items-center justify-center"
                             >
                                 Add to Cart
                             </motion.button>

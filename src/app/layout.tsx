@@ -1,23 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Open_Sans, Playfair_Display } from "next/font/google";
+import { Inter, Khand, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "500", "600"],
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const khand = Khand({
+  variable: "--font-khand",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700"],
 });
 
 export const viewport: Viewport = {
@@ -96,7 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en-AE">
       <body
-        className={`${openSans.variable} ${montserrat.variable} ${playfair.variable} antialiased min-h-screen flex flex-col bg-[#fdfaff]`}
+        className={`${inter.variable} ${montserrat.variable} ${khand.variable} antialiased min-h-screen flex flex-col bg-[#fdfaff]`}
       >
         {children}
       </body>

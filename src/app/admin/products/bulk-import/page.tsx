@@ -286,7 +286,7 @@ export default function BulkImportPage() {
                     <ArrowLeft className="w-5 h-5" />
                 </Link>
                 <div>
-                    <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">
+                    <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">
                         Bulk Import Products
                     </h1>
                     <p className="text-[#1A1A1B]/40 text-xs mt-0.5">

@@ -220,7 +220,7 @@ export function ProductReviews({ productId, initialAverage = 0, initialCount = 0
         <div className="border-t border-[var(--color-brand-onyx)]/10 pt-12 mt-12 pb-20 md:pb-24">
             <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
                 <div>
-                    <h2 className="font-heading font-bold text-2xl md:text-3xl text-[var(--color-brand-onyx)]">
+                    <h2 className="editorial-section-heading font-bold text-2xl md:text-3xl text-[var(--color-brand-onyx)]">
                         Reviews
                     </h2>
                     <p className="text-sm text-[var(--color-brand-onyx)]/55 mt-1">
@@ -229,7 +229,7 @@ export function ProductReviews({ productId, initialAverage = 0, initialCount = 0
                 </div>
                 <button
                     onClick={handleStartReview}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--color-brand-purple)] text-white font-heading font-semibold text-sm hover:bg-[#5e4580] shadow-[0_4px_14px_rgba(115,86,151,0.25)] transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--color-brand-purple)] text-white editorial-heading font-semibold text-sm hover:bg-[#5e4580] shadow-[0_4px_14px_rgba(115,86,151,0.25)] transition-colors"
                 >
                     <MessageSquare className="w-4 h-4" /> {myReview ? "Edit your review" : "Write a review"}
                 </button>
@@ -238,7 +238,7 @@ export function ProductReviews({ productId, initialAverage = 0, initialCount = 0
             {/* Summary panel */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white rounded-3xl border border-[var(--color-brand-onyx)]/8 p-6 md:p-8 mb-8">
                 <div className="text-center md:text-left">
-                    <div className="text-5xl font-heading font-bold text-[var(--color-brand-onyx)]">
+                    <div className="text-5xl editorial-heading font-bold text-[var(--color-brand-onyx)]">
                         {summary.average.toFixed(1)}
                     </div>
                     <StarBar value={summary.average} size={18} className="mt-2 justify-center md:justify-start" />
@@ -360,13 +360,13 @@ export function ProductReviews({ productId, initialAverage = 0, initialCount = 0
                                     <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-emerald-50 flex items-center justify-center">
                                         <CheckCircle2 className="w-7 h-7 text-emerald-600" />
                                     </div>
-                                    <h3 className="font-heading font-bold text-xl text-[var(--color-brand-onyx)]">Thanks for the review!</h3>
+                                    <h3 className="editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">Thanks for the review!</h3>
                                     <p className="text-sm text-[var(--color-brand-onyx)]/55 mt-1">It&apos;ll appear in the list shortly.</p>
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-5">
                                     <div>
-                                        <h3 className="font-heading font-bold text-xl text-[var(--color-brand-onyx)]">{myReview ? "Edit your review" : "Write a review"}</h3>
+                                        <h3 className="editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">{myReview ? "Edit your review" : "Write a review"}</h3>
                                         <p className="text-sm text-[var(--color-brand-onyx)]/55 mt-1">
                                             Signed in as <span className="font-medium text-[var(--color-brand-onyx)]">{user?.email}</span>
                                         </p>

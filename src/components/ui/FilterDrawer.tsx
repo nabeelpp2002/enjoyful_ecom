@@ -80,7 +80,7 @@ export function FilterDrawer({
                     </svg>
                 )}
             </div>
-            <span className="font-sans text-sm text-[var(--color-brand-onyx)]">{label}</span>
+            <span className="editorial-body text-sm text-[var(--color-brand-onyx)]">{label}</span>
         </label>
     );
 
@@ -113,10 +113,10 @@ export function FilterDrawer({
                         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 flex-shrink-0">
                             <div className="flex items-center gap-2">
                                 <SlidersHorizontal size={16} className="text-[var(--color-brand-onyx)]" />
-                                <h3 className="font-heading font-bold text-base text-[var(--color-brand-onyx)]">
+                                <h3 className="editorial-heading font-bold text-base text-[var(--color-brand-onyx)]">
                                     Filters
                                     {activeFilterCount > 0 && (
-                                        <span className="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-brand-onyx)] text-white text-xs font-sans">
+                                        <span className="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-brand-onyx)] text-white text-xs editorial-body">
                                             {activeFilterCount}
                                         </span>
                                     )}
@@ -132,7 +132,7 @@ export function FilterDrawer({
 
                         <div className="overflow-y-auto flex-1 px-5 py-4 space-y-6">
                             <div>
-                                <p className="font-sans text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sort By</p>
+                                <p className="editorial-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sort By</p>
                                 <div className="space-y-1">
                                     {[
                                         { value: "featured", label: "Featured" },
@@ -151,39 +151,39 @@ export function FilterDrawer({
                                                     <div className="w-2.5 h-2.5 rounded-full bg-[var(--color-brand-onyx)]" />
                                                 )}
                                             </div>
-                                            <span className="font-sans text-sm text-[var(--color-brand-onyx)]">{opt.label}</span>
+                                            <span className="editorial-body text-sm text-[var(--color-brand-onyx)]">{opt.label}</span>
                                         </label>
                                     ))}
                                 </div>
                             </div>
 
                             <div>
-                                <p className="font-sans text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Price Range (AED)</p>
+                                <p className="editorial-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Price Range (AED)</p>
                                 <div className="flex items-center gap-3">
                                     <div className="flex-1 relative">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-sans">Min</span>
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs editorial-body">Min</span>
                                         <input
                                             type="number"
                                             value={priceMin}
                                             onChange={(e) => setPriceMin(Math.max(0, +e.target.value))}
-                                            className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gray-50 border border-gray-200 font-sans text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-onyx)]/20"
+                                            className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gray-50 border border-gray-200 editorial-body text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-onyx)]/20"
                                         />
                                     </div>
                                     <span className="text-gray-400 text-sm">–</span>
                                     <div className="flex-1 relative">
-                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-sans">Max</span>
+                                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs editorial-body">Max</span>
                                         <input
                                             type="number"
                                             value={priceMax}
                                             onChange={(e) => setPriceMax(Math.min(maxPrice, +e.target.value))}
-                                            className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gray-50 border border-gray-200 font-sans text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-onyx)]/20"
+                                            className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-gray-50 border border-gray-200 editorial-body text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-onyx)]/20"
                                         />
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <p className="font-sans text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Product Type</p>
+                                <p className="editorial-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Product Type</p>
                                 <div className="space-y-1">
                                     {PRODUCT_TYPES.map((type) => (
                                         <CheckItem
@@ -198,7 +198,7 @@ export function FilterDrawer({
 
                             {category === "Glow" && (
                                 <div>
-                                    <p className="font-sans text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Skin Type</p>
+                                    <p className="editorial-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Skin Type</p>
                                     <div className="space-y-1">
                                         {SKIN_TYPES.map((type) => (
                                             <CheckItem
@@ -219,14 +219,14 @@ export function FilterDrawer({
                             {activeFilterCount > 0 && (
                                 <button
                                     onClick={() => { onClearAll(); onClose(); }}
-                                    className="flex-1 py-3 rounded-full border border-gray-200 font-sans text-sm font-medium text-gray-500 hover:text-red-500 hover:border-red-200 transition-colors"
+                                    className="flex-1 py-3 rounded-full border border-gray-200 editorial-body text-sm font-medium text-gray-500 hover:text-red-500 hover:border-red-200 transition-colors"
                                 >
                                     Clear All
                                 </button>
                             )}
                             <button
                                 onClick={onClose}
-                                className="flex-[2] py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-sans text-sm font-semibold"
+                                className="flex-[2] py-3 rounded-full bg-[var(--color-brand-onyx)] text-white editorial-body text-sm font-semibold"
                             >
                                 Show Results
                             </button>

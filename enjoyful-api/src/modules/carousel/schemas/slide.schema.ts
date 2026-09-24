@@ -5,11 +5,11 @@ export type SlideDocument = Slide & Document;
 
 @Schema({ timestamps: true })
 export class Slide {
-  @Prop({ required: true }) title: string;
+  @Prop({ default: '' }) title: string;
   @Prop() subtitle: string;
   @Prop() description: string;
-  @Prop({ default: 'Shop Now' }) buttonText: string;
-  @Prop({ default: '/category/all' }) buttonLink: string;
+  @Prop({ default: '' }) buttonText: string;
+  @Prop({ default: '' }) buttonLink: string;
 
   // Presentation controls (per-slide, configurable from admin)
   @Prop({ default: '#FFFFFF' }) textColor: string;

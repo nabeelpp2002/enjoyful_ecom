@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function CategoryPromo({ category }: { category: string }) {
     // Generate content based on category
-    const promoData: Record<string, { title1: string; title2: string; title3: string; text: string; image: string; type: "image" | "video"; bgColor: string }> = {
+    const promoData: Record<string, { title1: string; title2: string; title3: string; text: string; image: string; type: "image" | "video"; bgColor: string; buttonText?: string; buttonLink?: string }> = {
         "Shop All": {
             title1: "EVERYDAY",
             title2: "essentials",
@@ -52,6 +52,17 @@ export function CategoryPromo({ category }: { category: string }) {
             image: "/assets/animated -coffie-shampoo.mp4",
             type: "video",
             bgColor: "bg-[#FFF5F0]", // light orange
+        },
+        Fragrances: {
+            title1: "FRESHNESS",
+            title2: "that moves",
+            title3: "WITH YOU.",
+            text: "Discover refreshing perfumes, body mists, roll-ons, and deo sticks designed to keep you feeling confident all day.",
+            image: "/assets/fragrances-coastal-pulse.png",
+            type: "image",
+            bgColor: "bg-[#EEF6FC]",
+            buttonText: "EXPLORE FRAGRANCES",
+            buttonLink: "/category/fragrances",
         },
     };
 
@@ -98,30 +109,30 @@ export function CategoryPromo({ category }: { category: string }) {
                         transition={{ duration: 0.7 }}
                         className="w-full md:w-1/2 flex flex-col items-start pt-8"
                     >
-                        <h2 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl text-[var(--color-brand-onyx)] leading-[1.1] mb-6 tracking-tight flex flex-col">
+                        <h2 className="editorial-section-heading display-sm text-4xl md:text-5xl lg:text-6xl text-[var(--color-brand-onyx)] leading-[1.1] mb-6 tracking-tight flex flex-col">
                             <span className="uppercase">{data.title1}</span>
-                            <span className="font-serif italic font-normal text-[var(--color-brand-purple)] lowercase">{data.title2}</span>
+                            <span className="editorial-heading italic font-normal text-[var(--color-brand-purple)] lowercase">{data.title2}</span>
                             <span className="uppercase">{data.title3}</span>
                         </h2>
 
-                        <p className="font-sans text-lg md:text-xl text-[var(--color-brand-onyx)]/70 mb-12 max-w-md leading-relaxed">
+                        <p className="editorial-body text-lg md:text-xl text-[var(--color-brand-onyx)]/70 mb-12 max-w-md leading-relaxed">
                             {data.text}
                         </p>
 
                         {/* Circular Rotating Button */}
                         <div className="relative self-center md:self-start w-32 h-32 hidden md:flex items-center justify-center -ml-2">
-                            <Link href="/category/all" className="relative group w-full h-full flex items-center justify-center bg-[#E5DDFE] rounded-full hover:bg-[var(--color-brand-purple)] transition-colors duration-500 overflow-hidden">
+                            <Link href={data.buttonLink || "/category/all"} className="relative group w-full h-full flex items-center justify-center bg-[#E5DDFE] rounded-full hover:bg-[var(--color-brand-purple)] transition-colors duration-500 overflow-hidden">
                                 {/* Rotating Text Image / SVG */}
                                 <motion.div
                                     animate={{ rotate: 360 }}
                                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                                     className="absolute inset-0 w-[140%] h-[140%] -left-[20%] -top-[20%]"
                                 >
-                                    <svg viewBox="0 0 100 100" className="w-full h-full fill-[var(--color-brand-purple)] group-hover:fill-white font-sans text-[11px] font-bold tracking-[0.2em] transition-colors duration-500 uppercase">
+                                    <svg viewBox="0 0 100 100" className="w-full h-full fill-[var(--color-brand-purple)] group-hover:fill-white editorial-label text-[11px] font-bold tracking-[0.2em] transition-colors duration-500 uppercase">
                                         <path id="curve" fill="transparent" d="M 50, 50 m -32, 0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0" />
                                         <text>
                                             <textPath href="#curve" startOffset="0" className="opacity-90">
-                                                EXPLORE ALL PRODUCTS • EXPLORE ALL PRODUCTS •
+                                                {data.buttonText || "EXPLORE ALL PRODUCTS"} • {data.buttonText || "EXPLORE ALL PRODUCTS"} •
                                             </textPath>
                                         </text>
                                     </svg>

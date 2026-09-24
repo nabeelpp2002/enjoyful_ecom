@@ -181,7 +181,7 @@ export default function ProductGroupPage() {
                         <ArrowLeft className="w-5 h-5" />
                     </button>
                     <div>
-                        <h1 className="text-xl font-heading font-bold text-[#1A1A1B]">{familyName}</h1>
+                        <h1 className="text-xl editorial-title font-bold text-[#1A1A1B]">{familyName}</h1>
                         <p className="text-[#1A1A1B]/40 text-xs mt-0.5">
                             <span className="font-mono text-[#735697]">{rep.productFamily}</span>
                             {" · "}{catName(rep.category)}{rep.subcategory ? ` · ${rep.subcategory}` : ""}
@@ -258,7 +258,7 @@ export default function ProductGroupPage() {
                 <div className="lg:col-span-2 space-y-4">
                     {/* Shared basic info */}
                     <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
-                        <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                             <Tag className="w-3.5 h-3.5" /> Shared Details
                             <span className="ml-auto normal-case font-normal text-[10px] text-[#1A1A1B]/30">applies to all sizes</span>
                         </h2>
@@ -275,7 +275,7 @@ export default function ProductGroupPage() {
                     {/* Variants table */}
                     <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
                         <div className="flex items-center justify-between mb-3">
-                            <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider flex items-center gap-1.5">
+                            <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider flex items-center gap-1.5">
                                 <Layers className="w-3.5 h-3.5" /> Sizes &amp; Variants
                             </h2>
                             <button onClick={handleAddSize}
@@ -333,7 +333,7 @@ export default function ProductGroupPage() {
 
                     {/* Family-level summary */}
                     <div className="bg-white border border-black/5 rounded-2xl p-5 shadow-sm">
-                        <h2 className="text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                        <h2 className="editorial-label text-xs font-semibold text-[#1A1A1B]/40 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                             <BarChart2 className="w-3.5 h-3.5" /> Summary
                         </h2>
                         <div>

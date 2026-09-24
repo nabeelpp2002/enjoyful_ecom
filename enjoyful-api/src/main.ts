@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { setServers } from 'node:dns';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
@@ -9,6 +10,10 @@ import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 
 async function bootstrap() {
+  // Windows Internet Connection Sharing can make Node use a local DNS proxy
+  // (127.0.0.1) that rejects the SRV lookups required by MongoDB Atlas.
+  setServers(['1.1.1.1', '8.8.8.8']);
+
   const app = await NestFactory.create(AppModule);
   const config = app.get(ConfigService);
 

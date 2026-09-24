@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
                         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#735697]/10 mb-4">
                             <Lock className="w-7 h-7 text-[#735697]" />
                         </div>
-                        <h1 className="text-2xl font-bold text-[#1A1A1B] tracking-tight font-heading">enJoyful Admin</h1>
+                        <h1 className="text-2xl font-bold text-[#1A1A1B] tracking-tight editorial-title">enJoyful Admin</h1>
                         <p className="text-sm text-[#1A1A1B]/50 mt-1">Sign in to manage your store</p>
                     </div>
 

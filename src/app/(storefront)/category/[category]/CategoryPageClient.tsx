@@ -2,17 +2,17 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, ChevronDown, SlidersHorizontal, X, Search } from "lucide-react";
+import { ChevronDown, SlidersHorizontal, X, Search } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useData } from "@/context/DataContext";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { ProductCard } from "@/components/ui/ProductCard";
 import { CategoryPromo } from "@/components/sections/CategoryPromo";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
 import type { Product } from "@/data/products";
-import { Price } from "@/components/ui/Price";
 import { normalizeApiProduct } from "@/lib/product-normalize";
 
 const SORT_TO_BACKEND: Record<string, string> = {
@@ -50,32 +50,6 @@ const SUBCATEGORIES_BY_CATEGORY: Record<string, string[]> = {
     "Home Care": ["Kitchen Care", "Bathroom Care", "Floor & Surface Care", "Hand Care", "Laundry Care"],
 };
 
-function ListingCardPrice({ product, showPrice }: { product: Product; showPrice: boolean }) {
-    const availableSizes = [...new Set((product.availableSizes ?? []).map((size) => size.trim()).filter(Boolean))];
-    const hasSizeVariants = (product.variantCount ?? availableSizes.length) > 1 && availableSizes.length > 1;
-    const sizeLabel = hasSizeVariants ? availableSizes.join(" · ") : product.size;
-
-    return (
-        <>
-            {showPrice && (
-                <Price
-                    amount={product.price}
-                    originalAmount={product.originalPrice}
-                    prefix={hasSizeVariants ? "From" : undefined}
-                    className="justify-center gap-1 md:gap-1.5"
-                    prefixClassName="font-sans font-medium text-[11px] md:text-[13px] text-[var(--color-brand-onyx)]/60 leading-none"
-                    amountClassName="font-heading font-semibold text-[17px] md:text-[20px] text-[var(--color-brand-onyx)] tracking-tight leading-none"
-                    currencyClassName="font-sans font-medium text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/55 uppercase leading-none"
-                    originalClassName="font-sans font-normal text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/30 leading-none ml-1"
-                />
-            )}
-            {sizeLabel && (
-                <span className="font-sans text-[10px] md:text-[12px] text-[var(--color-brand-onyx)]/45 mt-1 md:mt-1.5">{sizeLabel}</span>
-            )}
-        </>
-    );
-}
-
 interface CategoryPageClientProps {
     categoryParam: string;
     initialProducts: Product[];
@@ -110,7 +84,7 @@ export default function CategoryPageClient({
     // Multi-select: the subcategory param is a comma-separated list of selected types.
     const selectedSubs = subcategoryParam ? subcategoryParam.split(",").map(s => s.trim()).filter(Boolean) : [];
 
-    const { addToCart, addToWishlist, removeFromWishlist, isInWishlist, showProductPrices } = useData();
+    const { showProductPrices } = useData();
     const [sortBy, setSortBy] = useState("featured");
     const [priceRange, setPriceRange] = useState<[number, number]>([0, PRICE_MAX]);
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -169,7 +143,7 @@ export default function CategoryPageClient({
         setPage(1);
     }, [urlCategoryRaw, sortBy, priceRange, query, subcategoryParam]);
 
-    const fetchProducts = useCallback(async () => {
+    const fetchProducts = useCallback(async (signal?: AbortSignal) => {
         const params = new URLSearchParams({
             page: String(page),
             limit: String(PAGE_SIZE),
@@ -191,7 +165,7 @@ export default function CategoryPageClient({
         else setLoadingProducts(true);
 
         try {
-            const res = await fetch(`/api/products?${requestKey}`);
+            const res = await fetch(`/api/products?${requestKey}`, { signal });
             if (!res.ok) {
                 if (!append) { setCategoryProducts([]); setTotalPages(1); setTotalCount(0); }
                 return;
@@ -208,13 +182,22 @@ export default function CategoryPageClient({
             setTotalPages(body?.meta?.totalPages ?? 1);
             setTotalCount(body?.meta?.total ?? raw.length);
             setLoadedRequestKey(requestKey);
+        } catch (error) {
+            if (error instanceof DOMException && error.name === "AbortError") return;
+            console.error("[CategoryPage] product request failed:", error);
         } finally {
-            if (append) setLoadingMore(false);
-            else setLoadingProducts(false);
+            if (!signal?.aborted) {
+                if (append) setLoadingMore(false);
+                else setLoadingProducts(false);
+            }
         }
     }, [page, sortBy, priceRange, query, subcategoryParam, category, urlCategoryRaw, loadedRequestKey]);
 
-    useEffect(() => { fetchProducts(); }, [fetchProducts]);
+    useEffect(() => {
+        const controller = new AbortController();
+        fetchProducts(controller.signal);
+        return () => controller.abort();
+    }, [fetchProducts]);
 
     // Infinite scroll: load the next page when the sentinel nears the viewport.
     // rootMargin pre-loads ~a couple of rows before the user hits the bottom.
@@ -354,7 +337,7 @@ export default function CategoryPageClient({
                             />
                         ) : (
                             <div className={`absolute inset-0 md:hidden flex items-center justify-center ${info.bgColor}`}>
-                                <span className="font-heading text-xl font-bold text-[var(--color-brand-onyx)]/70 px-6 text-center">{info.title}</span>
+                                <span className="editorial-heading text-xl font-bold text-[var(--color-brand-onyx)]/70 px-6 text-center">{info.title}</span>
                             </div>
                         )}
                         {banner?.desktopImageUrl ? (
@@ -368,7 +351,7 @@ export default function CategoryPageClient({
                             />
                         ) : (
                             <div className={`absolute inset-0 hidden md:flex items-center justify-center ${info.bgColor}`}>
-                                <span className="font-heading text-3xl font-bold text-[var(--color-brand-onyx)]/70">{info.title}</span>
+                                <span className="editorial-heading text-3xl font-bold text-[var(--color-brand-onyx)]/70">{info.title}</span>
                             </div>
                         )}
                     </>
@@ -383,7 +366,7 @@ export default function CategoryPageClient({
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="mb-2 md:mb-2.5 font-heading text-xl md:text-2xl text-[var(--color-brand-onyx)] tracking-tight"
+                        className="mb-2 md:mb-2.5 editorial-title text-xl md:text-2xl text-[var(--color-brand-onyx)] tracking-tight"
                     >
                         {info.title}
                     </motion.h1>
@@ -391,7 +374,7 @@ export default function CategoryPageClient({
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="font-sans text-sm md:text-base text-[var(--color-brand-onyx)]/60 max-w-[600px] leading-relaxed"
+                        className="editorial-body text-sm md:text-base text-[var(--color-brand-onyx)]/60 max-w-[600px] leading-relaxed"
                     >
                         {info.description}
                     </motion.p>
@@ -455,7 +438,7 @@ export default function CategoryPageClient({
                         <button
                             type="button"
                             onClick={() => setFiltersOpen(true)}
-                            className={`flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full font-sans text-xs md:text-sm font-semibold border transition-colors ${activeFilterCount > 0 ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
+                            className={`flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full editorial-body text-xs md:text-sm font-semibold border transition-colors ${activeFilterCount > 0 ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
                         >
                             <SlidersHorizontal size={15} />
                             Filters
@@ -473,7 +456,7 @@ export default function CategoryPageClient({
                         <button
                             type="button"
                             onClick={() => setOpenDropdown(openDropdown === 'sort' ? null : 'sort')}
-                            className={`flex items-center justify-between gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full border font-sans text-xs md:text-sm font-medium transition-colors ${openDropdown === 'sort' ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
+                            className={`flex items-center justify-between gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full border editorial-body text-xs md:text-sm font-medium transition-colors ${openDropdown === 'sort' ? 'bg-[var(--color-brand-onyx)] text-white border-[var(--color-brand-onyx)]' : 'bg-white text-[var(--color-brand-onyx)] border-gray-200 hover:border-gray-300'}`}
                         >
                             <span className="whitespace-nowrap">Sort: {SORT_OPTIONS.find(o => o.value === sortBy)?.label ?? 'Featured'}</span>
                             <ChevronDown size={14} className={`transition-transform ${openDropdown === 'sort' ? 'rotate-180' : ''}`} />
@@ -492,7 +475,7 @@ export default function CategoryPageClient({
                                             key={opt.value}
                                             type="button"
                                             onClick={() => { setSortBy(opt.value); setOpenDropdown(null); }}
-                                            className={`w-full text-left px-3.5 py-2.5 rounded-xl font-sans text-sm font-medium transition-colors ${sortBy === opt.value ? 'bg-[var(--color-brand-onyx)] text-white' : 'text-[var(--color-brand-onyx)]/70 hover:bg-[var(--color-brand-sand)]'}`}
+                                            className={`w-full text-left px-3.5 py-2.5 rounded-xl editorial-body text-sm font-medium transition-colors ${sortBy === opt.value ? 'bg-[var(--color-brand-onyx)] text-white' : 'text-[var(--color-brand-onyx)]/70 hover:bg-[var(--color-brand-sand)]'}`}
                                         >
                                             {opt.label}
                                         </button>
@@ -520,121 +503,12 @@ export default function CategoryPageClient({
                 ) : (
                 <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 gap-y-8 sm:gap-y-12">
                     {categoryProducts.map((product, index) => (
-                        <motion.div
+                        <ProductCard
                             key={product.id}
-                            initial="initial"
-                            whileHover="hover"
-                            className="group h-full"
-                        >
-                            <motion.div
-                                initial={{ opacity: 0, y: 12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.35, delay: Math.min(index, 7) * 0.05 }}
-                                className="flex flex-col h-full bg-white rounded-[1.5rem] p-3 shadow-sm relative"
-                            >
-                                {/* Product Image Card Container */}
-                                <div className="relative aspect-[3/4] md:pt-[100%] md:aspect-auto rounded-[1.25rem] bg-gray-50 flex-shrink-0 group/image">
-                                    {/* Top Area Overlays */}
-                                    <div className="absolute top-2 md:top-4 inset-x-2 md:inset-x-4 z-30 flex justify-between items-start pointer-events-none">
-                                        {/* Promo badges (stacked, top-left) */}
-                                        <div className="flex flex-col items-start gap-1">
-                                            {product.discountPct && product.discountPct > 0 ? (
-                                                <span className="bg-[#F6DE7F] text-[var(--color-brand-onyx)] font-bold text-[9px] md:text-[11px] px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-sm whitespace-nowrap">{product.discountPct}% OFF</span>
-                                            ) : null}
-                                            {product.onSale && (
-                                                <span className="bg-red-500 text-white font-bold text-[9px] md:text-[11px] px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-sm">SALE</span>
-                                            )}
-                                            {product.isFeatured && (
-                                                <span className="bg-[var(--color-brand-onyx)] text-white font-bold text-[9px] md:text-[11px] px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-sm">FEATURED</span>
-                                            )}
-                                        </div>
-                                        {/* Wishlist Button */}
-                                        <button
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                if (isInWishlist(product.id)) {
-                                                    removeFromWishlist(product.id);
-                                                } else {
-                                                    addToWishlist(product);
-                                                }
-                                            }}
-                                            className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-[var(--color-brand-onyx)] hover:bg-white hover:text-red-500 transition-colors shadow-none md:shadow-sm pointer-events-auto"
-                                            aria-label={isInWishlist(product.id) ? "Remove from wishlist" : "Add to wishlist"}
-                                        >
-                                            <Heart className={`w-3.5 h-3.5 md:w-4 md:h-4 transition-colors ${isInWishlist(product.id) ? "fill-red-500 text-red-500" : ""}`} />
-                                        </button>
-                                    </div>
-
-                                    {/* Image Wrapper */}
-                                    <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="block absolute inset-0 cursor-pointer overflow-hidden rounded-[1.25rem]">
-                                        <div className="relative w-full h-full">
-                                            {/* Primary Image */}
-                                            <Image
-                                                src={product.image || '/assets/placeholder.png'}
-                                                alt={product.name}
-                                                fill
-                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                                priority={index < 4}
-                                            />
-
-                                            {/* Secondary Hover Image (Slide Up) */}
-                                            <motion.div
-                                                variants={{
-                                                    initial: { y: "100%" },
-                                                    hover: { y: 0 }
-                                                }}
-                                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                                                className="absolute inset-0 z-10 bg-gray-50"
-                                            >
-                                                <Image
-                                                    src={product.hoverImage || product.image || '/assets/placeholder.png'}
-                                                    alt={`${product.name} alternate view`}
-                                                    fill
-                                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                                    className="object-cover"
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </Link>
-
-                                    {/* Arch Cutout Overlapping the bottom edge */}
-                                    <div className="absolute -bottom-6 md:-bottom-8 w-full z-20 flex justify-center pointer-events-none">
-                                        <div className="relative bg-white w-[90%] md:w-[85%] h-10 md:h-[3.5rem] rounded-[1.5rem] flex items-center justify-around px-2 md:px-4 pointer-events-auto shadow-none md:shadow-none">
-                                            {/* Left Action Button (View) */}
-                                            <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="text-[var(--color-brand-onyx)] hover:text-gray-500 transition-colors p-1 md:p-2">
-                                                <motion.div whileHover={{ scale: 1.05 }}>
-                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px] md:w-[24px] md:h-[24px]">
-                                                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-                                                        <circle cx="12" cy="12" r="3"></circle>
-                                                    </svg>
-                                                </motion.div>
-                                            </Link>
-
-                                            {/* Right Action Button (Add to Cart) */}
-                                            <button onClick={() => addToCart(product)} className="text-[var(--color-brand-onyx)] hover:text-gray-500 transition-colors p-1 md:p-2">
-                                                <motion.div whileHover={{ scale: 1.05 }}>
-                                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-[20px] h-[20px] md:w-[26px] md:h-[26px]">
-                                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    </svg>
-                                                </motion.div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Product Info Below Image */}
-                                <div className="pt-8 md:pt-10 pb-1 md:pb-2 px-1 text-center bg-white flex flex-col items-center flex-grow justify-start z-10 relative">
-                                    <Link href={`/product/${product.productFamily || product.slug || product.id}`} className="block group/link w-full">
-                                        <h3 className="font-heading font-semibold text-xs md:text-[18px] text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-gray-600 leading-tight mb-2 md:mb-3 truncate px-1">
-                                            {product.name}
-                                        </h3>
-                                    </Link>
-                                    <ListingCardPrice product={product} showPrice={showProductPrices} />
-                                </div>
-                            </motion.div>
-                        </motion.div>
+                            product={product}
+                            index={index}
+                            animateType="animate"
+                        />
                     ))}
                 </div>
                 )}
@@ -674,22 +548,22 @@ export default function CategoryPageClient({
                         <div className="w-20 h-20 rounded-full bg-[var(--color-brand-purple)]/8 flex items-center justify-center mb-5">
                             <SlidersHorizontal className="w-8 h-8 text-[var(--color-brand-purple)]/60" />
                         </div>
-                        <h3 className="font-heading text-2xl text-[var(--color-brand-onyx)] mb-2">
+                        <h3 className="editorial-heading text-2xl text-[var(--color-brand-onyx)] mb-2">
                             No products match your filters
                         </h3>
-                        <p className="font-sans text-sm text-[var(--color-brand-onyx)]/55 max-w-md mb-6">
+                        <p className="editorial-body text-sm text-[var(--color-brand-onyx)]/55 max-w-md mb-6">
                             Try widening the price range, removing a filter, or browse the full collection.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-3">
                             <button
                                 onClick={() => { clearAll(); setSortBy("featured"); }}
-                                className="px-5 py-2.5 rounded-full bg-[var(--color-brand-purple)] text-white font-heading font-semibold text-sm hover:bg-[#5e4580] transition-colors shadow-[0_4px_14px_rgba(115,86,151,0.25)]"
+                                className="px-5 py-2.5 rounded-full bg-[var(--color-brand-purple)] text-white editorial-heading font-semibold text-sm hover:bg-[#5e4580] transition-colors shadow-[0_4px_14px_rgba(115,86,151,0.25)]"
                             >
                                 Clear all filters
                             </button>
                             <Link
                                 href="/category/all"
-                                className="px-5 py-2.5 rounded-full bg-white border border-[var(--color-brand-onyx)]/15 text-[var(--color-brand-onyx)] font-heading font-semibold text-sm hover:border-[var(--color-brand-onyx)]/40 transition-colors"
+                                className="px-5 py-2.5 rounded-full bg-white border border-[var(--color-brand-onyx)]/15 text-[var(--color-brand-onyx)] editorial-heading font-semibold text-sm hover:border-[var(--color-brand-onyx)]/40 transition-colors"
                             >
                                 Browse all products
                             </Link>
@@ -726,7 +600,7 @@ export default function CategoryPageClient({
                 </div>
                 {/* Header */}
                 <div className="flex items-center justify-between px-6 py-4 md:py-5 border-b border-black/5">
-                    <h2 className="font-heading font-extrabold text-lg md:text-xl text-[var(--color-brand-onyx)]">Filters</h2>
+                    <h2 className="editorial-section-heading text-lg md:text-xl text-[var(--color-brand-onyx)]">Filters</h2>
                     <button
                         onClick={() => setFiltersOpen(false)}
                         aria-label="Close filters"
@@ -741,7 +615,7 @@ export default function CategoryPageClient({
                     {category === "Shop All" ? (
                         /* Shop All → choose a category */
                         <div>
-                            <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Category</h3>
+                            <h3 className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Category</h3>
                             <div className="flex flex-col gap-1">
                                 {TOP_CATEGORIES.map((c) => (
                                     <button
@@ -758,7 +632,7 @@ export default function CategoryPageClient({
                     ) : subcategoryOptions.length > 0 && (
                         /* Category → choose a type (subcategory) */
                         <div>
-                            <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Type</h3>
+                            <h3 className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Type</h3>
                             <p className="text-xs text-[var(--color-brand-onyx)]/45 mb-3 -mt-1">Pick one or more — results update as you go.</p>
                             <div className="flex flex-wrap gap-2">
                                 <button
@@ -786,7 +660,7 @@ export default function CategoryPageClient({
                     {/* Price — only where products actually carry a price */}
                     {showPriceFilter && (
                         <div>
-                            <h3 className="font-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Price (AED)</h3>
+                            <h3 className="editorial-heading font-bold text-sm text-[var(--color-brand-onyx)] mb-3">Price (AED)</h3>
                             <div className="flex items-center gap-3">
                                 <input
                                     type="number" min={0} value={priceRange[0]} placeholder="Min"
@@ -808,13 +682,13 @@ export default function CategoryPageClient({
                 <div className="border-t border-black/5 px-6 py-4 flex items-center gap-3">
                     <button
                         onClick={clearAll}
-                        className="px-5 py-3 rounded-full border border-gray-200 text-[var(--color-brand-onyx)]/60 font-heading font-bold text-sm hover:border-[var(--color-brand-onyx)]/30 transition-colors"
+                        className="px-5 py-3 rounded-full border border-gray-200 text-[var(--color-brand-onyx)]/60 editorial-heading font-bold text-sm hover:border-[var(--color-brand-onyx)]/30 transition-colors"
                     >
                         Clear
                     </button>
                     <button
                         onClick={() => setFiltersOpen(false)}
-                        className="flex-1 px-5 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white font-heading font-bold text-sm hover:opacity-90 transition-opacity"
+                        className="flex-1 px-5 py-3 rounded-full bg-[var(--color-brand-onyx)] text-white editorial-heading font-bold text-sm hover:opacity-90 transition-opacity"
                     >
                         Show {totalCount} {totalCount === 1 ? "product" : "products"}
                     </button>

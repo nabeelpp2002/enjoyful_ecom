@@ -15,9 +15,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-open-sans);
-  --font-heading: var(--font-montserrat);
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+  --font-serif: var(--font-display);
   --color-brand-purple: #735697;
   --color-brand-mustard: #F4B449;
   --color-brand-onyx: #1A1A1B;
@@ -62,6 +62,20 @@
 }
 
 :root {
+  /* Premium editorial typography */
+  --font-display: var(--font-montserrat), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-khand-display: var(--font-khand), "Khand", "Khand Fallback", sans-serif;
+  --font-body: var(--font-inter), Inter, "Helvetica Neue", Arial, sans-serif;
+  --display-weight: 700;
+  --display-spacing: -0.055em;
+  --display-leading: 0.92;
+  --body-weight: 400;
+  --body-spacing: -0.01em;
+  --body-leading: 1.5;
+  --label-weight: 600;
+  --label-spacing: 0.08em;
+  --ui-weight: 500;
+  --ui-spacing: -0.01em;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -137,5 +151,108 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-weight: var(--body-weight);
+    letter-spacing: var(--body-spacing);
+    line-height: var(--body-leading);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .editorial-title {
+    font-family: var(--font-khand-display);
+    font-weight: var(--display-weight) !important;
+    line-height: 0.9 !important;
+    letter-spacing: -0.035em !important;
+    text-wrap: balance;
+  }
+
+  .editorial-section-heading {
+    font-family: var(--font-khand-display);
+    font-weight: 600 !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.03em !important;
+    text-wrap: balance;
+  }
+
+  .editorial-heading {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight) !important;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .editorial-label {
+    font-family: var(--font-body);
+    font-weight: var(--label-weight);
+    line-height: 1;
+    letter-spacing: var(--label-spacing);
+    text-transform: uppercase;
+  }
+
+  .editorial-subtitle {
+    font-family: var(--font-body);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .editorial-body {
+    font-family: var(--font-body);
+    font-weight: var(--body-weight);
+    line-height: var(--body-leading);
+    letter-spacing: var(--body-spacing);
+  }
+
+  .editorial-ui {
+    font-family: var(--font-body);
+    font-weight: var(--ui-weight);
+    letter-spacing: var(--ui-spacing);
+  }
+
+  .editorial-number {
+    font-family: var(--font-display);
+    font-weight: var(--display-weight);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+  }
+
+  .display-xl { font-size: clamp(4rem, 9vw, 10rem) !important; }
+  .display-lg { font-size: clamp(3rem, 6vw, 7rem) !important; }
+  .display-md { font-size: clamp(2.25rem, 4vw, 5rem) !important; }
+  .display-sm { font-size: clamp(1.75rem, 3vw, 3.5rem) !important; }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-body);
+    font-weight: var(--ui-weight);
+    letter-spacing: var(--ui-spacing);
+  }
+
+  a.editorial-heading,
+  button.editorial-heading {
+    font-family: var(--font-body);
+    font-weight: var(--ui-weight);
+    letter-spacing: var(--ui-spacing);
+  }
+}
+
+@media (max-width: 768px) {
+  .display-xl { font-size: clamp(3.25rem, 15vw, 6rem) !important; }
+  .display-lg { font-size: clamp(2.75rem, 12vw, 5rem) !important; }
+  .display-md { font-size: clamp(2.25rem, 10vw, 4rem) !important; }
 }

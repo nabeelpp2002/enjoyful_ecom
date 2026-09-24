@@ -34,7 +34,7 @@ export default function ProfilePage() {
                     <div className="w-16 h-16 rounded-full bg-[var(--color-brand-purple)]/12 flex items-center justify-center mb-4">
                         <UserIcon className="w-7 h-7 text-[var(--color-brand-purple)]" strokeWidth={1.6} />
                     </div>
-                    <h1 className="font-heading font-bold text-2xl text-[var(--color-brand-onyx)] mb-1">Your profile</h1>
+                    <h1 className="editorial-title display-md font-bold text-2xl text-[var(--color-brand-onyx)] mb-1">Your profile</h1>
                     <p className="text-[var(--color-brand-onyx)]/50 text-sm mb-6 max-w-xs">Sign in to see your orders, wishlist and account details.</p>
                     <button
                         onClick={() => setAuthModalOpen(true)}
@@ -74,7 +74,7 @@ export default function ProfilePage() {
                         <div className="relative">
                             <div className="w-28 h-28 rounded-full bg-white p-1.5 shadow-lg">
                                 <div className="w-full h-full rounded-full bg-[var(--color-brand-purple)]/12 flex items-center justify-center">
-                                    <span className="font-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
+                                    <span className="editorial-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
                                 </div>
                             </div>
                             <span className="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-emerald-500 border-[3px] border-white flex items-center justify-center">
@@ -84,7 +84,7 @@ export default function ProfilePage() {
                     </div>
                 </div>
                 <div className="pt-16 text-center px-6">
-                    <h1 className="font-heading font-extrabold text-2xl text-[var(--color-brand-onyx)]">{fullName}</h1>
+                    <h1 className="editorial-title display-md font-extrabold text-2xl text-[var(--color-brand-onyx)]">{fullName}</h1>
                     {user?.email && <p className="text-[var(--color-brand-onyx)]/50 text-sm mt-0.5">{user.email}</p>}
                 </div>
             </div>
@@ -99,7 +99,7 @@ export default function ProfilePage() {
                         <div className="relative shrink-0">
                             <div className="w-24 h-24 rounded-full bg-white p-1.5 shadow-lg">
                                 <div className="w-full h-full rounded-full bg-white/95 flex items-center justify-center">
-                                    <span className="font-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
+                                    <span className="editorial-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
                                 </div>
                             </div>
                             <span className="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-emerald-500 border-[3px] border-white flex items-center justify-center">
@@ -107,7 +107,7 @@ export default function ProfilePage() {
                             </span>
                         </div>
                         <div className="min-w-0">
-                            <h1 className="font-heading font-extrabold text-3xl text-white truncate">{fullName}</h1>
+                            <h1 className="editorial-title display-md font-extrabold text-3xl text-white truncate">{fullName}</h1>
                             {user?.email && <p className="text-white/75 text-sm mt-1 truncate">{user.email}</p>}
                             <span className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-white/15 text-white text-xs font-medium backdrop-blur-sm">
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Active account
@@ -133,7 +133,7 @@ export default function ProfilePage() {
                             <span className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-[var(--color-brand-purple)]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-brand-purple)]/15 transition-colors">
                                 <Icon className="w-5 h-5 text-[var(--color-brand-purple)]" strokeWidth={1.7} />
                             </span>
-                            <span className="font-sans font-medium text-[15px] text-[var(--color-brand-onyx)]">{item.label}</span>
+                            <span className="editorial-subtitle text-[15px] text-[var(--color-brand-onyx)]">{item.label}</span>
                             <span className="ml-auto flex items-center gap-2">
                                 {item.badge ? (
                                     <span className="min-w-[22px] h-[22px] px-1.5 rounded-full bg-emerald-500 flex items-center justify-center text-[11px] text-white font-bold">
@@ -157,7 +157,7 @@ export default function ProfilePage() {
             <div className="md:hidden max-w-md mx-auto px-5 mt-8">
                 <button
                     onClick={handleLogout}
-                    className="flex items-center justify-center gap-2 w-full rounded-2xl py-3.5 text-[var(--color-brand-onyx)]/60 font-sans font-semibold text-[15px] hover:text-red-600 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full rounded-2xl py-3.5 text-[var(--color-brand-onyx)]/60 editorial-subtitle font-semibold text-[15px] hover:text-red-600 transition-colors"
                 >
                     <LogOut size={18} strokeWidth={1.8} />
                     Logout
@@ -184,7 +184,7 @@ export default function ProfilePage() {
                             className="relative w-full md:max-w-md bg-white rounded-t-[2rem] md:rounded-[1.5rem] px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] md:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] md:mx-4"
                         >
                             <div className="flex items-center justify-between mb-3">
-                                <h2 className="font-heading font-extrabold text-xl text-[var(--color-brand-onyx)]">Share your feedback</h2>
+                                <h2 className="editorial-section-heading text-xl text-[var(--color-brand-onyx)]">Share your feedback</h2>
                                 <button
                                     onClick={() => setFeedbackOpen(false)}
                                     aria-label="Close"
