@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { pageMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import {
+  CATEGORY_OG_IMAGE,
+  CATEGORY_OG_IMAGE_ALT,
+  CATEGORY_OG_IMAGE_HEIGHT,
+  CATEGORY_OG_IMAGE_WIDTH,
+  pageMetadata,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 type CategorySlug = "glow" | "daily" | "baby" | "fragrances" | "home-care";
 
@@ -57,6 +65,12 @@ export async function generateMetadata({
     title: meta.title,
     description: meta.description,
     path: `/category/${category}`,
+    image: {
+      url: CATEGORY_OG_IMAGE,
+      width: CATEGORY_OG_IMAGE_WIDTH,
+      height: CATEGORY_OG_IMAGE_HEIGHT,
+      alt: CATEGORY_OG_IMAGE_ALT,
+    },
   });
 }
 

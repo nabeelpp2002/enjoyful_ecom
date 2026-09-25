@@ -38,6 +38,18 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // These carousel files are compressed WebP assets and are requested
+        // directly, so let browsers/CDNs reuse them instead of downloading or
+        // re-encoding them on repeat visits.
+        source: "/assets/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=2592000",
+          },
+        ],
+      },
+      {
         source: "/api/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
       },

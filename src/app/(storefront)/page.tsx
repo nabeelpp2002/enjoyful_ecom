@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { HeroSectionServer } from "@/components/sections/HeroSectionServer";
 import { ShopByCategory } from "@/components/sections/ShopByCategory";
 import {
@@ -21,9 +20,7 @@ export const metadata: Metadata = pageMetadata({
 export default function Home() {
   return (
     <>
-      <Suspense fallback={<section className="relative w-full h-[100svh] bg-[var(--color-brand-onyx)] animate-pulse" />}>
-        <HeroSectionServer />
-      </Suspense>
+      <HeroSectionServer />
       <ShopByCategory />
       <HomepageFeaturedProductsServer />
       <FeaturesSection />

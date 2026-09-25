@@ -49,6 +49,21 @@ export function StaticHeroCarousel() {
         return () => window.clearInterval(timer);
     }, [showNext]);
 
+    useEffect(() => {
+        // The files are already compressed WebP assets. Warm every slide directly
+        // so the browser cache has the next image before the carousel moves.
+        const preloaders = slides.flatMap(slide => [slide.desktop, slide.mobile]).map(src => {
+            const image = new window.Image();
+            image.decoding = "async";
+            image.src = src;
+            return image;
+        });
+
+        return () => {
+            preloaders.forEach(image => { image.src = ""; });
+        };
+    }, []);
+
     const handlePointerUp = (event: React.PointerEvent) => {
         if (pointerStartRef.current === null) return;
         const distance = event.clientX - pointerStartRef.current;
@@ -99,10 +114,28 @@ export function StaticHeroCarousel() {
                         className="relative block h-full w-full min-w-full shrink-0 overflow-hidden"
                     >
                         <div className="relative h-full w-full md:hidden">
-                            <Image src={slide.mobile} alt={slide.alt} fill priority={originalIndex === 0} quality={75} sizes="100vw" className="object-cover" />
+                            <Image
+                                src={slide.mobile}
+                                alt={slide.alt}
+                                fill
+                                priority={originalIndex === 0}
+                                fetchPriority={originalIndex === 0 ? "high" : "auto"}
+                                unoptimized
+                                sizes="100vw"
+                                className="object-cover"
+                            />
                         </div>
                         <div className="relative hidden h-full w-full md:block">
-                            <Image src={slide.desktop} alt={slide.alt} fill priority={originalIndex === 0} quality={75} sizes="100vw" className="object-cover object-center" />
+                            <Image
+                                src={slide.desktop}
+                                alt={slide.alt}
+                                fill
+                                priority={originalIndex === 0}
+                                fetchPriority={originalIndex === 0 ? "high" : "auto"}
+                                unoptimized
+                                sizes="100vw"
+                                className="object-cover object-center"
+                            />
                         </div>
                     </Link>
                     );

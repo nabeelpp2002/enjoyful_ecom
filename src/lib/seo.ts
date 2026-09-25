@@ -2,11 +2,17 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Enjoyful Life";
 export const SITE_URL = "https://www.enjoyfullife.com";
-export const DEFAULT_OG_IMAGE = "/og/enjoyful-life-social.png";
-export const DEFAULT_OG_IMAGE_WIDTH = 1023;
-export const DEFAULT_OG_IMAGE_HEIGHT = 1537;
+export const DEFAULT_OG_IMAGE = "/og/enjoyful-life-home.png";
+export const DEFAULT_OG_IMAGE_WIDTH = 1774;
+export const DEFAULT_OG_IMAGE_HEIGHT = 887;
 export const DEFAULT_OG_IMAGE_ALT =
-  "Enjoyful Life Coastal Pulse body mist presented in a blue editorial campaign";
+  "Enjoyful Life skincare, personal care and fragrance collection";
+
+export const CATEGORY_OG_IMAGE = "/og/enjoyful-life-category.png";
+export const CATEGORY_OG_IMAGE_WIDTH = 1619;
+export const CATEGORY_OG_IMAGE_HEIGHT = 971;
+export const CATEGORY_OG_IMAGE_ALT =
+  "Browse Enjoyful Life skincare, personal care and fragrance categories";
 
 export const DEFAULT_TITLE =
   "Enjoyful Life — Skincare, Personal Care & Fragrance UAE";
@@ -22,11 +28,23 @@ export function pageMetadata({
   description,
   path,
   index = true,
+  image = {
+    url: DEFAULT_OG_IMAGE,
+    width: DEFAULT_OG_IMAGE_WIDTH,
+    height: DEFAULT_OG_IMAGE_HEIGHT,
+    alt: DEFAULT_OG_IMAGE_ALT,
+  },
 }: {
   title: string;
   description: string;
   path: string;
   index?: boolean;
+  image?: {
+    url: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
 }): Metadata {
   const canonical = absoluteUrl(path);
 
@@ -44,20 +62,13 @@ export function pageMetadata({
       siteName: SITE_NAME,
       title,
       description,
-      images: [
-        {
-          url: DEFAULT_OG_IMAGE,
-          width: DEFAULT_OG_IMAGE_WIDTH,
-          height: DEFAULT_OG_IMAGE_HEIGHT,
-          alt: DEFAULT_OG_IMAGE_ALT,
-        },
-      ],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [{ url: DEFAULT_OG_IMAGE, alt: DEFAULT_OG_IMAGE_ALT }],
+      images: [{ url: image.url, alt: image.alt }],
     },
   };
 }
