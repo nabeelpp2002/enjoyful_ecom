@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Enjoyful Life";
 export const SITE_URL = "https://www.enjoyfullife.com";
-export const DEFAULT_OG_IMAGE = "/og/enjoyful-life-home.png";
-export const DEFAULT_OG_IMAGE_WIDTH = 1774;
-export const DEFAULT_OG_IMAGE_HEIGHT = 887;
+export const DEFAULT_OG_IMAGE = "/og/enjoyful-life-home-v2.jpg";
+export const DEFAULT_OG_IMAGE_WIDTH = 1200;
+export const DEFAULT_OG_IMAGE_HEIGHT = 630;
 export const DEFAULT_OG_IMAGE_ALT =
   "Enjoyful Life skincare, personal care and fragrance collection";
 
-export const CATEGORY_OG_IMAGE = "/og/enjoyful-life-category.png";
-export const CATEGORY_OG_IMAGE_WIDTH = 1619;
-export const CATEGORY_OG_IMAGE_HEIGHT = 971;
+export const CATEGORY_OG_IMAGE = "/og/enjoyful-life-category-v2.jpg";
+export const CATEGORY_OG_IMAGE_WIDTH = 1200;
+export const CATEGORY_OG_IMAGE_HEIGHT = 630;
 export const CATEGORY_OG_IMAGE_ALT =
   "Browse Enjoyful Life skincare, personal care and fragrance categories";
 
