@@ -32,21 +32,63 @@ export function StaticHeroCarousel() {
     const [instantReset, setInstantReset] = useState(false);
     const pointerStartRef = useRef<number | null>(null);
     const suppressClickRef = useRef(false);
+    const currentRef = useRef(0);
+    const transitionInProgressRef = useRef(false);
     const trackSlides = [slides[slides.length - 1], ...slides, slides[0]];
 
     const showNext = useCallback(() => {
-        setCurrent(value => (value + 1) % slides.length);
-        setTrackIndex(value => value + 1);
+        if (document.hidden || transitionInProgressRef.current) return;
+        const active = currentRef.current;
+        const next = (active + 1) % slides.length;
+        currentRef.current = next;
+        transitionInProgressRef.current = true;
+        setCurrent(next);
+        // From the final real slide, animate to the cloned first slide. The
+        // animation-complete handler then jumps back to the real first slide.
+        setTrackIndex(active === slides.length - 1 ? slides.length + 1 : next + 1);
     }, []);
 
     const showPrevious = useCallback(() => {
-        setCurrent(value => (value - 1 + slides.length) % slides.length);
-        setTrackIndex(value => value - 1);
+        if (document.hidden || transitionInProgressRef.current) return;
+        const active = currentRef.current;
+        const previous = (active - 1 + slides.length) % slides.length;
+        currentRef.current = previous;
+        transitionInProgressRef.current = true;
+        setCurrent(previous);
+        // From the first real slide, animate to the cloned final slide.
+        setTrackIndex(active === 0 ? 0 : previous + 1);
     }, []);
 
     useEffect(() => {
-        const timer = window.setInterval(showNext, 6000);
-        return () => window.clearInterval(timer);
+        let timer: number | undefined;
+
+        const startTimer = () => {
+            if (timer !== undefined) window.clearInterval(timer);
+            timer = window.setInterval(showNext, 6000);
+        };
+
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                if (timer !== undefined) window.clearInterval(timer);
+                timer = undefined;
+                return;
+            }
+
+            // A browser may suspend an in-flight animation while the tab is in
+            // the background. Restore the matching real slide before resuming.
+            transitionInProgressRef.current = false;
+            setInstantReset(true);
+            setTrackIndex(currentRef.current + 1);
+            requestAnimationFrame(() => requestAnimationFrame(() => setInstantReset(false)));
+            startTimer();
+        };
+
+        if (!document.hidden) startTimer();
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        return () => {
+            if (timer !== undefined) window.clearInterval(timer);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+        };
     }, [showNext]);
 
     useEffect(() => {
@@ -78,8 +120,9 @@ export function StaticHeroCarousel() {
 
     const handleAnimationComplete = () => {
         let resetTo: number | null = null;
-        if (trackIndex === 0) resetTo = slides.length;
-        if (trackIndex === slides.length + 1) resetTo = 1;
+        if (trackIndex <= 0) resetTo = slides.length;
+        if (trackIndex >= slides.length + 1) resetTo = 1;
+        transitionInProgressRef.current = false;
         if (resetTo === null) return;
 
         setInstantReset(true);
@@ -147,7 +190,13 @@ export function StaticHeroCarousel() {
                     <button
                         key={slide.href}
                         type="button"
-                        onClick={() => { setCurrent(index); setTrackIndex(index + 1); }}
+                        onClick={() => {
+                            if (index === currentRef.current || transitionInProgressRef.current) return;
+                            currentRef.current = index;
+                            transitionInProgressRef.current = true;
+                            setCurrent(index);
+                            setTrackIndex(index + 1);
+                        }}
                         aria-label={`Show slide ${index + 1}`}
                         className={`h-2 rounded-full shadow-sm transition-all ${index === current ? "w-7 bg-white" : "w-2 bg-white/60 hover:bg-white/80"}`}
                     />

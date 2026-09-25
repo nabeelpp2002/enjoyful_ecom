@@ -199,7 +199,7 @@ export class AuthService {
     } else {
       const providers = new Set(user.providers ?? []);
       providers.add('otp');
-      await this.userModel.updateOne(
+      const updatedUser = await this.userModel.findOneAndUpdate(
         { _id: user._id },
         { $set: { emailVerified: true, providers: Array.from(providers) } },
       );
@@ -253,8 +253,8 @@ export class AuthService {
     } else {
       const providers = new Set(user.providers ?? []);
       providers.add('google');
-      await this.userModel.updateOne(
-        { _id: user._id },
+      const updatedUser = await this.userModel.findByIdAndUpdate(
+        user._id,
         {
           $set: {
             emailVerified: true,
@@ -265,7 +265,9 @@ export class AuthService {
             ...(user.lastName ? {} : { lastName: payload.family_name ?? '' }),
           },
         },
-      );
+        { new: true },
+      ).lean();
+      if (updatedUser) user = updatedUser;
     }
 
     if (!user.isActive) throw new UnauthorizedException('Account deactivated');

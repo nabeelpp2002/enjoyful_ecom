@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { X, Mail, Lock, KeyRound, ArrowLeft, Loader2, Sparkles } from 'lucide-react';
+import { Mail, Lock, KeyRound, ArrowLeft, Loader2 } from 'lucide-react';
 import { useData } from '@/context/DataContext';
 
 interface Props {
@@ -24,8 +24,11 @@ type GsiNamespace = {
     id?: {
       initialize: (opts: {
         client_id: string;
-        callback: (response: CredentialResponse) => void;
+        callback?: (response: CredentialResponse) => void;
         auto_select?: boolean;
+        use_fedcm_for_button?: boolean;
+        ux_mode?: 'popup' | 'redirect';
+        login_uri?: string;
       }) => void;
       renderButton: (
         parent: HTMLElement,
@@ -48,9 +51,10 @@ declare global {
   }
 }
 
-const cardCls = 'bg-white rounded-2xl p-6 sm:p-8 w-full max-w-md mx-4 shadow-2xl relative';
+const cardCls =
+  'relative flex h-[100dvh] w-full overflow-y-auto overscroll-contain bg-white px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-[calc(1.25rem+env(safe-area-inset-top))] sm:px-8 md:mx-4 md:h-auto md:max-h-[calc(100dvh-2rem)] md:max-w-md md:rounded-2xl md:p-8 md:shadow-2xl';
 const inputCls =
-  'w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)] focus:border-transparent transition';
+  'w-full px-4 py-3 border border-gray-200 rounded-xl text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-purple)] focus:border-transparent transition';
 
 export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
   const { login, register, requestOtp, verifyOtp, loginWithGoogle } = useData();
@@ -83,6 +87,14 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
     }
   }, [isOpen]);
 
+  // Keep the page behind the full-screen mobile sign-in view stationary.
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [isOpen]);
+
   // Resend cooldown ticker
   useEffect(() => {
     if (resendCooldown <= 0) return;
@@ -98,22 +110,35 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
       const gsi = window.google?.accounts?.id;
       if (!gsi || !googleButtonRef.current) return;
       try {
-        gsi.initialize({
-          client_id: GOOGLE_CLIENT_ID,
-          callback: async (response: CredentialResponse) => {
-            if (!response.credential) return;
-            try {
-              setLoading(true);
-              setError('');
-              await loginWithGoogle(response.credential);
-              onClose();
-            } catch (err) {
-              setError((err as Error).message);
-            } finally {
-              setLoading(false);
-            }
-          },
-        });
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+        if (isMobile) {
+          // Mobile browsers frequently block the GIS popup. Use Google's
+          // supported full-page flow and let our route establish the session.
+          gsi.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            ux_mode: 'redirect',
+            login_uri: `${window.location.origin}/api/auth/google`,
+          });
+        } else {
+          gsi.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: async (response: CredentialResponse) => {
+              if (!response.credential) return;
+              try {
+                setLoading(true);
+                setError('');
+                await loginWithGoogle(response.credential);
+                onClose();
+              } catch (err) {
+                setError((err as Error).message);
+              } finally {
+                setLoading(false);
+              }
+            },
+            use_fedcm_for_button: true,
+          });
+        }
         googleButtonRef.current.innerHTML = '';
         gsi.renderButton(googleButtonRef.current, {
           type: 'standard',
@@ -208,15 +233,20 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
       : 'Cart and wishlist work without an account — sign in to checkout, sync across devices, or leave a review.');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
+    <div className="fixed inset-0 z-[80] flex items-stretch justify-center md:items-center" role="dialog" aria-modal="true" aria-label={heading}>
+      <div className="absolute inset-0 hidden bg-black/40 backdrop-blur-sm md:block" onClick={onClose} />
       <div className={cardCls}>
-        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-          <X size={20} />
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Go back"
+          className="absolute left-4 top-[calc(1rem+env(safe-area-inset-top))] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-gray-600 shadow-sm backdrop-blur transition hover:text-gray-900 md:top-4 md:bg-transparent md:shadow-none"
+        >
+          <ArrowLeft size={22} />
         </button>
 
-        <div className="flex items-center gap-2 text-[var(--color-brand-purple)] mb-2">
-          <Sparkles className="w-4 h-4" />
+        <div className="mx-auto my-auto w-full max-w-md py-14 md:py-0">
+        <div className="mb-2 flex items-center text-[var(--color-brand-purple)] md:pl-10">
           <span className="editorial-label text-xs font-medium tracking-wide uppercase">enJoyful Life</span>
         </div>
         <h2 className="editorial-heading font-bold text-2xl text-[var(--color-brand-onyx)]">{heading}</h2>
@@ -381,6 +411,7 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
             </button>
           </form>
         )}
+        </div>
       </div>
     </div>
   );

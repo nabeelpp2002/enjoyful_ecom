@@ -14,6 +14,7 @@ export interface AuthUser {
     firstName: string;
     lastName: string;
     role: string;
+    avatarUrl?: string;
 }
 
 interface DataContextType {

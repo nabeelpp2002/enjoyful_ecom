@@ -14,6 +14,8 @@ import {
     ChevronRight,
     Check,
     X,
+    ArrowLeft,
+    ShieldCheck,
     User as UserIcon,
 } from "lucide-react";
 import { useData } from "@/context/DataContext";
@@ -25,6 +27,7 @@ export default function ProfilePage() {
     const { isAuthenticated, user, logout, wishlist } = useData();
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [feedbackOpen, setFeedbackOpen] = useState(false);
+    const [avatarFailed, setAvatarFailed] = useState(false);
 
     // Guests can't have a profile — prompt them to sign in.
     if (!isAuthenticated) {
@@ -50,6 +53,7 @@ export default function ProfilePage() {
 
     const fullName = [user?.firstName, user?.lastName].filter(Boolean).join(" ").trim() || "My Account";
     const initial = (user?.firstName || user?.email || "?").charAt(0).toUpperCase();
+    const showAvatar = Boolean(user?.avatarUrl) && !avatarFailed;
 
     const menuItems = [
         { label: "My Orders", icon: Package, href: "/orders" },
@@ -65,27 +69,37 @@ export default function ProfilePage() {
     };
 
     return (
-        <div className="pb-28 md:pb-20">
-            {/* ───────── Mobile hero (curved) ───────── */}
-            <div className="md:hidden">
-                <div className="relative">
-                    <div className="h-44 bg-[var(--color-brand-purple)] rounded-b-[2.5rem]" />
-                    <div className="absolute left-1/2 -translate-x-1/2 -bottom-12">
-                        <div className="relative">
-                            <div className="w-28 h-28 rounded-full bg-white p-1.5 shadow-lg">
-                                <div className="w-full h-full rounded-full bg-[var(--color-brand-purple)]/12 flex items-center justify-center">
-                                    <span className="editorial-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
-                                </div>
-                            </div>
-                            <span className="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-emerald-500 border-[3px] border-white flex items-center justify-center">
-                                <Check className="w-3 h-3 text-white" strokeWidth={3} />
-                            </span>
-                        </div>
-                    </div>
+        <div className="min-h-[calc(100dvh-5rem)] bg-[radial-gradient(circle_at_top_right,rgba(224,205,238,0.72),transparent_38%),linear-gradient(180deg,#fbf8fd_0%,#f6f1f9_100%)] pb-28 md:min-h-0 md:bg-none md:pb-20">
+            {/* Mobile profile card */}
+            <div className="mx-auto max-w-md px-5 pt-5 md:hidden">
+                <div className="mb-5 flex items-center gap-3">
+                    <button type="button" onClick={() => router.back()} aria-label="Go back" className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[var(--color-brand-onyx)] shadow-[0_4px_16px_rgba(26,26,27,0.06)] active:scale-95">
+                        <ArrowLeft className="h-5 w-5" strokeWidth={1.8} />
+                    </button>
+                    <h1 className="editorial-section-heading text-2xl text-[var(--color-brand-onyx)]">Profile</h1>
                 </div>
-                <div className="pt-16 text-center px-6">
-                    <h1 className="editorial-title display-md font-extrabold text-2xl text-[var(--color-brand-onyx)]">{fullName}</h1>
-                    {user?.email && <p className="text-[var(--color-brand-onyx)]/50 text-sm mt-0.5">{user.email}</p>}
+
+                <div className="relative overflow-hidden rounded-[1.75rem] border border-white/80 bg-white px-6 py-7 text-center shadow-[0_16px_45px_rgba(115,86,151,0.10)]">
+                    <div className="pointer-events-none absolute -right-12 -top-14 h-36 w-36 rounded-full bg-[var(--color-brand-purple)]/8" />
+                    <div className="relative mx-auto mb-4 w-fit">
+                        <div className="h-24 w-24 rounded-full bg-white p-1 shadow-[0_8px_24px_rgba(115,86,151,0.18)]">
+                            {showAvatar ? (
+                                <img src={user?.avatarUrl} alt={`${fullName} profile`} referrerPolicy="no-referrer" onError={() => setAvatarFailed(true)} className="h-full w-full rounded-full object-cover" />
+                            ) : (
+                                <div className="flex h-full w-full items-center justify-center rounded-full bg-[var(--color-brand-purple)]/12">
+                                    <span className="editorial-heading text-4xl text-[var(--color-brand-purple)]">{initial}</span>
+                                </div>
+                            )}
+                        </div>
+                        <span className="absolute bottom-0.5 right-0.5 flex h-6 w-6 items-center justify-center rounded-full border-[3px] border-white bg-emerald-500">
+                            <Check className="h-3 w-3 text-white" strokeWidth={3} />
+                        </span>
+                    </div>
+                    <h2 className="editorial-section-heading text-2xl text-[var(--color-brand-onyx)]">{fullName}</h2>
+                    {user?.email && <p className="mt-1 truncate text-sm text-[var(--color-brand-onyx)]/50">{user.email}</p>}
+                    <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[var(--color-brand-purple)]/10 px-3 py-1.5 text-xs font-medium text-[var(--color-brand-purple)]">
+                        <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.8} /> Verified account
+                    </div>
                 </div>
             </div>
 
@@ -98,16 +112,26 @@ export default function ProfilePage() {
                     <div className="relative flex items-center gap-6">
                         <div className="relative shrink-0">
                             <div className="w-24 h-24 rounded-full bg-white p-1.5 shadow-lg">
-                                <div className="w-full h-full rounded-full bg-white/95 flex items-center justify-center">
-                                    <span className="editorial-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
-                                </div>
+                                {showAvatar ? (
+                                    <img
+                                        src={user?.avatarUrl}
+                                        alt={`${fullName} profile`}
+                                        referrerPolicy="no-referrer"
+                                        onError={() => setAvatarFailed(true)}
+                                        className="h-full w-full rounded-full object-cover"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full rounded-full bg-white/95 flex items-center justify-center">
+                                        <span className="editorial-heading font-bold text-4xl text-[var(--color-brand-purple)]">{initial}</span>
+                                    </div>
+                                )}
                             </div>
                             <span className="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-emerald-500 border-[3px] border-white flex items-center justify-center">
                                 <Check className="w-3 h-3 text-white" strokeWidth={3} />
                             </span>
                         </div>
                         <div className="min-w-0">
-                            <h1 className="editorial-title display-md font-extrabold text-3xl text-white truncate">{fullName}</h1>
+                            <h1 className="editorial-title display-md [font-weight:500!important] text-3xl text-white truncate">{fullName}</h1>
                             {user?.email && <p className="text-white/75 text-sm mt-1 truncate">{user.email}</p>}
                             <span className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-white/15 text-white text-xs font-medium backdrop-blur-sm">
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Active account
@@ -125,7 +149,7 @@ export default function ProfilePage() {
             </div>
 
             {/* ───────── Menu (1-col mobile · 2-col desktop) ───────── */}
-            <div className="max-w-md md:max-w-5xl mx-auto px-5 md:px-6 mt-8 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            <div className="mx-5 mt-5 grid max-w-md grid-cols-1 gap-0 overflow-hidden rounded-[1.5rem] border border-[var(--color-brand-onyx)]/5 bg-white shadow-[0_10px_32px_rgba(115,86,151,0.07)] md:mx-auto md:mt-6 md:max-w-5xl md:grid-cols-2 md:gap-4 md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:px-6 md:shadow-none">
                 {menuItems.map((item) => {
                     const Icon = item.icon;
                     const inner = (
@@ -144,7 +168,7 @@ export default function ProfilePage() {
                             </span>
                         </>
                     );
-                    const cls = "group flex items-center gap-3 w-full rounded-2xl bg-white border border-[var(--color-brand-onyx)]/8 px-4 py-3.5 md:px-5 md:py-4 shadow-[0_2px_12px_rgba(26,26,27,0.04)] hover:shadow-[0_8px_24px_rgba(115,86,151,0.12)] hover:border-[var(--color-brand-purple)]/25 active:scale-[0.99] transition-all text-left";
+                    const cls = "group flex w-full items-center gap-3 border-b border-[var(--color-brand-onyx)]/5 bg-white px-4 py-3.5 text-left transition-all last:border-b-0 hover:bg-[var(--color-brand-purple)]/[0.025] active:bg-[var(--color-brand-purple)]/[0.05] md:rounded-2xl md:border md:border-[var(--color-brand-onyx)]/8 md:px-5 md:py-4 md:shadow-[0_2px_12px_rgba(26,26,27,0.04)] md:hover:border-[var(--color-brand-purple)]/25 md:hover:shadow-[0_8px_24px_rgba(115,86,151,0.12)]";
                     return item.href ? (
                         <Link key={item.label} href={item.href} className={cls}>{inner}</Link>
                     ) : (
@@ -154,13 +178,15 @@ export default function ProfilePage() {
             </div>
 
             {/* Logout (mobile only — desktop has it in the hero) */}
-            <div className="md:hidden max-w-md mx-auto px-5 mt-8">
+            <div className="mx-auto mt-4 max-w-md px-5 md:hidden">
                 <button
                     onClick={handleLogout}
-                    className="flex items-center justify-center gap-2 w-full rounded-2xl py-3.5 text-[var(--color-brand-onyx)]/60 editorial-subtitle font-semibold text-[15px] hover:text-red-600 transition-colors"
+                    className="flex w-full items-center gap-3 rounded-[1.25rem] border border-[var(--color-brand-onyx)]/5 bg-white px-4 py-3.5 text-left text-[15px] text-[var(--color-brand-onyx)]/60 shadow-[0_8px_24px_rgba(115,86,151,0.05)] transition-colors hover:text-red-600"
                 >
-                    <LogOut size={18} strokeWidth={1.8} />
-                    Logout
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-500">
+                        <LogOut size={18} strokeWidth={1.8} />
+                    </span>
+                    <span className="editorial-subtitle">Logout</span>
                 </button>
             </div>
 

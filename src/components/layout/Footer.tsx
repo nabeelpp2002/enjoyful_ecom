@@ -1,10 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+    const pathname = usePathname();
+    const mobileVisibility = pathname === "/" ? "block" : "hidden md:block";
+
     return (
-        <footer className="bg-white py-12 md:py-16 border-t border-[var(--color-brand-onyx)]/5">
+        <footer className={`${mobileVisibility} bg-white py-12 md:py-16 border-t border-[var(--color-brand-onyx)]/5`}>
             <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 md:gap-8">
 
                 {/* Brand Info */}
