@@ -303,7 +303,7 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
               <input
-                type="email" required autoFocus
+                type="email" required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="you@example.com"
@@ -341,7 +341,7 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
                 autoComplete="one-time-code"
                 pattern="[0-9]{6}"
                 maxLength={6}
-                required autoFocus
+                required
                 value={code}
                 onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                 placeholder="123456"
