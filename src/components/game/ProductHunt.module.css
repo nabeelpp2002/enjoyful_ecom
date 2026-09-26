@@ -306,6 +306,9 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.mobileSceneArtwork {
+  display: none;
+}
 .hideout {
   position: absolute;
   z-index: 1;
@@ -532,7 +535,7 @@
   }
   .gameLayout {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
   }
   .sidebar {
     grid-row: 2;
@@ -650,11 +653,19 @@
     width: clamp(42px, 13vw, 64px);
   }
   .scene {
-    flex: none;
-    aspect-ratio: 3 / 2;
+    flex: 1;
+    min-height: 0;
   }
   .sceneArtwork {
-    background-size: cover;
+    display: none;
+  }
+  .mobileSceneArtwork {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   .bottomNav {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Youtube } from "lucide-react";
-import { usePathname } from "next/navigation";
 
 const footerLinks = [
     { label: "Play & Discover", href: "/404" },
@@ -17,11 +16,8 @@ const footerLinks = [
 ];
 
 export function Footer() {
-    const pathname = usePathname();
-    const mobileVisibility = pathname === "/" ? "block" : "hidden md:block";
-
     return (
-        <footer data-site-footer className={`${mobileVisibility} relative isolate min-h-[800px] overflow-hidden bg-[#fafaf8] md:min-h-[900px]`}>
+        <footer data-site-footer className="relative isolate min-h-[800px] overflow-hidden bg-[#fafaf8] md:min-h-[900px]">
             <Image
                 src="/assets/footer-products-mobile.webp"
                 alt="Enjoyful Life products in a bright garden"

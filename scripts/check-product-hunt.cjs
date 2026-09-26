@@ -26,17 +26,18 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     assert.equal(await page.getByRole("link", { name: "Go home" }).getAttribute("href"), "/");
     await page.getByRole("button", { name: "Find Joyful" }).click();
     const targets = await page.locator("ul li").allTextContents();
-    assert.equal(targets.length, 3);
+    assert.equal(targets.length, 4);
     assert.match(
       await page.locator("[data-scene-artwork]").getAttribute("style"),
-      /joyful-boutique/,
+      /joyful-beach/,
     );
     const names = [
       "Sunshine SPF 50+",
-      "Amber Glow",
-      "Baby Powder",
-      "Aloe Bliss",
       "Orange Face Wash",
+      "Lemon Face Wash",
+      "Coastal Pulse",
+      "Aloe Bliss",
+      "Coffee Face Scrub",
     ];
     async function revealAndSelect(targetPage, name) {
       await targetPage
@@ -95,19 +96,29 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     await page
       .getByRole("button", { name: `Select ${targets[0]}`, exact: true })
       .click();
+    await page.setViewportSize({ width: 320, height: 740 });
+    assert.match(
+      await page.locator("[data-mobile-scene-artwork]").getAttribute("style"),
+      /joyful-beach-mobile/,
+    );
     await page.getByRole("button", { name: "Hint", exact: true }).click();
     for (const name of targets.slice(1)) await revealAndSelect(page, name);
     await page.getByRole("button", { name: "Next level" }).waitFor();
     await page.waitForFunction(
-      () => localStorage.getItem("enjoyful-product-hunt-v1") === "450",
+      () => localStorage.getItem("enjoyful-product-hunt-v1") === "550",
     );
     await page.getByRole("button", { name: "Next level" }).click();
-    assert.equal(await page.locator("ul li").count(), 4);
+    assert.equal(await page.locator("ul li").count(), 5);
+    assert.match(
+      await page.locator("[data-mobile-scene-artwork]").getAttribute("style"),
+      /joyful-laundry-mobile/,
+    );
+    await page.setViewportSize({ width: 1280, height: 1000 });
     assert.match(
       await page.locator("[data-scene-artwork]").getAttribute("style"),
-      /joyful-beach/,
+      /joyful-bathroom/,
     );
-    assert.deepEqual(await page.locator('[aria-label^="Select "]').count(), 5);
+    assert.deepEqual(await page.locator('[aria-label^="Select "]').count(), 6);
     assert.equal(
       await page
         .getByRole("button", { name: "Select Sunshine SPF 50+", exact: true })
@@ -115,16 +126,22 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
       0,
     );
     await page.screenshot({
-      path: "artifacts/product-hunt-beach.png",
+      path: "artifacts/product-hunt-laundry.png",
       fullPage: true,
     });
+    await page.setViewportSize({ width: 320, height: 740 });
     for (const name of await page.locator("ul li").allTextContents())
       await revealAndSelect(page, name);
     await page.getByRole("button", { name: "Next level" }).click();
-    assert.equal(await page.locator("ul li").count(), 5);
+    assert.equal(await page.locator("ul li").count(), 6);
+    assert.match(
+      await page.locator("[data-mobile-scene-artwork]").getAttribute("style"),
+      /joyful-home-mobile/,
+    );
+    await page.setViewportSize({ width: 1280, height: 1000 });
     assert.match(
       await page.locator("[data-scene-artwork]").getAttribute("style"),
-      /joyful-bathroom/,
+      /joyful-boutique/,
     );
     assert.equal(
       await page
@@ -133,16 +150,19 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
       0,
     );
     await page.screenshot({
-      path: "artifacts/product-hunt-bathroom.png",
+      path: "artifacts/product-hunt-fragrance.png",
       fullPage: true,
     });
     await page.setViewportSize({ width: 320, height: 740 });
-    const artwork = await page.locator("[data-scene-artwork]").boundingBox();
+    const artwork = await page.locator("[data-mobile-scene-artwork]").boundingBox();
     const searchScene = await page.locator('[aria-label^="Search the"]').boundingBox();
     assert.ok(artwork);
     assert.ok(searchScene);
-    assert.ok(Math.abs(artwork.width / artwork.height - 1.5) < 0.01);
     assert.ok(Math.abs(searchScene.height - artwork.height) < 1);
+    assert.equal(
+      await page.locator("[data-mobile-scene-artwork]").evaluate((node) => getComputedStyle(node).backgroundSize),
+      "contain",
+    );
     await page.screenshot({
       path: "artifacts/product-hunt-mobile-play.png",
       fullPage: true,
@@ -150,20 +170,20 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     for (const name of await page.locator("ul li").allTextContents())
       await revealAndSelect(page, name);
     await page.waitForFunction(
-      () => localStorage.getItem("enjoyful-product-hunt-v1") === "1750",
+      () => localStorage.getItem("enjoyful-product-hunt-v1") === "2050",
     );
     await page.screenshot({
       path: "artifacts/product-hunt-mobile-complete.png",
       fullPage: true,
     });
     await page.getByRole("button", { name: "Next level" }).click();
-    assert.equal(await page.locator("ul li").count(), 5);
+    assert.equal(await page.locator("ul li").count(), 6);
     await page.getByRole("button", { name: "Restart game" }).click();
-    assert.equal(await page.locator("ul li").count(), 3);
+    assert.equal(await page.locator("ul li").count(), 4);
     await page.reload({ waitUntil: "domcontentloaded" });
     await page.getByRole("button", { name: "Find Joyful" }).click();
     await page.waitForFunction(() =>
-      document.body.textContent.includes("Best 1750"),
+      document.body.textContent.includes("Best 2050"),
     );
     assert.equal(
       await page.evaluate(
@@ -208,7 +228,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     assert.equal(await mobileIntro.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     await mobileIntro.screenshot({ path: "artifacts/product-hunt-mobile-intro.png" });
     console.log(
-      "PASS: unknown URLs and /play route to the intro on /404, Find Joyful starts the game, responsive intro, three distinct scenes and product sets, grounded drag, tap to reveal, decoys, hints, levels 1–4, completion bonus, restart, persisted best after reload, 320px layout, canonical, no browser exceptions, storage blocked fallback.",
+      "PASS: intro to game on /404, three portrait and three desktop scenes, six real products per scene, grounded drag, tap to reveal, decoys, hints, levels 1–4, completion bonus, restart, persisted best after reload, 320px layout, canonical, no browser exceptions, storage blocked fallback.",
     );
   } finally {
     await browser.close();

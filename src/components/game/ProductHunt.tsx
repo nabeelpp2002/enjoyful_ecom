@@ -34,26 +34,16 @@ const PRODUCTS = [
   "Blossom Veil",
   "Gentle Baby Rash Cream",
   "Noir Element",
+  "Midnight Velvet",
 ];
 const SCENES = [
   {
-    name: "The cozy boutique",
-    image: "/assets/game/joyful-boutique.webp",
-    products: [0, 1, 2, 3, 4],
-    supportBounds: [28, 82],
-    spots: [
-      [43, 46],
-      [59, 46],
-      [75, 46],
-      [43, 69],
-      [59, 69],
-      [75, 69],
-    ],
-  },
-  {
-    name: "The seaside market",
+    name: "The sunny beach",
     image: "/assets/game/joyful-beach.webp",
-    products: [5, 6, 7, 8, 9],
+    mobileImage: "/assets/game/joyful-beach-mobile.webp",
+    backdrop: "#e5cfab",
+    products: [0, 4, 6, 8, 3, 5],
+    coverProps: [5, 6, 0, 4, 3, 6],
     supportBounds: [25, 77],
     spots: [
       [43, 39],
@@ -63,11 +53,22 @@ const SCENES = [
       [59, 59],
       [75, 59],
     ],
+    mobileSpots: [
+      [30, 34],
+      [52, 34],
+      [74, 34],
+      [33, 52],
+      [70, 52],
+      [53, 77],
+    ],
   },
   {
-    name: "The family bathroom",
+    name: "The laundry room",
     image: "/assets/game/joyful-bathroom.webp",
-    products: [10, 11, 12, 13, 14],
+    mobileImage: "/assets/game/joyful-laundry-mobile.webp",
+    backdrop: "#d9d1bb",
+    products: [2, 7, 13, 9, 3, 11],
+    coverProps: [1, 7, 8, 2, 0, 7],
     supportBounds: [24, 79],
     spots: [
       [43, 37],
@@ -77,20 +78,55 @@ const SCENES = [
       [59, 56],
       [75, 56],
     ],
+    mobileSpots: [
+      [31, 29],
+      [68, 29],
+      [27, 47],
+      [51, 47],
+      [74, 47],
+      [50, 70],
+    ],
+  },
+  {
+    name: "The fragrance nook",
+    image: "/assets/game/joyful-boutique.webp",
+    mobileImage: "/assets/game/joyful-home-mobile.webp",
+    backdrop: "#6e4d56",
+    products: [1, 10, 12, 14, 15, 8],
+    coverProps: [9, 2, 8, 0, 3, 9],
+    supportBounds: [28, 82],
+    spots: [
+      [43, 46],
+      [59, 46],
+      [75, 46],
+      [43, 69],
+      [59, 69],
+      [75, 69],
+    ],
+    mobileSpots: [
+      [35, 35],
+      [68, 35],
+      [30, 54],
+      [70, 54],
+      [34, 68],
+      [69, 68],
+    ],
   },
 ] as const;
 function projectSpot(
   position: readonly number[],
   size: { width: number; height: number; mobile: boolean },
 ) {
+  const imageWidth = size.mobile ? 1024 : 1536;
+  const imageHeight = size.mobile ? 1536 : 1024;
   const scale = size.mobile
-    ? Math.min(size.width / 1536, size.height / 1024)
-    : Math.max(size.width / 1536, size.height / 1024);
+    ? Math.min(size.width / imageWidth, size.height / imageHeight)
+    : Math.max(size.width / imageWidth, size.height / imageHeight);
   return [
-    ((position[0] * 0.01 * 1536 * scale - (1536 * scale - size.width) / 2) /
+    ((position[0] * 0.01 * imageWidth * scale - (imageWidth * scale - size.width) / 2) /
       size.width) *
       100,
-    ((position[1] * 0.01 * 1024 * scale - (1024 * scale - size.height) / 2) /
+    ((position[1] * 0.01 * imageHeight * scale - (imageHeight * scale - size.height) / 2) /
       size.height) *
       100,
   ];
@@ -133,8 +169,8 @@ type Round = {
 const initial: Round = {
   level: 1,
   score: 0,
-  targets: [0, 1, 2],
-  spots: [0, 2, 4, 1, 3],
+  targets: [0, 4, 6, 8],
+  spots: [0, 2, 4, 1, 3, 5],
   found: [],
   hinted: [],
   hint: null,
@@ -203,29 +239,39 @@ function ProductSprite({ id }: { id: number }) {
     <span
       aria-hidden="true"
       className={styles.sprite}
-      style={{
-        backgroundImage: `url('/assets/game/product-atlas${id < 5 ? "" : id < 10 ? "-2" : "-3"}.webp')`,
-        backgroundPosition: `${(atlasId % 3) * 50}% ${Math.floor(atlasId / 3) * 100}%`,
-      }}
+      style={
+        id === 15
+          ? {
+              backgroundImage: "url('/assets/game/midnight-velvet.webp')",
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+            }
+          : {
+              backgroundImage: `url('/assets/game/product-atlas${id < 5 ? "" : id < 10 ? "-2" : "-3"}.webp')`,
+              backgroundPosition: `${(atlasId % 3) * 50}% ${Math.floor(atlasId / 3) * 100}%`,
+            }
+      }
     />
   );
 }
 function HiddenProduct({
   id,
-  slot,
+  propId,
   position,
   supportBounds,
   stageWidth,
+  mobile,
   active,
   found,
   hinted,
   onFind,
 }: {
   id: number;
-  slot: number;
+  propId: number;
   position: readonly number[];
   supportBounds: readonly number[];
   stageWidth: number;
+  mobile: boolean;
   active: boolean;
   found: boolean;
   hinted: boolean;
@@ -240,15 +286,20 @@ function HiddenProduct({
     dragged: boolean;
   } | null>(null);
   const suppressClick = useRef(false);
-  const prop = slot % 5;
+  const prop = propId % 5;
   const minOffset =
     ((Math.max(10, supportBounds[0]) - position[0]) * stageWidth) / 100;
   const maxOffset =
     ((Math.min(90, supportBounds[1]) - position[0]) * stageWidth) / 100;
   const parkedOffset = () => {
-    const left = Math.max(-100, minOffset);
-    const right = Math.min(100, maxOffset);
-    return Math.abs(left) > Math.abs(right) ? left : right;
+    const travel = mobile ? Math.max(50, stageWidth * 0.16) : 100;
+    const left = Math.max(-travel, minOffset);
+    const right = Math.min(travel, maxOffset);
+    const outward = position[0] < 50 ? left : right;
+    const inward = position[0] < 50 ? right : left;
+    return Math.abs(outward) >= travel * 0.75 || Math.abs(outward) >= Math.abs(inward)
+      ? outward
+      : inward;
   };
   function moveAside() {
     if (!active || found || suppressClick.current) {
@@ -332,6 +383,7 @@ function HiddenProduct({
           <span
             className={styles.coverSprite}
             style={{
+              backgroundImage: `url('/assets/game/cover-props${propId < 5 ? "" : "-2"}.webp')`,
               backgroundPosition: `${(prop % 3) * 50}% ${Math.floor(prop / 3) * 100}%`,
             }}
           />
@@ -346,9 +398,18 @@ export function ProductHunt() {
   const best = useSyncExternalStore(subscribeBest, readBest, () => 0);
   const nextButton = useRef<HTMLButtonElement>(null);
   const sceneRef = useRef<HTMLDivElement>(null);
+  const preloadedScenes = useRef<HTMLImageElement[]>([]);
   const [sceneSize, setSceneSize] = useState({ width: 1000, height: 667, mobile: false });
   const complete = state.started && state.found.length === state.targets.length;
   const scene = sceneFor(state.level);
+  useEffect(() => {
+    const upcoming = sceneFor(showGame ? state.level + 1 : 1);
+    preloadedScenes.current = [upcoming.image, upcoming.mobileImage].map((src) => {
+      const image = new Image();
+      image.src = src;
+      return image;
+    });
+  }, [showGame, state.level]);
   useEffect(() => {
     const node = sceneRef.current;
     if (!node) return;
@@ -383,9 +444,9 @@ export function ProductHunt() {
       restart,
       targets: shuffle([...roundScene.products]).slice(
         0,
-        Math.min(5, level + 2),
+        Math.min(6, level + 3),
       ),
-      spots: shuffle([0, 1, 2, 3, 4, 5]).slice(0, 5),
+      spots: shuffle([0, 1, 2, 3, 4, 5]),
     });
   }
   if (!showGame) {
@@ -500,6 +561,7 @@ export function ProductHunt() {
           <div
             ref={sceneRef}
             className={styles.scene}
+            style={{ backgroundColor: scene.backdrop }}
             aria-label={`Search ${scene.name.toLowerCase()} for your target products`}
           >
             <div
@@ -508,20 +570,29 @@ export function ProductHunt() {
               style={{ backgroundImage: `url('${scene.image}')` }}
               aria-hidden="true"
             />
+            <div
+              className={styles.mobileSceneArtwork}
+              data-mobile-scene-artwork
+              style={{ backgroundImage: `url('${scene.mobileImage}')` }}
+              aria-hidden="true"
+            />
             {scene.products.map((id, slot) => (
               <HiddenProduct
                 key={`${state.roundId}-${id}`}
                 id={id}
-                slot={slot}
+                propId={scene.coverProps[slot]}
                 position={projectSpot(
-                  scene.spots[state.spots[slot]],
+                  sceneSize.mobile
+                    ? scene.mobileSpots[state.spots[slot]]
+                    : scene.spots[state.spots[slot]],
                   sceneSize,
                 )}
                 supportBounds={[
-                  projectSpot([scene.supportBounds[0], 50], sceneSize)[0],
-                  projectSpot([scene.supportBounds[1], 50], sceneSize)[0],
+                  projectSpot([sceneSize.mobile ? 8 : scene.supportBounds[0], 50], sceneSize)[0],
+                  projectSpot([sceneSize.mobile ? 92 : scene.supportBounds[1], 50], sceneSize)[0],
                 ]}
                 stageWidth={sceneSize.width}
+                mobile={sceneSize.mobile}
                 active={!complete}
                 found={state.found.includes(id)}
                 hinted={state.hint === id}
