@@ -17,10 +17,10 @@ const footerLinks = [
 
 export function Footer() {
     return (
-        <footer data-site-footer className="relative isolate min-h-[800px] overflow-hidden bg-[#fafaf8] md:min-h-[900px]">
+        <footer data-site-footer className="relative isolate flex min-h-[800px] flex-col overflow-hidden bg-[#fafaf8] md:block md:min-h-[900px]">
             <Image
-                src="/assets/footer-products-mobile.webp"
-                alt="Enjoyful Life products in a bright garden"
+                src="/assets/footer-products-park-v2-mobile.webp"
+                alt="Enjoyful Life products on a picnic blanket in a sunny park"
                 fill
                 sizes="100vw"
                 className="-z-30 object-cover object-center md:hidden"
@@ -30,8 +30,8 @@ export function Footer() {
                 }}
             />
             <Image
-                src="/assets/footer-products-v5.webp"
-                alt="Enjoyful Life products in a bright garden"
+                src="/assets/footer-products-park-v2-desktop.webp"
+                alt="Enjoyful Life products on a picnic blanket in a sunny park"
                 fill
                 sizes="100vw"
                 className="-z-30 hidden object-cover object-[center_48%] md:block"
@@ -42,7 +42,7 @@ export function Footer() {
             />
             <div className="absolute inset-x-0 bottom-0 -z-20 h-[32%] bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
 
-            <div className="mx-auto flex max-w-3xl flex-col items-center px-5 pt-16 text-center sm:pt-20 md:pt-24">
+            <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-5 pt-16 text-center sm:pt-20 md:pt-24">
                 <p className="editorial-label text-[10px] tracking-[0.26em] text-[var(--color-brand-onyx)]/60">Enjoyful Life</p>
                 <h2 className="editorial-section-heading mt-4 max-w-2xl text-4xl text-[var(--color-brand-onyx)] sm:text-5xl md:text-6xl">
                     Everyday care, made to feel joyful.
@@ -64,12 +64,12 @@ export function Footer() {
                 </form>
             </div>
 
-            <div className="absolute inset-x-0 bottom-24 px-5 text-center text-white md:bottom-28">
+            <div className="relative z-10 mt-auto px-5 pb-6 text-center text-white md:absolute md:inset-x-0 md:bottom-[4.5rem] md:mt-0 md:pb-0">
                 <p className="editorial-body text-xs text-white/80">Clean care for every part of life</p>
                 <p className="editorial-section-heading mt-1 text-4xl drop-shadow-md md:text-5xl">Enjoyful Life</p>
             </div>
 
-            <div className="absolute inset-x-0 bottom-0 px-5 pb-5 text-white md:px-10 md:pb-7">
+            <div className="relative z-10 px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-white md:absolute md:inset-x-0 md:bottom-0 md:px-10 md:pb-7">
                 <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/25 pt-4 md:flex-row">
                     <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2">
                         {footerLinks.map((link) => (
