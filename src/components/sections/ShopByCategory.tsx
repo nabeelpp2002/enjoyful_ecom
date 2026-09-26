@@ -40,24 +40,57 @@ const categories = [
 
 export function ShopByCategory() {
     return (
-        <section className="py-20 md:py-32 bg-white">
+        <section className="bg-white py-10 md:py-32">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
                 {/* Section Header */}
-                <div className="text-center mb-16 md:mb-20">
+                <div className="mb-5 flex items-center justify-between gap-4 md:mb-20 md:block md:text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="editorial-section-heading display-sm text-3xl md:text-5xl text-[var(--color-brand-onyx)] tracking-tight">
-                            Shop Your Lifestyle
+                        <h2 className="editorial-section-heading display-sm text-2xl tracking-tight text-[var(--color-brand-onyx)] md:text-5xl">
+                            <span className="md:hidden">Categories</span>
+                            <span className="hidden md:inline">Shop Your Lifestyle</span>
                         </h2>
                     </motion.div>
+                    <Link
+                        href="/category/all"
+                        className="editorial-body inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-[var(--color-brand-purple)] md:hidden"
+                    >
+                        View all <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                </div>
+
+                <div
+                    className="-mr-6 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 pr-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:hidden"
+                    aria-label="Shop categories"
+                >
+                    {categories.map((category) => (
+                        <Link
+                            key={category.link}
+                            href={category.link}
+                            className="group flex w-[86px] flex-none snap-start flex-col items-center gap-2 text-center sm:w-[100px]"
+                        >
+                            <span className="relative block aspect-square w-full overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_4px_14px_rgba(26,26,27,0.07)] transition-transform group-active:scale-95">
+                                <Image
+                                    src={category.image}
+                                    alt=""
+                                    fill
+                                    sizes="(max-width: 640px) 100px, 1px"
+                                    className="object-cover object-center"
+                                />
+                            </span>
+                            <span className="editorial-body text-[12px] font-medium leading-tight text-[var(--color-brand-onyx)]">
+                                {category.name}
+                            </span>
+                        </Link>
+                    ))}
                 </div>
 
                 {/* Categories Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+                <div className="hidden gap-4 md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-5">
                     {categories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -96,32 +129,6 @@ export function ShopByCategory() {
                         </motion.div>
                     ))}
 
-                    {/* View All CTA Card - Mobile Only */}
-                    <motion.div
-                        className="lg:hidden h-full"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                    >
-                        <Link
-                            href="/category/all"
-                            className="group flex flex-col h-full items-center justify-center px-4 py-8 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] cursor-pointer border-2 border-[var(--color-brand-purple)]/20 hover:border-[var(--color-brand-purple)]/40 bg-white"
-                        >
-                            {/* Arrow Icon - Primary Focus */}
-                            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[var(--color-brand-purple)] group-hover:bg-[var(--color-brand-mustard)] transition-colors duration-300 mb-4">
-                                <ArrowRight className="w-8 h-8 text-white" strokeWidth={2.5} />
-                            </div>
-
-                            {/* CTA Text */}
-                            <h3 className="editorial-heading font-bold text-base md:text-lg text-[var(--color-brand-onyx)] text-center mb-1">
-                                View All
-                            </h3>
-                            <p className="editorial-body text-xs md:text-sm text-[var(--color-brand-onyx)]/60 text-center">
-                                Browse all products
-                            </p>
-                        </Link>
-                    </motion.div>
                 </div>
             </div>
         </section>
