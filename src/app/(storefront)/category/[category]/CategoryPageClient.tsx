@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useData } from "@/context/DataContext";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { ProductCard } from "@/components/ui/ProductCard";
+import { BabyCareTrust } from "@/components/sections/BabyCareTrust";
 import { CategoryPromo } from "@/components/sections/CategoryPromo";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
@@ -571,6 +572,8 @@ export default function CategoryPageClient({
                     </motion.div>
                 )}
             </div>
+
+            {category === "Baby" && <BabyCareTrust />}
 
             <CategoryPromo category={category} />
 

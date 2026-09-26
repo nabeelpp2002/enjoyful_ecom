@@ -6,7 +6,7 @@ import {
   HomepageFeaturedProductsServer,
 } from "@/components/sections/HomepageProductsServer";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
-import { NewsletterSection } from "@/components/sections/NewsletterSection";
+import { SkinDeservesSection } from "@/components/sections/SkinDeservesSection";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, pageMetadata } from "@/lib/seo";
@@ -23,9 +23,9 @@ export default function Home() {
       <HeroSectionServer />
       <ShopByCategory />
       <HomepageFeaturedProductsServer />
+      <SkinDeservesSection />
       <FeaturesSection />
       <HomepageBestSellingProductsServer />
-      <NewsletterSection />
       <SeoContent data={SEO_CONTENT.homepage} />
     </>
   );

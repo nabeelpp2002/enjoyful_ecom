@@ -63,9 +63,9 @@
 
 :root {
   /* Premium editorial typography */
-  --font-display: var(--font-montserrat), "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-khand-display: var(--font-khand), "Khand", "Khand Fallback", sans-serif;
-  --font-body: var(--font-inter), Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-khand-display: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --display-weight: 700;
   --display-spacing: -0.055em;
   --display-leading: 0.92;
@@ -152,6 +152,9 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    font-optical-sizing: auto;
+    font-synthesis: none;
+    font-feature-settings: "liga" 1, "calt" 1;
     font-weight: var(--body-weight);
     letter-spacing: var(--body-spacing);
     line-height: var(--body-leading);

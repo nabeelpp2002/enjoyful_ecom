@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Khand, Montserrat } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import {
   DEFAULT_DESCRIPTION,
@@ -11,24 +11,6 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const khand = Khand({
-  variable: "--font-khand",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-});
 
 export const viewport: Viewport = {
   themeColor: "#F9F5F0",
@@ -91,9 +73,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AE">
+    <html lang="en-AE" className={`${GeistSans.className} ${GeistSans.variable}`}>
       <body
-        className={`${inter.variable} ${montserrat.variable} ${khand.variable} antialiased min-h-screen flex flex-col bg-[#fdfaff]`}
+        className="antialiased min-h-screen flex flex-col bg-[#fdfaff]"
       >
         {children}
       </body>
