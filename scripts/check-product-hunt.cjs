@@ -101,6 +101,15 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
       await page.locator("[data-mobile-scene-artwork]").getAttribute("style"),
       /joyful-beach-mobile/,
     );
+    assert.equal(
+      await page.locator("[data-mobile-scene-artwork]").evaluate((node) => getComputedStyle(node).backgroundSize),
+      "cover",
+    );
+    await page.getByRole("button", { name: "Open treasure list" }).click();
+    const targetDialog = page.getByRole("dialog", { name: "Products to find" });
+    assert.equal(await targetDialog.locator("li").count(), 4);
+    await targetDialog.press("Escape");
+    await targetDialog.waitFor({ state: "hidden" });
     await page.getByRole("button", { name: "Hint", exact: true }).click();
     for (const name of targets.slice(1)) await revealAndSelect(page, name);
     await page.getByRole("button", { name: "Next level" }).waitFor();
@@ -161,7 +170,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
     assert.ok(Math.abs(searchScene.height - artwork.height) < 1);
     assert.equal(
       await page.locator("[data-mobile-scene-artwork]").evaluate((node) => getComputedStyle(node).backgroundSize),
-      "contain",
+      "cover",
     );
     await page.screenshot({
       path: "artifacts/product-hunt-mobile-play.png",

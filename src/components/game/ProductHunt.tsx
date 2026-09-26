@@ -9,13 +9,16 @@ import {
 } from "react";
 import type { PointerEvent } from "react";
 import {
-  ArrowLeft,
   ArrowRight,
   Check,
+  Home,
   Lightbulb,
+  Menu,
   RotateCcw,
+  ShoppingBag,
   Sparkles,
   Trophy,
+  X,
 } from "lucide-react";
 import styles from "./ProductHunt.module.css";
 const PRODUCTS = [
@@ -119,9 +122,7 @@ function projectSpot(
 ) {
   const imageWidth = size.mobile ? 1024 : 1536;
   const imageHeight = size.mobile ? 1536 : 1024;
-  const scale = size.mobile
-    ? Math.min(size.width / imageWidth, size.height / imageHeight)
-    : Math.max(size.width / imageWidth, size.height / imageHeight);
+  const scale = Math.max(size.width / imageWidth, size.height / imageHeight);
   return [
     ((position[0] * 0.01 * imageWidth * scale - (imageWidth * scale - size.width) / 2) /
       size.width) *
@@ -394,9 +395,12 @@ function HiddenProduct({
 }
 export function ProductHunt() {
   const [showGame, setShowGame] = useState(false);
+  const [targetsOpen, setTargetsOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initial);
   const best = useSyncExternalStore(subscribeBest, readBest, () => 0);
   const nextButton = useRef<HTMLButtonElement>(null);
+  const targetMenuButton = useRef<HTMLButtonElement>(null);
+  const closeTargetsButton = useRef<HTMLButtonElement>(null);
   const sceneRef = useRef<HTMLDivElement>(null);
   const preloadedScenes = useRef<HTMLImageElement[]>([]);
   const [sceneSize, setSceneSize] = useState({ width: 1000, height: 667, mobile: false });
@@ -427,6 +431,9 @@ export function ProductHunt() {
     if (complete) nextButton.current?.focus({ preventScroll: true });
   }, [complete]);
   useEffect(() => {
+    if (targetsOpen) closeTargetsButton.current?.focus({ preventScroll: true });
+  }, [targetsOpen]);
+  useEffect(() => {
     if (state.score <= readBest()) return;
     memoryBest = state.score;
     try {
@@ -437,6 +444,7 @@ export function ProductHunt() {
     window.dispatchEvent(new Event(KEY));
   }, [state.score]);
   function newRound(restart = false) {
+    setTargetsOpen(false);
     const level = restart || !state.started ? 1 : state.level + 1;
     const roundScene = sceneFor(level);
     dispatch({
@@ -468,7 +476,7 @@ export function ProductHunt() {
               Find Joyful <ArrowRight size={20} />
             </button>
             <Link href="/">
-              <ArrowLeft size={20} /> Go home
+              <Home size={20} /> Go home
             </Link>
           </div>
         </div>
@@ -485,12 +493,49 @@ export function ProductHunt() {
           className={styles.sidebar}
           aria-label="Treasure list and game controls"
         >
+          {targetsOpen && (
+            <button
+              type="button"
+              className={styles.targetBackdrop}
+              aria-label="Close treasure list"
+              onClick={() => setTargetsOpen(false)}
+            />
+          )}
+          <div
+            id="product-hunt-targets"
+            className={`${styles.targetPanel} ${targetsOpen ? styles.targetPanelOpen : ""}`}
+            role={targetsOpen ? "dialog" : undefined}
+            aria-modal={targetsOpen ? true : undefined}
+            aria-label={targetsOpen ? "Products to find" : undefined}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                setTargetsOpen(false);
+                targetMenuButton.current?.focus();
+              }
+              if (event.key === "Tab" && targetsOpen) {
+                event.preventDefault();
+                closeTargetsButton.current?.focus();
+              }
+            }}
+          >
           <div className={styles.sidebarHeader}>
             <span className={styles.brandMark}>✦ Enjoyful Life</span>
             <h1>Treasure list</h1>
             <p>
               {state.found.length} of {state.targets.length} found
             </p>
+            <button
+              ref={closeTargetsButton}
+              className={styles.closeTargets}
+              type="button"
+              aria-label="Close treasure list"
+              onClick={() => {
+                setTargetsOpen(false);
+                targetMenuButton.current?.focus();
+              }}
+            >
+              <X size={20} />
+            </button>
           </div>
           <ul className={styles.targets} aria-label="Products to find">
             {state.targets.map((id) => (
@@ -512,6 +557,7 @@ export function ProductHunt() {
               </li>
             ))}
           </ul>
+          </div>
           <div className={styles.sidebarFooter}>
             <p role="status" aria-live="polite">
               {state.message}
@@ -535,14 +581,14 @@ export function ProductHunt() {
           </div>
           <nav className={styles.bottomNav} aria-label="Leave the game">
             <Link href="/" aria-label="Back to home">
-              <ArrowLeft size={20} />
+              <Home size={20} />
               <span className={styles.fullLabel}>Back to home</span>
               <span className={styles.shortLabel}>Home</span>
             </Link>
             <Link href="/category/all" aria-label="Shop products">
+              <ShoppingBag size={20} />
               <span className={styles.fullLabel}>Shop products</span>
               <span className={styles.shortLabel}>Shop</span>
-              <ArrowRight size={20} />
             </Link>
           </nav>
         </aside>
@@ -599,6 +645,37 @@ export function ProductHunt() {
                 onFind={() => dispatch({ type: "find", id })}
               />
             ))}
+            <div className={styles.mobileQuickActions} aria-label="Game controls">
+              <button
+                type="button"
+                aria-label="Hint"
+                title="Hint"
+                disabled={complete}
+                onClick={() => dispatch({ type: "hint" })}
+              >
+                <Lightbulb size={20} />
+              </button>
+              <button
+                type="button"
+                aria-label="Restart game"
+                title="Restart"
+                onClick={() => newRound(true)}
+              >
+                <RotateCcw size={20} />
+              </button>
+              <button
+                ref={targetMenuButton}
+                type="button"
+                aria-label="Open treasure list"
+                title="Treasure list"
+                aria-controls="product-hunt-targets"
+                aria-expanded={targetsOpen}
+                onClick={() => setTargetsOpen(true)}
+              >
+                <Menu size={21} />
+                <span className={styles.menuCount}>{state.found.length}/{state.targets.length}</span>
+              </button>
+            </div>
             {complete && (
               <div className={styles.overlay}>
                 <div className={styles.invite}>

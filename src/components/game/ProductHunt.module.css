@@ -130,6 +130,17 @@
   border-right: 1px solid #e7ddd4;
   scrollbar-width: thin;
 }
+.targetPanel {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+}
+.targetBackdrop,
+.closeTargets,
+.mobileQuickActions {
+  display: none;
+}
 .brandMark {
   display: block;
   color: #806295;
@@ -152,6 +163,7 @@
 }
 .targets {
   display: grid;
+  flex: 1;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   min-height: 0;
@@ -539,16 +551,51 @@
   }
   .sidebar {
     grid-row: 2;
-    padding: 6px 8px max(28px, env(safe-area-inset-bottom));
+    padding: 5px 8px max(14px, env(safe-area-inset-bottom));
     border-right: 0;
     border-top: 1px solid #e7ddd4;
+  }
+  .targetPanel {
+    display: none;
+  }
+  .targetPanelOpen {
+    position: fixed;
+    z-index: 11;
+    inset: auto 0 0;
+    display: flex;
+    max-height: min(70dvh, 640px);
+    padding: 22px 18px max(24px, env(safe-area-inset-bottom));
+    border-radius: 24px 24px 0 0;
+    background: #fffdf8;
+    box-shadow: 0 -16px 60px #22182944;
+  }
+  .targetBackdrop {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #20172588;
+  }
+  .closeTargets {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-left: 4px;
+    border: 0;
+    border-radius: 50%;
+    background: #f2eaf5;
+    color: #735697;
   }
   .playArea {
     grid-row: 1;
   }
   .sidebarHeader {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 8px;
   }
   .brandMark {
@@ -561,32 +608,36 @@
   }
   .sidebarHeader p {
     margin-left: auto;
-    font-size: 11px;
+    font-size: 12px;
   }
   .targets {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: clamp(68px, 21vw, 78px);
-    gap: 6px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row;
+    gap: 8px;
     min-height: auto;
-    overflow-x: auto;
-    overflow-y: hidden;
-    margin: 5px 0;
-    padding-bottom: 2px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 16px 0 0;
+    padding: 0 0 4px;
     scrollbar-width: thin;
   }
   .targets li {
-    padding: 3px;
-    gap: 0;
-    border-radius: 9px;
+    flex-direction: row;
+    justify-content: flex-start;
+    aspect-ratio: auto;
+    min-height: 74px;
+    padding: 7px;
+    gap: 7px;
+    border-radius: 12px;
+    text-align: left;
   }
   .thumbnail {
-    width: clamp(30px, 9vw, 38px);
-    height: clamp(30px, 9vw, 38px);
+    width: 48px;
+    height: 48px;
   }
   .targetName {
-    font-size: 8px;
-    line-height: 1.05;
+    font-size: 11px;
+    line-height: 1.15;
   }
   .targetCheck {
     width: 13px;
@@ -595,34 +646,18 @@
     top: 3px;
   }
   .sidebarFooter {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 0;
-    padding-top: 4px;
-  }
-  .sidebarFooter > p {
-    font-size: 9px;
-    line-height: 1.1;
-    min-width: 0;
-    min-height: 0;
-    margin: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
   .controls {
-    flex: none;
-    flex-direction: row;
-    gap: 4px;
-  }
-  .controls button {
-    min-width: 65px;
-    min-height: 34px;
-    padding: 0 5px;
-    font-size: 10px;
-    gap: 4px;
-  }
-  .controls button svg {
-    width: 13px;
-    height: 13px;
+    display: none;
   }
   .toolbar {
     min-height: 44px;
@@ -664,24 +699,63 @@
     position: absolute;
     inset: 0;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+  }
+  .mobileQuickActions {
+    position: absolute;
+    z-index: 2;
+    right: 12px;
+    bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mobileQuickActions button {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 1px solid #ffffffd9;
+    border-radius: 50%;
+    background: #fffdf8ed;
+    color: #735697;
+    box-shadow: 0 5px 18px #21192544;
+    backdrop-filter: blur(8px);
+    touch-action: manipulation;
+  }
+  .mobileQuickActions button:disabled {
+    opacity: 0.55;
+  }
+  .menuCount {
+    position: absolute;
+    top: -5px;
+    right: -6px;
+    min-width: 23px;
+    padding: 2px 4px;
+    border-radius: 12px;
+    background: #735697;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
   }
   .bottomNav {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4px;
-    margin-top: auto;
-    padding-top: 5px;
+    margin-top: 0;
+    padding-top: 0;
   }
   .bottomNav a {
-    min-height: 36px;
-    gap: 3px;
+    min-height: 44px;
+    gap: 7px;
     border-radius: 7px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .bottomNav svg {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
   }
   .fullLabel {
     display: none;
