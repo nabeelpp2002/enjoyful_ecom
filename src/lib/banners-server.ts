@@ -11,13 +11,14 @@ export interface CategoryBanner {
 
 export function findMatchingBanner(banners: CategoryBanner[], category: string): CategoryBanner | null {
   const normCategory = category.toLowerCase().replace(/-/g, ' ').trim();
-  const match = banners.find((b) => {
-    const cat = (b.category || "").toLowerCase().replace(/-/g, ' ').trim();
-    if (cat === normCategory) return true;
-    if ((normCategory === "home care" || normCategory === "home") && (cat === "home" || cat === "home care")) return true;
-    return false;
-  });
-  return match ?? null;
+  const usable = banners.filter((b) => b.desktopImageUrl || b.mobileImageUrl);
+  const normalize = (value: string) => value.toLowerCase().replace(/-/g, ' ').trim();
+  const exact = usable.find((b) => normalize(b.category || "") === normCategory);
+  if (exact) return exact;
+  if (normCategory === "home care" || normCategory === "home") {
+    return usable.find((b) => ["home", "home care"].includes(normalize(b.category || ""))) ?? null;
+  }
+  return null;
 }
 
 export async function getCategoryBanner(category: string): Promise<CategoryBanner | null> {

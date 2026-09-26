@@ -19,8 +19,8 @@
   },
   {
     "id": "banner-home",
-    "category": "Home",
-    "desktopImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582628/enjoyfull/banners/banner_home_desktop.jpg",
-    "mobileImageUrl": "https://res.cloudinary.com/djejbpz0j/image/upload/v1774582635/enjoyfull/banners/banner_home_mobile.jpg"
+    "category": "Home Care",
+    "desktopImageUrl": "/assets/category/home-care-banner-2026-desktop.webp",
+    "mobileImageUrl": "/assets/category/home-care-banner-2026-mobile.webp"
   }
 ]

@@ -115,13 +115,15 @@ export default function CategoryPageClient({
             .then((r) => (r.ok ? r.json() : null))
             .then((body) => {
                 const list = body?.data ?? body;
-                const match = Array.isArray(list)
-                    ? list.find((b: { category?: string }) => {
-                        const cat = (b.category || "").toLowerCase().replace(/-/g, ' ').trim();
-                        const norm = category.toLowerCase().replace(/-/g, ' ').trim();
-                        return cat === norm || ((norm === "home care" || norm === "home") && (cat === "home" || cat === "home care"));
-                    })
-                    : null;
+                const norm = category.toLowerCase().replace(/-/g, ' ').trim();
+                const normalize = (value: string) => value.toLowerCase().replace(/-/g, ' ').trim();
+                const usable = Array.isArray(list)
+                    ? list.filter((b: { desktopImageUrl?: string; mobileImageUrl?: string }) => b.desktopImageUrl || b.mobileImageUrl)
+                    : [];
+                const match = usable.find((b: { category?: string }) => normalize(b.category || "") === norm)
+                    ?? ((norm === "home care" || norm === "home")
+                        ? usable.find((b: { category?: string }) => ["home", "home care"].includes(normalize(b.category || "")))
+                        : null);
                 if (match) setBanner(match);
             })
             .catch(() => {})
