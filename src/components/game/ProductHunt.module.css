@@ -1,0 +1,710 @@
+﻿.page {
+  width: 100%;
+  height: 100dvh;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f9f5f0;
+  color: #252229;
+}
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #f9f5f0;
+  color: #29232e;
+}
+.introCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(32px, 7vw, 112px);
+}
+.introEyebrow {
+  color: #735697;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.introCopy h1 {
+  margin: 18px 0 20px;
+  font: 400 clamp(50px, 5.4vw, 92px)/0.98 Georgia, serif;
+  letter-spacing: -0.055em;
+}
+.introCopy h1 em {
+  color: #735697;
+  font-weight: 400;
+}
+.introCopy p {
+  max-width: 430px;
+  margin: 0;
+  color: #665c69;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.55;
+}
+.introActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+.introActions button,
+.introActions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+.introActions button {
+  border: 1px solid #735697;
+  background: #735697;
+  color: #fff;
+}
+.introActions a {
+  border: 1px solid #d7c9dc;
+  background: #fffdf8;
+  color: #493558;
+}
+.introActions button:hover,
+.introActions a:hover {
+  transform: translateY(-2px);
+}
+.introActions button:focus-visible,
+.introActions a:focus-visible {
+  outline: 3px solid #f4b449;
+  outline-offset: 3px;
+}
+.introVisual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: clamp(24px, 5vw, 80px);
+  background: radial-gradient(circle at 72% 24%, #fff6d8 0, transparent 40%),
+    linear-gradient(145deg, #e5d9ec, #f4e0c8 68%, #e8eddc);
+}
+.introVisual::before {
+  content: "404";
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  color: #7356971c;
+  font: 700 clamp(110px, 19vw, 330px)/1 Georgia, serif;
+  letter-spacing: -0.08em;
+}
+.introScene {
+  position: relative;
+  width: min(100%, 650px);
+  aspect-ratio: 3 / 2;
+  border: 8px solid #fffdf8;
+  border-radius: 24px;
+  background: url("/assets/game/joyful-boutique.webp") center/cover no-repeat;
+  box-shadow: 0 26px 70px #4a34502e;
+  transform: rotate(-2deg);
+}
+.gameLayout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: clamp(230px, 24vw, 360px) minmax(0, 1fr);
+}
+.sidebar {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+  background: #fffdf8;
+  border-right: 1px solid #e7ddd4;
+  scrollbar-width: thin;
+}
+.brandMark {
+  display: block;
+  color: #806295;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.sidebarHeader h1 {
+  font:
+    400 clamp(27px, 2.7vw, 39px)/1.08 Georgia,
+    serif;
+  letter-spacing: -1px;
+  margin: 12px 0 5px;
+}
+.sidebarHeader p {
+  font-size: 13px;
+  color: #7d6d81;
+  margin: 0;
+}
+.targets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  min-height: 0;
+  overflow-y: auto;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+.targets li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 10px 7px;
+  border: 1px solid #e8dfd6;
+  border-radius: 15px;
+  background: #f9f5f0;
+  text-align: center;
+}
+.thumbnail {
+  display: block;
+  width: clamp(48px, 6vw, 80px);
+  height: clamp(48px, 6vw, 80px);
+  flex: none;
+}
+.sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: 300% 200%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.targetName {
+  font-size: 11px;
+  line-height: 1.15;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.targetCheck {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  color: #4a7950;
+}
+.targets .targetFound {
+  background: #ecf3e9;
+  border-color: #bbd0b8;
+  color: #486849;
+}
+.sidebarFooter {
+  margin-top: auto;
+  flex: none;
+  border-top: 1px solid #e8dfd6;
+  padding-top: 12px;
+}
+.sidebarFooter > p {
+  min-height: 32px;
+  margin: 0 0 10px;
+  color: #766679;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+}
+.controls button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  border: 1px solid #d9cbdf;
+  border-radius: 10px;
+  background: #f7f1fa;
+  color: #735697;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.controls button:hover:not(:disabled) {
+  background: #efe5f4;
+}
+.controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.playArea {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.toolbar {
+  flex: none;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-bottom: 1px solid #eee4db;
+  background: #fffdf8;
+  font-size: 13px;
+  font-weight: 700;
+}
+.toolbar > span,
+.scores {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.toolbar svg {
+  color: #a17b4a;
+}
+.sceneName {
+  color: #827786;
+  font-size: 12px;
+  font-weight: 400;
+}
+.scores {
+  color: #796e7a;
+  font-size: 12px;
+  font-weight: 400;
+}
+.scores strong {
+  font-variant-numeric: tabular-nums;
+  color: #352e3c;
+  font-size: 13px;
+}
+.scene {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #dec7aa;
+}
+.sceneArtwork {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.hideout {
+  position: absolute;
+  z-index: 1;
+  width: clamp(80px, 8vw, 135px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+}
+.object {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  filter: drop-shadow(2px 4px 2px #382c2355);
+  cursor: pointer;
+}
+.hideout .object:not(:disabled),
+.hideout .cover:not(:disabled) {
+  pointer-events: auto;
+}
+.hideout .object:disabled,
+.hideout .cover[aria-pressed="true"] {
+  pointer-events: none;
+}
+.object:hover:not(:disabled) {
+  filter: drop-shadow(0 0 6px #ffe79a);
+}
+.found {
+  opacity: 0.58;
+}
+.check {
+  position: absolute;
+  left: 36%;
+  top: 36%;
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #4b7450;
+  color: #fff;
+  box-shadow: 0 0 0 3px #fff;
+}
+.cover {
+  position: absolute;
+  z-index: 1;
+  left: -16%;
+  bottom: 0;
+  width: 132%;
+  height: 88%;
+  padding: 0;
+  border: 0;
+  background: none;
+  filter: drop-shadow(2px 5px 4px #38271677);
+  cursor: grab;
+  touch-action: none !important;
+  transform-origin: bottom center;
+  transition: transform 180ms ease-out;
+}
+.cover:active {
+  cursor: grabbing;
+  transition: none;
+}
+.cover:disabled {
+  cursor: default;
+}
+.coverSprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/game/cover-props.webp") no-repeat;
+  background-size: 300% 200%;
+  pointer-events: none;
+}
+.hideout.hinted .cover {
+  border-radius: 30%;
+  filter: drop-shadow(0 0 8px #fff374) drop-shadow(0 0 12px #ffe681);
+}
+.overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: #36291f35;
+  backdrop-filter: blur(3px);
+}
+.invite {
+  width: min(320px, 100%);
+  padding: 28px 24px;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 22px;
+  background: #fffcf5f5;
+  box-shadow: 0 15px 50px #3a291f30;
+}
+.trophyIcon {
+  color: #a9843c;
+  margin: 0 auto 10px;
+}
+.invite p {
+  font-size: 12px;
+  color: #7e6b80;
+  margin: 8px 0;
+}
+.invite p:first-of-type {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+}
+.invite h2 {
+  font:
+    400 30px/1.1 Georgia,
+    serif;
+  letter-spacing: -0.8px;
+  margin: 8px 0;
+}
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 25px;
+  background: #735697;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.bottomNav {
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7px;
+  margin-top: 12px;
+}
+.bottomNav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: filter 0.2s;
+}
+.bottomNav a:first-child {
+  background: #735697;
+  color: #fff;
+}
+.bottomNav a:last-child {
+  background: #f4b449;
+  color: #29232e;
+}
+.bottomNav a:hover {
+  filter: brightness(0.95);
+}
+.shortLabel {
+  display: none;
+}
+.page button:focus-visible,
+.page a:focus-visible {
+  outline: 3px solid #221829;
+  outline-offset: -4px;
+}
+@media (max-width: 640px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    height: 100dvh;
+  }
+  .introCopy {
+    padding: 26px 20px 12px;
+  }
+  .introEyebrow {
+    font-size: 10px;
+  }
+  .introCopy h1 {
+    margin: 12px 0;
+    font-size: clamp(36px, 9vw, 54px);
+  }
+  .introCopy p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .introActions {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .introActions button,
+  .introActions a {
+    flex: 1;
+    min-width: 0;
+    min-height: 46px;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+  .introActions svg {
+    width: 16px;
+    height: 16px;
+  }
+  .introVisual {
+    min-height: 0;
+    padding: 22px;
+  }
+  .introVisual::before {
+    font-size: 110px;
+  }
+  .introScene {
+    width: min(100%, 480px);
+    border-width: 5px;
+    border-radius: 16px;
+  }
+  .gameLayout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .sidebar {
+    grid-row: 2;
+    padding: 6px 8px max(28px, env(safe-area-inset-bottom));
+    border-right: 0;
+    border-top: 1px solid #e7ddd4;
+  }
+  .playArea {
+    grid-row: 1;
+  }
+  .sidebarHeader {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .brandMark {
+    display: none;
+  }
+  .sidebarHeader h1 {
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    margin: 0;
+  }
+  .sidebarHeader p {
+    margin-left: auto;
+    font-size: 11px;
+  }
+  .targets {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(68px, 21vw, 78px);
+    gap: 6px;
+    min-height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 5px 0;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+  }
+  .targets li {
+    padding: 3px;
+    gap: 0;
+    border-radius: 9px;
+  }
+  .thumbnail {
+    width: clamp(30px, 9vw, 38px);
+    height: clamp(30px, 9vw, 38px);
+  }
+  .targetName {
+    font-size: 8px;
+    line-height: 1.05;
+  }
+  .targetCheck {
+    width: 13px;
+    height: 13px;
+    right: 3px;
+    top: 3px;
+  }
+  .sidebarFooter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0;
+    padding-top: 4px;
+  }
+  .sidebarFooter > p {
+    font-size: 9px;
+    line-height: 1.1;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+  }
+  .controls {
+    flex: none;
+    flex-direction: row;
+    gap: 4px;
+  }
+  .controls button {
+    min-width: 65px;
+    min-height: 34px;
+    padding: 0 5px;
+    font-size: 10px;
+    gap: 4px;
+  }
+  .controls button svg {
+    width: 13px;
+    height: 13px;
+  }
+  .toolbar {
+    min-height: 44px;
+    padding: 4px 7px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 11px;
+  }
+  .toolbar > span,
+  .scores {
+    gap: 4px;
+  }
+  .sceneName {
+    font-size: 10px;
+  }
+  .scores {
+    font-size: 10px;
+  }
+  .scores strong {
+    font-size: 10px;
+  }
+  .toolbar svg {
+    width: 12px;
+    height: 12px;
+  }
+  .hideout {
+    width: clamp(42px, 13vw, 64px);
+  }
+  .scene {
+    flex: none;
+    aspect-ratio: 3 / 2;
+  }
+  .sceneArtwork {
+    background-size: cover;
+  }
+  .bottomNav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 5px;
+  }
+  .bottomNav a {
+    min-height: 36px;
+    gap: 3px;
+    border-radius: 7px;
+    font-size: 11px;
+  }
+  .bottomNav svg {
+    width: 12px;
+    height: 12px;
+  }
+  .fullLabel {
+    display: none;
+  }
+  .shortLabel {
+    display: inline;
+  }
+  .invite {
+    padding: 18px 10px;
+  }
+  .invite h2 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 370px) {
+  .sceneName {
+    display: none;
+  }
+  .toolbar {
+    justify-content: space-between;
+  }
+  .toolbar > span,
+  .scores {
+    font-size: 9px;
+  }
+  .controls button {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover,
+  .bottomNav a,
+  .introActions button,
+  .introActions a {
+    transition: none;
+  }
+}

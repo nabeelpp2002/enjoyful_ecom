@@ -6,6 +6,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const footerLinks = [
+    { label: "Play & Discover", href: "/404" },
     { label: "About", href: "/about" },
     { label: "FAQ", href: "/faq" },
     { label: "Shop", href: "/category/all" },

@@ -6,6 +6,7 @@ export const revalidate = 86400;
 
 const FALLBACK_CATEGORY_SLUGS = ["glow", "daily", "baby", "fragrances", "home-care"];
 const PUBLIC_STATIC_PAGES = [
+  { path: "/404", changeFrequency: "monthly" as const, priority: 0.5 },
   { path: "", changeFrequency: "daily" as const, priority: 1 },
   { path: "/about", changeFrequency: "monthly" as const, priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly" as const, priority: 0.6 },

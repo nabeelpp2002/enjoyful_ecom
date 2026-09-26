@@ -30,6 +30,12 @@ function redirectToLogin(request: NextRequest, pathname: string) {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname === '/404') {
+    const gameUrl = request.nextUrl.clone();
+    gameUrl.pathname = '/game';
+    return NextResponse.rewrite(gameUrl);
+  }
+
   if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
     const token = request.cookies.get(ADMIN_COOKIE)?.value;
     if (!token) return redirectToLogin(request, pathname);
@@ -64,5 +70,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/404', '/admin/:path*'],
 };
