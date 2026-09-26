@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,6 +33,9 @@ export function MobileBottomNav() {
     const [shopOpen, setShopOpen] = useState(false);
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [footerVisible, setFooterVisible] = useState(false);
+    const [scrollHidden, setScrollHidden] = useState(false);
+    const lastScrollY = useRef(0);
+    const scrollFrame = useRef<number | null>(null);
 
     const cartCount = getCartCount();
 
@@ -57,13 +60,46 @@ export function MobileBottomNav() {
         return () => observer.disconnect();
     }, [pathname]);
 
+    useEffect(() => {
+        lastScrollY.current = window.scrollY;
+
+        const updateVisibility = () => {
+            const currentScrollY = window.scrollY;
+            const distance = currentScrollY - lastScrollY.current;
+
+            if (currentScrollY <= 24) {
+                setScrollHidden(false);
+                lastScrollY.current = currentScrollY;
+            } else if (Math.abs(distance) >= 8) {
+                setScrollHidden(distance > 0);
+                lastScrollY.current = currentScrollY;
+            }
+
+            scrollFrame.current = null;
+        };
+
+        const handleScroll = () => {
+            if (scrollFrame.current === null) {
+                scrollFrame.current = window.requestAnimationFrame(updateVisibility);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (scrollFrame.current !== null) window.cancelAnimationFrame(scrollFrame.current);
+        };
+    }, [pathname]);
+
+    const navHidden = footerVisible || scrollHidden;
+
     if (pathname?.startsWith("/product/")) return null;
 
     return (
         <>
             <nav
-                aria-hidden={footerVisible}
-                className={`fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/55 shadow-[0_10px_35px_rgba(18,18,22,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 transition-[transform,opacity] duration-300 ease-out supports-[backdrop-filter]:bg-white/45 md:hidden ${footerVisible ? "pointer-events-none translate-y-[calc(100%+2rem)] opacity-0" : "translate-y-0 opacity-100"}`}
+                aria-hidden={navHidden}
+                className={`fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/55 shadow-[0_10px_35px_rgba(18,18,22,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 transition-[transform,opacity] duration-300 ease-out supports-[backdrop-filter]:bg-white/45 md:hidden ${navHidden ? "pointer-events-none translate-y-[calc(100%+2rem)] opacity-0" : "translate-y-0 opacity-100"}`}
             >
                 <div className="flex h-[62px] items-center justify-around px-2">
                     {/* Home */}

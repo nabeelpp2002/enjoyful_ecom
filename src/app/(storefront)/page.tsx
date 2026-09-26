@@ -24,8 +24,8 @@ export default function Home() {
       <ShopByCategory />
       <HomepageFeaturedProductsServer />
       <SkinDeservesSection />
-      <FeaturesSection />
       <HomepageBestSellingProductsServer />
+      <FeaturesSection />
       <SeoContent data={SEO_CONTENT.homepage} />
     </>
   );

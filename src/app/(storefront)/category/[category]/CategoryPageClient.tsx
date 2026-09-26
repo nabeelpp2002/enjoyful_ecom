@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { BabyCareTrust } from "@/components/sections/BabyCareTrust";
 import { CategoryPromo } from "@/components/sections/CategoryPromo";
+import { GlowSunDefense } from "@/components/sections/GlowSunDefense";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
 import type { Product } from "@/data/products";
@@ -575,7 +576,7 @@ export default function CategoryPageClient({
 
             {category === "Baby" && <BabyCareTrust />}
 
-            <CategoryPromo category={category} />
+            {category === "Glow" ? <GlowSunDefense /> : <CategoryPromo category={category} />}
 
             {/* SEO content + FAQ (keyed by category; nothing renders for "Shop All") */}
             <SeoContent data={SEO_CONTENT[category.toLowerCase()]} />

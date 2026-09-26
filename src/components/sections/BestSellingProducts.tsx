@@ -12,7 +12,7 @@ export function BestSellingProducts({ products }: { products: Product[] }) {
             <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-[400px] h-[400px] bg-[#EAF3EB] rounded-full mix-blend-multiply blur-3xl opacity-40 z-0 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto md:px-8 px-4 relative z-10">
-                <div className="flex flex-col items-center text-center mb-8">
+                <div className="mb-8 flex flex-col items-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -56,12 +56,13 @@ export function BestSellingProducts({ products }: { products: Product[] }) {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-center md:mt-12 hidden md:block"
+                    className="hidden text-center md:mt-12 md:block"
                 >
-                    <Link href="/category/all" className="inline-flex items-center justify-center px-12 py-4 rounded-full border-2 border-[var(--color-brand-purple)] bg-[var(--color-brand-purple)] text-white editorial-heading font-bold hover:bg-white hover:text-[var(--color-brand-purple)] shadow-[0_8px_20px_rgba(164,136,211,0.25)] transition-all duration-300">
+                    <Link href="/category/all" className="editorial-heading inline-flex items-center justify-center rounded-full border-2 border-[var(--color-brand-purple)] bg-[var(--color-brand-purple)] px-12 py-4 font-bold text-white shadow-[0_8px_20px_rgba(164,136,211,0.25)] transition-all duration-300 hover:bg-white hover:text-[var(--color-brand-purple)]">
                         Shop Best Sellers
                     </Link>
                 </motion.div>
+
             </div>
         </section>
     );

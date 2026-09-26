@@ -12,7 +12,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
             <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-[400px] h-[400px] bg-[#EAF3EB] rounded-full mix-blend-multiply blur-3xl opacity-40 z-0 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto md:px-8 px-4 relative z-10">
-                <div className="flex flex-col items-center text-center mb-8">
+                <div className="mb-8 flex flex-col items-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export function FeaturedProducts({ products }: { products: Product[] }) {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="flex justify-center w-full mt-8 md:mt-16"
+                    className="mt-8 flex w-full justify-center md:mt-16"
                 >
                     <Link href="/category/all" className="inline-flex items-center justify-center px-12 py-4 rounded-full border-2 border-[var(--color-brand-onyx)] editorial-heading font-bold text-[var(--color-brand-onyx)] hover:bg-[var(--color-brand-onyx)] hover:text-white transition-all duration-300">
                         View All Products
