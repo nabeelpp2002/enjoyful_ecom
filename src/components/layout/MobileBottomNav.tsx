@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,6 +32,7 @@ export function MobileBottomNav() {
     const { getCartCount, isAuthenticated } = useData();
     const [shopOpen, setShopOpen] = useState(false);
     const [authModalOpen, setAuthModalOpen] = useState(false);
+    const [footerVisible, setFooterVisible] = useState(false);
 
     const cartCount = getCartCount();
 
@@ -43,11 +44,27 @@ export function MobileBottomNav() {
     const isCartActive = pathname === "/cart";
     const isProfileActive = pathname === "/profile";
 
+    useEffect(() => {
+        const footer = document.querySelector<HTMLElement>("[data-site-footer]");
+        if (!footer) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setFooterVisible(entry.isIntersecting),
+            { threshold: 0.01 },
+        );
+
+        observer.observe(footer);
+        return () => observer.disconnect();
+    }, [pathname]);
+
     if (pathname?.startsWith("/product/")) return null;
 
     return (
         <>
-            <nav className="fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/55 shadow-[0_10px_35px_rgba(18,18,22,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 supports-[backdrop-filter]:bg-white/45 md:hidden">
+            <nav
+                aria-hidden={footerVisible}
+                className={`fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 overflow-hidden rounded-[1.6rem] border border-white/70 bg-white/55 shadow-[0_10px_35px_rgba(18,18,22,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl backdrop-saturate-150 transition-[transform,opacity] duration-300 ease-out supports-[backdrop-filter]:bg-white/45 md:hidden ${footerVisible ? "pointer-events-none translate-y-[calc(100%+2rem)] opacity-0" : "translate-y-0 opacity-100"}`}
+            >
                 <div className="flex h-[62px] items-center justify-around px-2">
                     {/* Home */}
                     <Link

@@ -20,13 +20,24 @@ export function Footer() {
     const mobileVisibility = pathname === "/" ? "block" : "hidden md:block";
 
     return (
-        <footer className={`${mobileVisibility} relative isolate min-h-[800px] overflow-hidden bg-[#fafaf8] md:min-h-[900px]`}>
+        <footer data-site-footer className={`${mobileVisibility} relative isolate min-h-[800px] overflow-hidden bg-[#fafaf8] md:min-h-[900px]`}>
+            <Image
+                src="/assets/footer-products-mobile.webp"
+                alt="Enjoyful Life products in a bright garden"
+                fill
+                sizes="100vw"
+                className="-z-30 object-cover object-center md:hidden"
+                style={{
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%)",
+                    maskImage: "linear-gradient(to bottom, transparent 0%, black 20%)",
+                }}
+            />
             <Image
                 src="/assets/footer-products-v5.webp"
                 alt="Enjoyful Life products in a bright garden"
                 fill
                 sizes="100vw"
-                className="-z-30 object-cover object-center md:object-[center_48%]"
+                className="-z-30 hidden object-cover object-[center_48%] md:block"
                 style={{
                     WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%)",
                     maskImage: "linear-gradient(to bottom, transparent 0%, black 20%)",
