@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { displayName } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Plus, Package, Search, Loader2, Eye, EyeOff, Upload, Download, ImageOff, Image as LucideImage } from "lucide-react";
+import { Plus, Package, Search, Loader2, Eye, EyeOff, Upload, Download, ImageOff, Image as LucideImage, ListFilter, ChevronDown, Check } from "lucide-react";
 import { AdminTableSkeleton } from "@/components/ui/AdminSkeleton";
 import Image from "next/image";
 
@@ -48,6 +48,7 @@ interface AdminProduct {
 type PromoFlag = "isFeatured" | "onSale" | "bestDeal" | "isBestSeller";
 
 const PRODUCTS_CACHE_KEY = "enjoyful-admin-products-cache";
+const CATEGORY_FILTERS = ["all", "Glow", "Baby", "Daily", "Fragrances", "Home Care"];
 
 export default function AdminProductsPage() {
     const router = useRouter();
@@ -56,6 +57,8 @@ export default function AdminProductsPage() {
     const [authError, setAuthError] = useState(false);
     const [search, setSearch] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const [categoryFilterOpen, setCategoryFilterOpen] = useState(false);
+    const categoryFilterRef = useRef<HTMLDivElement>(null);
     const [selectedImageStatus, setSelectedImageStatus] = useState<"all" | "has_image" | "missing_image">("all");
     const [toggling, setToggling] = useState<string | null>(null);
 
@@ -88,6 +91,26 @@ export default function AdminProductsPage() {
         } catch {}
         fetchProducts(false);
     }, [fetchProducts]);
+
+    useEffect(() => {
+        if (!categoryFilterOpen) return;
+
+        const closeOnOutsideClick = (event: PointerEvent) => {
+            if (!categoryFilterRef.current?.contains(event.target as Node)) {
+                setCategoryFilterOpen(false);
+            }
+        };
+        const closeOnEscape = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setCategoryFilterOpen(false);
+        };
+
+        document.addEventListener("pointerdown", closeOnOutsideClick);
+        document.addEventListener("keydown", closeOnEscape);
+        return () => {
+            document.removeEventListener("pointerdown", closeOnOutsideClick);
+            document.removeEventListener("keydown", closeOnEscape);
+        };
+    }, [categoryFilterOpen]);
 
     const handleEditClick = (product: AdminProduct) => {
         try {
@@ -310,32 +333,56 @@ export default function AdminProductsPage() {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 flex-wrap">
-                    {(["all", "Glow", "Baby", "Daily", "Fragrances", "Home Care"]).map(cat => {
-                        const count = cat === "all"
-                            ? imageAndSearchFiltered.length
-                            : imageAndSearchFiltered.filter(p => p.category?.toLowerCase() === cat.toLowerCase()).length;
-                        return (
-                            <button
-                                key={cat}
-                                onClick={() => setSelectedCategory(cat)}
-                                className={`px-3 py-1.5 rounded-xl text-xs font-semibold capitalize transition-all flex items-center gap-1.5 ${
-                                    selectedCategory.toLowerCase() === cat.toLowerCase()
-                                        ? "bg-[#1A1A1B] text-white shadow-sm"
-                                        : "bg-white border border-black/8 text-[#1A1A1B]/60 hover:border-[#735697]/40 hover:text-[#735697]"
-                                }`}
-                            >
-                                <span>{cat === "all" ? "All Categories" : cat}</span>
-                                <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                                    selectedCategory.toLowerCase() === cat.toLowerCase()
-                                        ? "bg-white/20 text-white"
-                                        : "bg-[#F9F5F0] text-[#1A1A1B]/40"
-                                }`}>
-                                    {count}
-                                </span>
-                            </button>
-                        );
-                    })}
+                <div ref={categoryFilterRef} className="relative w-full sm:w-auto sm:shrink-0">
+                    <button
+                        type="button"
+                        onClick={() => setCategoryFilterOpen(open => !open)}
+                        aria-expanded={categoryFilterOpen}
+                        aria-controls="admin-category-filter-options"
+                        className={`flex w-full items-center justify-between gap-3 rounded-xl border px-3.5 py-2 text-sm font-semibold shadow-sm transition-colors sm:min-w-48 ${
+                            selectedCategory === "all"
+                                ? "border-black/8 bg-white text-[#1A1A1B] hover:border-[#735697]/40"
+                                : "border-[#735697]/40 bg-[#735697]/8 text-[#735697] hover:border-[#735697]"
+                        }`}
+                    >
+                        <span className="flex items-center gap-2">
+                            <ListFilter className="h-4 w-4" aria-hidden="true" />
+                            {selectedCategory === "all" ? "All Categories" : selectedCategory}
+                        </span>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${categoryFilterOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+                    </button>
+                    {categoryFilterOpen && (
+                        <div
+                            id="admin-category-filter-options"
+                            aria-label="Filter products by category"
+                            className="absolute right-0 z-30 mt-2 w-full min-w-56 rounded-xl border border-black/10 bg-white p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.12)]"
+                        >
+                            {CATEGORY_FILTERS.map(cat => {
+                                const count = cat === "all"
+                                    ? imageAndSearchFiltered.length
+                                    : imageAndSearchFiltered.filter(p => p.category?.toLowerCase() === cat.toLowerCase()).length;
+                                const selected = selectedCategory.toLowerCase() === cat.toLowerCase();
+                                return (
+                                    <button
+                                        key={cat}
+                                        type="button"
+                                        aria-pressed={selected}
+                                        onClick={() => {
+                                            setSelectedCategory(cat);
+                                            setCategoryFilterOpen(false);
+                                        }}
+                                        className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                                            selected ? "bg-[#735697]/10 font-semibold text-[#735697]" : "text-[#1A1A1B]/75 hover:bg-[#F9F5F0]"
+                                        }`}
+                                    >
+                                        <span className="flex-1">{cat === "all" ? "All Categories" : cat}</span>
+                                        <span className="rounded-full bg-[#F9F5F0] px-1.5 py-0.5 text-xs text-[#1A1A1B]/50">{count}</span>
+                                        {selected && <Check className="h-4 w-4" aria-hidden="true" />}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
             </div>
 
