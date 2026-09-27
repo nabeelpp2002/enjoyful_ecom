@@ -11,6 +11,10 @@ import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, pageMetadata } from "@/lib/seo";
 
+// Product rows depend on the live catalog. Do not cache an empty homepage when
+// the catalog API is briefly unavailable during a build or revalidation.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = pageMetadata({
   title: DEFAULT_TITLE,
   description: DEFAULT_DESCRIPTION,

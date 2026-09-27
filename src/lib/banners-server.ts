@@ -26,7 +26,7 @@ export async function getCategoryBanner(category: string): Promise<CategoryBanne
 
   try {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 2000);
+    const timer = setTimeout(() => controller.abort(), 8000);
     const res = await fetch(`${API_BASE}/category-banners`, {
       signal: controller.signal,
       next: { revalidate: 300, tags: ['category-banners'] },
