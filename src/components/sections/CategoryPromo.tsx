@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 export function CategoryPromo({ category }: { category: string }) {
     // Generate content based on category
@@ -35,14 +34,16 @@ export function CategoryPromo({ category }: { category: string }) {
             type: "video",
             bgColor: "bg-[#F0F8FF]", // light blue
         },
-        Home: {
-            title1: "CREATE,",
-            title2: "your",
-            title3: "SANCTUARY.",
-            text: "Elevate your living spaces with our curated collection of calming and invigorating home essentials.",
-            image: "/assets/carosal4.jpeg",
+        "Home Care": {
+            title1: "A CLEANER,",
+            title2: "brighter",
+            title3: "HOME.",
+            text: "Freshen every corner with Enjoyful laundry, kitchen, bathroom, and surface care made for everyday life.",
+            image: "/assets/home-care-promo-9x-floral.webp",
             type: "image",
-            bgColor: "bg-[#F5FFF5]", // light green
+            bgColor: "bg-[#F3F7F4]",
+            buttonText: "SHOP HOME CARE",
+            buttonLink: "/category/home-care",
         },
         Daily: {
             title1: "YOUR,",
