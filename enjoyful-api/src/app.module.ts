@@ -22,6 +22,7 @@ import { UsersModule } from './modules/users/users.module';
 import { ContactModule } from './modules/contact/contact.module';
 import { FeedbackModule } from './modules/feedback/feedback.module';
 import { SettingsModule } from './modules/settings/settings.module';
+import { HealthModule } from './modules/health/health.module';
 
 @Module({
   imports: [
@@ -31,13 +32,12 @@ import { SettingsModule } from './modules/settings/settings.module';
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
         uri: config.getOrThrow<string>('MONGODB_URI'),
+        lazyConnection: true,
       }),
       inject: [ConfigService],
     }),
 
-    ThrottlerModule.forRoot([
-      { name: 'default', ttl: 60000, limit: 100 },
-    ]),
+    ThrottlerModule.forRoot([{ name: 'default', ttl: 60000, limit: 100 }]),
 
     AuthModule,
     CategoriesModule,
@@ -56,6 +56,7 @@ import { SettingsModule } from './modules/settings/settings.module';
     ContactModule,
     FeedbackModule,
     SettingsModule,
+    HealthModule,
   ],
   providers: [
     // ThrottlerGuard runs first so rate-limit rejections happen before auth.

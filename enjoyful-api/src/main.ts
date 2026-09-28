@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { setServers } from 'node:dns';
-import { ValidationPipe } from '@nestjs/common';
+import { RequestMethod, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
@@ -27,7 +27,12 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
-  app.setGlobalPrefix('api/v1');
+  app.setGlobalPrefix('api/v1', {
+    exclude: [
+      { path: 'health', method: RequestMethod.GET },
+      { path: 'health/db', method: RequestMethod.GET },
+    ],
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -53,7 +58,9 @@ async function bootstrap() {
   // Swagger is dev/staging only — never expose the full API schema in production.
   if (config.get('NODE_ENV') !== 'production') {
     SwaggerModule.setup('docs', app, document);
-    console.log(`📖 Swagger docs at http://localhost:${config.get('PORT', 4000)}/docs`);
+    console.log(
+      `📖 Swagger docs at http://localhost:${config.get('PORT', 4000)}/docs`,
+    );
   }
 
   const port = config.get<number>('PORT', 4000);
@@ -61,4 +68,4 @@ async function bootstrap() {
   console.log(`🚀 API running on http://localhost:${port}/api/v1`);
 }
 
-bootstrap();
+void bootstrap();
