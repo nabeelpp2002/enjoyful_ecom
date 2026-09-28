@@ -641,6 +641,8 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
             <ImageEditor
                 file={pendingFiles[0] ?? null}
                 aspect={1}
+                cropObjectFit="contain"
+                restrictPosition
                 title="Crop product image (1:1)"
                 onCancel={handleEditorCancel}
                 onUploaded={handleEditorUploaded}
