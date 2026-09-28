@@ -5,10 +5,14 @@ import { ReviewsService } from './reviews.service';
 import { Review, ReviewSchema } from './schemas/review.schema';
 import { AuthModule } from '../auth/auth.module';
 import { ProductsModule } from '../products/products.module';
+import { Event, EventSchema } from '../analytics/schemas/event.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Review.name, schema: ReviewSchema }]),
+    MongooseModule.forFeature([
+      { name: Review.name, schema: ReviewSchema },
+      { name: Event.name, schema: EventSchema },
+    ]),
     AuthModule,     // re-exports User model
     ProductsModule, // re-exports Product model
   ],

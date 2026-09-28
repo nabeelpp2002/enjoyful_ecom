@@ -8,6 +8,11 @@ export class Review {
   @Prop({ type: Types.ObjectId, ref: 'Product', required: true, index: true })
   product: Types.ObjectId;
 
+  // Keep the product identifiable if its catalog entry is later removed.
+  @Prop() productName: string;
+  @Prop() productSlug: string;
+  @Prop() productImage: string;
+
   @Prop({ type: Types.ObjectId, ref: 'User', required: true, index: true })
   user: Types.ObjectId;
 

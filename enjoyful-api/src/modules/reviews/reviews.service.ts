@@ -6,6 +6,7 @@ import { Model, Types } from 'mongoose';
 import { Review, ReviewDocument } from './schemas/review.schema';
 import { User, UserDocument } from '../auth/schemas/user.schema';
 import { Product, ProductDocument } from '../products/schemas/product.schema';
+import { Event, EventDocument } from '../analytics/schemas/event.schema';
 import { CreateReviewDto, UpdateReviewDto } from './dto/create-review.dto';
 
 export type ReviewSort = 'recent' | 'oldest' | 'highest' | 'lowest';
@@ -16,6 +17,7 @@ export class ReviewsService {
     @InjectModel(Review.name) private reviewModel: Model<ReviewDocument>,
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     @InjectModel(Product.name) private productModel: Model<ProductDocument>,
+    @InjectModel(Event.name) private eventModel: Model<EventDocument>,
   ) {}
 
   async listForProduct(productId: string, page = 1, limit = 10, sort: ReviewSort = 'recent') {
@@ -76,8 +78,9 @@ export class ReviewsService {
 
   async create(userId: string, dto: CreateReviewDto) {
     if (!Types.ObjectId.isValid(dto.productId)) throw new NotFoundException('Product not found');
-    const productExists = await this.productModel.exists({ _id: dto.productId, deletedAt: null });
-    if (!productExists) throw new NotFoundException('Product not found');
+    const product = await this.productModel.findOne({ _id: dto.productId, deletedAt: null })
+      .select('name slug image images').lean();
+    if (!product) throw new NotFoundException('Product not found');
 
     const user = await this.userModel.findById(userId).lean();
     if (!user) throw new NotFoundException('User not found');
@@ -101,6 +104,9 @@ export class ReviewsService {
 
     const created = await this.reviewModel.create({
       product: new Types.ObjectId(dto.productId),
+      productName: product.name,
+      productSlug: product.slug,
+      productImage: product.images?.find(image => image.isPrimary)?.url ?? product.images?.[0]?.url ?? product.image ?? '',
       user: new Types.ObjectId(userId),
       userName,
       userEmail: user.email,
@@ -177,11 +183,42 @@ export class ReviewsService {
       ];
     }
     const skip = (page - 1) * limit;
-    const [data, total, stats] = await Promise.all([
-      this.reviewModel.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).populate('product', 'name slug').lean(),
+    const [reviews, total, stats] = await Promise.all([
+      this.reviewModel.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
       this.reviewModel.countDocuments(filter),
       this.adminStats(),
     ]);
+    const productIds = reviews.map(review => review.product).filter(Boolean);
+    const products = await this.productModel.find({ _id: { $in: productIds } })
+      .select('name slug image images size skuCode price currency').lean();
+    const productsById = new Map(products.map(product => [product._id.toString(), product]));
+    const missingIds = productIds.filter(id => !productsById.has(id.toString()));
+    const historicalNames = missingIds.length
+      ? await this.eventModel.aggregate<{ _id: Types.ObjectId; name: string }>([
+          { $match: { productId: { $in: missingIds }, productName: { $nin: ['', null] } } },
+          { $sort: { createdAt: -1 } },
+          { $group: { _id: '$productId', name: { $first: '$productName' } } },
+        ])
+      : [];
+    const historicalNamesById = new Map(historicalNames.map(row => [row._id.toString(), row.name]));
+    const data = reviews.map(review => {
+      const productId = review.product?.toString();
+      const current = productId ? productsById.get(productId) : null;
+      return {
+        ...review,
+        product: current
+          ? { ...current, available: true }
+          : productId
+            ? {
+                _id: productId,
+                name: review.productName || historicalNamesById.get(productId) || `Product ${productId.slice(-6)}`,
+                slug: review.productSlug || '',
+                image: review.productImage || '',
+                available: false,
+              }
+            : null,
+      };
+    });
     return {
       data,
       meta: { page, limit, total, totalPages: Math.ceil(total / limit) },

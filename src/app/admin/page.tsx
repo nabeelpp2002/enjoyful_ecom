@@ -122,16 +122,17 @@ function MiniChart({ data }: { data: Array<{ date: string; count: number }> }) {
     if (!data.length) return <p className="text-[#1A1A1B]/30 text-xs">No data yet</p>;
     const max = Math.max(...data.map(d => d.count), 1);
     return (
-        <div className="flex items-end gap-1 h-24">
-            {data.map((d, i) => (
-                <div key={i} className="flex-1 group relative">
+        <div className="flex h-32 gap-1 border-b border-[#735697]/10 pb-5" role="img" aria-label={`Daily activity: ${data.map(d => `${d.date}: ${d.count} events`).join(", ")}`}>
+            {data.map(d => (
+                <div key={d.date} className="group relative h-full min-w-0 flex-1">
                     <div
-                        className="bg-[#735697]/15 hover:bg-[#735697]/35 transition-colors rounded-t"
-                        style={{ height: `${(d.count / max) * 100}%`, minHeight: 2 }}
+                        className="absolute inset-x-0 bottom-0 min-h-0.5 rounded-t bg-[#735697]/65 transition-colors group-hover:bg-[#735697]"
+                        style={{ height: `${(d.count / max) * 100}%` }}
                     />
                     <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-[#1A1A1B] text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap pointer-events-none">
                         {d.date} · {d.count}
                     </div>
+                    {data.length <= 14 && <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] text-[#1A1A1B]/40">{d.date.slice(5)}</span>}
                 </div>
             ))}
         </div>
@@ -147,7 +148,6 @@ export default function AdminDashboard() {
 
     useEffect(() => {
         let cancelled = false;
-        setLoading(true);
         fetch(`/api/admin/analytics?days=${days}`)
             .then(r => r.ok ? r.json() : null)
             .then(d => { if (!cancelled) setData(d); })
@@ -157,7 +157,6 @@ export default function AdminDashboard() {
 
     useEffect(() => {
         let cancelled = false;
-        setRevenueLoading(true);
         fetch('/api/admin/analytics/revenue?daysBack=30')
             .then(r => r.ok ? r.json() : null)
             .then(d => { if (!cancelled) setRevenue(d?.data ?? d); })
@@ -176,7 +175,7 @@ export default function AdminDashboard() {
                     {RANGE_OPTIONS.map(r => (
                         <button
                             key={r.days}
-                            onClick={() => setDays(r.days)}
+                            onClick={() => { if (days !== r.days) { setLoading(true); setDays(r.days); } }}
                             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                                 days === r.days
                                     ? "bg-[#735697] text-white"

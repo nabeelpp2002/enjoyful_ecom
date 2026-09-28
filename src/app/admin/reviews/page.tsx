@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
     MessageSquare, Search, Star, Eye, EyeOff, Trash2, RotateCcw,
     ChevronLeft, ChevronRight, Loader2, Package, ExternalLink,
@@ -21,7 +22,18 @@ interface ReviewRow {
     isHidden: boolean;
     isDeleted: boolean;
     createdAt: string;
-    product?: { _id: string; name: string; slug: string } | null;
+    product?: {
+        _id: string;
+        name: string;
+        slug?: string;
+        image?: string;
+        images?: { url: string; isPrimary?: boolean }[];
+        size?: string;
+        skuCode?: string;
+        price?: number | null;
+        currency?: string;
+        available: boolean;
+    } | null;
 }
 
 interface Resp {
@@ -79,10 +91,7 @@ export default function AdminReviewsPage() {
         return () => clearTimeout(t);
     }, [search]);
 
-    useEffect(() => { setPage(1); }, [status]);
-
     const fetchData = useCallback(async () => {
-        setLoading(true);
         const params = new URLSearchParams({
             page: String(page),
             limit: "20",
@@ -100,6 +109,8 @@ export default function AdminReviewsPage() {
         setLoading(false);
     }, [page, status, debounced]);
 
+    // fetchData updates state only after the network response arrives.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => { fetchData(); }, [fetchData]);
 
     const setHidden = async (r: ReviewRow, hidden: boolean) => {
@@ -156,7 +167,7 @@ export default function AdminReviewsPage() {
                     return (
                         <button
                             key={t.value}
-                            onClick={() => setStatus(t.value)}
+                            onClick={() => { if (status !== t.value) { setLoading(true); setPage(1); setStatus(t.value); } }}
                             className={`px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-colors flex items-center gap-1.5 ${
                                 active
                                     ? "bg-[#735697] text-white border-[#735697]"
@@ -176,7 +187,7 @@ export default function AdminReviewsPage() {
                     <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1A1A1B]/25" />
                     <input
                         value={search}
-                        onChange={e => setSearch(e.target.value)}
+                        onChange={e => { setLoading(true); setSearch(e.target.value); }}
                         placeholder="Search by user or text…"
                         className="w-full pl-10 pr-4 py-2 bg-white border border-black/8 rounded-xl text-[#1A1A1B] placeholder:text-[#1A1A1B]/25 focus:outline-none focus:border-[#735697]/40 text-sm"
                     />
@@ -199,6 +210,9 @@ export default function AdminReviewsPage() {
                             : r.isHidden
                             ? <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-amber-50 text-amber-600">HIDDEN</span>
                             : <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-50 text-emerald-600">VISIBLE</span>;
+                        const productImage = r.product?.images?.find(image => image.isPrimary)?.url
+                            ?? r.product?.images?.[0]?.url
+                            ?? r.product?.image;
                         return (
                             <div key={r._id} className={`bg-white border rounded-2xl p-4 md:p-5 shadow-sm transition-opacity ${r.isDeleted ? "border-red-100 opacity-70" : r.isHidden ? "border-amber-100 opacity-80" : "border-black/5"}`}>
                                 <div className="flex items-start justify-between gap-3 mb-2 flex-wrap">
@@ -251,23 +265,33 @@ export default function AdminReviewsPage() {
                                 {r.title && <p className="font-semibold text-sm text-[#1A1A1B] mb-1">{r.title}</p>}
                                 <p className="text-sm text-[#1A1A1B]/75 leading-relaxed whitespace-pre-wrap line-clamp-4">{r.comment}</p>
                                 {r.product && (
-                                    <div className="mt-3 pt-3 border-t border-black/5 flex items-center gap-2 flex-wrap">
-                                        <Package className="w-3.5 h-3.5 text-[#1A1A1B]/35" />
-                                        <span className="text-xs text-[#1A1A1B]/55">on</span>
-                                        <Link
-                                            href={`/admin/products/${r.product._id}/edit`}
-                                            className="text-xs text-[#735697] font-medium hover:underline"
-                                        >
-                                            {r.product.name}
-                                        </Link>
-                                        {r.product.slug && (
-                                            <a
-                                                href={`/product/${r.product._id}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-[10px] text-[#1A1A1B]/40 hover:text-[#735697] inline-flex items-center gap-1"
-                                            >
-                                                <ExternalLink className="w-3 h-3" /> view
+                                    <div className="mt-4 flex items-center gap-3 rounded-xl border border-black/5 bg-[#F9F5F0]/60 p-2.5 sm:max-w-lg">
+                                        <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white">
+                                            {productImage ? (
+                                                <Image src={productImage} alt={r.product.name} fill sizes="56px" unoptimized className="object-contain" />
+                                            ) : (
+                                                <Package className="h-5 w-5 text-[#1A1A1B]/25" aria-hidden="true" />
+                                            )}
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="text-[10px] font-semibold uppercase tracking-wide text-[#1A1A1B]/40">Reviewed product</p>
+                                            {r.product.available ? (
+                                                <Link href={`/admin/products/${r.product._id}`} className="block truncate text-sm font-semibold text-[#735697] hover:underline">
+                                                    {r.product.name}
+                                                </Link>
+                                            ) : (
+                                                <p className="truncate text-sm font-semibold text-[#1A1A1B]">{r.product.name}</p>
+                                            )}
+                                            <div className="flex flex-wrap gap-x-2 text-xs text-[#1A1A1B]/50">
+                                                {!r.product.available && <span>Removed from catalog</span>}
+                                                {r.product.size && <span>{r.product.size}</span>}
+                                                {r.product.skuCode && <span>SKU {r.product.skuCode}</span>}
+                                                {r.product.price != null && <span>{r.product.currency || "AED"} {r.product.price.toFixed(2)}</span>}
+                                            </div>
+                                        </div>
+                                        {r.product.available && (
+                                            <a href={`/product/${r.product._id}`} target="_blank" rel="noopener noreferrer" aria-label={`View ${r.product.name} on storefront`} className="shrink-0 rounded-lg p-2 text-[#1A1A1B]/45 hover:bg-white hover:text-[#735697]">
+                                                <ExternalLink className="h-4 w-4" aria-hidden="true" />
                                             </a>
                                         )}
                                     </div>
@@ -283,7 +307,7 @@ export default function AdminReviewsPage() {
                             </span>
                             <div className="flex items-center gap-1.5">
                                 <button
-                                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                                    onClick={() => { if (page > 1) { setLoading(true); setPage(page - 1); } }}
                                     disabled={page <= 1}
                                     className="p-1.5 rounded-lg text-[#1A1A1B]/50 hover:text-[#735697] hover:bg-[#735697]/8 border border-black/8 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                                 >
@@ -291,7 +315,7 @@ export default function AdminReviewsPage() {
                                 </button>
                                 <span className="px-3 py-1 rounded-lg bg-[#F9F5F0] text-[#1A1A1B] font-semibold tabular-nums min-w-[36px] text-center">{page}</span>
                                 <button
-                                    onClick={() => setPage(p => Math.min(data.meta.totalPages, p + 1))}
+                                    onClick={() => { if (page < data.meta.totalPages) { setLoading(true); setPage(page + 1); } }}
                                     disabled={page >= data.meta.totalPages}
                                     className="p-1.5 rounded-lg text-[#1A1A1B]/50 hover:text-[#735697] hover:bg-[#735697]/8 border border-black/8 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                                 >
