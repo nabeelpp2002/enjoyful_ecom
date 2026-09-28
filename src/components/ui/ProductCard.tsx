@@ -25,8 +25,8 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
     const availableSizes = [...new Set((product.availableSizes ?? []).map(size => size.trim()).filter(Boolean))];
     const hasSizeVariants = (product.variantCount ?? availableSizes.length) > 1 && availableSizes.length > 1;
     const listingSizeLabel = hasSizeVariants ? availableSizes.join(" · ") : product.size;
-    const mainImage = product.images?.[1] || product.images?.[0] || "/assets/placeholder.png";
-    const hoverImage = product.images?.find(image => image && image !== mainImage) || (product.hoverImage && product.hoverImage !== mainImage ? product.hoverImage : undefined) || mainImage;
+    const mainImage = product.images?.[0] || product.image || "/assets/placeholder.png";
+    const hoverImage = product.images?.[1] || (product.hoverImage && product.hoverImage !== mainImage ? product.hoverImage : undefined) || mainImage;
     const productHref = `/product/${product.productFamily || product.slug || product.id}`;
     const badge = product.isFeatured ? "FEATURED" : showProductPrices && product.onSale ? "SALE" : showProductPrices && product.discountPct && product.discountPct > 0 ? `${product.discountPct}% OFF` : null;
 

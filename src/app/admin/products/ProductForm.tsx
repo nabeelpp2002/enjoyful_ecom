@@ -374,14 +374,14 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                                     <X className="w-3 h-3" />
                                 </button>
                                 {i === 0 ? (
-                                    <span className="absolute bottom-1 left-1 text-xs bg-[#735697] text-white px-1.5 py-0.5 rounded-md">Main</span>
+                                    <span className="absolute bottom-1 left-1 text-xs bg-[#735697] text-white px-2 py-1 rounded-md shadow-sm">Cover</span>
                                 ) : (
                                     <button
                                         type="button"
                                         onClick={() => setForm(prev => { const imgs = [...prev.images]; const [moved] = imgs.splice(i, 1); return { ...prev, images: [moved, ...imgs] }; })}
-                                        className="absolute bottom-1 left-1 text-[10px] font-semibold bg-white/90 text-[#735697] px-1.5 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                                        className="absolute bottom-1 left-1 text-[10px] font-semibold bg-white/95 text-[#735697] px-2 py-1 rounded-md shadow-sm hover:bg-[#735697] hover:text-white transition-colors"
                                     >
-                                        Set main
+                                        Set cover
                                     </button>
                                 )}
                             </div>
@@ -404,7 +404,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                             if (e.target.files) queueFiles(e.target.files);
                             e.target.value = "";
                         }} />
-                    <p className="text-[#1A1A1B]/25 text-xs">First image is the main product image · Crop & rotate before upload</p>
+                    <p className="text-[#1A1A1B]/35 text-xs">The first image is the storefront cover · Use “Set cover” to change it · Crop & rotate before upload</p>
                 </div>
 
                 {/* Basic Info */}
