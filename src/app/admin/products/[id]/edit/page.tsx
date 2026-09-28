@@ -8,17 +8,7 @@ export default function EditProductPage() {
     const params = useParams();
     const id = params.id as string;
 
-    const [data, setData] = useState<Record<string, unknown> | null>(() => {
-        if (typeof window === "undefined") return null;
-        try {
-            const cached = sessionStorage.getItem(`enjoyful-admin-product-${id}`);
-            if (cached) {
-                const product = JSON.parse(cached);
-                return { ...product, id: String(product.id ?? product._id ?? id) };
-            }
-        } catch {}
-        return null;
-    });
+    const [data, setData] = useState<Record<string, unknown> | null>(null);
     const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
@@ -28,7 +18,7 @@ export default function EditProductPage() {
             .then(res => {
                 if (cancelled) return;
                 if (!res) {
-                    if (!data) setNotFound(true);
+                    setNotFound(true);
                     return;
                 }
                 const product = res?.data ?? res;
@@ -38,9 +28,8 @@ export default function EditProductPage() {
                     sessionStorage.setItem(`enjoyful-admin-product-${id}`, JSON.stringify(fresh));
                 } catch {}
             })
-            .catch(() => { if (!cancelled && !data) setNotFound(true); });
+            .catch(() => { if (!cancelled) setNotFound(true); });
         return () => { cancelled = true; };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     if (!data && notFound) {
