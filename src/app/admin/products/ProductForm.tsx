@@ -234,7 +234,10 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
     );
 
     const queueFiles = (files: FileList) => {
-        setPendingFiles(prev => [...prev, ...Array.from(files)]);
+        // FileList is live: clearing the input can empty it before React runs a
+        // deferred state updater. Snapshot the File objects synchronously first.
+        const selectedFiles = Array.from(files);
+        if (selectedFiles.length > 0) setPendingFiles(prev => [...prev, ...selectedFiles]);
     };
 
     const handleEditorUploaded = (url: string) => {

@@ -111,9 +111,9 @@ export default function ProductDetailClient({
                         transition={{ duration: 0.6 }}
                         className="lg:col-span-7"
                     >
-                        <div className="flex gap-5 aspect-square lg:aspect-auto lg:h-[520px]">
+                        <div className="flex gap-5">
                             {/* Vertical Thumbnails (desktop) */}
-                            <div className="hidden lg:flex flex-col gap-6 w-[100px] flex-shrink-0 h-full">
+                            <div className="hidden lg:flex flex-col gap-6 w-[100px] flex-shrink-0 self-stretch">
                                 {Array.from({ length: 4 }).map((_, index) => {
                                     const img = displayImages[index];
                                     return img ? (
@@ -133,13 +133,13 @@ export default function ProductDetailClient({
                             </div>
 
                             {/* Main Image */}
-                            <div className="relative flex-1 rounded-[2rem] overflow-hidden bg-white shadow-sm h-full min-w-0">
+                            <div className="relative flex-1 aspect-square rounded-[2rem] overflow-hidden bg-white shadow-sm min-w-0">
                                 <Image
                                     src={productImages[selectedImage] || productImages[0] || PLACEHOLDER}
                                     alt={product.name}
                                     fill
                                     priority
-                                    className="object-contain"
+                                    className="object-cover"
                                     sizes="(max-width: 1024px) 100vw, 50vw"
                                 />
                                 {/* Floating Actions */}
