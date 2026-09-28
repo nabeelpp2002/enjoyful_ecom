@@ -3,22 +3,32 @@ import { displayName, pickProductImages } from "@/lib/utils";
 
 export type ApiProduct = Record<string, unknown>;
 
+function stringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((item): item is string => typeof item === "string")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 export function normalizeApiProduct(p: ApiProduct): Product {
   const category = typeof p.category === "object" && p.category !== null
     ? String((p.category as { name?: unknown }).name ?? "")
     : String(p.category ?? "");
-  const imagesRaw = p.images as Array<{ url?: string } | string> | undefined;
-  const imageUrls = (imagesRaw ?? [])
-    .map((img) => (typeof img === "string" ? img : img.url ?? ""))
+  const imagesRaw = Array.isArray(p.images) ? p.images : [];
+  const imageUrls = imagesRaw
+    .map((img) => {
+      if (typeof img === "string") return img;
+      if (img && typeof img === "object" && "url" in img && typeof img.url === "string") return img.url;
+      return "";
+    })
     .filter(Boolean);
   const { image, hoverImage, images } = pickProductImages(
     imageUrls.length > 0
       ? imageUrls
       : [p.image as string, p.hoverImage as string].filter(Boolean),
   );
-  const availableSizes = Array.isArray(p.availableSizes)
-    ? [...new Set(p.availableSizes.map((size) => String(size).trim()).filter(Boolean))]
-    : [];
+  const availableSizes = [...new Set(stringArray(p.availableSizes))];
 
   return {
     id: String(p._id ?? p.id ?? ""),
@@ -35,15 +45,15 @@ export function normalizeApiProduct(p: ApiProduct): Product {
     rating: (p.rating as number) ?? 0,
     reviews: (p.reviews as number) ?? 0,
     description: (p.description as string) ?? "",
-    benefits: (p.benefits as string[]) ?? [],
-    ingredients: (p.ingredients as string[]) ?? [],
+    benefits: stringArray(p.benefits),
+    ingredients: stringArray(p.ingredients),
     howToUse: (p.howToUse as string) ?? "",
-    skinType: (p.skinType as string[]) ?? [],
+    skinType: stringArray(p.skinType),
     productType: (p.productType as string) ?? "",
     tagline: (p.tagline as string) ?? undefined,
     brand: (p.brand as string) ?? undefined,
-    highlights: (p.highlights as string[]) ?? undefined,
-    suitableFor: (p.suitableFor as string[]) ?? undefined,
+    highlights: stringArray(p.highlights),
+    suitableFor: stringArray(p.suitableFor),
     isHidden: (p.isHidden as boolean) ?? false,
     isFeatured: (p.isFeatured as boolean) ?? false,
     onSale: (p.onSale as boolean) ?? false,
@@ -55,15 +65,15 @@ export function normalizeApiProduct(p: ApiProduct): Product {
     productFamily: (p.productFamily as string) ?? undefined,
     variantCount: (p.variantCount as number) ?? undefined,
     availableSizes: availableSizes.length > 0 ? availableSizes : undefined,
-    activeIngredients: (p.activeIngredients as string[]) ?? undefined,
-    features: (p.features as string[]) ?? undefined,
+    activeIngredients: stringArray(p.activeIngredients),
+    features: stringArray(p.features),
     scent: (p.scent as string) ?? undefined,
     texture: (p.texture as string) ?? undefined,
     targetUse: (p.targetUse as string) ?? undefined,
     itemForm: (p.itemForm as string) ?? undefined,
     recommendedUsage: (p.recommendedUsage as string) ?? undefined,
     precautions: (p.precautions as string) ?? undefined,
-    hairType: (p.hairType as string[]) ?? undefined,
+    hairType: stringArray(p.hairType),
     countryOfOrigin: (p.countryOfOrigin as string) ?? undefined,
   };
 }

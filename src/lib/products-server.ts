@@ -5,6 +5,11 @@ import type { Product } from "@/data/products";
 import { normalizeApiProduct, type ApiProduct } from "@/lib/product-normalize";
 
 const API_BASE = process.env.NEST_API_URL ?? "http://localhost:4000/api/v1";
+const DEFAULT_API_TIMEOUT_MS = 8_000;
+// A Render Free web service can take close to a minute to wake after idling.
+// Product detail requests are user-initiated and cannot use stale data, so give
+// that one request enough time to survive a backend cold start.
+const PRODUCT_RESOLVE_TIMEOUT_MS = 70_000;
 
 export const PRODUCT_REVALIDATE_SECONDS = 300;
 export const PRODUCT_CACHE_TAG = "products";
@@ -51,9 +56,10 @@ async function fetchProductApi<T>(
   path: string,
   tags: string[] = [],
   cacheResult = true,
+  timeoutMs = DEFAULT_API_TIMEOUT_MS,
 ): Promise<UpstreamResult<T>> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8_000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
     const response = await fetch(`${API_BASE}${path}`, cacheResult
@@ -194,6 +200,7 @@ async function resolveProductUncached(identifier: string): Promise<ResolvedProdu
     `/products/resolve/${encodeURIComponent(identifier)}`,
     [],
     false,
+    PRODUCT_RESOLVE_TIMEOUT_MS,
   );
   const data = result.ok ? result.body?.data : null;
   if (!data?.product) return null;
@@ -201,7 +208,7 @@ async function resolveProductUncached(identifier: string): Promise<ResolvedProdu
     product: normalizeApiProduct(data.product),
     rawProduct: data.product,
     variants: Array.isArray(data.variants) ? data.variants : [],
-    relatedProducts: (data.related ?? []).map(normalizeApiProduct),
+    relatedProducts: Array.isArray(data.related) ? data.related.map(normalizeApiProduct) : [],
   };
 }
 
