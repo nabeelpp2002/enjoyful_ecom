@@ -45,7 +45,7 @@ export default function TermsOfServicePage() {
                             <h2 className="editorial-section-heading text-xl text-[var(--color-brand-onyx)]">1. General Terms</h2>
                         </div>
                         <p>
-                            Welcome to <strong>enJoyful Life</strong>. By accessing or purchasing from our website (enjoyfullife.ae), you agree to be bound by these Terms and Conditions. These terms apply to all visitors, registered customers, and users in the United Arab Emirates and globally.
+                            Welcome to <strong>enJoyful Life</strong>. By accessing or purchasing from our website (enjoyfullife.com), you agree to be bound by these Terms and Conditions. These terms apply to all visitors, registered customers, and users in the United Arab Emirates and globally.
                         </p>
                     </section>
 

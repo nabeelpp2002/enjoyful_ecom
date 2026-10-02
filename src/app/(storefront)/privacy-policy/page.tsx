@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
                             <h2 className="editorial-section-heading text-xl text-[var(--color-brand-onyx)]">1. Introduction</h2>
                         </div>
                         <p>
-                            enJoyful Life (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to respecting your privacy and safeguarding your personal information. This Privacy Policy outlines how we collect, use, store, and protect your personal data when you visit or make a purchase from our storefront at <strong>enjoyfullife.ae</strong> in accordance with the laws of the United Arab Emirates (UAE), including Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL).
+                            enJoyful Life (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to respecting your privacy and safeguarding your personal information. This Privacy Policy outlines how we collect, use, store, and protect your personal data when you visit or make a purchase from our storefront at <strong>enjoyfullife.com</strong> in accordance with the laws of the United Arab Emirates (UAE), including Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL).
                         </p>
                     </section>
 
@@ -122,7 +122,6 @@ export default function PrivacyPolicyPage() {
                         <div className="mt-3 p-4 bg-[var(--color-brand-sand)]/60 rounded-xl border border-white/60">
                             <p className="editorial-heading font-semibold text-[var(--color-brand-onyx)]">enJoyful Life — Data Protection Office</p>
                             <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/70">Dubai, United Arab Emirates</p>
-                            <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/70 mt-1">Email: privacy@enjoyfullife.ae</p>
                         </div>
                     </section>
                 </motion.div>
