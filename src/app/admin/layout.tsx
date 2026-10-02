@@ -48,7 +48,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <aside className={`fixed inset-y-0 left-0 z-30 w-60 bg-white border-r border-black/5 flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}>
                 <div className="h-16 flex items-center justify-between px-5 border-b border-black/5">
                     <Image
-                        src="/assets/Enjoyful_logo_transparent.png"
+                        src="/assets/logoRegistered.png"
                         alt="enJoyful"
                         width={110}
                         height={32}

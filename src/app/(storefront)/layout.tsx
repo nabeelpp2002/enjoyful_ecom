@@ -14,7 +14,7 @@ const organizationJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description: DEFAULT_DESCRIPTION,
-  logo: `${SITE_URL}/assets/Enjoyful_logo_transparent.png`,
+  logo: `${SITE_URL}/assets/logoRegistered.png`,
   image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
   email: "hello@enjoyfullife.com",
   address: {

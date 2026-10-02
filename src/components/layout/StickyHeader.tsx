@@ -155,7 +155,7 @@ export function StickyHeader() {
 
     const textColor = "text-[var(--color-brand-onyx)] editorial-ui text-sm";
     const iconColor = "text-[var(--color-brand-onyx)] hover:text-[var(--color-brand-purple)] bg-transparent";
-    const logoSrc = "/assets/Enjoyful_logo_transparent.png";
+    const logoSrc = "/assets/logoRegistered.png";
 
     return (
         <>
