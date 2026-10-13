@@ -9,6 +9,7 @@ import { useData } from "@/context/DataContext";
 import { Price } from "@/components/ui/Price";
 import { track } from "@/lib/analytics";
 import type { Product } from "@/data/products";
+import { productImageAlt } from "@/lib/product-seo";
 
 interface ProductCardProps {
     product: Product;
@@ -60,8 +61,8 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
         <motion.article {...animProps} initial="initial" whileHover="hover" className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-[0_10px_28px_rgba(31,25,18,0.09)] sm:rounded-[1.25rem]">
             <div className="relative aspect-[1.08/1] min-h-0 overflow-hidden bg-[#f2eee8]">
                 <Link href={productHref} onClick={() => track({ type: "product_click", productId: product.id, productName: product.name })} className="absolute inset-0">
-                    <Image src={mainImage} alt={product.name} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" priority={index < 4} />
-                    {hoverImage !== mainImage && <motion.div variants={{ initial: { opacity: 0 }, hover: { opacity: 1 } }} transition={{ duration: 0.35 }} className="absolute inset-0 hidden bg-[#f2eee8] sm:block"><Image src={hoverImage} alt={`${product.name} alternate view`} fill sizes="25vw" className="object-cover" /></motion.div>}
+                    <Image src={mainImage} alt={productImageAlt(product.name)} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" priority={index < 4} />
+                    {hoverImage !== mainImage && <motion.div variants={{ initial: { opacity: 0 }, hover: { opacity: 1 } }} transition={{ duration: 0.35 }} className="absolute inset-0 hidden bg-[#f2eee8] sm:block"><Image src={hoverImage} alt={productImageAlt(product.name, 1)} fill sizes="25vw" className="object-cover" /></motion.div>}
                 </Link>
                 {badge && <span className={`editorial-ui absolute left-3 top-3 z-20 rounded-full px-3 py-1 text-[8px] font-semibold tracking-wide sm:left-4 sm:top-4 sm:px-4 sm:py-1.5 sm:text-[10px] ${product.isFeatured ? "bg-[var(--color-brand-mustard)]/50 text-[var(--color-brand-onyx)] backdrop-blur-[4px] shadow-sm" : "bg-[#a9342f] text-white"}`}>{badge}</span>}
                 <button type="button" onClick={wishlistMode ? removeWishlistItem : toggleWishlist} className="absolute right-3 top-3 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[var(--color-brand-onyx)] shadow-sm transition-transform hover:scale-105 sm:right-4 sm:top-4 sm:h-10 sm:w-10" aria-label={wishlistMode ? "Remove from wishlist" : inWishlist ? "Remove from wishlist" : "Add to wishlist"}>

@@ -15,6 +15,7 @@ import { displayName } from "@/lib/utils";
 import { Price } from "@/components/ui/Price";
 import { hasValidPrice, formatPrice } from "@/lib/price";
 import type { SizeVariant } from "@/lib/products-server";
+import { productImageAlt } from "@/lib/product-seo";
 
 interface ProductDetailClientProps {
     product: Product;
@@ -124,7 +125,7 @@ export default function ProductDetailClient({
                                                 ? "ring-2 ring-[var(--color-brand-purple)] ring-offset-1 ring-offset-[var(--color-brand-sand)]"
                                                 : "border border-gray-100 hover:border-[var(--color-brand-purple)]/40"}`}
                                         >
-                                            <Image src={img} alt={`View ${index + 1}`} fill className="object-cover" sizes="200px" />
+                                            <Image src={img} alt={productImageAlt(product.name, index)} fill className="object-cover" sizes="200px" />
                                         </button>
                                     ) : (
                                         <div key={index} className="flex-1 rounded-xl" />
@@ -136,7 +137,7 @@ export default function ProductDetailClient({
                             <div className="relative flex-1 aspect-square rounded-[2rem] overflow-hidden bg-white shadow-sm min-w-0">
                                 <Image
                                     src={productImages[selectedImage] || productImages[0] || PLACEHOLDER}
-                                    alt={product.name}
+                                    alt={productImageAlt(product.name, selectedImage)}
                                     fill
                                     priority
                                     className="object-cover"
@@ -189,7 +190,7 @@ export default function ProductDetailClient({
                                         : "border border-[var(--color-brand-onyx)]/10"}`}
                                 >
                                     <div className="absolute inset-1 rounded-lg overflow-hidden">
-                                        <Image src={img} alt={`View ${index + 1}`} fill className="object-cover" sizes="72px" />
+                                        <Image src={img} alt={productImageAlt(product.name, index)} fill className="object-cover" sizes="72px" />
                                     </div>
                                 </button>
                             ) : null)}
@@ -493,7 +494,7 @@ export default function ProductDetailClient({
                             </p>
                         </div>
                         <div className="relative min-h-[400px]">
-                            <Image src="/assets/about_ingredients.png" alt="Brand philosophy" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                            <Image src="/assets/about_ingredients.png" alt="Enjoyful Life product formulation and natural ingredients" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                     </div>
                 </motion.div>

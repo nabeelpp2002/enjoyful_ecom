@@ -5,6 +5,7 @@ import { X, Copy, Facebook, Twitter, MessageCircle, Share2 } from "lucide-react"
 import Image from "next/image";
 import { useData } from "@/context/DataContext";
 import { Price } from "@/components/ui/Price";
+import { productImageAlt } from "@/lib/product-seo";
 
 interface ShareSheetProps {
     isOpen: boolean;
@@ -65,7 +66,7 @@ export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
 
             <div className="bg-white m-4 mb-2 rounded-[1rem] p-3 flex items-center gap-4 shadow-sm border border-gray-100">
                 <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 bg-gray-50">
-                    <Image src={product.image} alt={product.name} fill className="object-contain" />
+                    <Image src={product.image} alt={productImageAlt(product.name)} fill className="object-contain" />
                 </div>
                 <div className="flex-1 min-w-0">
                     <h3 className="editorial-heading font-semibold text-[var(--color-brand-onyx)] line-clamp-1 text-sm">{product.name}</h3>

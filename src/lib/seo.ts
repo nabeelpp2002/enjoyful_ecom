@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Enjoyful Life";
 export const SITE_URL = "https://www.enjoyfullife.com";
+export const SITE_ALTERNATE_NAMES = ["EnjoyfulLife", "enJoyful Life"];
+export const FOUNDER_NAME = "Aslam";
+export const FOUNDER_ROLE = "Founder & CEO";
 export const COMPANY_PHONE_DISPLAY = "(02) 675 1390";
 export const COMPANY_PHONE_E164 = "+97126751390";
 export const COMPANY_WHATSAPP_NUMBER = "97126751390";

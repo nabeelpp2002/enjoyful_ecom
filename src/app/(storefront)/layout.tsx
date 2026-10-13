@@ -5,13 +5,23 @@ import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { ReactNode } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { COMPANY_PHONE_E164, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
+import {
+  COMPANY_PHONE_E164,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  FOUNDER_NAME,
+  FOUNDER_ROLE,
+  SITE_ALTERNATE_NAMES,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "OnlineStore",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
+  alternateName: SITE_ALTERNATE_NAMES,
   url: SITE_URL,
   description: DEFAULT_DESCRIPTION,
   logo: `${SITE_URL}/assets/logoRegistered.png`,
@@ -27,13 +37,25 @@ const organizationJsonLd = {
     "@type": "Country",
     name: "United Arab Emirates",
   },
-  "contactPoint": {
+  founder: {
+    "@type": "Person",
+    "@id": `${SITE_URL}/about#founder`,
+    name: FOUNDER_NAME,
+    jobTitle: FOUNDER_ROLE,
+    url: `${SITE_URL}/about#founder`,
+  },
+  sameAs: [
+    "https://www.instagram.com/enjoyfullife",
+    "https://www.facebook.com/en.joyfullife/",
+  ],
+  knowsAbout: ["Skincare", "Personal care", "Baby care", "Fragrances", "Home care"],
+  contactPoint: {
     "@type": "ContactPoint",
-    "contactType": "customer service",
-    "telephone": COMPANY_PHONE_E164,
-    "areaServed": ["AE"],
-    "availableLanguage": ["English", "Arabic"]
-  }
+    contactType: "customer service",
+    telephone: COMPANY_PHONE_E164,
+    areaServed: ["AE"],
+    availableLanguage: ["English", "Arabic"],
+  },
 };
 
 const websiteJsonLd = {
@@ -41,16 +63,17 @@ const websiteJsonLd = {
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   name: SITE_NAME,
+  alternateName: SITE_ALTERNATE_NAMES,
   url: SITE_URL,
   publisher: { "@id": `${SITE_URL}/#organization` },
-  "potentialAction": {
+  potentialAction: {
     "@type": "SearchAction",
-    "target": {
+    target: {
       "@type": "EntryPoint",
-      "urlTemplate": `${SITE_URL}/category/all?q={search_term_string}`
+      urlTemplate: `${SITE_URL}/category/all?q={search_term_string}`,
     },
-    "query-input": "required name=search_term_string"
-  }
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function StorefrontLayout({ children }: { children: ReactNode }) {
@@ -59,11 +82,8 @@ export default function StorefrontLayout({ children }: { children: ReactNode }) 
       <ScrollToTop />
       <JsonLd data={organizationJsonLd} />
       <JsonLd data={websiteJsonLd} />
-      {/* <TopOfferBar /> */}
       <StickyHeader />
-      <main className="flex-1 w-full relative">
-        {children}
-      </main>
+      <main className="flex-1 w-full relative">{children}</main>
       <Footer />
       <MobileBottomNav />
     </DataProvider>

@@ -36,6 +36,7 @@ export default function About() {
 
                 {/* 1. Founder Story Card */}
                 <motion.div
+                    id="founder"
                     initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

@@ -463,6 +463,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                             <label className={labelCls}>Product Name *</label>
                             <input required value={form.name} onChange={e => updateForm("name", e.target.value)}
                                 placeholder="e.g. Aloe Bliss Shower Gel" className={inputCls} />
+                            <p className="mt-1.5 text-[10px] text-[#1A1A1B]/40">Use the clean product name only. Enjoyful Life is added automatically to SEO titles and image descriptions.</p>
                         </div>
                         <div>
                             <label className={labelCls}>Tagline</label>

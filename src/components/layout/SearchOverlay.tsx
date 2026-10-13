@@ -10,6 +10,7 @@ import { track } from "@/lib/analytics";
 import { displayName } from "@/lib/utils";
 import { useData } from "@/context/DataContext";
 import { Price } from "@/components/ui/Price";
+import { productImageAlt } from "@/lib/product-seo";
 
 interface SearchOverlayProps { isOpen: boolean; onClose: () => void; }
 interface SearchResult {
@@ -227,7 +228,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                                     {results.map(result => (
                                         <li key={result.id}>
                                             <button type="button" onClick={() => goToResult(result)} className="flex w-full items-center gap-3 py-3.5 text-left active:bg-black/[0.025]">
-                                                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[var(--color-brand-sand)]">{result.image ? <Image src={result.image} alt={result.name} fill sizes="56px" className="object-cover" /> : <Package className="absolute inset-0 m-auto h-5 w-5 text-black/20" />}</div>
+                                                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[var(--color-brand-sand)]">{result.image ? <Image src={result.image} alt={productImageAlt(result.name)} fill sizes="56px" className="object-cover" /> : <Package className="absolute inset-0 m-auto h-5 w-5 text-black/20" />}</div>
                                                 <div className="min-w-0 flex-1"><p className="editorial-subtitle truncate text-[15px] font-semibold text-[var(--color-brand-onyx)]">{displayName(result.name)}</p><p className="editorial-body mt-0.5 truncate text-xs text-black/40">{result.category}{result.subcategory ? ` · ${result.subcategory}` : ""}</p></div>
                                                 {showProductPrices && <Price amount={result.price} originalAmount={result.originalPrice} layout="stacked" reserveSpace={false} className="shrink-0" amountClassName="editorial-number text-sm font-semibold" currencyClassName="text-[10px] text-black/45" originalClassName="text-[10px] text-black/30" />}
                                                 <ArrowUpLeft size={18} className="shrink-0 rotate-90 text-black/35" />
