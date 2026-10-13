@@ -5,7 +5,7 @@ import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { ReactNode } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { COMPANY_PHONE_E164, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -17,6 +17,7 @@ const organizationJsonLd = {
   logo: `${SITE_URL}/assets/logoRegistered.png`,
   image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
   email: "hello@enjoyfullife.com",
+  telephone: COMPANY_PHONE_E164,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Dubai",
@@ -29,6 +30,7 @@ const organizationJsonLd = {
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
+    "telephone": COMPANY_PHONE_E164,
     "areaServed": ["AE"],
     "availableLanguage": ["English", "Arabic"]
   }

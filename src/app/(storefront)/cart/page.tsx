@@ -11,6 +11,7 @@ import { useData } from "@/context/DataContext";
 import { track } from "@/lib/analytics";
 import { Price } from "@/components/ui/Price";
 import { formatPrice } from "@/lib/price";
+import { COMPANY_WHATSAPP_NUMBER } from "@/lib/seo";
 
 const FREE_SHIPPING_THRESHOLD = 150;
 
@@ -24,7 +25,6 @@ export default function CartPage() {
 
     function handleCheckout(details: DeliveryDetails) {
         setShowCheckoutModal(false);
-        const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "97126751390";
         const itemLines = cart
             .map(
                 (item) =>
@@ -46,7 +46,7 @@ export default function CartPage() {
             type: "checkout_initiated",
             metadata: { total: cartSubtotal, itemCount: cart.length },
         });
-        const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+        const waUrl = "https://wa.me/" + COMPANY_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
         window.open(waUrl, "_blank");
     }
 

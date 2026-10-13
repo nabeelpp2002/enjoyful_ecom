@@ -6,6 +6,7 @@ import { Mail, MessageCircle, Phone, MapPin, ChevronDown, ChevronUp } from "luci
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
+import { COMPANY_PHONE_DISPLAY, COMPANY_PHONE_E164, COMPANY_WHATSAPP_URL } from "@/lib/seo";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -69,7 +70,7 @@ export default function Contact() {
         },
         {
             question: "How can I get help with an order?",
-            answer: "Send us your order details using the contact form, WhatsApp, call (02) 675 1390, or email hello@enjoyfullife.com, and our customer-support team will assist you.",
+            answer: "Send us your order details using the contact form, WhatsApp, call " + COMPANY_PHONE_DISPLAY + ", or email hello@enjoyfullife.com, and our customer-support team will assist you.",
         },
     ];
 
@@ -124,10 +125,10 @@ export default function Contact() {
                             Call Us
                         </h3>
                         <a
-                            href="tel:+97126751390"
+                            href={"tel:" + COMPANY_PHONE_E164}
                             className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
                         >
-                            (02) 675 1390
+                            {COMPANY_PHONE_DISPLAY}
                         </a>
                     </div>
 
@@ -139,12 +140,12 @@ export default function Contact() {
                             WhatsApp
                         </h3>
                         <a
-                            href="https://wa.me/97126751390"
+                            href={COMPANY_WHATSAPP_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
                         >
-                            (02) 675 1390
+                            {COMPANY_PHONE_DISPLAY}
                         </a>
                     </div>
 

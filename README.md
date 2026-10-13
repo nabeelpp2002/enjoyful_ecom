@@ -58,7 +58,6 @@ Create **`.env.local`** at the repo root (Next.js):
 ```env
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEST_API_URL=http://localhost:4000/api/v1
-NEXT_PUBLIC_WHATSAPP_NUMBER=97126751390
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=<your-google-oauth-web-client-id>
 ```
 
