@@ -1,4 +1,5 @@
 import type { Product } from "@/data/products";
+import { productDescription } from "@/lib/product-seo";
 import { displayName, pickProductImages } from "@/lib/utils";
 
 export type ApiProduct = Record<string, unknown>;
@@ -44,7 +45,12 @@ export function normalizeApiProduct(p: ApiProduct): Product {
     images: images.length > 0 ? images : undefined,
     rating: (p.rating as number) ?? 0,
     reviews: (p.reviews as number) ?? 0,
-    description: (p.description as string) ?? "",
+    description: productDescription(
+      String(p.name ?? ""),
+      p.size as string | undefined,
+      p.description as string | undefined,
+      p.shortDescription as string | undefined,
+    ),
     benefits: stringArray(p.benefits),
     ingredients: stringArray(p.ingredients),
     howToUse: (p.howToUse as string) ?? "",

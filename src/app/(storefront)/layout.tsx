@@ -11,6 +11,8 @@ import {
   DEFAULT_OG_IMAGE,
   FOUNDER_NAME,
   FOUNDER_ROLE,
+  MERCHANT_RETURN_POLICY,
+  MERCHANT_SHIPPING_POLICY,
   SITE_ALTERNATE_NAMES,
   SITE_NAME,
   SITE_URL,
@@ -28,6 +30,8 @@ const organizationJsonLd = {
   image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
   email: "hello@enjoyfullife.com",
   telephone: COMPANY_PHONE_E164,
+  hasMerchantReturnPolicy: MERCHANT_RETURN_POLICY,
+  hasShippingService: MERCHANT_SHIPPING_POLICY,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Dubai",

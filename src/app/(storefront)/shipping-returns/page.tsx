@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Truck, RotateCcw, Clock, MapPin, CheckCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
 
 export default function ShippingReturnsPage() {
     return (
@@ -65,7 +66,7 @@ export default function ShippingReturnsPage() {
 
                         <div className="space-y-3 editorial-body text-xs sm:text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed">
                             <p>
-                                <strong>Complimentary Shipping:</strong> Enjoy FREE standard shipping on all orders totaling <strong>AED 200 or more</strong> across the UAE. For orders under AED 200, a flat shipping fee of AED 15 is applied at checkout.
+                                <strong>Complimentary Shipping:</strong> {UAE_SHIPPING_DESCRIPTION}
                             </p>
                             <p>
                                 <strong>Order Tracking:</strong> As soon as your order leaves our Dubai warehouse, you will receive an SMS and email containing your tracking link.

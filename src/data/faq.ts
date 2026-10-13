@@ -1,3 +1,5 @@
+import { UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
+
 export interface FaqItem {
   q: string;
   a: string;
@@ -7,7 +9,7 @@ export interface FaqItem {
 export const FAQ_DATA: FaqItem[] = [
   { category: "Shipping & Delivery", q: "Where does Enjoyful Life deliver?", a: "We deliver across all seven Emirates in the UAE: Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain." },
   { category: "Shipping & Delivery", q: "How long does shipping take in the UAE?", a: "Standard delivery in Dubai and Abu Dhabi typically takes 1–2 business days. Delivery to other Emirates typically takes 2–3 business days." },
-  { category: "Shipping & Delivery", q: "Is shipping free?", a: "Standard UAE shipping is complimentary on orders of AED 200 or more. Orders below AED 200 have a flat AED 15 shipping fee." },
+  { category: "Shipping & Delivery", q: "Is shipping free?", a: UAE_SHIPPING_DESCRIPTION },
   { category: "Shipping & Delivery", q: "Can I track my order?", a: "Yes. Once an order is dispatched, we send its tracking details by SMS and email." },
   { category: "Products & Usage", q: "Are Enjoyful Life products cruelty-free?", a: "Yes. Enjoyful Life states that its ingredients and finished products are not tested on animals." },
   { category: "Products & Usage", q: "Are your formulas suitable for the UAE climate?", a: "Our range includes lightweight, non-greasy and fast-absorbing products suited to daily routines in the UAE's warm climate and air-conditioned interiors." },

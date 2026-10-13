@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { UAE_DELIVERY_ESTIMATE, UAE_SHIPPING_COST, UAE_SHIPPING_DESCRIPTION } from "./shipping";
 
 export const SITE_NAME = "Enjoyful Life";
 export const SITE_URL = "https://www.enjoyfullife.com";
@@ -25,6 +26,31 @@ export const DEFAULT_TITLE =
   "Enjoyful Life — Skincare, Personal Care & Fragrance UAE";
 export const DEFAULT_DESCRIPTION =
   "Shop Enjoyful Life skincare, body and hair care, baby care, fragrances and home care online, with delivery across the United Arab Emirates.";
+
+// A global policy avoids inventing handling/transit times or a courier workweek.
+export const MERCHANT_SHIPPING_POLICY = {
+  "@type": "ShippingService",
+  "@id": `${SITE_URL}/shipping-returns#shipping-policy`,
+  name: "Standard UAE delivery",
+  description: `${UAE_SHIPPING_DESCRIPTION} ${UAE_DELIVERY_ESTIMATE}`,
+  fulfillmentType: "https://schema.org/FulfillmentTypeDelivery",
+  shippingConditions: {
+    "@type": "ShippingConditions",
+    shippingDestination: { "@type": "DefinedRegion", addressCountry: "AE" },
+    shippingRate: { "@type": "MonetaryAmount", value: UAE_SHIPPING_COST, currency: "AED" },
+  },
+};
+
+// Matches /shipping-returns. Fees are unspecified there, so do not claim free returns.
+export const MERCHANT_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  "@id": `${SITE_URL}/shipping-returns#return-policy`,
+  applicableCountry: "AE",
+  returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+  merchantReturnDays: 14,
+  merchantReturnLink: `${SITE_URL}/shipping-returns`,
+  itemCondition: "https://schema.org/NewCondition",
+};
 
 export function absoluteUrl(path = "/"): string {
   return new URL(path, `${SITE_URL}/`).toString();

@@ -7,6 +7,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
 import { COMPANY_PHONE_DISPLAY, COMPANY_PHONE_E164, COMPANY_WHATSAPP_URL } from "@/lib/seo";
+import { UAE_DELIVERY_ESTIMATE, UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ export default function Contact() {
     const faqs = [
         {
             question: "What is your shipping policy?",
-            answer: "We deliver throughout the UAE. Dubai and Abu Dhabi orders typically arrive in 1–2 business days, while other Emirates typically take 2–3 business days. Standard UAE shipping is complimentary on orders of AED 200 or more.",
+            answer: `${UAE_SHIPPING_DESCRIPTION} ${UAE_DELIVERY_ESTIMATE}`,
         },
         {
             question: "Are your products cruelty-free?",

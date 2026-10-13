@@ -13,15 +13,13 @@ import { Price } from "@/components/ui/Price";
 import { formatPrice } from "@/lib/price";
 import { COMPANY_WHATSAPP_NUMBER } from "@/lib/seo";
 
-const FREE_SHIPPING_THRESHOLD = 150;
+import { UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
 
 export default function CartPage() {
     const { cart, updateCartQuantity, removeFromCart, getCartTotal, showProductPrices } = useData();
     const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
     const cartSubtotal = getCartTotal();
-    const shippingRemaining = Math.max(0, FREE_SHIPPING_THRESHOLD - cartSubtotal);
-    const shippingProgress = Math.min(100, (cartSubtotal / FREE_SHIPPING_THRESHOLD) * 100);
 
     function handleCheckout(details: DeliveryDetails) {
         setShowCheckoutModal(false);
@@ -87,26 +85,12 @@ export default function CartPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-8">
                         {/* Cart Items */}
                         <div className="lg:col-span-2 space-y-6">
-                            {/* Free Shipping Progress Bar */}
+                            {/* Matches the zero shipping charge at checkout. */}
                             {showProductPrices && (
                                 <div className="bg-white rounded-2xl p-4 border border-[var(--color-brand-onyx)]/5">
-                                    {shippingRemaining === 0 ? (
-                                        <p className="text-sm editorial-subtitle text-green-600">
-                                            🎉 You&apos;ve unlocked free UAE delivery!
-                                        </p>
-                                    ) : (
-                                        <>
-                                            <p className="text-sm editorial-body text-[var(--color-brand-onyx)]/70 mb-2">
-                                                Add <span className="font-semibold text-[var(--color-brand-onyx)]">{formatPrice(shippingRemaining) ?? Math.round(shippingRemaining)} AED</span> more for free UAE delivery
-                                            </p>
-                                            <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
-                                                <div
-                                                    className="h-full rounded-full bg-[var(--color-brand-purple)] transition-all duration-500"
-                                                    style={{ width: `${shippingProgress}%` }}
-                                                />
-                                            </div>
-                                        </>
-                                    )}
+                                    <p className="text-sm editorial-subtitle text-green-600">
+                                        {UAE_SHIPPING_DESCRIPTION}
+                                    </p>
                                 </div>
                             )}
 

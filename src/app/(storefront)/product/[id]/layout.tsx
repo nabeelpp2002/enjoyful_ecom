@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   brandedProductName,
+  productDescription,
   productImageAlt,
   productSeoDescription,
   productSeoTitle,
@@ -13,6 +14,8 @@ import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_ALT,
+  MERCHANT_RETURN_POLICY,
+  MERCHANT_SHIPPING_POLICY,
   pageMetadata,
   SITE_NAME,
   SITE_URL,
@@ -90,7 +93,7 @@ export async function generateMetadata({
   const description = productSeoDescription(
     product.name,
     product.size,
-    product.shortDescription ?? product.description,
+    product.shortDescription?.trim() || product.description,
     product.metaDescription,
   );
   const canonicalIdentifier = product.productFamily || product.slug || id;
@@ -168,11 +171,11 @@ export default async function ProductLayout({
         url: canonicalUrl,
         name: unbrandedProductName(product.name),
         alternateName: brandedProductName(product.name),
-        description: productSeoDescription(
+        description: productDescription(
           product.name,
           product.size,
-          product.shortDescription ?? product.description,
-          product.metaDescription,
+          product.description,
+          product.shortDescription,
         ),
         image: imageUrls.length > 0 ? imageUrls : [product.image].filter(Boolean),
         brand: {
@@ -202,6 +205,11 @@ export default async function ProductLayout({
                 itemCondition: "https://schema.org/NewCondition",
                 url: canonicalUrl,
                 seller: { "@id": `${SITE_URL}/#organization` },
+                hasMerchantReturnPolicy: { "@id": MERCHANT_RETURN_POLICY["@id"] },
+                shippingDetails: {
+                  "@type": "OfferShippingDetails",
+                  hasShippingService: { "@id": MERCHANT_SHIPPING_POLICY["@id"] },
+                },
               },
             }
           : {}),

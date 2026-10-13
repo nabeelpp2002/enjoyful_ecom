@@ -2,6 +2,8 @@
 // Purely additive editorial copy + FAQs + internal links. No design impact.
 // Written for the UAE, Dubai, Abu Dhabi, and GCC markets in a premium brand voice.
 
+import { UAE_DELIVERY_ESTIMATE, UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
+
 export interface SeoFaq {
     q: string;
     a: string;
@@ -42,7 +44,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { label: "Skincare Journal", href: "/blog" },
         ],
         faqs: [
-            { q: "Where does Enjoyful Life deliver?", a: "We deliver across the UAE — including Dubai, Abu Dhabi, Sharjah and the Northern Emirates. Delivery times and any free-shipping thresholds are shown at checkout." },
+            { q: "Where does Enjoyful Life deliver?", a: `${UAE_SHIPPING_DESCRIPTION} ${UAE_DELIVERY_ESTIMATE}` },
             { q: "Are Enjoyful Life products cruelty-free?", a: "Yes. All of our products are cruelty-free. We do not test on animals at any stage, and we work only with suppliers who share that commitment." },
             { q: "Are your formulas suitable for sensitive skin?", a: "Many of our formulas are created with sensitive and reactive skin in mind, using gentle, naturally derived ingredients. We recommend reading each product's ingredient list and patch-testing a small area first if you have known sensitivities." },
             { q: "Do your products suit the UAE climate?", a: "They are designed for it. Our textures are lightweight, fast-absorbing and non-greasy so they perform well in heat, humidity and air-conditioned environments common across the Gulf." },
@@ -106,7 +108,7 @@ export const SEO_CONTENT: Record<string, SeoBlock> = {
             { q: "Are these products gentle enough for daily use?", a: "Yes — they are designed for everyday use, using gentle, naturally derived ingredients suitable for regular cleansing and moisturising." },
             { q: "Do you offer products for the whole family?", a: "Many Daily Essentials are suitable for all adults, and we also offer a dedicated Baby Care range for little ones with extra-gentle formulas." },
             { q: "Are the products sulphate-free?", a: "Several of our cleansers are formulated to be gentle on skin and hair. Check the ingredient list on each product page for specific details." },
-            { q: "How quickly will my order arrive?", a: "We deliver across the UAE with fast, reliable shipping. Estimated timing and any free-shipping threshold appear at checkout." },
+            { q: "How quickly will my order arrive?", a: `${UAE_DELIVERY_ESTIMATE} ${UAE_SHIPPING_DESCRIPTION}` },
             { q: "Are Daily Essentials cruelty-free?", a: "Yes. Every product in the range is cruelty-free, with naturally derived ingredients and full transparency on labelling." },
         ],
     },

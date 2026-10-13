@@ -25,9 +25,19 @@ export function productImageAlt(name?: string, viewIndex = 0): string {
 
 export function productSeoTitle(name?: string, size?: string, customTitle?: string): string {
   const custom = cleanText(customTitle);
-  if (custom) return custom;
+  // Some imported titles were cut mid-brand, for example "| enJoyful L".
+  const hasTruncatedBrand = /\|\s*enjoyful(?:\s+l(?:i(?:f)?)?)?$/i.test(custom);
+  if (custom && !hasTruncatedBrand) return custom;
   const sizeLabel = cleanText(size);
   return `${brandedProductName(name)}${sizeLabel ? ` ${sizeLabel}` : ""} | UAE`;
+}
+
+/** Use the same factual description in visible content and Product markup. */
+export function productDescription(name?: string, size?: string, ...descriptions: (string | undefined)[]): string {
+  const description = descriptions.map(cleanText).find(Boolean);
+  if (description) return description;
+  const sizeLabel = cleanText(size);
+  return `${brandedProductName(name)}${sizeLabel ? `, ${sizeLabel}` : ""}. View product details and available options.`;
 }
 
 export function productSeoDescription(
