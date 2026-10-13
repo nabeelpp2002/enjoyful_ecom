@@ -74,6 +74,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AE" className={`${GeistSans.className} ${GeistSans.variable}`}>
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+      </head>
       <body
         className="antialiased min-h-screen flex flex-col bg-[#fdfaff]"
       >

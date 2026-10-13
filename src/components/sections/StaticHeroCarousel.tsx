@@ -1,8 +1,18 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
 
 /** The homepage hero intentionally promotes only the Glow collection. */
 export function StaticHeroCarousel() {
+    const common = {
+        alt: "Enjoyful Life Glow Collection",
+        sizes: "100vw",
+        loading: "eager" as const,
+        fetchPriority: "high" as const,
+        quality: 75,
+    };
+    const { props: desktop } = getImageProps({ ...common, src: "/assets/glow-hero-hd-desktop.webp", width: 1619, height: 971 });
+    const { props: mobile } = getImageProps({ ...common, src: "/assets/glow-hero-hd-mobile.webp", width: 941, height: 1672 });
+
     return (
         <section className="relative w-full overflow-hidden bg-[#dff2ff] aspect-[941/1672] md:h-[min(110vh,1200px)] md:aspect-auto">
             <Link
@@ -10,30 +20,12 @@ export function StaticHeroCarousel() {
                 aria-label="Shop Enjoyful Life Glow Collection"
                 className="group relative block h-full w-full"
             >
-                <div className="relative h-full w-full md:hidden">
-                    <Image
-                        src="/assets/glow-hero-hd-mobile.webp"
-                        alt="Enjoyful Life Glow Collection"
-                        fill
-                        priority
-                        fetchPriority="high"
-                        unoptimized
-                        sizes="100vw"
-                        className="object-cover transition-transform duration-1000 group-hover:scale-[1.01]"
-                    />
-                </div>
-                <div className="relative hidden h-full w-full md:block">
-                    <Image
-                        src="/assets/glow-hero-hd-desktop.webp"
-                        alt="Enjoyful Life Glow Collection"
-                        fill
-                        priority
-                        fetchPriority="high"
-                        unoptimized
-                        sizes="100vw"
-                        className="object-cover object-top transition-transform duration-1000 group-hover:scale-[1.01]"
-                    />
-                </div>
+                {/* One image request: the browser selects the crop before downloading. */}
+                <picture>
+                    <source media="(min-width: 768px)" srcSet={desktop.srcSet} sizes={desktop.sizes} width={1619} height={971} />
+                    { }
+                    <img {...mobile} alt={common.alt} className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.01] md:object-top" />
+                </picture>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#f2bd47]/65 via-transparent to-transparent md:bg-gradient-to-r md:from-white/55 md:via-white/10 md:to-transparent" />
 

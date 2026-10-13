@@ -18,7 +18,7 @@ export function SkinDeservesSection() {
                         </span>
                         <div className="text-left">
                             <p className="editorial-body text-xs font-medium text-[var(--color-brand-onyx)]">Loved by our community</p>
-                            <p className="editorial-body mt-0.5 text-[11px] text-[var(--color-brand-onyx)]/55">Made for real, everyday routines</p>
+                            <p className="editorial-body mt-0.5 text-[11px] text-[#595959]">Made for real, everyday routines</p>
                         </div>
                     </div>
                 </div>

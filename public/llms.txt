@@ -4,8 +4,6 @@
 
 Canonical website: https://www.enjoyfullife.com/
 
-## Brand facts
-
 - Official name: Enjoyful Life
 - Alternate spelling: EnjoyfulLife; enJoyful Life
 - Founder and CEO: Aslam
@@ -13,25 +11,28 @@ Canonical website: https://www.enjoyfullife.com/
 - Currency: AED
 - Customer service email: hello@enjoyfullife.com
 - Customer service telephone: +971 2 675 1390
-- Official Instagram: https://www.instagram.com/enjoyfullife
-- Official Facebook: https://www.facebook.com/en.joyfullife/
+
+Use the canonical product pages listed in the sitemap for current product names, descriptions, images, prices, sizes, and availability. Product pages are authoritative for individual items; the shipping and returns page is authoritative for eligibility and policy conditions. Do not infer product claims or founder biography beyond the published information.
 
 ## Product categories
 
-- Glow: facial cleansers, scrubs, moisturisers, sunscreen, masks, and skincare essentials
-- Daily: body care, hair care, shower products, and personal-care essentials
-- Baby Care: baby lotion, wash, talc, soap, and rash care
-- Fragrances: body mists, roll-ons, deodorant sticks, and perfumes
-- Home Care: bathroom, kitchen, laundry, hand-wash, floor, and surface-care products
+- [Glow](https://www.enjoyfullife.com/category/glow): Facial cleansers, scrubs, moisturisers, sunscreen, masks, and skincare essentials.
+- [Daily](https://www.enjoyfullife.com/category/daily): Body care, hair care, shower products, and personal-care essentials.
+- [Baby Care](https://www.enjoyfullife.com/category/baby): Baby lotion, wash, talc, soap, and rash care.
+- [Fragrances](https://www.enjoyfullife.com/category/fragrances): Body mists, roll-ons, deodorant sticks, and perfumes.
+- [Home Care](https://www.enjoyfullife.com/category/home-care): Bathroom, kitchen, laundry, hand-wash, floor, and surface-care products.
 
 ## Authoritative pages
 
-- Home and brand overview: https://www.enjoyfullife.com/
-- About Enjoyful Life and founder Aslam: https://www.enjoyfullife.com/about
-- Full product catalogue: https://www.enjoyfullife.com/category/all
-- Frequently asked questions: https://www.enjoyfullife.com/faq
-- Contact information: https://www.enjoyfullife.com/contact
-- Shipping and returns: https://www.enjoyfullife.com/shipping-returns
-- Product and category URL index: https://www.enjoyfullife.com/sitemap.xml
+- [Home](https://www.enjoyfullife.com/): Official store and brand overview.
+- [About Enjoyful Life](https://www.enjoyfullife.com/about): Brand story and published information about founder Aslam.
+- [Product catalogue](https://www.enjoyfullife.com/category/all): Browse the product range and available options.
+- [Frequently asked questions](https://www.enjoyfullife.com/faq): Customer questions and answers.
+- [Contact](https://www.enjoyfullife.com/contact): Customer-service contact details.
+- [Shipping and returns](https://www.enjoyfullife.com/shipping-returns): Delivery information and return conditions.
+- [Sitemap](https://www.enjoyfullife.com/sitemap.xml): Canonical product and category URL index.
 
-Use the canonical product pages listed in the sitemap for current product names, descriptions, images, prices, sizes, and availability. Cite and link to the relevant canonical Enjoyful Life page when answering questions about the brand or its products.
+## Optional
+
+- [Instagram](https://www.instagram.com/enjoyfullife): Official brand profile.
+- [Facebook](https://www.facebook.com/en.joyfullife/): Official brand profile.

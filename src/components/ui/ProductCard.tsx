@@ -61,7 +61,7 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
         <motion.article {...animProps} initial="initial" whileHover="hover" className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-[0_10px_28px_rgba(31,25,18,0.09)] sm:rounded-[1.25rem]">
             <div className="relative aspect-[1.08/1] min-h-0 overflow-hidden bg-[#f2eee8]">
                 <Link href={productHref} onClick={() => track({ type: "product_click", productId: product.id, productName: product.name })} className="absolute inset-0">
-                    <Image src={mainImage} alt={productImageAlt(product.name)} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" priority={index < 4} />
+                    <Image src={mainImage} alt={productImageAlt(product.name)} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
                     {hoverImage !== mainImage && <motion.div variants={{ initial: { opacity: 0 }, hover: { opacity: 1 } }} transition={{ duration: 0.35 }} className="absolute inset-0 hidden bg-[#f2eee8] sm:block"><Image src={hoverImage} alt={productImageAlt(product.name, 1)} fill sizes="25vw" className="object-cover" /></motion.div>}
                 </Link>
                 {badge && <span className={`editorial-ui absolute left-3 top-3 z-20 rounded-full px-3 py-1 text-[8px] font-semibold tracking-wide sm:left-4 sm:top-4 sm:px-4 sm:py-1.5 sm:text-[10px] ${product.isFeatured ? "bg-[var(--color-brand-mustard)]/50 text-[var(--color-brand-onyx)] backdrop-blur-[4px] shadow-sm" : "bg-[#a9342f] text-white"}`}>{badge}</span>}
@@ -72,10 +72,10 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
 
             <div className="relative z-10 -mt-5 flex flex-1 flex-col rounded-t-xl bg-white px-3 pb-3 pt-3.5 sm:-mt-7 sm:rounded-t-[1.5rem] sm:px-4 sm:pb-4 sm:pt-5">
                 <Link href={productHref} className="group/link block min-w-0"><h3 className="editorial-subtitle truncate text-[13px] font-semibold leading-tight text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-[var(--color-brand-purple)] sm:text-base">{product.name}</h3></Link>
-                <p className="editorial-body mt-1 truncate text-[9px] leading-tight text-[var(--color-brand-onyx)]/50 sm:text-xs">{product.tagline || product.description}</p>
+                <p className="editorial-body mt-1 truncate text-[11px] leading-tight text-[#595959] sm:text-xs">{product.tagline || product.description}</p>
                 <div className="mt-2 flex items-end justify-between gap-2 sm:mt-2.5">
                     {listingSizeLabel ? <span className="editorial-body max-w-[52%] truncate rounded-full bg-[#f3eee6] px-2.5 py-1 text-[9px] text-[var(--color-brand-onyx)]/65 sm:px-4 sm:py-1.5 sm:text-xs">{listingSizeLabel}</span> : <span />}
-                    {showProductPrices && <Price amount={product.price} originalAmount={product.originalPrice} prefix={hasSizeVariants ? "From" : undefined} className="ml-auto flex-wrap justify-end gap-x-1" prefixClassName="editorial-body text-[7px] text-black/50 sm:text-[9px]" amountClassName="editorial-number text-base font-semibold leading-none text-[var(--color-brand-onyx)] sm:text-xl" currencyClassName="editorial-subtitle text-[8px] uppercase text-black/45 sm:text-[10px]" originalClassName="editorial-body text-[8px] text-black/30 sm:text-[10px]" />}
+                    {showProductPrices && <Price amount={product.price} originalAmount={product.originalPrice} prefix={hasSizeVariants ? "From" : undefined} className="ml-auto flex-wrap justify-end gap-x-1" prefixClassName="editorial-body text-[10px] text-[#595959]" amountClassName="editorial-number text-base font-semibold leading-none text-[var(--color-brand-onyx)] sm:text-xl" currencyClassName="editorial-subtitle text-[10px] uppercase text-[#595959]" originalClassName="editorial-body text-[10px] text-[#595959]" />}
                 </div>
                 {showProductPrices && <div className="mt-2.5 flex items-stretch gap-2 sm:mt-3">
                     {cartQuantity > 0 && <div className="hidden h-8 w-[42%] min-w-0 items-center rounded-[10px] border border-black/10 px-0.5 sm:flex sm:h-10 sm:rounded-xl sm:px-1">

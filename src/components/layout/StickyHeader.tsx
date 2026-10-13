@@ -261,6 +261,7 @@ export function StickyHeader() {
                     <div className="flex items-center gap-3">
                         {!isSearchOpen && (
                             <button
+                                aria-label="Search products"
                                 onClick={() => {
                                     if (window.matchMedia("(max-width: 767px)").matches) setIsMobileSearchOpen(true);
                                     else setIsSearchOpen(true);
@@ -270,13 +271,15 @@ export function StickyHeader() {
                                 <Search size={22} strokeWidth={1.5} />
                             </button>
                         )}
-                        <Link href="/wishlist" className={`${iconColor} relative transition-transform duration-200 active:scale-95 flex items-center justify-center p-2 border-l border-gray-200/60 pl-3`}>
+                        <Link href="/wishlist" aria-label="View wishlist" className={`${iconColor} relative transition-transform duration-200 active:scale-95 flex items-center justify-center p-2 border-l border-gray-200/60 pl-3`}>
                             <Heart size={20} className={`${wishlist.length > 0 ? "fill-[var(--color-brand-purple)] text-[var(--color-brand-purple)]" : ""}`} strokeWidth={1.5} />
                             {wishlist.length > 0 && <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500"></span>}
                         </Link>
                         {isAuthenticated ? (
                             <div className="relative hidden md:block">
                                 <button
+                                    aria-label="Account options"
+                                    aria-expanded={userMenuOpen}
                                     onClick={() => setUserMenuOpen(prev => !prev)}
                                     className={`${iconColor} transition-transform duration-200 active:scale-95 flex items-center justify-center gap-1.5 p-2 border-l border-gray-200/60 pl-3`}
                                 >
@@ -302,13 +305,14 @@ export function StickyHeader() {
                             </div>
                         ) : (
                             <button
+                                aria-label="Sign in or create an account"
                                 onClick={() => setAuthModalOpen(true)}
                                 className={`${iconColor} transition-transform duration-200 active:scale-95 hidden md:flex items-center justify-center p-2 border-l border-gray-200/60 pl-3`}
                             >
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                             </button>
                         )}
-                        <Link href="/cart" className={`relative ${iconColor} transition-transform duration-200 active:scale-95 hidden md:flex items-center justify-center p-2`}>
+                        <Link href="/cart" aria-label="View shopping cart" className={`relative ${iconColor} transition-transform duration-200 active:scale-95 hidden md:flex items-center justify-center p-2`}>
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                             {cart.length > 0 && <span className="absolute top-1 right-2 w-4 h-4 rounded-full bg-[var(--color-brand-purple)] flex items-center justify-center text-[10px] text-white font-bold">{cart.length}</span>}
                         </Link>

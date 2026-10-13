@@ -30,7 +30,7 @@ export function FeaturesSection() {
 
                     <article className="flex flex-col items-center justify-center rounded-[1.5rem] bg-[#f29a08] p-4 text-center text-[#3e2118] sm:p-7">
                         <h3 className="editorial-heading text-base font-semibold leading-tight sm:text-2xl">Eco-friendly packaging</h3>
-                        <p className="editorial-body mt-2 max-w-[220px] text-[9px] leading-relaxed text-[#3e2118]/65 sm:text-xs">
+                        <p className="editorial-body mt-2 max-w-[220px] text-[11px] leading-relaxed text-[#3e2118] sm:text-xs">
                             Considered choices that care for you and our planet.
                         </p>
                     </article>
@@ -65,9 +65,9 @@ export function FeaturesSection() {
                         />
                     </article>
 
-                    <article className="flex flex-col items-center justify-center rounded-[1.5rem] bg-[#ef6e79] p-4 text-center text-white sm:p-7">
+                    <article className="flex flex-col items-center justify-center rounded-[1.5rem] bg-[#ef6e79] p-4 text-center text-[#3e2118] sm:p-7">
                         <h3 className="editorial-heading text-base font-semibold leading-tight sm:text-2xl">Cruelty-free. Premium quality.</h3>
-                        <p className="editorial-body mt-2 max-w-[220px] text-[9px] leading-relaxed text-white/75 sm:text-xs">
+                        <p className="editorial-body mt-2 max-w-[220px] text-[11px] leading-relaxed text-[#3e2118] sm:text-xs">
                             Kind formulas, carefully crafted for routines you can trust.
                         </p>
                     </article>

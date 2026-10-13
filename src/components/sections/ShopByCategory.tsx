@@ -78,7 +78,7 @@ export function ShopByCategory() {
                                     src={category.image}
                                     alt=""
                                     fill
-                                    sizes="(max-width: 640px) 100px, 1px"
+                                    sizes="(max-width: 639px) 86px, (max-width: 767px) 100px, 1px"
                                     className="object-cover object-center"
                                 />
                             </span>
@@ -109,9 +109,9 @@ export function ShopByCategory() {
                                 >
                                     <Image
                                         src={category.image}
-                                        alt={category.name}
+                                        alt=""
                                         fill
-                                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 20vw"
+                                        sizes="(max-width: 767px) 1px, (max-width: 1023px) calc((100vw - 88px) / 2), (max-width: 1279px) calc((100vw - 160px) / 5), 224px"
                                         className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                                     />
                                 </div>
