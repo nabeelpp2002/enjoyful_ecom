@@ -34,6 +34,7 @@ export interface Product {
     highlights?: string[];
     suitableFor?: string[];
     isHidden?: boolean;
+    isActive?: boolean;
     isFeatured?: boolean;
     onSale?: boolean;
     bestDeal?: boolean;

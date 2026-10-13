@@ -41,7 +41,7 @@ export const MERCHANT_SHIPPING_POLICY = {
   },
 };
 
-// Matches /shipping-returns. Fees are unspecified there, so do not claim free returns.
+// Matches /shipping-returns: approved UAE returns use free courier pickup.
 export const MERCHANT_RETURN_POLICY = {
   "@type": "MerchantReturnPolicy",
   "@id": `${SITE_URL}/shipping-returns#return-policy`,
@@ -49,6 +49,9 @@ export const MERCHANT_RETURN_POLICY = {
   returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
   merchantReturnDays: 14,
   merchantReturnLink: `${SITE_URL}/shipping-returns`,
+  returnMethod: "https://schema.org/ReturnByMail",
+  returnFees: "https://schema.org/FreeReturn",
+  restockingFee: { "@type": "MonetaryAmount", value: 0, currency: "AED" },
   itemCondition: "https://schema.org/NewCondition",
 };
 

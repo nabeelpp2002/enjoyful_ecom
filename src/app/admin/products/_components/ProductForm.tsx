@@ -268,8 +268,9 @@ export function ProductForm({ defaultValues, productId, categories }: Props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Stock</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Stock (internal reference only)</label>
             <input type="number" min="0" {...register('stock')} className={inputClass} />
+            <p className="mt-1 text-xs text-gray-600">Visible, active products are shown as in stock. This count is not displayed to customers. Hide products that are unavailable.</p>
           </div>
         </div>
 

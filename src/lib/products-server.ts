@@ -3,6 +3,7 @@ import "server-only";
 import { cache } from "react";
 import type { Product } from "@/data/products";
 import { normalizeApiProduct, type ApiProduct } from "@/lib/product-normalize";
+import { isStorefrontAvailable } from "@/lib/product-availability";
 
 const API_BASE = process.env.NEST_API_URL ?? "http://localhost:4000/api/v1";
 const DEFAULT_API_TIMEOUT_MS = 8_000;
@@ -204,8 +205,10 @@ async function resolveProductUncached(identifier: string): Promise<ResolvedProdu
   );
   const data = result.ok ? result.body?.data : null;
   if (!data?.product) return null;
+  const product = normalizeApiProduct(data.product);
+  if (!isStorefrontAvailable(product)) return null;
   return {
-    product: normalizeApiProduct(data.product),
+    product,
     rawProduct: data.product,
     variants: Array.isArray(data.variants) ? data.variants : [],
     relatedProducts: Array.isArray(data.related) ? data.related.map(normalizeApiProduct) : [],

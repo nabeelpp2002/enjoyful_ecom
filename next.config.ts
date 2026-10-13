@@ -24,7 +24,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 86400,
+    // Exact 1x/2x widths for the 86px and 100px mobile category tiles keep
+    // browsers from downloading the next oversized default candidate.
+    imageSizes: [32, 48, 64, 86, 96, 100, 128, 172, 192, 200, 256, 300, 384],
+    // Product/category filenames are stable. Cache generated variants for a
+    // month so repeat visitors do not revalidate the same optimized images.
+    minimumCacheTTL: 2592000,
     remotePatterns: [
       {
         protocol: "https",

@@ -31,6 +31,7 @@ function load(relativePath) {
 
 const seo = load("src/lib/product-seo.ts");
 const merchant = load("src/lib/seo.ts");
+const availability = load("src/lib/product-availability.ts");
 
 test("repairs truncated imported titles, preserving valid custom titles", () => {
   assert.equal(seo.productSeoTitle("Ultra Clean Toilet Cleaner Pine", "750ml", "Ultra Clean | enJoyful L"),
@@ -58,11 +59,17 @@ test("shipping matches the UAE zero-charge checkout without invented courier tim
   assert.match(orderService, /const shippingCost = 0;/);
 });
 
-test("returns retain the published window without claiming free courier returns", () => {
+test("returns match the confirmed free courier pickup and no restocking fee policy", () => {
   const policy = merchant.MERCHANT_RETURN_POLICY;
   assert.equal(policy.merchantReturnDays, 14);
   assert.equal(policy.applicableCountry, "AE");
-  assert.equal(policy.returnFees, undefined);
+  assert.equal(policy.returnMethod, "https://schema.org/ReturnByMail");
+  assert.equal(policy.returnFees, "https://schema.org/FreeReturn");
+  assert.equal(policy.restockingFee.value, 0);
+  assert.equal(policy.restockingFee.currency, "AED");
+  assert.equal(policy.returnShippingFeesAmount, undefined);
+  // The policy is expressed in business days, not schema's unqualified days.
+  assert.equal(policy.refundProcessingDays, undefined);
   assert.equal(policy.merchantReturnLink, `${merchant.SITE_URL}/shipping-returns`);
 });
 
@@ -73,4 +80,20 @@ test("offers reference the policies emitted by the storefront", () => {
     assert.ok(product.includes(`${policy}["@id"]`));
     assert.ok(storefront.includes(`: ${policy},`));
   }
+});
+
+test("published products are in stock without relying on or exposing a stock count", () => {
+  assert.equal(availability.isStorefrontAvailable({
+    isHidden: false,
+    isActive: true,
+    price: 6.56,
+    stock: 0,
+  }), true);
+  assert.equal(availability.isStorefrontAvailable({ isHidden: true, isActive: true, price: 6.56 }), false);
+  assert.equal(availability.isStorefrontAvailable({ isHidden: false, isActive: false, price: 6.56 }), false);
+  assert.equal(availability.isStorefrontAvailable({ isHidden: false, isActive: true, price: 0 }), false);
+
+  const badge = fs.readFileSync(path.join(root, "src/components/ui/ProductAvailability.tsx"), "utf8");
+  assert.match(badge, />\s*In stock\s*</);
+  assert.doesNotMatch(badge, /product\.stock|stock\s*count/i);
 });

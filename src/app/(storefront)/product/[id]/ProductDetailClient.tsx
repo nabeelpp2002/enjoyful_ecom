@@ -16,6 +16,7 @@ import { Price } from "@/components/ui/Price";
 import { hasValidPrice, formatPrice } from "@/lib/price";
 import type { SizeVariant } from "@/lib/products-server";
 import { productImageAlt } from "@/lib/product-seo";
+import { ProductAvailability } from "@/components/ui/ProductAvailability";
 
 interface ProductDetailClientProps {
     product: Product;
@@ -213,6 +214,8 @@ export default function ProductDetailClient({
                         <h1 className="mb-3 editorial-title display-md text-2xl lg:text-[32px] text-[var(--color-brand-onyx)] tracking-tight leading-[1.2]">
                             {product.name}
                         </h1>
+
+                        <ProductAvailability product={cartProduct} />
 
                         {/* Size variant selector — shown only when productFamily has siblings */}
                         {sizeVariants.length > 0 && (

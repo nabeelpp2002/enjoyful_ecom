@@ -10,6 +10,7 @@ import {
   unbrandedProductName,
 } from "@/lib/product-seo";
 import { resolveProduct } from "@/lib/products-server";
+import { IN_STOCK_SCHEMA, isStorefrontAvailable } from "@/lib/product-availability";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
@@ -43,10 +44,10 @@ interface Product {
   size?: string;
   price?: number;
   currency?: string;
-  stock?: number;
   rating?: number;
   reviews?: number;
   isHidden?: boolean;
+  isActive?: boolean;
   barcode?: string;
   countryOfOrigin?: string;
   category?: string | { name?: string; slug?: string };
@@ -158,7 +159,7 @@ export default async function ProductLayout({
     ? product.category
     : product?.category?.name;
   const validBarcode = /^\d{13}$/.test(product?.barcode ?? "") ? product?.barcode : undefined;
-  const canPurchase = Boolean(product && product.isHidden !== true && product.price && product.price > 0);
+  const canPurchase = isStorefrontAvailable(product);
   const hasValidRating = Boolean(
     product?.reviews && product.reviews > 0 && product.rating && product.rating > 0 && product.rating <= 5,
   );
@@ -201,7 +202,7 @@ export default async function ProductLayout({
                 "@type": "Offer",
                 priceCurrency: product.currency ?? "AED",
                 price: product.price,
-                availability: "https://schema.org/InStock",
+                availability: IN_STOCK_SCHEMA,
                 itemCondition: "https://schema.org/NewCondition",
                 url: canonicalUrl,
                 seller: { "@id": `${SITE_URL}/#organization` },

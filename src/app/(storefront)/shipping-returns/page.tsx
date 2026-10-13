@@ -5,6 +5,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Truck, RotateCcw, Clock, MapPin, CheckCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
+import { REFUND_TIMING_DESCRIPTION, RESTOCKING_FEE_DESCRIPTION, RETURN_METHOD_DESCRIPTION, RETURN_SHIPPING_DESCRIPTION } from "@/lib/returns";
 
 export default function ShippingReturnsPage() {
     return (
@@ -76,6 +77,7 @@ export default function ShippingReturnsPage() {
 
                     {/* Returns Section */}
                     <motion.div
+                        id="return-policy"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
@@ -87,7 +89,7 @@ export default function ShippingReturnsPage() {
                             </div>
                             <div>
                                 <h2 className="editorial-section-heading text-xl sm:text-2xl text-[var(--color-brand-onyx)]">14-Day Return &amp; Refund Policy</h2>
-                                <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/60">Compliant with UAE Consumer Protection Law</p>
+                                <p className="editorial-body text-xs text-[var(--color-brand-onyx)]/60">Free courier pickup for eligible UAE returns</p>
                             </div>
                         </div>
 
@@ -115,13 +117,20 @@ export default function ShippingReturnsPage() {
                             </div>
                         </div>
 
+                        <div className="mb-6 space-y-3 editorial-body text-xs sm:text-sm leading-relaxed text-[var(--color-brand-onyx)]/80">
+                            <p><strong>Return method:</strong> {RETURN_METHOD_DESCRIPTION}</p>
+                            <p><strong>Return shipping:</strong> {RETURN_SHIPPING_DESCRIPTION}</p>
+                            <p><strong>Restocking fee:</strong> {RESTOCKING_FEE_DESCRIPTION}</p>
+                            <p><strong>Refund timing:</strong> {REFUND_TIMING_DESCRIPTION}</p>
+                        </div>
+
                         {/* How to Initiate */}
                         <div className="p-5 bg-[var(--color-brand-sand)]/60 rounded-2xl border border-white/80">
                             <h3 className="editorial-heading font-bold text-base text-[var(--color-brand-onyx)] mb-2">How to Request a Return</h3>
                             <ol className="list-decimal pl-5 space-y-1.5 editorial-body text-xs sm:text-sm text-[var(--color-brand-onyx)]/80">
                                 <li>Contact our support team via <Link href="/contact" className="text-[var(--color-brand-purple)] underline font-medium">Contact Us</Link> or email hello@enjoyfullife.com with your order number.</li>
-                                <li>Our team will issue a return authorization and schedule a courier pickup from your location in the UAE.</li>
-                                <li>Upon receipt and inspection, refunds will be credited back to your original payment card within 5–7 business days.</li>
+                                <li>Our team will issue a return authorization and schedule a free courier pickup from your location in the UAE.</li>
+                                <li>{REFUND_TIMING_DESCRIPTION}</li>
                             </ol>
                         </div>
                     </motion.div>

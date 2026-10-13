@@ -1,4 +1,5 @@
 import { UAE_SHIPPING_DESCRIPTION } from "@/lib/shipping";
+import { REFUND_TIMING_DESCRIPTION, RESTOCKING_FEE_DESCRIPTION, RETURN_METHOD_DESCRIPTION, RETURN_SHIPPING_DESCRIPTION } from "@/lib/returns";
 
 export interface FaqItem {
   q: string;
@@ -16,8 +17,9 @@ export const FAQ_DATA: FaqItem[] = [
   { category: "Products & Usage", q: "Where can I find product ingredients and usage instructions?", a: "Each product page provides the available ingredient, benefit, size and usage information for that item." },
   { category: "Products & Usage", q: "How should I store skincare products in a warm climate?", a: "Keep products in a cool, dry place away from direct sunlight and excessive heat, and follow any storage instructions on the packaging." },
   { category: "Returns & Refunds", q: "What is your return policy?", a: "We offer a 14-day return window for unopened, sealed products in their original packaging and assist when an item arrives damaged or defective." },
-  { category: "Returns & Refunds", q: "How do I request a return?", a: "Contact our customer-care team through the Contact page or email hello@enjoyfullife.com with your order details." },
-  { category: "Returns & Refunds", q: "When will I receive my refund?", a: "After the returned items are received and inspected, eligible card refunds are processed to the original payment method. Bank processing times may vary." },
+  { category: "Returns & Refunds", q: "How do I request a return?", a: `${RETURN_METHOD_DESCRIPTION} You can reach us through the Contact page or email hello@enjoyfullife.com with your order details.` },
+  { category: "Returns & Refunds", q: "Do I pay return shipping or a restocking fee?", a: `${RETURN_SHIPPING_DESCRIPTION} ${RESTOCKING_FEE_DESCRIPTION}` },
+  { category: "Returns & Refunds", q: "When will I receive my refund?", a: REFUND_TIMING_DESCRIPTION },
   { category: "Payments & Orders", q: "What payment methods do you accept?", a: "The available payment methods are shown during checkout and may include cards, digital wallets and Cash on Delivery within the UAE." },
   { category: "Payments & Orders", q: "How are online payments handled?", a: "Online card payments are handled by the site's payment provider. Enjoyful Life does not store complete card details on its own servers." },
   { category: "Payments & Orders", q: "Can I cancel or modify my order after placing it?", a: "Orders are processed quickly. Contact customer support as soon as possible after ordering and the team will confirm whether a change is still possible." },

@@ -61,6 +61,7 @@ export function normalizeApiProduct(p: ApiProduct): Product {
     highlights: stringArray(p.highlights),
     suitableFor: stringArray(p.suitableFor),
     isHidden: (p.isHidden as boolean) ?? false,
+    isActive: (p.isActive as boolean) ?? true,
     isFeatured: (p.isFeatured as boolean) ?? false,
     onSale: (p.onSale as boolean) ?? false,
     bestDeal: (p.bestDeal as boolean) ?? false,

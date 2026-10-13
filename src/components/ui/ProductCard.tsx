@@ -10,6 +10,8 @@ import { Price } from "@/components/ui/Price";
 import { track } from "@/lib/analytics";
 import type { Product } from "@/data/products";
 import { productImageAlt } from "@/lib/product-seo";
+import { ProductAvailability } from "@/components/ui/ProductAvailability";
+import { isStorefrontAvailable } from "@/lib/product-availability";
 
 interface ProductCardProps {
     product: Product;
@@ -45,6 +47,7 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
     };
     const handleAddToCart = (event: React.MouseEvent) => {
         event.preventDefault();
+        if (!isStorefrontAvailable(product)) return;
         addToCart(product, 1);
         track({ type: "add_to_cart", productId: product.id, productName: product.name, metadata: { quantity: 1, price: product.price } });
         setAdded(true);
@@ -73,6 +76,7 @@ export const ProductCard = memo(function ProductCard({ product, index = 0, wishl
             <div className="relative z-10 -mt-5 flex flex-1 flex-col rounded-t-xl bg-white px-3 pb-3 pt-3.5 sm:-mt-7 sm:rounded-t-[1.5rem] sm:px-4 sm:pb-4 sm:pt-5">
                 <Link href={productHref} className="group/link block min-w-0"><h3 className="editorial-subtitle truncate text-[13px] font-semibold leading-tight text-[var(--color-brand-onyx)] transition-colors group-hover/link:text-[var(--color-brand-purple)] sm:text-base">{product.name}</h3></Link>
                 <p className="editorial-body mt-1 truncate text-[11px] leading-tight text-[#595959] sm:text-xs">{product.tagline || product.description}</p>
+                <ProductAvailability product={product} />
                 <div className="mt-2 flex items-end justify-between gap-2 sm:mt-2.5">
                     {listingSizeLabel ? <span className="editorial-body max-w-[52%] truncate rounded-full bg-[#f3eee6] px-2.5 py-1 text-[9px] text-[var(--color-brand-onyx)]/65 sm:px-4 sm:py-1.5 sm:text-xs">{listingSizeLabel}</span> : <span />}
                     {showProductPrices && <Price amount={product.price} originalAmount={product.originalPrice} prefix={hasSizeVariants ? "From" : undefined} className="ml-auto flex-wrap justify-end gap-x-1" prefixClassName="editorial-body text-[10px] text-[#595959]" amountClassName="editorial-number text-base font-semibold leading-none text-[var(--color-brand-onyx)] sm:text-xl" currencyClassName="editorial-subtitle text-[10px] uppercase text-[#595959]" originalClassName="editorial-body text-[10px] text-[#595959]" />}
