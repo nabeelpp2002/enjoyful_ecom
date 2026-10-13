@@ -60,6 +60,7 @@ export default function AdminProductsPage() {
     const [categoryFilterOpen, setCategoryFilterOpen] = useState(false);
     const categoryFilterRef = useRef<HTMLDivElement>(null);
     const [selectedImageStatus, setSelectedImageStatus] = useState<"all" | "has_image" | "missing_image">("all");
+    const [selectedVisibilityStatus, setSelectedVisibilityStatus] = useState<"all" | "visible" | "partial" | "hidden">("all");
     const [toggling, setToggling] = useState<string | null>(null);
 
     const fetchProducts = useCallback(async (isBackground = false) => {
@@ -229,8 +230,15 @@ export default function AdminProductsPage() {
         const rows: { key: string; variants: AdminProduct[] }[] = [];
         familyMap.forEach((variants, fam) => rows.push({ key: fam, variants }));
         solo.forEach(p => rows.push({ key: p.id, variants: [p] }));
-        return rows;
-    }, [filtered]);
+        return rows.filter(({ variants }) => {
+            if (selectedVisibilityStatus === "all") return true;
+            const allHidden = variants.every(variant => variant.isHidden);
+            const someHidden = variants.some(variant => variant.isHidden);
+            if (selectedVisibilityStatus === "hidden") return allHidden;
+            if (selectedVisibilityStatus === "partial") return someHidden && !allHidden;
+            return !someHidden;
+        });
+    }, [filtered, selectedVisibilityStatus]);
 
     if (authError) {
         return (
@@ -285,7 +293,7 @@ export default function AdminProductsPage() {
             </div>
 
             <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 mb-6">
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full xl:w-auto">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 w-full xl:w-auto">
                     <div className="relative w-full sm:w-64 flex-shrink-0">
                         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1A1A1B]/25" />
                         <input
@@ -306,7 +314,7 @@ export default function AdminProductsPage() {
                                     : "text-[#1A1A1B]/60 hover:text-[#1A1A1B]"
                             }`}
                         >
-                            All Products
+                            All Images
                         </button>
                         <button
                             type="button"
@@ -329,6 +337,53 @@ export default function AdminProductsPage() {
                             }`}
                         >
                             <ImageOff className="w-3.5 h-3.5" /> Missing Image
+                        </button>
+                    </div>
+
+                    <div aria-label="Filter products by visibility" className="flex items-center gap-1 bg-white border border-black/8 rounded-xl p-1 shadow-sm overflow-x-auto">
+                        <button
+                            type="button"
+                            onClick={() => setSelectedVisibilityStatus("all")}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                                selectedVisibilityStatus === "all"
+                                    ? "bg-[#1A1A1B] text-white shadow-sm"
+                                    : "text-[#1A1A1B]/60 hover:text-[#1A1A1B]"
+                            }`}
+                        >
+                            All Statuses
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setSelectedVisibilityStatus("visible")}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                                selectedVisibilityStatus === "visible"
+                                    ? "bg-emerald-500 text-white shadow-sm"
+                                    : "text-[#1A1A1B]/60 hover:text-emerald-600"
+                            }`}
+                        >
+                            <Eye className="w-3.5 h-3.5" /> Visible
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setSelectedVisibilityStatus("partial")}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                                selectedVisibilityStatus === "partial"
+                                    ? "bg-amber-500 text-white shadow-sm"
+                                    : "text-[#1A1A1B]/60 hover:text-amber-600"
+                            }`}
+                        >
+                            Partial
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setSelectedVisibilityStatus("hidden")}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                                selectedVisibilityStatus === "hidden"
+                                    ? "bg-[#735697] text-white shadow-sm"
+                                    : "text-[#1A1A1B]/60 hover:text-[#735697]"
+                            }`}
+                        >
+                            <EyeOff className="w-3.5 h-3.5" /> Hidden
                         </button>
                     </div>
                 </div>
