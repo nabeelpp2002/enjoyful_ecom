@@ -76,7 +76,7 @@ Both env files must exist before running. They are `.gitignore`d — never commi
 ```env
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEST_API_URL=http://localhost:4000/api/v1
-NEXT_PUBLIC_WHATSAPP_NUMBER=971500000000
+NEXT_PUBLIC_WHATSAPP_NUMBER=97126751390
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=<google-oauth-web-client-id>
 # Must equal enjoyful-api's JWT_ACCESS_SECRET.
 # Lets middleware.ts cryptographically verify the admin JWT.
@@ -483,7 +483,7 @@ Typography: `--font-heading` = Montserrat, `--font-sans` = Open Sans.
 
 ```
 NEST_API_URL=http://localhost:4000/api/v1
-NEXT_PUBLIC_WHATSAPP_NUMBER=971500000000
+NEXT_PUBLIC_WHATSAPP_NUMBER=97126751390
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=<google-oauth-web-client-id>
 JWT_ACCESS_SECRET=<same-as-enjoyful-api-JWT_ACCESS_SECRET>   # admin middleware JWT verification
 ```

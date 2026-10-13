@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, MessageCircle, Phone, Youtube } from "lucide-react";
 
 const footerLinks = [
     { label: "Play & Discover", href: "/404" },
@@ -76,7 +76,9 @@ export function Footer() {
                             <Link key={link.label} href={link.href} className="editorial-body text-xs font-medium text-white/75 transition-colors hover:text-white">{link.label}</Link>
                         ))}
                     </nav>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center justify-center gap-4">
+                        <a href="tel:+97126751390" className="editorial-body flex items-center gap-1.5 text-xs text-white/80 hover:text-white" aria-label="Call Enjoyful Life at (02) 675 1390"><Phone className="h-4 w-4" /><span>(02) 675 1390</span></a>
+                        <a href="https://wa.me/97126751390" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Enjoyful Life"><MessageCircle className="h-4 w-4" /></a>
                         <a href="https://instagram.com/enjoyfullife" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
                         <a href="https://facebook.com/enjoyfullife" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook className="h-4 w-4" /></a>
                         <a href="https://youtube.com/enjoyfullife" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><Youtube className="h-4 w-4" /></a>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MessageCircle, MapPin, ChevronDown, ChevronUp } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SeoContent } from "@/components/sections/SeoContent";
 import { SEO_CONTENT } from "@/data/seo-content";
@@ -69,7 +69,7 @@ export default function Contact() {
         },
         {
             question: "How can I get help with an order?",
-            answer: "Send us your order details using the contact form or email hello@enjoyfullife.com, and our customer-support team will assist you.",
+            answer: "Send us your order details using the contact form, WhatsApp, call (02) 675 1390, or email hello@enjoyfullife.com, and our customer-support team will assist you.",
         },
     ];
 
@@ -99,7 +99,7 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-16"
                 >
                     <div className="rounded-2xl p-6 sm:p-8 text-center bg-white shadow-[0_4px_20px_rgba(26,26,27,0.04)]">
                         <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
@@ -118,14 +118,34 @@ export default function Contact() {
 
                     <div className="rounded-2xl p-6 sm:p-8 text-center bg-white shadow-[0_4px_20px_rgba(26,26,27,0.04)]">
                         <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
+                            <Phone size={28} strokeWidth={1.5} />
+                        </div>
+                        <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
+                            Call Us
+                        </h3>
+                        <a
+                            href="tel:+97126751390"
+                            className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
+                        >
+                            (02) 675 1390
+                        </a>
+                    </div>
+
+                    <div className="rounded-2xl p-6 sm:p-8 text-center bg-white shadow-[0_4px_20px_rgba(26,26,27,0.04)]">
+                        <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)]">
                             <MessageCircle size={28} strokeWidth={1.5} />
                         </div>
                         <h3 className="mb-3 editorial-heading font-bold text-xl text-[var(--color-brand-onyx)]">
-                            Contact Form
+                            WhatsApp
                         </h3>
-                        <p className="editorial-body text-base text-[var(--color-brand-onyx)]/70">
-                            Mon–Fri, 9am–6pm GST (UTC+4)
-                        </p>
+                        <a
+                            href="https://wa.me/97126751390"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="editorial-body text-base text-[var(--color-brand-purple)] hover:underline"
+                        >
+                            (02) 675 1390
+                        </a>
                     </div>
 
                     <div className="rounded-2xl p-6 sm:p-8 text-center bg-white shadow-[0_4px_20px_rgba(26,26,27,0.04)]">

@@ -24,7 +24,7 @@ export default function CartPage() {
 
     function handleCheckout(details: DeliveryDetails) {
         setShowCheckoutModal(false);
-        const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "971500000000";
+        const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "97126751390";
         const itemLines = cart
             .map(
                 (item) =>
