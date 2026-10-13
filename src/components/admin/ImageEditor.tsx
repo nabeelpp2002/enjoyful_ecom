@@ -21,7 +21,9 @@ interface ImageEditorProps {
     /** Keep the crop box within image bounds. */
     restrictPosition?: boolean;
     onCancel: () => void;
-    onUploaded: (url: string) => void;
+    onUploaded: (url: string, previewUrl?: string) => void;
+    /** Called if a background upload fails. */
+    onUploadError?: (message: string, previewUrl: string) => void;
     /** Called immediately when upload begins, with a local blob preview URL.
      *  Allows the editor to close while upload runs in the background. */
     onUploadStart?: (previewUrl: string) => void;
@@ -120,6 +122,7 @@ export function ImageEditor({
     onCancel,
     onUploaded,
     onUploadStart,
+    onUploadError,
 }: ImageEditorProps) {
     const [src, setSrc] = useState<string | null>(null);
     const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -177,10 +180,12 @@ export function ImageEditor({
                 (async () => {
                     try {
                         const url = await uploadImageFile(blob, outputName, uploadUrl);
-                        onUploaded(url);
+                        onUploaded(url, localPreview);
                     } catch (bgErr) {
                         console.error("[ImageEditor] Background upload failed:", bgErr);
-                        onUploaded(localPreview);
+                        const message = (bgErr as Error).message ?? "Image upload failed";
+                        if (onUploadError) onUploadError(message, localPreview);
+                        else onUploaded("", localPreview);
                     } finally {
                         URL.revokeObjectURL(localPreview);
                     }

@@ -123,8 +123,10 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
     const [saving, setSaving] = useState(false);
     const [saveError, setSaveError] = useState<string | null>(null);
     // Files queued for editing; we step through them one at a time so the editor
-    // opens for the next file as soon as the previous one is uploaded/cancelled.
+    // opens for the next file as soon as the previous upload starts or is cancelled.
     const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+    const [uploadingImages, setUploadingImages] = useState<string[]>([]);
+    const [imageUploadError, setImageUploadError] = useState<string | null>(null);
 
     // Sibling size variants — lets the edit screen switch between sizes / return to the group.
     const currentId = initialData?.id as string | undefined;
@@ -237,12 +239,39 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
         // FileList is live: clearing the input can empty it before React runs a
         // deferred state updater. Snapshot the File objects synchronously first.
         const selectedFiles = Array.from(files);
-        if (selectedFiles.length > 0) setPendingFiles(prev => [...prev, ...selectedFiles]);
+        if (selectedFiles.length > 0) {
+            setImageUploadError(null);
+            setPendingFiles(prev => [...prev, ...selectedFiles]);
+        }
     };
 
-    const handleEditorUploaded = (url: string) => {
+    const handleUploadStart = (previewUrl: string) => {
+        setImageUploadError(null);
+        setForm(prev => ({ ...prev, images: [...prev.images, previewUrl] }));
+        setUploadingImages(prev => [...prev, previewUrl]);
+        setPendingFiles(prev => prev.slice(1));
+    };
+
+    const handleEditorUploaded = (url: string, previewUrl?: string) => {
+        if (previewUrl) {
+            setForm(prev => ({
+                ...prev,
+                images: prev.images.map(imageUrl => imageUrl === previewUrl ? url : imageUrl),
+            }));
+            setUploadingImages(prev => prev.filter(imageUrl => imageUrl !== previewUrl));
+            return;
+        }
         setForm(prev => ({ ...prev, images: [...prev.images, url] }));
         setPendingFiles(prev => prev.slice(1));
+    };
+
+    const handleUploadError = (message: string, previewUrl: string) => {
+        setForm(prev => ({
+            ...prev,
+            images: prev.images.filter(imageUrl => imageUrl !== previewUrl),
+        }));
+        setUploadingImages(prev => prev.filter(imageUrl => imageUrl !== previewUrl));
+        setImageUploadError(message);
     };
 
     const handleEditorCancel = () => {
@@ -251,6 +280,10 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (pendingFiles.length > 0 || uploadingImages.length > 0) {
+            setSaveError("Please wait for all product images to finish uploading.");
+            return;
+        }
         setSaving(true);
         setSaveError(null);
 
@@ -365,7 +398,13 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                     <div className="grid grid-cols-4 gap-3 mb-3">
                         {form.images.map((url, i) => (
                             <div key={i} className="relative aspect-square rounded-xl overflow-hidden bg-[#F9F5F0] group border border-black/5">
-                                <Image src={url} alt="" fill className="object-cover" />
+                                <Image src={url} alt="" fill unoptimized={url.startsWith("blob:")} className="object-cover" />
+                                {uploadingImages.includes(url) && (
+                                    <div className="absolute inset-0 bg-black/45 flex flex-col items-center justify-center gap-1.5 text-white">
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                        <span className="text-[10px] font-semibold">Uploading...</span>
+                                    </div>
+                                )}
                                 <button
                                     type="button"
                                     onClick={() => setForm(prev => ({ ...prev, images: prev.images.filter((_, j) => j !== i) }))}
@@ -404,6 +443,15 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                             if (e.target.files) queueFiles(e.target.files);
                             e.target.value = "";
                         }} />
+                    {uploadingImages.length > 0 && (
+                        <p className="text-[#735697] text-xs font-medium flex items-center gap-1.5 mb-1.5">
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            Uploading {uploadingImages.length} image{uploadingImages.length === 1 ? "" : "s"} in the background.
+                        </p>
+                    )}
+                    {imageUploadError && (
+                        <p className="text-red-600 text-xs font-medium mb-1.5">{imageUploadError}</p>
+                    )}
                     <p className="text-[#1A1A1B]/35 text-xs">The first image is the storefront cover · Use “Set cover” to change it · Crop & rotate before upload</p>
                 </div>
 
@@ -629,10 +677,13 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                         </div>
                     )}
                     <div className="flex items-center gap-4">
-                        <motion.button type="submit" disabled={saving}
+                        <motion.button type="submit" disabled={saving || pendingFiles.length > 0 || uploadingImages.length > 0}
                             whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}
                             className="px-7 py-2.5 rounded-xl bg-[#735697] hover:bg-[#5e4580] text-white font-semibold text-sm disabled:opacity-50 flex items-center gap-2 shadow-[0_2px_10px_rgba(115,86,151,0.2)]">
-                            {saving ? <><Loader2 className="w-4 h-4 animate-spin" />Saving...</> : (isEdit ? "Save Changes" : "Create Product")}
+                            {saving ? <><Loader2 className="w-4 h-4 animate-spin" />Saving...</>
+                                : uploadingImages.length > 0 ? <><Loader2 className="w-4 h-4 animate-spin" />Uploading Images...</>
+                                : pendingFiles.length > 0 ? "Finish Image Editing"
+                                : (isEdit ? "Save Changes" : "Create Product")}
                         </motion.button>
                         <Link href="/admin/products" className="text-sm text-[#1A1A1B]/40 hover:text-[#1A1A1B]">
                             Cancel
@@ -649,6 +700,8 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                 title="Crop product image (1:1)"
                 onCancel={handleEditorCancel}
                 onUploaded={handleEditorUploaded}
+                onUploadStart={handleUploadStart}
+                onUploadError={handleUploadError}
             />
         </form>
     );
