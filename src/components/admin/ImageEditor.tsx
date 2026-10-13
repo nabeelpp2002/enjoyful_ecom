@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import Cropper, { Area } from "react-easy-crop";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, RotateCw, RotateCcw, FlipHorizontal, FlipVertical, ZoomIn, ZoomOut, Loader2, Check, Maximize } from "lucide-react";
-import { uploadImageFile } from "@/lib/image-upload";
+import { MAX_UPLOAD_IMAGE_DIMENSION, uploadImageFile } from "@/lib/image-upload";
 import { HeroSafeAreaOverlay } from "@/components/admin/HeroSafeAreaOverlay";
 import type { HeroImageVariant } from "@/lib/hero-image-spec";
 
@@ -41,7 +41,7 @@ function readFileAsDataUrl(file: File): Promise<string> {
 
 /**
  * Render the cropped + rotated + flipped region to a Blob.
- * Uses an off-screen canvas; output type is JPEG at 0.92 quality (matches Cloudinary's default).
+ * Uses an off-screen canvas and limits the output dimensions before upload.
  */
 async function getCroppedBlob(
     imageSrc: string,
@@ -87,18 +87,21 @@ async function getCroppedBlob(
     const sw = Math.min(Math.round(crop.width),  bBoxWidth  - sx);
     const sh = Math.min(Math.round(crop.height), bBoxHeight - sy);
 
-    // Final cropped output
+    // Downscale before encoding so high-resolution phone photos do not become huge uploads.
+    const outputScale = Math.min(1, MAX_UPLOAD_IMAGE_DIMENSION / Math.max(sw, sh));
     const out = document.createElement("canvas");
-    out.width  = sw;
-    out.height = sh;
+    out.width  = Math.max(1, Math.round(sw * outputScale));
+    out.height = Math.max(1, Math.round(sh * outputScale));
     const outCtx = out.getContext("2d")!;
-    outCtx.drawImage(rotatedCanvas, sx, sy, sw, sh, 0, 0, sw, sh);
+    outCtx.imageSmoothingEnabled = true;
+    outCtx.imageSmoothingQuality = "high";
+    outCtx.drawImage(rotatedCanvas, sx, sy, sw, sh, 0, 0, out.width, out.height);
 
     return new Promise<Blob>((resolve, reject) => {
         out.toBlob(
             (blob) => (blob ? resolve(blob) : reject(new Error("Canvas.toBlob returned null"))),
             mimeType,
-            0.96,
+            0.9,
         );
     });
 }
@@ -165,8 +168,8 @@ export function ImageEditor({
         setError(null);
         setUploading(true);
         try {
-            const blob = await getCroppedBlob(src, croppedArea, rotation, flipH, flipV, "image/png");
-            const outputName = `${file.name.replace(/\.[^/.]+$/, "")}-edited.png`;
+            const blob = await getCroppedBlob(src, croppedArea, rotation, flipH, flipV, "image/webp");
+            const outputName = `${file.name.replace(/\.[^/.]+$/, "")}-edited.webp`;
 
             if (onUploadStart) {
                 const localPreview = URL.createObjectURL(blob);
