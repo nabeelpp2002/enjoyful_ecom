@@ -32,6 +32,7 @@ function load(relativePath) {
 const seo = load("src/lib/product-seo.ts");
 const merchant = load("src/lib/seo.ts");
 const availability = load("src/lib/product-availability.ts");
+const prices = load("src/lib/price.ts");
 
 test("repairs truncated imported titles, preserving valid custom titles", () => {
   assert.equal(seo.productSeoTitle("Ultra Clean Toilet Cleaner Pine", "750ml", "Ultra Clean | enJoyful L"),
@@ -96,4 +97,12 @@ test("published products are in stock without relying on or exposing a stock cou
   const badge = fs.readFileSync(path.join(root, "src/components/ui/ProductAvailability.tsx"), "utf8");
   assert.match(badge, />\s*In stock\s*</);
   assert.doesNotMatch(badge, /product\.stock|stock\s*count/i);
+});
+
+test("customer prices preserve the exact AED amount used by product schema", () => {
+  assert.equal(prices.formatPrice(7.81), "7.81");
+  assert.equal(prices.formatPrice(7.8), "7.8");
+  assert.equal(prices.formatPrice(8), "8");
+  assert.equal(prices.formatPrice(1.005), "1.01");
+  assert.equal(prices.isDiscounted(7.81, 8), true);
 });

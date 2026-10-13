@@ -21,18 +21,22 @@ export function hasValidPrice(value?: number | null): value is number {
 }
 
 /**
- * UI price pipe. Rounds a valid monetary amount to the nearest whole AED without
- * mutating the source value used by the database, API, filters, or calculations.
+ * Normalizes a valid monetary amount to the two decimal places supported by AED.
+ * This keeps the visible price aligned with product schema and checkout data.
  */
 export function roundPrice(value?: number | null): number | null {
     if (!hasValidPrice(value)) return null;
-    return Math.round(value);
+    return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
-/** Format any valid amount through the centralized whole-AED display pipe. */
+/** Format a valid amount without hiding meaningful fils/cents from customers. */
 export function formatPrice(value?: number | null): string | null {
     const rounded = roundPrice(value);
-    return rounded === null ? null : String(rounded);
+    if (rounded === null) return null;
+    return rounded
+        .toFixed(2)
+        .replace(/\.00$/, "")
+        .replace(/(\.\d)0$/, "$1");
 }
 
 /**
