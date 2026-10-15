@@ -83,6 +83,17 @@ test("offers reference the policies emitted by the storefront", () => {
   }
 });
 
+test("brand naming gives Google one preferred name and a domain fallback", () => {
+  assert.equal(merchant.SITE_NAME, "Enjoyful Life");
+  assert.deepEqual(
+    Array.from(merchant.SITE_ALTERNATE_NAMES),
+    ["EnjoyfulLife", "enJoyful Life", "enjoyfullife.com"],
+  );
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, "public/site.webmanifest"), "utf8"));
+  assert.equal(manifest.name, merchant.SITE_NAME);
+  assert.equal(manifest.short_name, merchant.SITE_NAME);
+});
+
 test("published products are in stock without relying on or exposing a stock count", () => {
   assert.equal(availability.isStorefrontAvailable({
     isHidden: false,

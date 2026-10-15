@@ -3,7 +3,9 @@ import { UAE_DELIVERY_ESTIMATE, UAE_SHIPPING_COST, UAE_SHIPPING_DESCRIPTION } fr
 
 export const SITE_NAME = "Enjoyful Life";
 export const SITE_URL = "https://www.enjoyfullife.com";
-export const SITE_ALTERNATE_NAMES = ["EnjoyfulLife", "enJoyful Life"];
+// Google recommends the lowercase domain as the final fallback when its
+// automated system is not yet confident enough to select the preferred name.
+export const SITE_ALTERNATE_NAMES = ["EnjoyfulLife", "enJoyful Life", "enjoyfullife.com"];
 export const FOUNDER_NAME = "Aslam";
 export const FOUNDER_ROLE = "Founder & CEO";
 export const COMPANY_PHONE_DISPLAY = "(02) 675 1390";
