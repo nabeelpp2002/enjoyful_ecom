@@ -45,7 +45,7 @@ export default function TermsOfServicePage() {
                             <h2 className="editorial-section-heading text-xl text-[var(--color-brand-onyx)]">1. General Terms</h2>
                         </div>
                         <p>
-                            Welcome to <strong>enJoyful Life</strong>. By accessing or purchasing from our website (enjoyfullife.com), you agree to be bound by these Terms and Conditions. These terms apply to all visitors, registered customers, and users in the United Arab Emirates and globally.
+                            Welcome to <strong>Enjoyful Life</strong>. By accessing or purchasing from our website (enjoyfullife.com), you agree to be bound by these Terms and Conditions. These terms apply to all visitors, registered customers, and users in the United Arab Emirates and globally.
                         </p>
                     </section>
 
@@ -77,7 +77,7 @@ export default function TermsOfServicePage() {
                             <h2 className="editorial-section-heading text-xl text-[var(--color-brand-onyx)]">4. Intellectual Property</h2>
                         </div>
                         <p>
-                            All brand assets, text content, editorial imagery, graphics, logos, and product designs on this site are the exclusive property of enJoyful Life and are protected by UAE and International Copyright &amp; Trademark Laws.
+                            All brand assets, text content, editorial imagery, graphics, logos, and product designs on this site are the exclusive property of Enjoyful Life and are protected by UAE and International Copyright &amp; Trademark Laws.
                         </p>
                     </section>
 

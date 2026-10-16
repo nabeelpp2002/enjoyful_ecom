@@ -128,7 +128,7 @@ export default function AdminLoginPage() {
                     </form>
                 </div>
                 <p className="text-center text-[#1A1A1B]/25 text-xs mt-6">
-                    enJoyful Life © {new Date().getFullYear()} · Admin Portal
+                    Enjoyful Life © {new Date().getFullYear()} · Admin Portal
                 </p>
             </motion.div>
         </div>

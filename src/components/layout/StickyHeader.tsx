@@ -177,7 +177,7 @@ export function StickyHeader() {
                         <Link href="/" className="flex-shrink-0 transition-opacity hover:opacity-80 flex items-center">
                             <Image
                                 src={logoSrc}
-                                alt="enJoyful Life Logo"
+                                alt="Enjoyful Life logo"
                                 width={240}
                                 height={80}
                                 className={`h-16 lg:h-26 w-auto object-contain transition-all duration-300 ${isTransparent ? 'brightness-0 invert' : ''}`}

@@ -92,6 +92,16 @@ test("brand naming gives Google one preferred name and a domain fallback", () =>
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "public/site.webmanifest"), "utf8"));
   assert.equal(manifest.name, merchant.SITE_NAME);
   assert.equal(manifest.short_name, merchant.SITE_NAME);
+
+  for (const file of [
+    "src/app/(storefront)/about/page.tsx",
+    "src/app/(storefront)/privacy-policy/page.tsx",
+    "src/app/(storefront)/shipping-returns/page.tsx",
+    "src/app/(storefront)/terms-of-service/page.tsx",
+    "src/components/layout/StickyHeader.tsx",
+  ]) {
+    assert.doesNotMatch(fs.readFileSync(path.join(root, file), "utf8"), /enJoyful Life/);
+  }
 });
 
 test("published products are in stock without relying on or exposing a stock count", () => {

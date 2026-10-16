@@ -27,7 +27,7 @@ export default function About() {
                     className="mt-6 mb-12 sm:mb-16 text-center max-w-3xl mx-auto"
                 >
                     <p className="editorial-label text-xs sm:text-sm text-[var(--color-brand-purple)] tracking-[0.25em] uppercase font-semibold mb-3">
-                        About enJoyful Life
+                        About Enjoyful Life
                     </p>
                     <h1 className="editorial-title display-md text-3xl sm:text-4xl md:text-5xl text-[var(--color-brand-onyx)] tracking-tight leading-[1.15]">
                         Considered Care, <span className="italic text-[var(--color-brand-purple)] font-semibold">Crafted with Intent</span>
@@ -48,7 +48,7 @@ export default function About() {
                         <div className="order-1 lg:order-2 lg:col-span-5 relative rounded-[1.75rem] sm:rounded-[2.25rem] overflow-hidden aspect-[4/5] bg-white shadow-md border border-white/60 w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto">
                             <Image
                                 src="/assets/aslam_ceo.png"
-                                alt="Aslam - Founder & CEO of enJoyful Life"
+                                alt="Aslam - Founder & CEO of Enjoyful Life"
                                 fill
                                 className="object-cover object-center transform hover:scale-[1.02] transition-transform duration-700 ease-out"
                                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -71,7 +71,7 @@ export default function About() {
                                     Aslam
                                 </h3>
                                 <p className="editorial-body text-xs sm:text-sm text-[var(--color-brand-purple)] font-medium">
-                                    Founder &amp; CEO, enJoyful Life
+                                    Founder &amp; CEO, Enjoyful Life
                                 </p>
                             </div>
 
@@ -88,7 +88,7 @@ export default function About() {
                             {/* Concise Narrative Story */}
                             <div className="space-y-3 sm:space-y-4 editorial-body text-sm sm:text-base md:text-lg text-[var(--color-brand-onyx)]/75 leading-relaxed">
                                 <p>
-                                    enJoyful Life was established to bridge the gap between mass-produced formulas and high-end skincare — crafting clean, dermatologically considered products for daily routines.
+                                    Enjoyful Life was established to bridge the gap between mass-produced formulas and high-end skincare — crafting clean, dermatologically considered products for daily routines.
                                 </p>
                                 <p className="font-medium text-[var(--color-brand-onyx)]/90">
                                     The values stay the same. Only the reach has changed.

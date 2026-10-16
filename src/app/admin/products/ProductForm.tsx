@@ -174,7 +174,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
         subcategory: (initialData?.subcategory as string) || "",
         productType: (initialData?.productType as string) || "",
         tagline: (initialData?.tagline as string) || "",
-        brand: (initialData?.brand as string) || "enJoyful Life",
+        brand: (initialData?.brand as string) || "Enjoyful Life",
         size: (initialData?.size as string) || "",
         productCode: (initialData?.productCode as string) || "",
         skuCode: (initialData?.skuCode as string) || "",
@@ -473,7 +473,7 @@ export function ProductForm({ initialData, isEdit }: ProductFormProps) {
                         <div>
                             <label className={labelCls}>Brand</label>
                             <input value={form.brand} onChange={e => updateForm("brand", e.target.value)}
-                                placeholder="enJoyful Life" className={inputCls} />
+                                placeholder="Enjoyful Life" className={inputCls} />
                         </div>
                         <div>
                             <label className={labelCls}>Category *</label>

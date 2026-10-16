@@ -95,7 +95,7 @@ export default function ShippingReturnsPage() {
 
                         <div className="space-y-4 editorial-body text-xs sm:text-sm text-[var(--color-brand-onyx)]/80 leading-relaxed mb-6">
                             <p>
-                                We want you to be completely delighted with your enJoyful Life experience. If for any reason you are not satisfied, you may return eligible items within <strong>14 days of delivery</strong>.
+                                We want you to be completely delighted with your Enjoyful Life experience. If for any reason you are not satisfied, you may return eligible items within <strong>14 days of delivery</strong>.
                             </p>
 
                             <div className="p-4 bg-white rounded-2xl border border-[var(--color-brand-onyx)]/10 space-y-2">

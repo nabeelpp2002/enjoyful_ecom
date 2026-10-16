@@ -35,7 +35,7 @@ export function ShareSheet({ isOpen, onClose, product }: ShareSheetProps) {
             try {
                 await navigator.share({
                     title: `Check out ${product.name}`,
-                    text: `I found this amazing product on enJoyful Life!`,
+                    text: `I found this amazing product on Enjoyful Life!`,
                     url: window.location.href,
                 });
                 onClose();

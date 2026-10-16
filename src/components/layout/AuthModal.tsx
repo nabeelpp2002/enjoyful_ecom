@@ -225,7 +225,7 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
 
   const heading =
     title ??
-    (mode === 'register' ? 'Create your account' : 'Sign in to enJoyful Life');
+    (mode === 'register' ? 'Create your account' : 'Sign in to Enjoyful Life');
   const sub =
     subtitle ??
     (mode === 'register'
@@ -247,7 +247,7 @@ export function AuthModal({ isOpen, onClose, title, subtitle }: Props) {
 
         <div className="mx-auto my-auto w-full max-w-md py-14 md:py-0">
         <div className="mb-2 flex items-center text-[var(--color-brand-purple)] md:pl-10">
-          <span className="editorial-label text-xs font-medium tracking-wide uppercase">enJoyful Life</span>
+          <span className="editorial-label text-xs font-medium tracking-wide uppercase">Enjoyful Life</span>
         </div>
         <h2 className="editorial-heading font-bold text-2xl text-[var(--color-brand-onyx)]">{heading}</h2>
         <p className="text-sm text-[var(--color-brand-onyx)]/55 mt-1 mb-6">{sub}</p>

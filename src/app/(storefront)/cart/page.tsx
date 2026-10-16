@@ -39,7 +39,7 @@ export default function CartPage() {
         ]
             .filter(Boolean)
             .join("\n");
-        const message = `*New Order - enJoyful Life*\n\n*Items:*\n${itemLines}\n\n*Total: ${formatPrice(cartSubtotal) ?? Math.round(cartSubtotal)} AED*\nDelivery: Free\n\n${deliverySection}\n\nPlease confirm my order. Thank you!`;
+        const message = `*New Order - Enjoyful Life*\n\n*Items:*\n${itemLines}\n\n*Total: ${formatPrice(cartSubtotal) ?? Math.round(cartSubtotal)} AED*\nDelivery: Free\n\n${deliverySection}\n\nPlease confirm my order. Thank you!`;
         track({
             type: "checkout_initiated",
             metadata: { total: cartSubtotal, itemCount: cart.length },
